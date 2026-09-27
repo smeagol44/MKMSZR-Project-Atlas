@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-09-26",
-  "sourceCommit": "face0a1f806c0e3635c9482f2027115a2366670c",
+  "snapshot": "2026-09-27",
+  "sourceCommit": "f00c1d97cc5b491593790e8fe0544176c63ff26a",
   "featureBoard": [
     {
       "group": "Core",
@@ -64,7 +64,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Native GAME SETTINGS menu",
       "state": "beta",
       "kind": "have",
-      "detail": "Normal browser/CLI production uses the Runtime-confirmed full-menu v04 frontend: TURN, COMBOS, SPECIALS, JUMP, EXIT. TURN works in gameplay; COMBOS/SPECIALS/JUMP persist UI/state. The accepted proof v09 adds a complete six-entry TURN, ATTACK, SPECIALS, JUMP, RUN, EXIT frontend with edits and persistence. Its product integration needs a composed allocation proof.",
+      "detail": "The shared browser/CLI builder now includes the Runtime-confirmed v02 GAME SETTINGS composition: TURN, ATTACK, SPECIALS, JUMP, RUN, EXIT. ATTACK and SPECIALS offer CLASSIC / MODERN; JUMP offers DPAD / BUTTON when both are MODERN; RUN offers HOLD / AUTO. Gameplay claims remain bounded to the user-tested route.",
       "source": "Project-Status.md"
     },
     {
@@ -112,7 +112,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Browser / CLI shared patch core",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. Every generated ROM includes the native GAME SETTINGS TURN option; the web keeps MKMSZ N64 as the explicit patch target, MKT Rev. 2 as an optional donor, and PlayStation as a future ISO target.",
+      "detail": "Browser and CLI share one guarded patch core. Every generated ROM includes the five-setting GAME SETTINGS control suite; the web keeps MKMSZ N64 as the explicit patch target, MKT Rev. 2 as an optional donor, and PlayStation as a future ISO target.",
       "source": "Project-Status.md"
     },
     {
@@ -240,7 +240,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Donor-backed Toasty audio",
       "state": "production",
       "kind": "have",
-      "detail": "The genuine donor voice is production-composed through a dedicated MKMSZ audio route while stock pickup audio remains unchanged. v47 is runtime-confirmed in the full production composition.",
+      "detail": "The genuine donor voice uses a dedicated MKMSZ audio route while stock pickup audio remains unchanged. The accepted v02 controls/CI4 Toasty composition is runtime-confirmed on the tested route.",
       "source": "Project-Status.md"
     },
     {
@@ -248,7 +248,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Donor-backed Toasty visual",
       "state": "production",
       "kind": "have",
-      "detail": "The final 78x85 lower-right presentation, successful-reaction trigger family, donor asset extraction, and production allocation are integrated. v47 is runtime-confirmed in the full production composition; product tuning is 8%.",
+      "detail": "The 78x85 lower-right presentation now uses nine CI4 (16-color) slices and a 16-entry palette. The successful-reaction trigger and donor extraction remain integrated; accepted full-product v02 was runtime-confirmed on the tested route at 8% probability.",
       "source": "Project-Status.md"
     },
     {
@@ -262,17 +262,17 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "Controls",
       "name": "Modern ATTACK / SPECIALS / JUMP / RUN",
-      "state": "proof",
-      "kind": "want",
-      "detail": "Accepted complete control-suite proof v10 Runtime-confirms all four gameplay paths, including Block-startup cancellation and RUN:HOLD/AUTO live Run/Walk transitions. The six-entry frontend was confirmed in v09. Browser/CLI integration awaits a guarded production composition: the proof-only file-0x1A footprint overlaps the current Toasty allocation. The proof-only forced-XP helper is excluded.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "ATTACK: MODERN, SPECIALS: MODERN, JUMP: BUTTON, and RUN: AUTO are integrated in the shared browser/CLI patch core. The accepted v02 composition is runtime-confirmed on the tested route with real XP progression: Slide and Super Slide retain native eligibility checks. Proof-only XP forcing is excluded.",
       "source": "Project-Status.md"
     },
     {
       "group": "Controls",
       "name": "RUN: HOLD / AUTO",
-      "state": "proof",
-      "kind": "want",
-      "detail": "Runtime-confirmed in complete proof v10: HOLD retains stock behavior; AUTO handles live Run-to-Walk-to-Run transitions while preserving analog auto-run and Run-based chords. Not yet integrated into the normal browser/CLI build because the proof file-0x1A layout overlaps Toasty.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "RUN: HOLD retains stock behavior; AUTO handles live Run-to-Walk-to-Run transitions while preserving analog auto-run and Run-based chords. Integrated in the shared builder and runtime-confirmed on the accepted v02 route.",
       "source": "Project-Status.md"
     }
   ],

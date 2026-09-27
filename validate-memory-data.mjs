@@ -66,10 +66,12 @@ for (const row of project.compatibility) {
 const requiredCurrentRecords = [
   ["rom", "rom.production.shared_file_entry_1a"],
   ["rom", "rom.production.turn_shared_prefix"],
+  ["rom", "rom.production.controls_extension"],
   ["rom", "rom.production.toasty_module"],
   ["rom", "rom.production.toasty_audio_sample"],
   ["rdram", "rdram.production.expansion_pool"],
   ["rdram", "rdram.production.turn_module"],
+  ["rdram", "rdram.production.controls_extension"],
   ["rdram", "rdram.production.toasty_module"],
 ];
 for (const [spaceName, id] of requiredCurrentRecords) {
@@ -79,12 +81,23 @@ for (const [spaceName, id] of requiredCurrentRecords) {
 }
 const rdramRecord = id => memory.rdram.records.find(record => record.id === id);
 const turn = rdramRecord("rdram.production.turn_module");
+const controls = rdramRecord("rdram.production.controls_extension");
 const donor = rdramRecord("rdram.production.toasty_module");
-const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, donor.start, donor.end, 0x1B3420];
-if (focusEdges[1] !== focusEdges[2] || focusEdges[4] !== 0x1B0000 ||
+const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, 0x1B3420];
+if (focusEdges[1] !== focusEdges[2] || controls.start !== 0x1AFC30 || controls.end !== 0x1B0880 ||
+    donor.start !== 0x1B1000 || donor.end !== 0x1B2DF0 ||
     focusEdges.some((edge, index) => index && edge < focusEdges[index - 1]) ||
     focusEdges.at(-1) - focusEdges[0] !== 0x4000) {
   throw new Error("RDRAM focus no longer partitions the 16 KiB reservation");
+}
+const romRecord = id => memory.rom.records.find(record => record.id === id);
+if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
+    romRecord("rom.production.controls_extension").end !== 0xF69060 ||
+    romRecord("rom.production.toasty_module").start !== 0xF697E0 ||
+    romRecord("rom.production.toasty_module").end !== 0xF6B5D0 ||
+    romRecord("rom.production.toasty_audio_sample").start !== 0xF6B5D0 ||
+    romRecord("rom.production.toasty_audio_sample").end !== 0xF6BDE6) {
+  throw new Error("ROM controls / CI4 Toasty bounds diverge from the canonical map");
 }
 const currentHighRom = memory.rom.records.filter(record => record.class === "production" && record.start >= 0xF00000);
 const sortedHighRom = [...currentHighRom].sort((a, b) => a.start - b.start);
