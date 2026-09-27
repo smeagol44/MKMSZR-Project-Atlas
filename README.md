@@ -99,7 +99,7 @@ Primary inputs include:
 - `MKT-Fighter-Asset-Translation.md`
 - `Sub-Zero-to-Sektor-Animation-Mapping.md`
 
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through the 16 KiB production reservation, the integrated TURN / ATTACK / SPECIALS / JUMP / RUN GAME SETTINGS suite, the shared TURN / modern-controls / optional-CI4-Toasty file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, and the runtime-confirmed bounded Sektor v89 first-frame fix. The accepted v02 composition is runtime-confirmed on the user-tested route; broader routes remain unverified.
+The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `c9ffabaa77f6a58ef96119061db218ab27540f9f`, including the 16 KiB production reservation, integrated TURN / ATTACK / SPECIALS / JUMP / RUN GAME SETTINGS suite, default-off **Shuffle Power Progression** web/CLI option, shared TURN / modern-controls / optional-CI4-Toasty file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, and the runtime-confirmed bounded Sektor v89 first-frame fix. The generalized nine-gate power-order mechanism is runtime-confirmed on its bounded v04 route; final full nine-tier production-composition validation remains pending.
 
 Important rules:
 
