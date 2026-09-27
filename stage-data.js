@@ -1,7 +1,7 @@
 // Snapshot of the eight canonical MKMSZR stage catalogs.
 window.MKMSZ_STAGE_DATA = {
   "snapshot": "2026-09-27",
-  "sourceCommit": "f00c1d97cc5b491593790e8fe0544176c63ff26a",
+  "sourceCommit": "c9ffabaa77f6a58ef96119061db218ab27540f9f",
   "stages": [
     {
       "name": "Temple",
@@ -248,13 +248,15 @@ window.MKMSZ_STAGE_DATA = {
         "Static-confirmed: all 10 ordinary pickup records, all 12 stock outer slots, and the recognized resource records below are decoded from the clean USA N64 ROM.",
         "Runtime-confirmed: the Prison resource-file mapping was matched against captured runtime memory at 0x801FB798.",
         "Runtime-confirmed: representative Prison ordinary-pickup collection/persistence is established, but all 10 Prison records have not been individually exhausted one by one in runtime testing.",
-        "Runtime-confirmed, proof-only: Prison is the destination used for the six-Herbs extension-selector proof, single imported embedded Potion proof, converted Health-urn proof, and the composed five-import visual stress proof. Exact stage-local configurations are preserved below; the generalized conclusions remain with the global materialization owner."
+        "Runtime-confirmed, proof-only: Prison is the destination used for the six-Herbs extension-selector proof, single imported embedded Potion proof, converted Health-urn proof, and the composed five-import visual stress proof. Exact stage-local configurations are preserved below; the generalized conclusions remain with the global materialization owner.",
+        "Static-confirmed overlay identity: Prison's main-stage raw overlay is global file 0x9F at ROM 0xC4C70..0xCA50F, loaded at 0x802ECE30. The earlier 0xA2 acquired-bit path belongs to a different overlay and is not Prison evidence."
       ],
       "notes": [
         "The stock resource file has exactly 12 outer slots. Its outer table occupies file-relative 0x0000..0x002F; the first descriptor starts immediately at 0x30. No stock outer slot is empty. Inserting a 13th stock-table word in place would overwrite the first descriptor.",
         "That stock-table layout does not mean Prison lacks ordinary-pickup selector expansion capacity. The later extension-selector mechanism avoids inserting into the stock table. The lookup mechanics and their interpretation are canonical in Global item materialization and solvability.",
         "Disposable Proof D — Runtime-confirmed, proof-only: the stock 0x48F0-byte Prison resource file was relocated/expanded by four bytes. A selector word appended at file-relative 0x48F0 pointed to the existing Herbs descriptor 0x255C, producing selector 0x123C (0x48F0 / 4). All six Prison Herbs ordinary records were changed from stock selector 8 to 0x123C. Two early Herbs were manually collected and rendered/awarded like vanilla Herbs; the other four were not individually runtime-tested in that proof.",
-        "Disposable Proof F — Runtime-confirmed, proof-only: stock Prison selectors remained intact. Extension selector 0x123C pointed to an appended, file-relative-pointer-rebased copy of Water's embedded Potion bundle. One early Prison Herbs location became Potion while the remaining Herbs records stayed stock. The imported Potion and an untouched Herbs control both rendered and awarded correctly."
+        "Disposable Proof F — Runtime-confirmed, proof-only: stock Prison selectors remained intact. Extension selector 0x123C pointed to an appended, file-relative-pointer-rebased copy of Water's embedded Potion bundle. One early Prison Herbs location became Potion while the remaining Herbs records stayed stock. The imported Potion and an untouched Herbs control both rendered and awarded correctly.",
+        "Key-checkpoint diagnostic: v04/v05 moved the full seven-word Prison L1 identity tuple onto the first Herbs record. The visible CHECK POINT event followed the relocated reward identity, while suppressing the selector write or acquired-bit store did not remove the banner. No safe key-only banner seam is proven."
       ],
       "source": "Stage-Catalog-Prison.md"
     },
@@ -419,13 +421,15 @@ window.MKMSZ_STAGE_DATA = {
         "Static-confirmed: all 9 ordinary pickup records, all 7 stock outer slots, and the recognized resource records below are decoded from the clean USA N64 ROM.",
         "Runtime-confirmed: the complete Fortress resource file was byte-matched against captured runtime memory at 0x801F4E20.",
         "Runtime-confirmed: representative Fortress ordinary-pickup collection/persistence is established, but all 9 Fortress records have not been individually exhausted one by one in runtime testing.",
+        "Runtime/user-observed: the three crystal reward records are spawned after defeating Kia, Jataaka, and Sareena. For randomizer semantics these are boss-defeat reward locations; the crystal identity is the stock reward, not a permanent boss-to-reward binding.",
         "Implementation/static-confirmed, proof-only; runtime Pending: the composed five-import stress ROM contains the equivalent Fortress construction for Potion, Urn of Vitality, Formula, Eye, and Shield, with another Herbs record retained byte-for-byte as a control. The Fortress half has not been manually runtime-tested and must not inherit Prison's Runtime-confirmed status."
       ],
       "notes": [
         "The stock resource file has exactly 7 occupied outer slots. Its outer table occupies file-relative 0x0000..0x001B; the first descriptor starts immediately at 0x1C. There is no empty stock logical selector.",
         "Adding an eighth stock-table word in place would overwrite that first descriptor. This is a Static-confirmed stock-layout fact, not a claim that Fortress lacks all ordinary-pickup selector expansion paths.",
         "Slot 5 aliases the Herbs descriptor 0x1338 used by slot 3. Slots 4 and 6 have no ordinary-pickup users, but all three remain protected until other Fortress actor/script references are resolved.",
-        "The crystal callback parameters are raw 0x00008000, 0x00008001, and 0x00008002; their low selectors correspond to inventory IDs 0x20, 0x21, and 0x22 through the stage-dependent callback, while the high-bit meaning remains unresolved."
+        "The crystal callback parameters are raw 0x00008000, 0x00008001, and 0x00008002; their low selectors correspond to inventory IDs 0x20, 0x21, and 0x22 through the stage-dependent callback, while the high-bit meaning remains unresolved.",
+        "The first three catalog rows are stock spawned rewards for the Kia/Jataaka/Sareena boss checks. The global materializer must separate each boss-defeat trigger from reward identity so each boss location can emit its assigned logical item while the three crystal rewards can move elsewhere."
       ],
       "source": "Stage-Catalog-Fortress.md"
     }
