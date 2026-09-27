@@ -62,6 +62,7 @@ A capacity-first view of the literal 16 MiB cartridge image:
 - confirmed reusable free bytes;
 - proof-only footprints kept separate from current ownership;
 - a proportional whole-image strip plus a zoomed high-ROM generated-output strip;
+- distinct colors and exact sizes for each current high-ROM purpose; proof artifacts appear only in the exact records, since they can overlap the current build;
 - exact interval and patch-site browser with canonical provenance.
 
 The view deliberately does **not** infer free space from `00`/`FF` patterns or from gaps in current research. Decompilation knowledge is shown separately in **Decomp Readiness**; byte ownership and code understanding are not the same metric.
@@ -75,6 +76,7 @@ A physical-memory ownership/capacity view for the 4 MiB N64 target:
 - confirmed reusable free bytes;
 - physical aliases counted once even when KSEG0/KSEG1 views exist;
 - a focused breakdown of the exact 16 KiB MKMSZR reservation;
+- separate colors for always allocated code, conditional donor content, and striped reserved gaps, with exact byte counts below the proportional bar;
 - current Runtime V2 fixed use, 15 KiB expansion-pool capacity, conditional donor-backed allocation, and reserved remainder shown separately;
 - exact physical interval and patch-site browser.
 
@@ -96,7 +98,7 @@ Primary inputs include:
 - `MKT-Fighter-Asset-Translation.md`
 - `Sub-Zero-to-Sektor-Animation-Mapping.md`
 
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through the 16 KiB production reservation, native GAME SETTINGS -> TURN: TOGGLE / LOCK production integration, shared TURN/optional-donor file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, and the current Sektor line through v89 Pending plus the accepted six-pose Run policy.
+The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through the 16 KiB production reservation, the four-setting production GAME SETTINGS frontend, the complete six-entry v09 proof frontend and v10 gameplay proof, shared TURN/optional-donor file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, and the runtime-confirmed bounded Sektor v89 first-frame fix. The six-entry controls suite still requires a composed allocation proof before browser/CLI integration.
 
 Important rules:
 

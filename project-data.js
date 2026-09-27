@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-09-25",
-  "sourceCommit": "9e0b39af06fb850ba130dd88ed081711f86b18f7",
+  "snapshot": "2026-09-26",
+  "sourceCommit": "face0a1f806c0e3635c9482f2027115a2366670c",
   "featureBoard": [
     {
       "group": "Core",
@@ -64,7 +64,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Native GAME SETTINGS menu",
       "state": "beta",
       "kind": "have",
-      "detail": "The shared patcher now reuses the stock GAME SETTINGS frontend as a native MKMSZR settings page. TURN: TOGGLE / LOCK plus EXIT is Runtime-confirmed in the full production composition; the accepted wrapper stays frontend-resident and never raw-loads gameplay expansion code from the title lifecycle.",
+      "detail": "Normal browser/CLI production uses the Runtime-confirmed full-menu v04 frontend: TURN, COMBOS, SPECIALS, JUMP, EXIT. TURN works in gameplay; COMBOS/SPECIALS/JUMP persist UI/state. The accepted proof v09 adds a complete six-entry TURN, ATTACK, SPECIALS, JUMP, RUN, EXIT frontend with edits and persistence. Its product integration needs a composed allocation proof.",
       "source": "Project-Status.md"
     },
     {
@@ -232,7 +232,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "MKT / Sektor takeover",
       "state": "proof",
       "kind": "future",
-      "detail": "Broad Sektor animation/combo behavior remains runtime-proven. v75 is the stable missile-flight baseline; v87 Runtime-confirms donor-faithful flying-rocket colors. v88 still shows one stale pre-rocket texture frame, which separates descriptor binding from asynchronous texture-slot publication. v89 tests synchronous pre-publication texture preparation and is Implementation/static-confirmed, Runtime Pending. The accepted six-pose Run policy is also Runtime-confirmed; its physical repack is static-confirmed and pending regression.",
+      "detail": "Proof-only line through v89: v75 is the stable missile-flight baseline, v87 confirms donor-faithful rocket assets/colors, and v89 Runtime-confirms synchronous texture-slot preparation before actor-list insertion removes the stale first frame. The six-pose Run v05 physical repack is Runtime-confirmed; the P28/P29 v06 rope-owner probe is bounded Runtime-confirmed. Storage/lifecycle/cleanup and general integration remain pending.",
       "source": "Project-Status.md"
     },
     {
@@ -257,6 +257,22 @@ window.MKMSZ_PROJECT_DATA = {
       "state": "partial",
       "kind": "future",
       "detail": "The adapter now has concrete projectile creation/placement, cadence-resampling, animation-context and first-visibility evidence from the Sektor missile line. Generic strike/reaction, effects/audio/palette lifetime and production composition remain incomplete.",
+      "source": "Project-Status.md"
+    },
+    {
+      "group": "Controls",
+      "name": "Modern ATTACK / SPECIALS / JUMP / RUN",
+      "state": "proof",
+      "kind": "want",
+      "detail": "Accepted complete control-suite proof v10 Runtime-confirms all four gameplay paths, including Block-startup cancellation and RUN:HOLD/AUTO live Run/Walk transitions. The six-entry frontend was confirmed in v09. Browser/CLI integration awaits a guarded production composition: the proof-only file-0x1A footprint overlaps the current Toasty allocation. The proof-only forced-XP helper is excluded.",
+      "source": "Project-Status.md"
+    },
+    {
+      "group": "Controls",
+      "name": "RUN: HOLD / AUTO",
+      "state": "proof",
+      "kind": "want",
+      "detail": "Runtime-confirmed in complete proof v10: HOLD retains stock behavior; AUTO handles live Run-to-Walk-to-Run transitions while preserving analog auto-run and Run-based chords. Not yet integrated into the normal browser/CLI build because the proof file-0x1A layout overlaps Toasty.",
       "source": "Project-Status.md"
     }
   ],
@@ -429,7 +445,7 @@ window.MKMSZ_PROJECT_DATA = {
       "donor": "Sektor / robot animation families",
       "target": "Sub-Zero file 0x87 animation slots",
       "status": "runtime",
-      "detail": "Broad common-action coverage, Run v58, Combo v59, and v62 combo behavior are runtime-confirmed.",
+      "detail": "Broad common-action coverage, v62 combos, and the six-pose Run v05 physical repack are Runtime-confirmed in bounded proof routes.",
       "source": "Sub-Zero-to-Sektor-Animation-Mapping.md"
     },
     {
@@ -464,8 +480,8 @@ window.MKMSZ_PROJECT_DATA = {
       "capability": "First-visible projectile publication",
       "donor": "rocket frame becomes visible after setup",
       "target": "Frame bind + active-list insertion ordering",
-      "status": "partial",
-      "detail": "v87 establishes the correct retail rocket asset/palette pair, but v88 proves descriptor advance alone does not synchronously publish the new texture. Current static tracing identifies the dirty-slot/upload path and v89 tests native synchronous preparation before stock list insertion; runtime validation is pending.",
+      "status": "runtime",
+      "detail": "v89 Runtime-confirms native synchronous texture-slot preparation before stock actor-list insertion. The first rocket frame uses the correct v87 dynamic asset/palette and retains v75 flight; storage and lifecycle remain proof-only.",
       "source": "MKT-Adapter-Primitives.md"
     },
     {
@@ -483,7 +499,7 @@ window.MKMSZ_PROJECT_DATA = {
       "donor": "Victory, projectile, dizzy, later reactions",
       "target": "Mythologies-specific slot families",
       "status": "partial",
-      "detail": "Several gaps remain; secondary mapping is semantic rather than positional.",
+      "detail": "P28/P29 v06 rope-owner probe is Runtime-confirmed on a bounded route; final fallback policy and many other rare families remain open.",
       "source": "Sub-Zero-to-Sektor-Animation-Mapping.md"
     },
     {
