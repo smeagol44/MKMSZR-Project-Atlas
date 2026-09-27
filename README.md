@@ -17,6 +17,7 @@ The original 40 × 15 (600-unit) qualitative heatmap remains intact.
 - **Black** — substantially unmapped from a decompilation-readiness perspective.
 
 The 600 squares are equal-sized **knowledge units**, not equal code-size buckets, literal functions, or equal numbers of ROM bytes.
+The integrated ATTACK, SPECIALS, JUMP, and RUN input paths are named within the existing partial player-action units; product integration does not by itself establish a fully decompiled player state machine.
 
 ### Feature Board
 

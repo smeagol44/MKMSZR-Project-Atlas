@@ -261,11 +261,27 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "group": "Controls",
-      "name": "Modern ATTACK / SPECIALS / JUMP / RUN",
+      "name": "ATTACK: CLASSIC / MODERN",
       "state": "beta",
       "kind": "have",
-      "detail": "ATTACK: MODERN, SPECIALS: MODERN, JUMP: BUTTON, and RUN: AUTO are integrated in the shared browser/CLI patch core. The accepted v02 composition is runtime-confirmed on the tested route with real XP progression: Slide and Super Slide retain native eligibility checks. Proof-only XP forcing is excluded.",
-      "source": "Project-Status.md"
+      "detail": "CLASSIC preserves stock attacks. MODERN translates Attack into context-appropriate stock punches, kicks, and combo events; Block + Attack cancels Block startup into the native LP path. Integrated in the shared builder and runtime-confirmed on the accepted v02 route.",
+      "source": "Player-Actions-and-Special-Moves.md"
+    },
+    {
+      "group": "Controls",
+      "name": "SPECIALS: CLASSIC / MODERN",
+      "state": "beta",
+      "kind": "have",
+      "detail": "CLASSIC leaves vanilla special recognition intact. MODERN maps facing-relative Special-button chords to native moves while retaining their stock eligibility, costs, and progression checks; Slide and Super Slide use their native recognizers with real XP. Integrated and runtime-confirmed on the accepted v02 route without proof-only XP forcing.",
+      "source": "Player-Actions-and-Special-Moves.md"
+    },
+    {
+      "group": "Controls",
+      "name": "JUMP: DPAD / BUTTON",
+      "state": "beta",
+      "kind": "have",
+      "detail": "DPAD keeps stock locomotion jumps. BUTTON uses either LK or HK to jump while standing, moving, running, or hanging from a ledge; it becomes editable only when both ATTACK and SPECIALS are MODERN. Integrated and runtime-confirmed on the accepted v02 route.",
+      "source": "Native-HUD-and-UI.md"
     },
     {
       "group": "Controls",
