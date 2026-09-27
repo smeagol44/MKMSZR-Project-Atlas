@@ -1,7 +1,7 @@
 // Patch-site overlay snapshot from the canonical MKMSZR registry.
 window.MKMSZ_PATCH_DATA = {
-  "snapshot": "2026-09-26",
-  "sourceCommit": "face0a1f806c0e3635c9482f2027115a2366670c",
+  "snapshot": "2026-09-27",
+  "sourceCommit": "f00c1d97cc5b491593790e8fe0544176c63ff26a",
   "patches": [
     {
       "id": "prod-0",
@@ -703,7 +703,7 @@ window.MKMSZ_PATCH_DATA = {
     {
       "id": "prod-shared-file1a",
       "class": "production",
-      "owner": "Shared TURN / optional donor transport",
+      "owner": "Shared TURN / modern controls / optional Toasty transport",
       "romSite": "0x000A5148",
       "romStart": 676168,
       "romEnd": 676180,
@@ -714,7 +714,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded clean zero entry",
-      "effect": "Always points at the TURN shared prefix; optional donor-backed content extends the same file",
+      "effect": "Points at mandatory TURN and modern controls; optional CI4 Toasty extends the same file",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -833,7 +833,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded stock edit body",
-      "effect": "Compact TURN/COMBOS/SPECIALS/JUMP right-edit and JUMP draw helper",
+      "effect": "Integrated TURN/ATTACK/SPECIALS/JUMP/RUN right-edit dispatch",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -850,7 +850,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded stock edit body",
-      "effect": "Compact TURN/COMBOS/SPECIALS/JUMP left-edit dispatcher",
+      "effect": "Integrated TURN/ATTACK/SPECIALS/JUMP/RUN left-edit dispatch",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -867,7 +867,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded stock Lives/Continues draw bodies",
-      "effect": "COMBOS and SPECIALS enums at compact coordinates",
+      "effect": "ATTACK and SPECIALS CLASSIC/MODERN values at compact coordinates",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -901,7 +901,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded stock type-2 four-entry table",
-      "effect": "TURN/COMBOS/SPECIALS/JUMP positions; EXIT uses stock type 0/index 5",
+      "effect": "Compact TURN/ATTACK/SPECIALS/JUMP/RUN/EXIT positions in the integrated frontend",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -969,7 +969,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded COMBOS row label",
-      "effect": "Disposable ATTACK label; production remains COMBOS",
+      "effect": "Historical disposable ATTACK label; superseded by the integrated v02 frontend",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -986,7 +986,7 @@ window.MKMSZ_PATCH_DATA = {
       "physicalStart": null,
       "physicalEnd": null,
       "expected": "guarded ASSIST pointer 0x800AEAD8",
-      "effect": "Disposable MODERN pointer; production remains ASSIST",
+      "effect": "Historical disposable MODERN pointer; superseded by the integrated v02 frontend",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {

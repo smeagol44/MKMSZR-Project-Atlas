@@ -98,7 +98,7 @@ Primary inputs include:
 - `MKT-Fighter-Asset-Translation.md`
 - `Sub-Zero-to-Sektor-Animation-Mapping.md`
 
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through the 16 KiB production reservation, the four-setting production GAME SETTINGS frontend, the complete six-entry v09 proof frontend and v10 gameplay proof, shared TURN/optional-donor file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, and the runtime-confirmed bounded Sektor v89 first-frame fix. The six-entry controls suite still requires a composed allocation proof before browser/CLI integration.
+The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through the 16 KiB production reservation, the integrated TURN / ATTACK / SPECIALS / JUMP / RUN GAME SETTINGS suite, the shared TURN / modern-controls / optional-CI4-Toasty file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, and the runtime-confirmed bounded Sektor v89 first-frame fix. The accepted v02 composition is runtime-confirmed on the user-tested route; broader routes remain unverified.
 
 Important rules:
 

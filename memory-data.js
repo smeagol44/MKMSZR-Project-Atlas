@@ -1,9 +1,9 @@
 // Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
 // Unknown gaps are intentionally not classified as free.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-09-26",
+  "snapshot": "2026-09-27",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "face0a1f806c0e3635c9482f2027115a2366670c",
+  "sourceCommit": "f00c1d97cc5b491593790e8fe0544176c63ff26a",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -115,13 +115,13 @@ window.MKMSZ_MEMORY_DATA = {
         "end": 676180,
         "range": "[0x000A5148, 0x000A5154)",
         "class": "production",
-        "owner": "Shared TURN / optional donor expansion file-table entry 0x1A",
+        "owner": "Shared TURN / controls / optional Toasty expansion file-table entry 0x1A",
         "scope": "Global file table",
         "lifecycle": "Stage init",
         "evidence": "TURN production composition Runtime-confirmed; CI guards/bounds",
         "production_safe": "yes",
         "reference": "game_settings_turn.py; toasty.py; Address-and-Patch-Site-Registry.md",
-        "notes": "TURN owns the mandatory low-prefix module. Optional donor-backed content extends the same file while preserving its start. The frontend does not load this file."
+        "notes": "TURN owns the mandatory prefix, modern controls the low extension, and optional CI4 Toasty the high extension. The frontend does not load this file."
       },
       {
         "id": "rom.production.file_entry_1b",
@@ -488,6 +488,20 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Mandatory prefix of shared file 0x1A. The frontend menu wrapper is global/title-resident; this gameplay module is loaded only at stage init."
       },
       {
+        "id": "rom.production.controls_extension",
+        "start": 16155664,
+        "end": 16158816,
+        "range": "[0x00F68410, 0x00F69060)",
+        "class": "production",
+        "owner": "Guarded modern ATTACK / SPECIALS / JUMP / RUN helpers",
+        "scope": "Global high ROM",
+        "lifecycle": "Stage init / gameplay",
+        "evidence": "Runtime-confirmed in accepted v02 composition; builder byte parity confirmed",
+        "production_safe": "yes",
+        "reference": "controls_production.py; Memory-and-Allocation-Map.md",
+        "notes": "Low extension of shared file 0x1A; runtime [0x801AFC30,0x801B0880). ROM alignment gaps remain inside the shared file."
+      },
+      {
         "id": "rom.proof.attack_modern_check_v01_low_extension",
         "start": 16155652,
         "end": 16156160,
@@ -503,23 +517,23 @@ window.MKMSZ_MEMORY_DATA = {
       },
       {
         "id": "rom.production.toasty_module",
-        "start": 16156640,
-        "end": 16169728,
-        "range": "[0x00F687E0, 0x00F6BB00)",
+        "start": 16160736,
+        "end": 16168400,
+        "range": "[0x00F697E0, 0x00F6B5D0)",
         "class": "production",
-        "owner": "Packed donor-backed presentation module",
+        "owner": "Packed Toasty code, 16-entry TLUT, tables, state, and CI4 slices",
         "scope": "Generated ROM output",
         "lifecycle": "Stage init / gameplay when optional donor is supplied",
-        "evidence": "Runtime-confirmed in TURN + donor-backed production composition",
+        "evidence": "Runtime-confirmed in accepted controls + CI4 Toasty v02 production composition",
         "production_safe": "conditional",
         "reference": "toasty.py; toasty_codegen.py",
-        "notes": "Optional module begins at the ROM offset corresponding to runtime 0x801B0000 inside shared file 0x1A."
+        "notes": "Optional module begins at the ROM offset corresponding to runtime 0x801B1000 inside shared file 0x1A."
       },
       {
         "id": "rom.production.toasty_audio_sample",
-        "start": 16169728,
-        "end": 16171798,
-        "range": "[0x00F6BB00, 0x00F6C316)",
+        "start": 16168400,
+        "end": 16170470,
+        "range": "[0x00F6B5D0, 0x00F6BDE6)",
         "class": "production",
         "owner": "Donor-backed encoded audio sample",
         "scope": "Generated ROM output",
@@ -967,7 +981,7 @@ window.MKMSZ_MEMORY_DATA = {
         "evidence": "16 KiB arena-floor proof Runtime-confirmed across all eight safe stages; allocator/bounds CI-confirmed",
         "production_safe": "yes",
         "reference": "allocations.py; tests/test_expansion_allocations.py",
-        "notes": "Parent reservation, not free space. TURN owns the mandatory low suballocation; optional donor-backed content owns the high suballocation when present."
+        "notes": "Parent reservation, not free space. TURN and modern controls own mandatory low suballocations; optional CI4 Toasty owns the high suballocation when present."
       },
       {
         "id": "rdram.production.turn_module",
@@ -985,19 +999,34 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Loaded only at stage init through shared file 0x1A; never loaded from the frontend."
       },
       {
-        "id": "rdram.production.toasty_module",
-        "start": 1769472,
-        "end": 1782560,
-        "range": "[0x1B0000, 0x1B3320)",
-        "aliases": "KSEG0 [0x801B0000,0x801B3320); KSEG1 [0xA01B0000,0xA01B3320)",
+        "id": "rdram.production.controls_extension",
+        "start": 1768496,
+        "end": 1771648,
+        "range": "[0x1AFC30, 0x1B0880)",
+        "aliases": "KSEG0 [0x801AFC30,0x801B0880); KSEG1 [0xA01AFC30,0xA01B0880)",
         "class": "production",
-        "owner": "Conditional donor-backed native module",
+        "owner": "Modern ATTACK / SPECIALS / JUMP / RUN helpers and state",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Stage init / gameplay",
+        "evidence": "Accepted v02 Runtime-confirmed; shared-builder byte parity",
+        "production_safe": "yes",
+        "reference": "controls_production.py; Memory-and-Allocation-Map.md",
+        "notes": "Ends 0x780 bytes before optional CI4 Toasty at 0x801B1000."
+      },
+      {
+        "id": "rdram.production.toasty_module",
+        "start": 1773568,
+        "end": 1781232,
+        "range": "[0x1B1000, 0x1B2DF0)",
+        "aliases": "KSEG0 [0x801B1000,0x801B2DF0); KSEG1 [0xA01B1000,0xA01B2DF0)",
+        "class": "production",
+        "owner": "Conditional CI4 Toasty packed native module",
         "scope": "MKMSZR expansion pool",
         "lifecycle": "Stage init / gameplay when optional donor is supplied",
-        "evidence": "Runtime-confirmed in TURN + donor-backed production composition; CI bounds",
+        "evidence": "v02 Runtime-confirmed controls / CI4 composition; builder byte parity",
         "production_safe": "conditional",
         "reference": "toasty_codegen.py; tests/test_toasty.py",
-        "notes": "Uses 0x3320 bytes at the 0x801B0000-aligned high slice; TURN separately owns the low 0x404-byte slice."
+        "notes": "Uses 0x1DF0 bytes at the 0x801B1000-aligned high slice and leaves 0x630 bytes before the reserved-pool boundary."
       },
       {
         "id": "rdram.proof.toasty_v43_feature",
