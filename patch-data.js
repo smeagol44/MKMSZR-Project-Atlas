@@ -1039,7 +1039,7 @@ window.MKMSZ_PATCH_DATA = {
       "expected": "guarded generated body or zero-filled tail",
       "effect": "Proof-only edit inside existing production allocation; original production bytes unchanged",
       "source": "Address-and-Patch-Site-Registry.md"
-    ,
+    },
     {
       "id": "prod-power-slide",
       "class": "production",
