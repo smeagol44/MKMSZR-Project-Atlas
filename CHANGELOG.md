@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-26 — Current Wiki refresh and memory focus
+
+- Advanced the snapshot to MKMSZR commit `face0a1f806c0e3635c9482f2027115a2366670c`.
+- Distinguished the current four-setting production frontend from the Runtime-confirmed six-entry v09 proof menu and complete v10 control gameplay proof. The latter still needs a guarded Toasty-compatible allocation before browser/CLI integration.
+- Updated the bounded Sektor v89 first-frame texture result, Run v05 physical repack, and P28/P29 rope-owner probe.
+- Added the new bounded proof ROM intervals and production GAME SETTINGS/proof ATTACK patch-site records from the Wiki; retained proof-only intervals outside the current high-ROM usage bar.
+- Gave ROM and RDRAM focus bars a shared purpose-color layout with exact-size rows. RDRAM distinguishes always allocated, optional donor-backed, and striped reserved portions; dark ROM gaps remain unclassified.
+
 ## 2026-09-25 — Production GAME SETTINGS / TURN refresh
 
 - Advanced the Atlas snapshot to MKMSZR commit `9e0b39af06fb850ba130dd88ed081711f86b18f7`.

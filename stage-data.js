@@ -1,7 +1,7 @@
 // Snapshot of the eight canonical MKMSZR stage catalogs.
 window.MKMSZ_STAGE_DATA = {
-  "snapshot": "2026-09-25",
-  "sourceCommit": "9e0b39af06fb850ba130dd88ed081711f86b18f7",
+  "snapshot": "2026-09-26",
+  "sourceCommit": "face0a1f806c0e3635c9482f2027115a2366670c",
   "stages": [
     {
       "name": "Temple",

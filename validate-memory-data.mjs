@@ -77,6 +77,21 @@ for (const [spaceName, id] of requiredCurrentRecords) {
     throw new Error("missing current memory record: " + id);
   }
 }
+const rdramRecord = id => memory.rdram.records.find(record => record.id === id);
+const turn = rdramRecord("rdram.production.turn_module");
+const donor = rdramRecord("rdram.production.toasty_module");
+const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, donor.start, donor.end, 0x1B3420];
+if (focusEdges[1] !== focusEdges[2] || focusEdges[4] !== 0x1B0000 ||
+    focusEdges.some((edge, index) => index && edge < focusEdges[index - 1]) ||
+    focusEdges.at(-1) - focusEdges[0] !== 0x4000) {
+  throw new Error("RDRAM focus no longer partitions the 16 KiB reservation");
+}
+const currentHighRom = memory.rom.records.filter(record => record.class === "production" && record.start >= 0xF00000);
+const sortedHighRom = [...currentHighRom].sort((a, b) => a.start - b.start);
+if (sortedHighRom.some((record, index) => record.end > 0x1000000 ||
+    (index && record.start < sortedHighRom[index - 1].end))) {
+  throw new Error("current high-ROM focus allocations overlap or exceed the image");
+}
 for (const id of ["prod-turn-action", "prod-turn-decision", "prod-turn-release", "prod-turn-menu", "prod-shared-file1a", "prod-toasty-trigger", "prod-toasty-init", "prod-toasty-hud", "proof-sektor-v85"]) {
   if (!patches.patches.some(patch => patch.id === id)) {
     throw new Error("missing current patch record: " + id);
