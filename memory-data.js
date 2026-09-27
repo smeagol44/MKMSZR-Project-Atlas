@@ -995,7 +995,7 @@ window.MKMSZ_MEMORY_DATA = {
         "evidence": "16 KiB arena-floor proof Runtime-confirmed across all eight safe stages; allocator/bounds CI-confirmed",
         "production_safe": "yes",
         "reference": "allocations.py; tests/test_expansion_allocations.py",
-        "notes": "Parent reservation, not free space. TURN and modern controls own mandatory low suballocations; optional CI4 Toasty owns the high suballocation when present."
+        "notes": "Parent reservation, not free space. TURN and modern controls own mandatory low suballocations; compact Rainbow conditionally owns the first 0x58 bytes after controls; optional CI4 Toasty owns the high suballocation when present."
       },
       {
         "id": "rdram.production.turn_module",
@@ -1025,7 +1025,7 @@ window.MKMSZ_MEMORY_DATA = {
         "evidence": "Accepted v02 Runtime-confirmed; shared-builder byte parity",
         "production_safe": "yes",
         "reference": "controls_production.py; Memory-and-Allocation-Map.md",
-        "notes": "Ends 0x780 bytes before optional CI4 Toasty at 0x801B1000."
+        "notes": "Ends at 0x801B0880. Compact Rainbow conditionally uses [0x801B0880,0x801B08D8); the remaining gap stays reserved before optional CI4 Toasty at 0x801B1000."
       },
       {
         "id": "rdram.production.rainbow_loader_wrapper",
