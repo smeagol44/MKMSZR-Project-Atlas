@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
   "snapshot": "2026-09-27",
-  "sourceCommit": "c9ffabaa77f6a58ef96119061db218ab27540f9f",
+  "sourceCommit": "2543ebb02607c053f558b855a79279178a93ef7d",
   "featureBoard": [
     {
       "group": "Core",
@@ -112,7 +112,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Outfit recoloring",
       "state": "production",
       "kind": "have",
-      "detail": "Static modes and the 64-phase rainbow mode are normal browser/CLI options; rainbow reproduces the validated proof byte-for-byte for RAINBOW64.",
+      "detail": "Static modes and the 64-phase rainbow mode are normal browser/CLI options. Compact-tail v01 is runtime-confirmed across all eight safe stages: stock file 0x87 stays in place, only an 8 KiB palette bank is stored in high ROM, and the prior 0x459E0-byte duplicate fighter copy is gone.",
       "source": "Project-Status.md"
     },
     {
