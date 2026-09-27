@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
   "snapshot": "2026-09-27",
-  "sourceCommit": "f00c1d97cc5b491593790e8fe0544176c63ff26a",
+  "sourceCommit": "c9ffabaa77f6a58ef96119061db218ab27540f9f",
   "featureBoard": [
     {
       "group": "Core",
@@ -60,6 +60,14 @@ window.MKMSZ_PROJECT_DATA = {
       "source": "Project-Status.md"
     },
     {
+      "group": "Progression",
+      "name": "SHUFFLE POWER PROGRESSION: OFF / ON",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Default OFF preserves vanilla Power Up order. ON uses an isolated deterministic seed-derived nine-slot order, keeps gameplay gates and native Power Ups icon/help presentation synchronized, and enforces only one dependency: Ice Shatter must follow at least one of Ice Blast, Directional Ice, or Air Ice Blast. Slide and Super Slide may appear in either order. The generalized v04 mechanism is runtime-confirmed; final full nine-tier production-composition validation remains pending.",
+      "source": "XP-and-Progression.md"
+    },
+    {
       "group": "UI",
       "name": "Native GAME SETTINGS menu",
       "state": "beta",
@@ -112,7 +120,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Browser / CLI shared patch core",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. Every generated ROM includes the five-setting GAME SETTINGS control suite; the web keeps MKMSZ N64 as the explicit patch target, MKT Rev. 2 as an optional donor, and PlayStation as a future ISO target.",
+      "detail": "Browser and CLI share one guarded patch core. Every generated ROM includes the five-setting GAME SETTINGS control suite; the web also exposes the default-off Shuffle Power Progression build option. MKMSZ N64 remains the explicit patch target, MKT Rev. 2 is an optional donor, and PlayStation remains a future ISO target.",
       "source": "Project-Status.md"
     },
     {
@@ -120,7 +128,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Global cross-stage item materialization",
       "state": "needed",
       "kind": "need",
-      "detail": "Cross-stage feasibility is runtime-proven, but production-safe destination resources and award semantics are still a release blocker.",
+      "detail": "Cross-stage feasibility is runtime-proven, but production-safe destination resources and award semantics are still a release blocker. Fortress boss defeats are reward locations whose assigned logical rewards must be movable independently from the stock crystal identities.",
       "source": "1.0-Requirements-and-Roadmap.md"
     },
     {

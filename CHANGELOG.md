@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-27 — Shuffled Power Progression integration
+
+- Advanced the Atlas snapshot to MKMSZR commit `c9ffabaa77f6a58ef96119061db218ab27540f9f`.
+- Added a dedicated Feature Board card for the default-off **SHUFFLE POWER PROGRESSION: OFF / ON** product option.
+- Recorded the deterministic nine-slot shuffle contract: gameplay gates and native Power Ups icon/help presentation stay synchronized, Ice Shatter must follow at least one freezing power, and Slide/Super Slide have no ordering dependency.
+- Recorded the bounded v04 runtime result and kept the final full nine-tier production-composition validation explicitly pending.
+- Added the complete production power-tier gate and Power Ups UI table patch-site overlay set.
+- Refreshed Prison key-checkpoint evidence and Fortress boss-reward location semantics that changed in the same MKMSZR source window.
+- Versioned all four Atlas snapshot assets to the new source revision.
+
 ## 2026-09-26 — Current Wiki refresh and memory focus
 
 - Advanced the snapshot to MKMSZR commit `face0a1f806c0e3635c9482f2027115a2366670c`.
