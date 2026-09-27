@@ -3,7 +3,7 @@
 window.MKMSZ_MEMORY_DATA = {
   "snapshot": "2026-09-27",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "c9ffabaa77f6a58ef96119061db218ab27540f9f",
+  "sourceCommit": "2543ebb02607c053f558b855a79279178a93ef7d",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -418,18 +418,18 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "File 0x1B points here. Source bytes being FF in the clean ROM are only a guard, not the reason this ownership is accepted."
       },
       {
-        "id": "rom.production.rainbow_file_87",
+        "id": "rom.production.rainbow_bank",
         "start": 15859712,
-        "end": 16153056,
-        "range": "[0x00F20000, 0x00F679E0)",
+        "end": 15867904,
+        "range": "[0x00F20000, 0x00F22000)",
         "class": "production",
-        "owner": "Optional rainbow outfit relocated Sub-Zero file 0x87 plus 64-palette bank",
+        "owner": "Optional 64-phase rainbow palette bank, raw file 0x92",
         "scope": "Generated ROM output",
         "lifecycle": "Rainbow gameplay only",
-        "evidence": "Runtime-confirmed; production output for seed RAINBOW64 is byte-identical to proof v01",
+        "evidence": "Runtime-confirmed in compact-tail all-stage proof v01",
         "production_safe": "conditional",
-        "reference": "rainbow_palette.py; guarded stock file entry and destination FF capacity",
-        "notes": "Owned only when outfit mode is rainbow; stock file body is copied intact before the appended 0x2000-byte palette bank."
+        "reference": "rainbow_palette.py; guarded zero file-0x92 entry, exact 0x2000 bank, and all 15 stock file-0x87 loader pairs",
+        "notes": "Stock file 0x87 remains at retail ROM and is not duplicated or repointed. This supersedes the former [0xF20000,0xF679E0) relocated-file owner."
       },
       {
         "id": "rom.proof.sektor_v62_file_87",
@@ -500,6 +500,20 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "yes",
         "reference": "controls_production.py; Memory-and-Allocation-Map.md",
         "notes": "Low extension of shared file 0x1A; runtime [0x801AFC30,0x801B0880). ROM alignment gaps remain inside the shared file."
+      },
+      {
+        "id": "rom.production.rainbow_loader_wrapper",
+        "start": 16158816,
+        "end": 16158904,
+        "range": "[0x00F69060, 0x00F690B8)",
+        "class": "production",
+        "owner": "Optional compact-rainbow file-0x87 loader wrapper in shared file 0x1A",
+        "scope": "Global high ROM",
+        "lifecycle": "Stage resource load",
+        "evidence": "Runtime-confirmed by compact-tail all-stage proof; CI guards/bounds",
+        "production_safe": "conditional",
+        "reference": "rainbow_palette.py; Address-and-Patch-Site-Registry.md",
+        "notes": "Runtime mirror is [0x801B0880,0x801B08D8); wrapper extends file 0x1A only when needed and remains below Toasty's fixed source/runtime slice."
       },
       {
         "id": "rom.proof.attack_modern_check_v01_low_extension",
@@ -888,10 +902,10 @@ window.MKMSZ_MEMORY_DATA = {
         "owner": "Optional Runtime V2 feature code tail",
         "scope": "Reserved MKMSZR block",
         "lifecycle": "Gameplay",
-        "evidence": "Runtime-confirmed by rainbow v01; CI-confirmed bounds",
+        "evidence": "Runtime-confirmed by compact rainbow v01; CI-confirmed bounds",
         "production_safe": "yes",
         "reference": "runtime_v2.py, rainbow_palette.py",
-        "notes": "Rainbow owns [0x1AF700,0x1AF7CC) with its 0xCC-byte helper; [0x1AF7CC,0x1AF7D0) remains reserved. In non-rainbow builds the whole interval remains reserved/zero."
+        "notes": "Rainbow owns the full 0xD0-byte tail in rainbow builds; the compact helper adds the proof-validated defensive phase mask. In non-rainbow builds the interval remains reserved/zero."
       },
       {
         "id": "rdram.production.state_header",
@@ -1012,6 +1026,21 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "yes",
         "reference": "controls_production.py; Memory-and-Allocation-Map.md",
         "notes": "Ends 0x780 bytes before optional CI4 Toasty at 0x801B1000."
+      },
+      {
+        "id": "rdram.production.rainbow_loader_wrapper",
+        "start": 1771648,
+        "end": 1771736,
+        "range": "[0x1B0880, 0x1B08D8)",
+        "aliases": "KSEG0 [0x801B0880,0x801B08D8); KSEG1 [0xA01B0880,0xA01B08D8)",
+        "class": "production",
+        "owner": "Optional compact-rainbow file-0x87 loader wrapper",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Stage resource load",
+        "evidence": "Runtime-confirmed by compact-tail all-stage proof; CI guards/bounds",
+        "production_safe": "conditional",
+        "reference": "rainbow_palette.py",
+        "notes": "Uses only the start of the established controls-to-Toasty gap; Toasty remains fixed at 0x801B1000."
       },
       {
         "id": "rdram.production.toasty_module",
