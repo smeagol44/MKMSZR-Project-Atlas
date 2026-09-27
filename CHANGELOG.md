@@ -1,3 +1,13 @@
+## 2026-09-27 — Compact Rainbow storage refresh
+
+- Advanced the Atlas snapshot to MKMSZR commit `2543ebb02607c053f558b855a79279178a93ef7d`.
+- Replaced the old Rainbow high-ROM model that duplicated all of Sub-Zero file `0x87` with the Runtime-confirmed compact-tail architecture.
+- ROM Space now shows only the `0x2000` raw palette bank at `0xF20000..0xF21FFF` plus the 88-byte file-`0x1A` loader wrapper at `0xF69060..0xF690B7`; stock file `0x87` remains at retail ROM.
+- RDRAM Space now shows the conditional wrapper at `0x801B0880..0x801B08D7` in the existing controls→Toasty gap and the full `0xD0` optional Runtime V2 tail used by the compact Rainbow helper.
+- Added all 15 guarded Sub-Zero allocation/load pairs plus the raw file-`0x92` table entry to the patch-site overlay.
+- Updated the Feature Board and Decomp Readiness wording to reflect the all-eight-stage Runtime-confirmed compact storage contract.
+- The old Rainbow allocation consumed `0x479E0` bytes of high ROM; the new dedicated bank consumes `0x2000`, reclaiming `0x459E0` = 285,152 bytes of generated ROM capacity while preserving the same effective runtime fighter footprint.
+
 # Changelog
 
 ## 2026-09-27 — Shuffled Power Progression integration
