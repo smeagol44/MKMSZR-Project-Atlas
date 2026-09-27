@@ -24,6 +24,7 @@
 .capacity-note b{display:block;font-size:15px}.capacity-note span{display:block;color:#8793a0;font-size:10px;margin-top:3px;line-height:1.4}
 .capacity-viz{margin-top:18px}.capacity-viz .capacity-track{height:48px;position:relative;overflow:hidden;border:1px solid #46505c;border-radius:10px;background:#1b222c}.capacity-viz .capacity-track:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,transparent 0 8px,rgba(255,255,255,.035) 8px 9px);pointer-events:none}.capacity-slice{position:absolute;top:0;bottom:0;border:0;border-right:1px solid rgba(8,10,12,.55);padding:0;cursor:pointer}.capacity-slice:hover,.capacity-slice:focus-visible{filter:brightness(1.22);outline:2px solid white;outline-offset:-2px;z-index:2}.capacity-axis{display:flex;justify-content:space-between;gap:10px;margin-top:7px;color:#98a6b5;font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.capacity-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:17px}.capacity-item{min-width:0;text-align:left;display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:10px;align-items:start;border:1px solid #34404c;border-radius:10px;background:#10161d;color:#e5edf5;padding:12px;cursor:pointer}.capacity-item:hover,.capacity-item:focus-visible{border-color:#dbe8f5;outline:none}.capacity-item b{display:block;font-size:14px;line-height:1.35}.capacity-item small{display:block;color:#9caab9;font-size:12px;line-height:1.45;margin-top:4px}.capacity-item .size{font:600 13px ui-monospace,SFMono-Regular,Consolas,monospace;color:#e1e9f2;white-space:nowrap}.capacity-swatch{width:14px;height:14px;border:1px solid rgba(255,255,255,.32);border-radius:3px;margin-top:2px}.capacity-fixed{background:#38bdf8}.capacity-mandatory{background:#4ade80}.capacity-optional{background:#a78bfa}.capacity-audio{background:#fb923c}.capacity-title{background:#22d3ee}.capacity-outfit{background:#818cf8}.capacity-reserved{background:repeating-linear-gradient(135deg,#4b5563 0 5px,#27313e 5px 10px)}.capacity-unknown{background:#1b222c}.capacity-note{grid-template-columns:repeat(3,minmax(0,1fr))}.capacity-note b{font-size:14px}.capacity-note span{font-size:12px;color:#aab7c5}
 .capacity-caveat{margin:13px 0 0;color:#a8b5c3;font-size:12px;line-height:1.5}
+.capacity-track.has-selection .capacity-slice:not(.selected){opacity:.5}.capacity-slice.selected{outline:3px solid #fff;outline-offset:-3px;z-index:1;filter:brightness(1.18)}.capacity-item.selected{border-color:#f3f5f7;background:#1b2731;box-shadow:0 0 0 1px #f3f5f7 inset}.capacity-item.selected .capacity-swatch{box-shadow:0 0 0 2px #f3f5f7}
 .mem-record.patch-record{border-style:dashed}.mem-record.patch-record strong:before{content:"PATCH · ";color:#7dd3fc}
 @media(max-width:900px){.capacity-note,.capacity-items{grid-template-columns:1fr}}
 @media(max-width:560px){.capacity-item{grid-template-columns:14px minmax(0,1fr)}.capacity-item .size{grid-column:2}}
@@ -280,16 +281,25 @@ function renderCapacityBreakdown(key,space,start,end,parts){
   items.innerHTML="";
   const track=viz.querySelector(".capacity-track"),span=end-start;
   parts.forEach(p=>{
-    const n=p.record.end-p.record.start,label=p.title+": "+memBytes(n)+" ("+p.record.range+")";
-    const slice=document.createElement("button");slice.type="button";slice.className="capacity-slice capacity-"+p.tone;
-    slice.style.left=((p.record.start-start)/span*100)+"%";slice.style.width=((n/span)*100)+"%";
-    slice.title=label;slice.setAttribute("aria-label",label);slice.onclick=()=>memDetail(key,space,p.title,[p.record]);track.appendChild(slice);
+    const ranges=p.ranges||[[p.record.start,p.record.end]],n=ranges.reduce((sum,[a,b])=>sum+b-a,0),label=p.title+": "+capacityExact(n)+(p.record?" ("+p.record.range+")":"");
+    const id=p.record?.id||"unclassified";
+    const activate=()=>{
+      track.classList.add("has-selection");
+      track.querySelectorAll(".capacity-slice").forEach(el=>{const selected=el.dataset.capacityId===id;el.classList.toggle("selected",selected);el.setAttribute("aria-pressed",String(selected))});
+      items.querySelectorAll(".capacity-item").forEach(el=>{const selected=el.dataset.capacityId===id;el.classList.toggle("selected",selected);el.setAttribute("aria-pressed",String(selected))});
+      memDetail(key,space,p.title,p.record?[p.record]:[]);
+    };
+    ranges.forEach(([a,b])=>{
+      const slice=document.createElement("button");slice.type="button";slice.className="capacity-slice capacity-"+p.tone;
+      slice.dataset.capacityId=id;slice.style.left=((a-start)/span*100)+"%";slice.style.width=((b-a)/span*100)+"%";
+      slice.title=label;slice.setAttribute("aria-label",label);slice.setAttribute("aria-pressed","false");slice.onclick=activate;track.appendChild(slice);
+    });
     const item=document.createElement("button");item.type="button";item.className="capacity-item";
     const swatch=document.createElement("i");swatch.className="capacity-swatch capacity-"+p.tone;
     const copy=document.createElement("span"),name=document.createElement("b"),detail=document.createElement("small"),size=document.createElement("span");
     name.textContent=p.title;detail.textContent=p.description;size.className="size";size.textContent=capacityExact(n);
-    copy.append(name,detail);item.append(swatch,copy,size);item.setAttribute("aria-label",label+". "+p.description);
-    item.onclick=()=>memDetail(key,space,p.title,[p.record]);items.appendChild(item);
+    copy.append(name,detail);item.append(swatch,copy,size);item.dataset.capacityId=id;item.setAttribute("aria-label",label+". "+p.description);item.setAttribute("aria-pressed","false");
+    item.onclick=activate;items.appendChild(item);
   });
 }
 function renderCapacityFocus(key,space){
@@ -305,11 +315,11 @@ function renderCapacityFocus(key,space){
     };
     const records=space.records.filter(r=>r.class==="production"&&r.start>=focusStart&&r.end<=focusEnd);
     const parts=records.map(r=>{const [title,tone,description]=purpose[r.id]||[r.owner,"fixed","Current production allocation"];return {record:r,title,tone,description}});
+    const gaps=[];let cursor=focusStart;
+    [...records].sort((a,b)=>a.start-b.start).forEach(r=>{if(cursor<r.start)gaps.push([cursor,r.start]);cursor=Math.max(cursor,r.end)});
+    if(cursor<focusEnd)gaps.push([cursor,focusEnd]);
+    parts.push({title:"Unclassified gaps",tone:"unknown",description:"Not established as reusable space",ranges:gaps});
     renderCapacityBreakdown(key,space,focusStart,focusEnd,parts);
-    const occupied=memUnion(records);
-    const remainder=document.createElement("div");remainder.className="capacity-item";
-    remainder.innerHTML='<i class="capacity-swatch capacity-unknown"></i><span><b>Unclassified gaps</b><small>Not established as reusable space</small></span><span class="size">'+capacityExact(focusEnd-focusStart-occupied)+'</span>';
-    document.querySelector("#rom-focus-labels").appendChild(remainder);
   }else{
     const start=0x1AF420,end=0x1B3420;
     const fixed={id:"capacity-fixed",start:0x1AF420,end:0x1AF820,range:"[0x1AF420, 0x1AF820)",class:"production",owner:"Runtime V2 fixed code/state (1 KiB)",scope:"MKMSZR reservation",lifecycle:"production",evidence:"Runtime-confirmed",production_safe:"yes",reference:"Memory-and-Allocation-Map.md",notes:"First 1 KiB of the 16 KiB reservation."};
