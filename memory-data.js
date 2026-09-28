@@ -606,6 +606,14 @@ window.MKMSZ_MEMORY_DATA = {
     "end": 4194304,
     "bucketSize": 16384,
     "grid": 16,
+    // Display-only slices of rdram.production.controls_extension, in builder emission order.
+    // Shared helpers and alignment remain owned by the single canonical parent record.
+    "controlsSlices": [
+      { "id": "attack", "title": "ATTACK", "start": 1768496, "end": 1769104, "description": "Event, attack, combo and block helpers", "notes": "Includes the shared event helper; this is an emitter-order slice, not exclusive ATTACK ownership." },
+      { "id": "specials", "title": "SPECIALS", "start": 1769104, "end": 1770256, "description": "Specials helper and alignment", "notes": "Contains the Specials helper and alignment to the following Jump helper." },
+      { "id": "jump", "title": "JUMP", "start": 1770256, "end": 1771152, "description": "Standing, moving, block-start and ledge helpers", "notes": "The block-start helper is also used by ATTACK; this is an emitter-order slice, not exclusive JUMP ownership." },
+      { "id": "run", "title": "RUN", "start": 1771152, "end": 1771648, "description": "Run helpers, state and shared event dispatch", "notes": "Includes shared capture/event dispatch after the RUN helpers; this is an emitter-order slice, not exclusive RUN ownership." }
+    ],
     "records": [
       {
         "id": "rdram.production.inventory_action_cave",
