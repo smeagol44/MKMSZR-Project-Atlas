@@ -327,6 +327,14 @@ function renderCapacityFocus(key,space){
     const turn=space.records.find(r=>r.id==="rdram.production.turn_module");
     const controls=space.records.find(r=>r.id==="rdram.production.controls_extension");
     const module=space.records.find(r=>r.id==="rdram.production.toasty_module");
+    const controlParts=controls?space.controlsSlices.map(slice=>{
+      const range="["+memFmt(slice.start)+", "+memFmt(slice.end)+")";
+      const record={...controls,id:"rdram.view.controls_"+slice.id,start:slice.start,end:slice.end,range,
+        aliases:"KSEG0 ["+memFmt(slice.start+0x80000000)+","+memFmt(slice.end+0x80000000)+"); KSEG1 ["+memFmt(slice.start+0xA0000000)+","+memFmt(slice.end+0xA0000000)+")",
+        class:"alias/view",scope:"Display slice of "+controls.id,evidence:"Builder placement confirmed; parent runtime-confirmed",
+        production_safe:"Inherited from parent allocation",notes:slice.notes+" Canonical owner: "+controls.id+"; alignment bytes remain reserved."};
+      return {record,title:slice.title+" controls",tone:"mandatory",description:slice.description};
+    }):[];
     const reserved=(id,a,b,owner)=>({id,start:a,end:b,range:"["+memFmt(a)+", "+memFmt(b)+")",class:"production",owner,scope:"MKMSZR expansion pool",lifecycle:"build-time reservation",evidence:"production reservation",production_safe:"conditional",reference:"Memory-and-Allocation-Map.md",notes:"Reserved for MKMSZR, not generic confirmed-free memory."});
     const turnGap=turn&&controls&&reserved("capacity-turn-gap",turn.end,controls.start,"Reserved TURN-to-controls alignment");
     const donorGap=controls&&module&&reserved("capacity-donor-gap",controls.end,module.start,"Reserved controls-to-Toasty alignment");
@@ -335,7 +343,7 @@ function renderCapacityFocus(key,space){
       {record:fixed,title:"Runtime V2 fixed area",tone:"fixed",description:"Always allocated code and state"},
       turn&&{record:turn,title:"TURN control module",tone:"mandatory",description:"Always present in the current build"},
       turnGap&&{record:turnGap,title:"TURN alignment",tone:"reserved",description:"Reserved between TURN and modern controls"},
-      controls&&{record:controls,title:"Modern controls",tone:"mandatory",description:"Always present: ATTACK, SPECIALS, JUMP, RUN"},
+      ...controlParts,
       donorGap&&{record:donorGap,title:"Toasty alignment",tone:"reserved",description:"Reserved between controls and optional Toasty"},
       module&&{record:module,title:"Toasty CI4 module",tone:"optional",description:"16-color slices; allocated with the MKT donor"},
       tail&&{record:tail,title:"Reserved pool tail",tone:"reserved",description:"Held for MKMSZR; no current payload"}

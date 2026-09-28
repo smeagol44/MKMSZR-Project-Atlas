@@ -77,6 +77,7 @@ A physical-memory ownership/capacity view for the 4 MiB N64 target:
 - confirmed reusable free bytes;
 - physical aliases counted once even when KSEG0/KSEG1 views exist;
 - a focused breakdown of the exact 16 KiB MKMSZR reservation;
+- separate ATTACK, SPECIALS, JUMP, and RUN display slices within the single modern-controls allocation, alongside the existing separate TURN module;
 - separate colors for always allocated code, conditional donor content, and striped reserved gaps, with exact byte counts below the proportional bar;
 - current Runtime V2 fixed use, 15 KiB expansion-pool capacity, conditional donor-backed allocation, and reserved remainder shown separately;
 - exact physical interval and patch-site browser.

@@ -90,6 +90,23 @@ if (focusEdges[1] !== focusEdges[2] || controls.start !== 0x1AFC30 || controls.e
     focusEdges.at(-1) - focusEdges[0] !== 0x4000) {
   throw new Error("RDRAM focus no longer partitions the 16 KiB reservation");
 }
+const controlsSlices = memory.rdram.controlsSlices;
+const expectedControlsSlices = [
+  ["attack", 0x1AFC30, 0x1AFE90],
+  ["specials", 0x1AFE90, 0x1B0310],
+  ["jump", 0x1B0310, 0x1B0690],
+  ["run", 0x1B0690, 0x1B0880],
+];
+if (!Array.isArray(controlsSlices) || controlsSlices.length !== expectedControlsSlices.length ||
+    controlsSlices.some((slice, index) => {
+      const [id, start, end] = expectedControlsSlices[index];
+      return slice.id !== id || slice.start !== start || slice.end !== end ||
+        !slice.title || !slice.description || !slice.notes ||
+        (index && slice.start !== controlsSlices[index - 1].end);
+    }) || controlsSlices[0].start !== controls.start || controlsSlices.at(-1).end !== controls.end ||
+    controlsSlices.reduce((sum, slice) => sum + slice.end - slice.start, 0) !== controls.end - controls.start) {
+  throw new Error("controls display slices must partition the canonical RDRAM owner exactly");
+}
 const romRecord = id => memory.rom.records.find(record => record.id === id);
 if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
     romRecord("rom.production.controls_extension").end !== 0xF69060 ||
