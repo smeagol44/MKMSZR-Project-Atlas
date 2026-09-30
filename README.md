@@ -99,8 +99,12 @@ Primary inputs include:
 - `MKT-Adapter-Primitives.md`
 - `MKT-Fighter-Asset-Translation.md`
 - `Sub-Zero-to-Sektor-Animation-Mapping.md`
+- `Global-Item-Materialization-and-Solvability.md`
+- `XP-and-Progression.md`
+- `Sounds-and-Music.md`
+- `Presentation-and-Branding.md`
 
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `2543ebb02607c053f558b855a79279178a93ef7d`, including the 16 KiB production reservation, integrated TURN / ATTACK / SPECIALS / JUMP / RUN GAME SETTINGS suite, default-off **Shuffle Power Progression** web/CLI option, shared TURN / modern-controls / optional-CI4-Toasty file-0x1A composition, optional MKT donor web flow, production donor-backed presentation/audio, the runtime-confirmed bounded Sektor v89 first-frame fix, and the Runtime-confirmed compact Rainbow storage architecture. Rainbow now leaves stock file `0x87` in place, stores only the `0x2000` palette bank in high ROM, and uses an 88-byte wrapper in the controls→Toasty gap. The generalized nine-gate power-order mechanism is runtime-confirmed on its bounded v04 route; final full nine-tier production-composition validation remains pending.
+The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `d953e7638eea3435065bd0112083803e3c79fa83` (2026-09-30). It includes the Runtime-confirmed seeded Temple-intro audio feature, build-time **Powers as pickups** and **Vanilla / Custom / Seed Required Power Upgrades** modes, the accepted typeset/title-color linkage, the current compact Rainbow and CI4 Toasty layouts, the expanded cross-stage enemy proof matrix, and the newer cross-stage-item ownership results. In particular, Fire → Wind foreign-key masking is bounded Runtime-confirmed through acquisition/reveal/use/re-masking, while Wind v01 rejects naive selector suppression and v04/v05 support destination-owned, predecessor-guarded checkpoint behavior. The Earth Stage Atlas also uses the corrected file-`0x30` ordinary-pickup catalog; file `0x88` is MONK1 fighter data. The former high-ROM title relocation is retired: the current title package is an in-place file-`0x5E` owner.
 
 Important rules:
 
