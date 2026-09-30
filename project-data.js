@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-09-27",
-  "sourceCommit": "2543ebb02607c053f558b855a79279178a93ef7d",
+  "snapshot": "2026-09-30",
+  "sourceCommit": "d953e7638eea3435065bd0112083803e3c79fa83",
   "featureBoard": [
     {
       "group": "Core",
@@ -53,11 +53,19 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "group": "Progression",
-      "name": "Pickup-driven XP progression",
+      "name": "POWERS AS PICKUPS: ON / OFF",
       "state": "beta",
       "kind": "have",
-      "detail": "Native progression is integrated; early tiers and lifecycle routes are runtime-confirmed, full nine-tier coverage is still pending.",
-      "source": "Project-Status.md"
+      "detail": "Build-time setting, default ON. ON keeps the established nine generated progression rewards and pickup-driven XP path; OFF leaves generated Herbs ordinary, retains stock combat XP, combo EXPERIENCE display, stage caps, and normal four-box resume behavior. The pickup mode is Runtime-confirmed on bounded early-tier/lifecycle routes; the new OFF composition is Implementation/static-confirmed and runtime Pending.",
+      "source": "XP-and-Progression.md"
+    },
+    {
+      "group": "Progression",
+      "name": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Build-time Fortress-gate setting. VANILLA preserves the exact stock 5100-XP requirement; CUSTOM accepts 0..9 native thresholds; SEED deterministically selects 0..9 from its own RNG namespace. The guarded patch is implemented/static-confirmed; final-fight runtime coverage and whole-run solver/HUD integration remain pending.",
+      "source": "XP-and-Progression.md"
     },
     {
       "group": "Progression",
@@ -104,8 +112,8 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Randomizer title branding",
       "state": "beta",
       "kind": "have",
-      "detail": "Candidate-B title art and configurable <NAME> EDITION are runtime-confirmed in production composition.",
-      "source": "Project-Status.md"
+      "detail": "The accepted vector/typeset title and configurable <NAME> EDITION were visually confirmed through the production webapp. The native CI8 package uses a 16-color visual palette; every non-vanilla outfit option now also tints the title palette, while rainbow uses a fixed five-hue title treatment. Exact in-game acceptance of the color-linked variants remains Pending.",
+      "source": "Presentation-and-Branding.md"
     },
     {
       "group": "Presentation",
@@ -120,8 +128,8 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Browser / CLI shared patch core",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. Every generated ROM includes the five-setting GAME SETTINGS control suite; the web also exposes the default-off Shuffle Power Progression build option. MKMSZ N64 remains the explicit patch target, MKT Rev. 2 is an optional donor, and PlayStation remains a future ISO target.",
-      "source": "Project-Status.md"
+      "detail": "Browser and CLI share one guarded patch core. Build options now include Powers as pickups, Shuffle Power Progression, and Vanilla / Custom / Seed Required Power Upgrades. Every generated ROM includes the five-setting GAME SETTINGS control suite. MKMSZ N64 remains the patch target; MKT Rev. 2 remains optional and, when supplied, enables supported donor-backed Toasty and seeded Temple-intro audio.",
+      "source": "Web-Patcher-and-Product.md"
     },
     {
       "group": "1.0",
@@ -157,10 +165,10 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "group": "1.0",
-      "name": "Seed-specific required Power Upgrades",
+      "name": "Mode-aware required-power solver / HUD integration",
       "state": "needed",
       "kind": "need",
-      "detail": "Required count must be deterministic, retry-independent, solver-enforced, and HUD-visible.",
+      "detail": "Vanilla / Custom / Seed gate modes are implemented, but the chosen requirement still must be retry-independent, modeled against pickup or earned-XP progression as appropriate, solver-enforced, and HUD-visible in the final global run.",
       "source": "1.0-Requirements-and-Roadmap.md"
     },
     {
@@ -221,10 +229,10 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "group": "Research",
-      "name": "Cross-stage item import proofs",
+      "name": "Cross-stage item materialization / masking",
       "state": "proof",
       "kind": "want",
-      "detail": "Prison has runtime-confirmed simultaneous imported visuals; external-to-embedded conversion is also proven. Fortress stress validation remains pending.",
+      "detail": "Bounded proofs now cover external-to-embedded conversion, Prison multi-import visuals, Earth key donor closure, checkpoint-free Prison L1 and native Fire key behavior, and the Fire -> Wind foreign-key masking lifecycle through immediate acquisition, stage reveal/use, and re-masking. Wind v01 rejected naive selector suppression; guarded location-owned checkpoint semantics are now Runtime-confirmed on bounded Circle routes through v05. Fortress arbitrary boss-reward materialization, Water/Earth ownership closure, production allocation, and final integration remain pending.",
       "source": "Project-Status.md"
     },
     {
@@ -232,7 +240,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Ordinary enemy randomization",
       "state": "proof",
       "kind": "future",
-      "detail": "Fire substitution and Temple-monk-in-Fire import are runtime-confirmed proofs. Arbitrary roster compatibility and product integration remain future work.",
+      "detail": "Cross-stage compatibility is bounded Runtime-confirmed for Fire x MONK2, Water x PRIS GRUNT2/3/4, Water x FAST MONK, Water x HULK MONK, and one mixed Water 0x14 + 0x16 roster. Remaining distinct gaps include MONK1/MONK3/MONK4 terminal/cache closure, GRUNT1/GRUNT2 resources, broader mixed-family planning, bosses/scripted encounters, and production integration.",
       "source": "Project-Status.md"
     },
     {
@@ -256,8 +264,16 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Donor-backed Toasty visual",
       "state": "production",
       "kind": "have",
-      "detail": "The 78x85 lower-right presentation now uses nine CI4 (16-color) slices and a 16-entry palette. The successful-reaction trigger and donor extraction remain integrated; accepted full-product v02 was runtime-confirmed on the tested route at 8% probability.",
+      "detail": "The 78x85 lower-right presentation uses nine CI4 (16-color) slices and a 16-entry palette. The successful-reaction trigger, dedicated donor voice, and donor extraction remain integrated; accepted full-product v02 was runtime-confirmed on the tested route at 8% probability.",
       "source": "Project-Status.md"
+    },
+    {
+      "group": "Presentation",
+      "name": "Seeded Temple intro audio",
+      "state": "production",
+      "kind": "have",
+      "detail": "With a valid MKT Rev. 2 donor, a dedicated deterministic seed domain replaces exactly one Temple intro audio position with one approved donor clip while leaving the other position stock. Audio 1 has six approved clips; Audio 2 has five. No MKT donor means no Temple-audio patch. The production 0x20A carrier and bounded sample allocation were Runtime-confirmed by v06.",
+      "source": "Sounds-and-Music.md"
     },
     {
       "group": "Research",
