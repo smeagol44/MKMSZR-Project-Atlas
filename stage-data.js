@@ -209,7 +209,7 @@ window.MKMSZ_STAGE_DATA = {
       ],
       "notes": [
         "Earth ordinary-pickup resources are sourced from global file 0x30, published through 0x802F82B8; file 0x88 is protected as separate MONK1 fighter data.",
-        "All 20 standard 0x30-byte pickup records are contiguous and mapped; file 0x30 provides the 21-entry ordinary-pickup visual selector table used by those records."
+        "All 20 standard 0x30-byte pickup records are contiguous and mapped; file 0x30 provides the 21-entry ordinary-pickup visual selector table used by those records.",
         "The supplied Lua comments identify the two slot-15 pickups as mana and substitute Herbs in the virtual item pool; the native callback 0x80038A58 and presentation pointer 0x800B1C14 remain distinct from Herbs.",
         "Earth progression metadata remains stage-local: Earth Four Square requires earth-square; Earth Triangle requires earth-four-square; later location requirements are preserved row-by-row in the ordinary-pickup table."
       ],
