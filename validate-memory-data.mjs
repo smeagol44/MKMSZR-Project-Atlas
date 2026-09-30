@@ -69,6 +69,8 @@ const requiredCurrentRecords = [
   ["rom", "rom.production.controls_extension"],
   ["rom", "rom.production.toasty_module"],
   ["rom", "rom.production.toasty_audio_sample"],
+  ["rom", "rom.production.temple_intro_audio_sample"],
+  ["rom", "rom.production.file_5e_title"],
   ["rdram", "rdram.production.expansion_pool"],
   ["rdram", "rdram.production.turn_module"],
   ["rdram", "rdram.production.controls_extension"],
@@ -113,8 +115,16 @@ if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
     romRecord("rom.production.toasty_module").start !== 0xF697E0 ||
     romRecord("rom.production.toasty_module").end !== 0xF6B5D0 ||
     romRecord("rom.production.toasty_audio_sample").start !== 0xF6B5D0 ||
-    romRecord("rom.production.toasty_audio_sample").end !== 0xF6BDE6) {
-  throw new Error("ROM controls / CI4 Toasty bounds diverge from the canonical map");
+    romRecord("rom.production.toasty_audio_sample").end !== 0xF6BDE6 ||
+    romRecord("rom.production.temple_intro_audio_sample").start !== 0xF6BDF0 ||
+    romRecord("rom.production.temple_intro_audio_sample").end !== 0xF6D810) {
+  throw new Error("ROM controls / donor-audio bounds diverge from the canonical map");
+}
+if (romRecord("rom.production.file_5e_title").start !== 0x4E3060 ||
+    romRecord("rom.production.file_5e_title").end !== 0x512440 ||
+    romRecord("rom.stock.title_former_high").start !== 0xF90000 ||
+    romRecord("rom.stock.title_former_high").end !== 0xFC1000) {
+  throw new Error("current in-place title ownership diverges from the canonical map");
 }
 const currentHighRom = memory.rom.records.filter(record => record.class === "production" && record.start >= 0xF00000);
 const sortedHighRom = [...currentHighRom].sort((a, b) => a.start - b.start);
@@ -122,7 +132,12 @@ if (sortedHighRom.some((record, index) => record.end > 0x1000000 ||
     (index && record.start < sortedHighRom[index - 1].end))) {
   throw new Error("current high-ROM focus allocations overlap or exceed the image");
 }
-for (const id of ["prod-turn-action", "prod-turn-decision", "prod-turn-release", "prod-turn-menu", "prod-shared-file1a", "prod-toasty-trigger", "prod-toasty-init", "prod-toasty-hud", "proof-sektor-v85"]) {
+for (const id of [
+  "prod-turn-action", "prod-turn-decision", "prod-turn-release", "prod-turn-menu",
+  "prod-shared-file1a", "prod-toasty-trigger", "prod-toasty-init", "prod-toasty-hud",
+  "prod-required-powers-gate", "prod-temple-audio1-a", "prod-temple-audio1-b",
+  "prod-temple-audio2", "prod-temple-audio-carrier-desc", "proof-sektor-v85",
+]) {
   if (!patches.patches.some(patch => patch.id === id)) {
     throw new Error("missing current patch record: " + id);
   }
