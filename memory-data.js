@@ -1,9 +1,9 @@
 // Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
 // Unknown gaps are intentionally not classified as free.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-09-27",
+  "snapshot": "2026-09-30",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "2543ebb02607c053f558b855a79279178a93ef7d",
+  "sourceCommit": "d953e7638eea3435065bd0112083803e3c79fa83",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -556,6 +556,20 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "conditional",
         "reference": "toasty.py; Toasty-Audio-Research.md",
         "notes": "Donor bytes are extracted locally from the user's supported MKT ROM and are not stored in the repository."
+      },
+      {
+        "id": "rom.production.temple_intro_audio_sample",
+        "start": 16170480,
+        "end": 16177168,
+        "range": "[0x00F6BDF0, 0x00F6D810)",
+        "class": "production",
+        "owner": "One seed-selected MKT Temple-intro encoded sample",
+        "scope": "Generated ROM output",
+        "lifecycle": "Temple intro when optional donor is supplied",
+        "evidence": "Runtime-confirmed bounded production composition in v06; static/CI guards cover reservation and file overlap",
+        "production_safe": "conditional",
+        "reference": "temple_intro_audio.py; Sounds-and-Music.md",
+        "notes": "Maximum reservation is 0x1A20 bytes. Only the selected donor sample is written; no MKT donor means this range is untouched by the feature."
       },
       {
         "id": "rom.proof.control_facing_v02_module",
