@@ -204,13 +204,12 @@ window.MKMSZ_STAGE_DATA = {
         "Static-confirmed: all 20 ordinary pickup records are decoded from the clean USA N64 ROM; ordinary pickup visuals resolve through global file 0x30 and its 21-entry selector table.",
         "Superseded correction: file 0x88 is MONK1 fighter data, not the Earth ordinary-pickup visual catalog. The old Atlas mapping to 0x88 is rejected.",
         "Runtime-confirmed v38: all three real Earth key visuals from file 0x30 rendered correctly in TEST LAB through the destination-native Fire architecture, and the tested key awarded correctly.",
-        "Runtime-confirmed: the complete 0x225B0-byte stage resource file was matched byte-for-byte at RDRAM 0x802434B8 during live Earth gameplay.",
         "Runtime-confirmed: the all-eight-stage persistence validation collected/restored a representative Earth ordinary pickup. The 20 Earth records have not been individually exhausted one by one in runtime testing.",
         "Earth's three stage key pickups use stage-qualified overlay callback VA 0x802F52B0; this address is Earth-overlay evidence, not a globally resident callback identity."
       ],
       "notes": [
-        "The complete 0x225B0-byte ROM resource file matches RDRAM at 0x802434B8 byte-for-byte in live Earth gameplay.",
-        "All 20 standard 0x30-byte pickup records are contiguous and mapped, including the three Earth icons and six ordinary item/resource slots.",
+        "Earth ordinary-pickup resources are sourced from global file 0x30, published through 0x802F82B8; file 0x88 is protected as separate MONK1 fighter data.",
+        "All 20 standard 0x30-byte pickup records are contiguous and mapped; file 0x30 provides the 21-entry ordinary-pickup visual selector table used by those records."
         "The supplied Lua comments identify the two slot-15 pickups as mana and substitute Herbs in the virtual item pool; the native callback 0x80038A58 and presentation pointer 0x800B1C14 remain distinct from Herbs.",
         "Earth progression metadata remains stage-local: Earth Four Square requires earth-square; Earth Triangle requires earth-four-square; later location requirements are preserved row-by-row in the ordinary-pickup table."
       ],
