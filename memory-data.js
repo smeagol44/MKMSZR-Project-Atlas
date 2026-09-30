@@ -1,9 +1,9 @@
 // Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
 // Unknown gaps are intentionally not classified as free.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-09-27",
+  "snapshot": "2026-09-30",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "2543ebb02607c053f558b855a79279178a93ef7d",
+  "sourceCommit": "d953e7638eea3435065bd0112083803e3c79fa83",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -306,18 +306,18 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Extension-selector proofs relocate/expand a copy; stock bytes remain protected."
       },
       {
-        "id": "rom.stock.file_5e_title",
+        "id": "rom.production.file_5e_title",
         "start": 5124192,
         "end": 5317696,
         "range": "[0x004E3060, 0x00512440)",
-        "class": "stock-known",
-        "owner": "Stock compressed title package, file 0x5E",
+        "class": "production",
+        "owner": "In-place compressed randomizer title package, file 0x5E",
         "scope": "Frontend/title resource",
         "lifecycle": "Title load",
-        "evidence": "Static-confirmed",
-        "production_safe": "no",
-        "reference": "title_branding.py; ROM/overlay/resource map",
-        "notes": "Current production retains this stock source but repoints the live file entry to high ROM. Retained bytes are not declared free."
+        "evidence": "Accepted typeset title visually confirmed through the production webapp; in-place package integration Static/implementation-confirmed",
+        "production_safe": "yes",
+        "reference": "title_branding.py; Memory-and-Allocation-Map.md; Presentation-and-Branding.md",
+        "notes": "Generated SUB-ZERO package ends at 0x0051058E; the remaining stock tail through 0x00512440 stays protected rather than becoming free. Non-vanilla outfit modes also alter the title palette."
       },
       {
         "id": "rom.stock.stage_resource.temple",
@@ -558,6 +558,20 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Donor bytes are extracted locally from the user's supported MKT ROM and are not stored in the repository."
       },
       {
+        "id": "rom.production.temple_intro_audio_sample",
+        "start": 16170480,
+        "end": 16177168,
+        "range": "[0x00F6BDF0, 0x00F6D810)",
+        "class": "production",
+        "owner": "One seed-selected MKT Temple-intro encoded sample",
+        "scope": "Generated ROM output",
+        "lifecycle": "Temple intro when optional donor is supplied",
+        "evidence": "Runtime-confirmed bounded production composition in v06; static/CI guards cover reservation and file overlap",
+        "production_safe": "conditional",
+        "reference": "temple_intro_audio.py; Sounds-and-Music.md",
+        "notes": "Maximum reservation is 0x1A20 bytes. Only the selected donor sample is written; no MKT donor means this range is untouched by the feature."
+      },
+      {
         "id": "rom.proof.control_facing_v02_module",
         "start": 16195584,
         "end": 16196200,
@@ -586,18 +600,18 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Loads into production-reserved expansion pool; artifact-specific proof, not production allocation."
       },
       {
-        "id": "rom.production.title_high",
+        "id": "rom.stock.title_former_high",
         "start": 16318464,
         "end": 16519168,
         "range": "[0x00F90000, 0x00FC1000)",
-        "class": "production",
-        "owner": "Generated compressed title file 0x5E",
-        "scope": "Generated ROM output",
-        "lifecycle": "Frontend/title",
-        "evidence": "Runtime-confirmed full production composition",
-        "production_safe": "yes",
-        "reference": "title_branding.py capacity 0x31000",
-        "notes": "Actual compressed end is build-dependent (SUB-ZERO: 0xFC017F; SEKTOR: 0xFC014F). Remaining capacity stays reserved, not free."
+        "class": "stock-unknown",
+        "owner": "Former title relocation allocation; current title no longer writes it",
+        "scope": "Global high ROM",
+        "lifecycle": "No current title lifecycle",
+        "evidence": "Earlier title composition Runtime-confirmed; current in-place title supersedes this allocation",
+        "production_safe": "no",
+        "reference": "Memory-and-Allocation-Map.md; historical rom.production.title_high",
+        "notes": "Clean FF bytes and former reservation do not by themselves certify reusable or free space."
       }
     ]
   },

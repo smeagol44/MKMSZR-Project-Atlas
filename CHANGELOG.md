@@ -1,3 +1,14 @@
+## 2026-09-30 — Temple audio and current-Wiki reconciliation
+
+- Advanced the Atlas snapshot to MKMSZR commit `d953e7638eea3435065bd0112083803e3c79fa83`.
+- Added the Runtime-confirmed seeded MKT-backed Temple intro audio feature, including its deterministic one-slot contract, conditional high-ROM sample reservation, and production carrier patch sites.
+- Added current **Powers as pickups** and **Vanilla / Custom / Seed Required Power Upgrades** product cards and the guarded Fortress XP-gate site.
+- Refreshed title presentation to the accepted vector/typeset, 16-color in-place file-`0x5E` implementation with outfit-linked title palette behavior; retired the former `0xF90000..0xFC1000` high-ROM title owner.
+- Corrected the Earth Stage Atlas from superseded file `0x88` to the canonical file-`0x30` ordinary-pickup resource catalog.
+- Refreshed cross-stage item evidence for Fire → Wind foreign-key masking and Wind's rejected naive selector suppression / guarded destination-owned checkpoint model through v05.
+- Refreshed ordinary-enemy research to the current six homogeneous cross-stage compositions plus one mixed Water roster.
+- Updated conservative Decomp Readiness wording for donor SFX translation, foreign-key ownership, and the cross-stage resource planner without inflating readiness totals.
+
 ## 2026-09-27 — Compact Rainbow storage refresh
 
 - Advanced the Atlas snapshot to MKMSZR commit `2543ebb02607c053f558b855a79279178a93ef7d`.
