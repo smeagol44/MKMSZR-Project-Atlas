@@ -306,18 +306,18 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Extension-selector proofs relocate/expand a copy; stock bytes remain protected."
       },
       {
-        "id": "rom.stock.file_5e_title",
+        "id": "rom.production.file_5e_title",
         "start": 5124192,
         "end": 5317696,
         "range": "[0x004E3060, 0x00512440)",
-        "class": "stock-known",
-        "owner": "Stock compressed title package, file 0x5E",
+        "class": "production",
+        "owner": "In-place compressed randomizer title package, file 0x5E",
         "scope": "Frontend/title resource",
         "lifecycle": "Title load",
-        "evidence": "Static-confirmed",
-        "production_safe": "no",
-        "reference": "title_branding.py; ROM/overlay/resource map",
-        "notes": "Current production retains this stock source but repoints the live file entry to high ROM. Retained bytes are not declared free."
+        "evidence": "Accepted typeset title visually confirmed through the production webapp; in-place package integration Static/implementation-confirmed",
+        "production_safe": "yes",
+        "reference": "title_branding.py; Memory-and-Allocation-Map.md; Presentation-and-Branding.md",
+        "notes": "Generated SUB-ZERO package ends at 0x0051058E; the remaining stock tail through 0x00512440 stays protected rather than becoming free. Non-vanilla outfit modes also alter the title palette."
       },
       {
         "id": "rom.stock.stage_resource.temple",
@@ -600,18 +600,18 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Loads into production-reserved expansion pool; artifact-specific proof, not production allocation."
       },
       {
-        "id": "rom.production.title_high",
+        "id": "rom.stock.title_former_high",
         "start": 16318464,
         "end": 16519168,
         "range": "[0x00F90000, 0x00FC1000)",
-        "class": "production",
-        "owner": "Generated compressed title file 0x5E",
-        "scope": "Generated ROM output",
-        "lifecycle": "Frontend/title",
-        "evidence": "Runtime-confirmed full production composition",
-        "production_safe": "yes",
-        "reference": "title_branding.py capacity 0x31000",
-        "notes": "Actual compressed end is build-dependent (SUB-ZERO: 0xFC017F; SEKTOR: 0xFC014F). Remaining capacity stays reserved, not free."
+        "class": "stock-unknown",
+        "owner": "Former title relocation allocation; current title no longer writes it",
+        "scope": "Global high ROM",
+        "lifecycle": "No current title lifecycle",
+        "evidence": "Earlier title composition Runtime-confirmed; current in-place title supersedes this allocation",
+        "production_safe": "no",
+        "reference": "Memory-and-Allocation-Map.md; historical rom.production.title_high",
+        "notes": "Clean FF bytes and former reservation do not by themselves certify reusable or free space."
       }
     ]
   },
