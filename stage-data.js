@@ -1,7 +1,7 @@
 // Snapshot of the eight canonical MKMSZR stage catalogs.
 window.MKMSZ_STAGE_DATA = {
-  "snapshot": "2026-09-27",
-  "sourceCommit": "2543ebb02607c053f558b855a79279178a93ef7d",
+  "snapshot": "2026-09-30",
+  "sourceCommit": "d953e7638eea3435065bd0112083803e3c79fa83",
   "stages": [
     {
       "name": "Temple",
@@ -31,6 +31,7 @@ window.MKMSZ_STAGE_DATA = {
         "All four ordinary pickup records are Herbs and all use stage-local resource slot 15.",
         "The Temple Map is tracked by the legacy runtime work at collected flag RDRAM 0x8026E9A4, but it is not one of the four ordinary records and is not assigned an ordinary resource slot here.",
         "The Map's Temple trigger/reward separation and possible 85th-check/global-shuffle policy are owned by Global item materialization and solvability.",
+        "Temple intro audio is now a separate optional donor-backed production feature: a seed deterministically replaces exactly one of the opening spoken position or later laugh, while the other remains stock. Production carrier v06 is Runtime-confirmed.",
         "Cross-stage Map retention/removal and run-lifecycle behavior are owned by Persistence, inventory, and lifecycle. This catalog records only the Temple-local boundary and does not make the Map policy canonical here."
       ],
       "source": "Stage-Catalog-Temple.md"
@@ -73,11 +74,15 @@ window.MKMSZ_STAGE_DATA = {
       "evidence": [
         "Static-confirmed: all six ordinary pickup records, the 12 stock outer slots, and the recognized resource records below are decoded from the clean USA N64 ROM.",
         "Runtime-confirmed: the complete 0x21A0-byte resource file was matched byte-for-byte at RDRAM 0x80264FC8 during live Wind gameplay.",
-        "Runtime-confirmed: the all-eight-stage persistence test collected/restored a representative Wind ordinary pickup. The six Wind records have not been individually exhausted one by one in runtime testing."
+        "Runtime-confirmed: the all-eight-stage persistence test collected/restored a representative Wind ordinary pickup. The six Wind records have not been individually exhausted one by one in runtime testing.",
+        "Wind checkpoint v01 is Rejected / failed: suppressing key-owned selector steps desynchronized live world state, proving 0x802C18F8 is a stage/checkpoint ladder rather than respawn-only state.",
+        "Runtime-confirmed bounded v04/v05 refinement: physical Circle/Triangle checkpoint transitions must be destination-owned and predecessor-guarded. Circle accepts 2->3 on the early route, no-ops when revisited after later state, and v05 restores normal pickup audio."
       ],
       "notes": [
         "The six ordinary records are two Herbs, one Extra-life urn, and the three Wind icons.",
         "The progression metadata remains stage-local: Wind Triangle requires wind-circle; Wind Three Bars requires wind-triangle.",
+        "Logical reward identity is now separated from physical Wind location/state ownership: the mixed key callback awards inventory through permanent helper 0x80075448 while Circle/Triangle checkpoint effects belong to their physical stage locations.",
+        "Fire -> Wind Circle masking v02 Runtime-confirms the foreign-key lifecycle on a bounded route: true key identity remains in backing storage, LIVE is inert Glass outside Wind immediately after acquisition, the real Circle is revealed/useable in Wind, and it re-masks after leaving.",
         "Occupied slot 3 has no user among the six ordinary pickup records. Its non-pickup gameplay owner remains unresolved; the slot stays protected rather than being treated as available.",
         "No outer slot is currently classified unknown/nonstandard; empty stock slots are 6, 7, 8, 9. Per the shared schema, those zeros are logical selector capacity only and do not establish free physical storage."
       ],
@@ -148,14 +153,14 @@ window.MKMSZ_STAGE_DATA = {
       "name": "Earth",
       "compact": 3,
       "native": 3,
-      "resourceFileId": "0x88",
-      "fileTableEntry": "0x000A5670",
-      "resourceRom": "0x006BAEC0..0x006DD46F",
-      "fileSize": "0x225B0 (140720 bytes)",
-      "runtimeBase": "0x802434B8",
-      "outerSlots": 65,
-      "emptySlots": "41, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64",
-      "unknownSlots": "3, 35, 38, 43",
+      "resourceFileId": "0x30",
+      "fileTableEntry": "0x000A5250",
+      "resourceRom": "0x00305A30..0x0030A9FF",
+      "fileSize": "0x4FD0 (20432 bytes)",
+      "runtimeBase": "published through 0x802F82B8",
+      "outerSlots": 21,
+      "emptySlots": "4, 5, 7, 9",
+      "unknownSlots": "none",
       "pickups": 20,
       "pickupMix": [
         {
@@ -196,7 +201,9 @@ window.MKMSZ_STAGE_DATA = {
         }
       ],
       "evidence": [
-        "Static-confirmed: all 20 ordinary pickup records, all 65 stock outer slots, and the recognized resource records below are decoded from the clean USA N64 ROM.",
+        "Static-confirmed: all 20 ordinary pickup records are decoded from the clean USA N64 ROM; ordinary pickup visuals resolve through global file 0x30 and its 21-entry selector table.",
+        "Superseded correction: file 0x88 is MONK1 fighter data, not the Earth ordinary-pickup visual catalog. The old Atlas mapping to 0x88 is rejected.",
+        "Runtime-confirmed v38: all three real Earth key visuals from file 0x30 rendered correctly in TEST LAB through the destination-native Fire architecture, and the tested key awarded correctly.",
         "Runtime-confirmed: the complete 0x225B0-byte stage resource file was matched byte-for-byte at RDRAM 0x802434B8 during live Earth gameplay.",
         "Runtime-confirmed: the all-eight-stage persistence validation collected/restored a representative Earth ordinary pickup. The 20 Earth records have not been individually exhausted one by one in runtime testing.",
         "Earth's three stage key pickups use stage-qualified overlay callback VA 0x802F52B0; this address is Earth-overlay evidence, not a globally resident callback identity."
