@@ -1,3 +1,10 @@
+## 2026-10-01 — Compact Feature Board index
+
+- Reworked the Feature tab into a dense catalog view after the first grouped-card redesign proved too text-heavy.
+- The overview now shows compact subsystem-grouped tiles with only feature name and maturity, allowing many more features to be visible per viewport.
+- Full descriptions, intent, source owner, and canonical Wiki link now live in a focused click-open detail dialog instead of every tile.
+- Removed per-card inline paragraphs and the global expand/collapse control while preserving state/intent/search filtering and summary counts.
+
 ## 2026-10-01 — Feature Board truth + readability refresh
 
 - Re-audited the Feature Board against current Project Status, 1.0 Roadmap, Runtime Validation, lifecycle, and progression owners.
