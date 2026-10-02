@@ -1,7 +1,8 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
   "snapshot": "2026-10-02",
-  "sourceCommit": "b19837ee97e5d615f8d16048abb8a98da4909702",
+  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
+  "auditedThrough": "b19837ee97e5d615f8d16048abb8a98da4909702",
   "featureBoard": [
     {
       "group": "Core",
