@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-09-30",
-  "sourceCommit": "d953e7638eea3435065bd0112083803e3c79fa83",
+  "snapshot": "2026-10-01",
+  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
   "featureBoard": [
     {
       "group": "Core",
@@ -264,7 +264,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Donor-backed Toasty visual",
       "state": "production",
       "kind": "have",
-      "detail": "The 78x85 lower-right presentation uses nine CI4 (16-color) slices and a 16-entry palette. The successful-reaction trigger, dedicated donor voice, and donor extraction remain integrated; accepted full-product v02 was runtime-confirmed on the tested route at 8% probability.",
+      "detail": "The 78x85 lower-right presentation still uses nine CI4 (16-color) slices and a 16-entry palette, but production now stores the exact padded source through compact RLE plus a tiny native decoder. The Runtime-confirmed module is 0x1132 (4,402 bytes) at 0x801B1000..0x801B2131, reclaiming 3,262 bytes inside the existing 16 KiB reservation; production probability remains 8%.",
       "source": "Project-Status.md"
     },
     {
