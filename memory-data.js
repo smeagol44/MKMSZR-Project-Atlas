@@ -1,9 +1,9 @@
 // Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
 // Unknown gaps are intentionally not classified as free.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-09-30",
+  "snapshot": "2026-10-01",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "d953e7638eea3435065bd0112083803e3c79fa83",
+  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -530,18 +530,46 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Loaded at [0x801AFC24,0x801AFE20); bounded before Toasty source and runtime; not generally free."
       },
       {
+        "id": "rom.production.temple_special_check",
+        "start": 16158912,
+        "end": 16159056,
+        "range": "[0x00F690C0, 0x00F69150)",
+        "class": "production",
+        "owner": "Temple scripted-check re-entry + award helpers",
+        "scope": "Global high ROM / shared file 0x1A",
+        "lifecycle": "Temple gameplay / re-entry",
+        "evidence": "v02 Runtime-confirmed mechanism; CI guards/bounds",
+        "production_safe": "yes",
+        "reference": "temple_special_check.py; tests/test_temple_special_check.py",
+        "notes": "Runtime mirror [0x801B08E0,0x801B0970); starts after the optional Rainbow wrapper."
+      },
+      {
+        "id": "rom.production.lifecycle_v06",
+        "start": 16159296,
+        "end": 16160724,
+        "range": "[0x00F69240, 0x00F697D4)",
+        "class": "production",
+        "owner": "Lifecycle v06 helper blob",
+        "scope": "Global lifecycle code / shared file 0x1A",
+        "lifecycle": "Pause Quit / death / reconstruction / stage completion / constructor / Game Over",
+        "evidence": "Runtime-confirmed bounded v06; Implementation/CI-confirmed exact 0x594-byte blob",
+        "production_safe": "yes",
+        "reference": "run_lifecycle.py; Persistence-Inventory-and-Lifecycle.md",
+        "notes": "Runtime mirror [0x801B0A60,0x801B0FF4); ends 12 bytes before Toasty."
+      },
+      {
         "id": "rom.production.toasty_module",
         "start": 16160736,
-        "end": 16168400,
-        "range": "[0x00F697E0, 0x00F6B5D0)",
+        "end": 16165138,
+        "range": "[0x00F697E0, 0x00F6A912)",
         "class": "production",
-        "owner": "Packed Toasty code, 16-entry TLUT, tables, state, and CI4 slices",
+        "owner": "Packed Toasty code, TLUT, tables, state, native RLE decoder, and compressed CI4 source",
         "scope": "Generated ROM output",
         "lifecycle": "Stage init / gameplay when optional donor is supplied",
-        "evidence": "Runtime-confirmed in accepted controls + CI4 Toasty v02 production composition",
+        "evidence": "Compact proof v01 Runtime-confirmed; CI guards/bounds",
         "production_safe": "conditional",
-        "reference": "toasty.py; toasty_codegen.py",
-        "notes": "Optional module begins at the ROM offset corresponding to runtime 0x801B1000 inside shared file 0x1A."
+        "reference": "toasty.py; toasty_codegen.py; tests/test_toasty.py",
+        "notes": "Runtime mirror begins at 0x801B1000. The following ROM gap before fixed Toasty audio is unclassified, not confirmed-free."
       },
       {
         "id": "rom.production.toasty_audio_sample",
@@ -1065,19 +1093,49 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Uses only the start of the established controls-to-Toasty gap; Toasty remains fixed at 0x801B1000."
       },
       {
+        "id": "rdram.production.temple_special_check",
+        "start": 1771744,
+        "end": 1771888,
+        "range": "[0x1B08E0, 0x1B0970)",
+        "aliases": "KSEG0 [0x801B08E0,0x801B0970); KSEG1 [0xA01B08E0,0xA01B0970)",
+        "class": "production",
+        "owner": "Temple scripted-check check/award helpers",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Temple gameplay / title-stage re-entry",
+        "evidence": "v02 Runtime-confirmed mechanism; CI guards/bounds",
+        "production_safe": "yes",
+        "reference": "temple_special_check.py; tests/test_temple_special_check.py",
+        "notes": "0x90 bytes immediately after the optional Rainbow wrapper."
+      },
+      {
+        "id": "rdram.production.lifecycle_v06",
+        "start": 1772128,
+        "end": 1773556,
+        "range": "[0x1B0A60, 0x1B0FF4)",
+        "aliases": "KSEG0 [0x801B0A60,0x801B0FF4); KSEG1 [0xA01B0A60,0xA01B0FF4)",
+        "class": "production",
+        "owner": "Lifecycle v06 helper blob",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Pause Quit / death / reconstruction / stage completion / constructor / Game Over",
+        "evidence": "Runtime-confirmed bounded v06; Implementation/CI-confirmed exact 0x594-byte blob",
+        "production_safe": "yes",
+        "reference": "run_lifecycle.py; Persistence-Inventory-and-Lifecycle.md",
+        "notes": "Starts after the materializer-candidate gap and ends 12 bytes before Toasty."
+      },
+      {
         "id": "rdram.production.toasty_module",
         "start": 1773568,
-        "end": 1781232,
-        "range": "[0x1B1000, 0x1B2DF0)",
-        "aliases": "KSEG0 [0x801B1000,0x801B2DF0); KSEG1 [0xA01B1000,0xA01B2DF0)",
+        "end": 1777970,
+        "range": "[0x1B1000, 0x1B2132)",
+        "aliases": "KSEG0 [0x801B1000,0x801B2132); KSEG1 [0xA01B1000,0xA01B2132)",
         "class": "production",
-        "owner": "Conditional CI4 Toasty packed native module",
+        "owner": "Conditional compact CI4 Toasty packed native module",
         "scope": "MKMSZR expansion pool",
         "lifecycle": "Stage init / gameplay when optional donor is supplied",
-        "evidence": "v02 Runtime-confirmed controls / CI4 composition; builder byte parity",
+        "evidence": "Compact proof v01 Runtime-confirmed; CI guards/bounds",
         "production_safe": "conditional",
         "reference": "toasty_codegen.py; tests/test_toasty.py",
-        "notes": "Uses 0x1DF0 bytes at the 0x801B1000-aligned high slice and leaves 0x630 bytes before the reserved-pool boundary."
+        "notes": "Uses 0x1132 = 4,402 bytes and leaves 0x12EE bytes before the reserved-pool boundary; reclaimed bytes remain reserved, not confirmed-free."
       },
       {
         "id": "rdram.proof.toasty_v43_feature",
