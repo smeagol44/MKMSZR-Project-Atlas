@@ -5,315 +5,532 @@ window.MKMSZ_PROJECT_DATA = {
   "featureBoard": [
     {
       "group": "Core",
-      "name": "Guarded clean-ROM patching",
+      "name": "Safe ROM Patching",
       "state": "production",
       "kind": "have",
       "detail": "Supported-ROM validation, separate output, guarded writes, and N64 checksum update are production behavior.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Guarded clean-ROM patching",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 3,
+      "completion": 1
     },
     {
       "group": "Core",
-      "name": "Native Runtime V2",
+      "name": "Native Runtime",
       "state": "production",
       "kind": "have",
       "detail": "The production arena floor now reserves 16 KiB for MKMSZR. Runtime V2 owns the first 1 KiB and a bounded build-time expansion pool owns the remaining 15 KiB; the reservation is runtime-confirmed across all eight safe stages.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Native Runtime V2",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 6,
+      "completion": 1,
+      "introduced": "Runtime V2"
     },
     {
       "group": "Flow",
-      "name": "Safe Stage Select",
+      "name": "Stage Select",
       "state": "production",
       "kind": "have",
       "detail": "Compact eight-stage selector is Runtime-confirmed across all safe stages. Accepted v03a adds the title-blue animated cursor and exactly one title MOVE sound per valid Up/Down press without the delayed corruption seen in rejected v02. Start selects the highlighted stage; a separate confirmation chime remains deliberately deferred.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Safe Stage Select",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 3,
+      "completion": 1,
+      "introduced": "v03a"
     },
     {
       "group": "Items",
-      "name": "Ordinary pickup persistence",
+      "name": "Persistent Pickups",
       "state": "beta",
       "kind": "have",
       "detail": "Representative collect/restore coverage exists in all eight main stages; all 84 ordinary records are cataloged.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Ordinary pickup persistence",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 6,
+      "completion": 0.9
     },
     {
       "group": "Items",
-      "name": "Stage-local seeded shuffle",
+      "name": "Seeded Item Shuffle",
       "state": "beta",
       "kind": "have",
       "detail": "All 84 ordinary records participate in the current deterministic interim stage-local mode. Wind has a Static-confirmed ownership limitation: complete-tuple shuffling can move stage/checkpoint callback state with the reward, so STAGE-LOCAL:V1 is an interim product mode and must not become the 1.0 global-materializer model.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Stage-local seeded shuffle",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.75
     },
     {
       "group": "Inventory",
-      "name": "Four inventory boxes",
+      "name": "Four Inventory Boxes",
       "state": "beta",
       "kind": "have",
       "detail": "Box switching, transition preservation, and stage-local foreign-key masking are Runtime-confirmed on documented routes. Lifecycle v06 preserves inventory through death/Continue and Runtime-confirms final Game Over clearing of run-scoped inventory/progression authority while preserving GAME SETTINGS. Immediate post-pickup foreign-key re-masking is Runtime-confirmed in a bounded v02 proof and still needs normal guarded production ownership.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Four inventory boxes",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.9
     },
     {
       "group": "Progression",
-      "name": "POWERS AS PICKUPS: ON / OFF",
+      "name": "Powers as Pickups",
       "state": "beta",
       "kind": "have",
       "detail": "Build-time setting, default ON. ON keeps the established nine generated progression rewards and pickup-driven XP path; OFF leaves generated Herbs ordinary, retains stock combat XP, combo EXPERIENCE display, stage caps, and normal four-box resume behavior. The pickup mode is Runtime-confirmed on bounded early-tier/lifecycle routes; the new OFF composition is Implementation/static-confirmed and runtime Pending.",
-      "source": "XP-and-Progression.md"
+      "source": "XP-and-Progression.md",
+      "technicalName": "POWERS AS PICKUPS: ON / OFF",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.85
     },
     {
       "group": "Progression",
-      "name": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
+      "name": "Required Power Upgrades",
       "state": "beta",
       "kind": "have",
       "detail": "Build-time Fortress-gate setting. VANILLA preserves the exact stock 5100-XP requirement; CUSTOM accepts 0..9 native thresholds; SEED deterministically selects 0..9 from its own RNG namespace. The guarded patch is implemented/static-confirmed; final-fight runtime coverage and whole-run solver/HUD integration remain pending.",
-      "source": "XP-and-Progression.md"
+      "source": "XP-and-Progression.md",
+      "technicalName": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 4,
+      "completion": 0.75
     },
     {
       "group": "Progression",
-      "name": "SHUFFLE POWER PROGRESSION: OFF / ON",
+      "name": "Shuffled Power Order",
       "state": "proof",
       "kind": "want",
       "detail": "Default OFF preserves vanilla Power Up order. ON has a Runtime-confirmed bounded nine-slot mechanism that keeps gameplay gates and native Power Ups icon/help presentation synchronized, with only the Ice Shatter freezing prerequisite; Slide and Super Slide may appear in either order. Shared product implementation and web UI exist, but current Project Status still lists repository CI/merge/deployment as the remaining production gate.",
-      "source": "XP-and-Progression.md"
+      "source": "XP-and-Progression.md",
+      "technicalName": "SHUFFLE POWER PROGRESSION: OFF / ON",
+      "track": "Core",
+      "scope": "extra",
+      "effort": 3,
+      "completion": 0.65,
+      "introduced": "power-order v04 proof"
     },
     {
       "group": "UI",
-      "name": "Native GAME SETTINGS menu",
+      "name": "In-Game Settings",
       "state": "beta",
       "kind": "have",
       "detail": "The shared browser/CLI builder now includes the Runtime-confirmed v02 GAME SETTINGS composition: TURN, ATTACK, SPECIALS, JUMP, RUN, EXIT. ATTACK and SPECIALS offer CLASSIC / MODERN; JUMP offers DPAD / BUTTON when both are MODERN; RUN offers HOLD / AUTO. Gameplay claims remain bounded to the user-tested route.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Native GAME SETTINGS menu",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 0.85,
+      "introduced": "controls/CI4 v02 composition"
     },
     {
       "group": "Controls",
-      "name": "TURN: TOGGLE / LOCK",
+      "name": "Turn Lock",
       "state": "beta",
       "kind": "have",
       "detail": "Every generated ROM now includes TURN controls. TOGGLE is the vanilla default; LOCK uses the accepted v10 world-direction/facing-lock model, preserves held-Turn backpedal, and temporarily defers to stock forced-facing policy without changing the saved preference. Earth boss type 0x19 remains outside the runtime claim.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "TURN: TOGGLE / LOCK",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 0.8,
+      "introduced": "TURN v10"
     },
     {
       "group": "UI",
-      "name": "Native box indicator",
+      "name": "Inventory Box Indicator",
       "state": "production",
       "kind": "have",
       "detail": "BOX n OF 4 renders through the native text path.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Native box indicator",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 1,
+      "completion": 1
     },
     {
       "group": "Presentation",
-      "name": "Boot branding + seeded phrase",
+      "name": "Boot Branding",
       "state": "production",
       "kind": "have",
       "detail": "Custom legal-screen presentation and deterministic phrase namespace are runtime-confirmed.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Boot branding + seeded phrase",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 1,
+      "completion": 1
     },
     {
       "group": "Presentation",
-      "name": "Randomizer title branding",
+      "name": "Randomizer Title Screen",
       "state": "beta",
       "kind": "have",
       "detail": "The accepted vector/typeset title and configurable <NAME> EDITION were visually confirmed through the production webapp. The native CI8 package uses a 16-color visual palette; every non-vanilla outfit option now also tints the title palette, while rainbow uses a fixed five-hue title treatment. Exact in-game acceptance of the color-linked variants remains Pending.",
-      "source": "Presentation-and-Branding.md"
+      "source": "Presentation-and-Branding.md",
+      "technicalName": "Randomizer title branding",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 0.8,
+      "introduced": "2026-09-29 accepted design"
     },
     {
       "group": "Presentation",
-      "name": "Outfit recoloring",
+      "name": "Outfit Colors",
       "state": "production",
       "kind": "have",
       "detail": "Static modes and the 64-phase rainbow mode are normal browser/CLI options. Compact-tail v01 is runtime-confirmed across all eight safe stages: stock file 0x87 stays in place, only an 8 KiB palette bank is stored in high ROM, and the prior 0x459E0-byte duplicate fighter copy is gone.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Outfit recoloring",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 1,
+      "introduced": "compact-tail v01"
     },
     {
       "group": "Product",
-      "name": "Browser / CLI shared patch core",
+      "name": "Shared Web / CLI Builder",
       "state": "beta",
       "kind": "have",
       "detail": "Browser and CLI share one guarded patch core. Build-time Run Settings expose difficulty (default Very Hard), starting lives 1..10 (default 5), starting continues 0..5 (default 3), and Persistent HP (default ON), alongside progression choices and the Runtime-confirmed GAME SETTINGS control suite. The merged enemy-randomization switch defaults OFF. MKT Rev. 2 remains an optional donor for supported donor-backed features.",
-      "source": "Web-Patcher-and-Product.md"
+      "source": "Web-Patcher-and-Product.md",
+      "technicalName": "Browser / CLI shared patch core",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.9
     },
     {
       "group": "1.0",
-      "name": "Global cross-stage item materialization",
+      "name": "Cross-Stage Item Placement",
       "state": "needed",
       "kind": "need",
       "detail": "The shared-pipeline integration candidate is Runtime-confirmed + CI-green on the bounded v03 co-resident composition, including post-Temple relocation, immediate foreign-key masking, destination-native resource plans, and generalized Fortress boss-gate emission. PR #126 still requires explicit production promotion; normal seeded generation remains stage-local until the global generator/solver is implemented.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Global cross-stage item materialization",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 10,
+      "completion": 0.85,
+      "introduced": "materializer v03 integration proof"
     },
     {
       "group": "1.0",
-      "name": "Deterministic global shuffle",
+      "name": "Global Item Shuffle",
       "state": "needed",
       "kind": "need",
       "detail": "Replace eight independent stage-local pools with one global logical run.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Deterministic global shuffle",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 8,
+      "completion": 0.2
     },
     {
       "group": "1.0",
-      "name": "Deterministic retry attempts",
+      "name": "Deterministic Retry Logic",
       "state": "needed",
       "kind": "need",
       "detail": "Rejected layouts must advance through an explicit deterministic attempt namespace.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Deterministic retry attempts",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 4,
+      "completion": 0.2
     },
     {
       "group": "1.0",
-      "name": "Whole-run solvability solver",
+      "name": "Seed Solvability",
       "state": "needed",
       "kind": "need",
       "detail": "Every emitted 1.0 layout must reach the finalized completion predicate under current access rules.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Whole-run solvability solver",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 10,
+      "completion": 0.15
     },
     {
       "group": "1.0",
-      "name": "Mode-aware required-power solver / HUD integration",
+      "name": "Power Requirement Logic",
       "state": "needed",
       "kind": "need",
       "detail": "Vanilla / Custom / Seed gate modes are implemented, but the chosen requirement still must be retry-independent, modeled against pickup or earned-XP progression as appropriate, solver-enforced, and HUD-visible in the final global run.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Mode-aware required-power solver / HUD integration",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.5
     },
     {
       "group": "1.0",
-      "name": "Full native randomizer HUD",
+      "name": "Randomizer HUD",
       "state": "needed",
       "kind": "need",
       "detail": "Checks, progression requirement/current state, box state, key progress, and pickup feedback are required.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Full native randomizer HUD",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 8,
+      "completion": 0.25
     },
     {
       "group": "Lifecycle",
-      "name": "HP / LIVES / CONTINUES + Persistent HP",
+      "name": "Run Health & Resources",
       "state": "beta",
       "kind": "have",
       "detail": "Lifecycle v06 is the Runtime-confirmed reference baseline: Very Hard, 9 total lives, 5 continues, Persistent HP ON. Damaged HP persists only across living departure/re-entry; ordinary death/Continue construct full-health replacements and retain stock decrements. The shared product path parameterizes the same guarded lifecycle for lives 1..10, continues 0..5, and Persistent HP ON/OFF; non-reference combinations are Implementation/CI-confirmed pending representative runtime sampling.",
-      "source": "Persistence-Inventory-and-Lifecycle.md"
+      "source": "Persistence-Inventory-and-Lifecycle.md",
+      "technicalName": "HP / LIVES / CONTINUES + Persistent HP",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 7,
+      "completion": 0.95,
+      "introduced": "lifecycle v06"
     },
     {
       "group": "Lifecycle",
-      "name": "Game Over / new-run reset",
+      "name": "New Run Reset",
       "state": "beta",
       "kind": "have",
       "detail": "Runtime-confirmed in lifecycle v06 on the accepted route. True final no-continues Game Over clears MKMSZR run state, inventory/progression authority, and Temple special-check persistence while preserving all five GAME SETTINGS preferences. The next run restores configured difficulty/lives/continues, full HP, and starter inventory.",
-      "source": "Persistence-Inventory-and-Lifecycle.md"
+      "source": "Persistence-Inventory-and-Lifecycle.md",
+      "technicalName": "Game Over / new-run reset",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 4,
+      "completion": 0.95,
+      "introduced": "lifecycle v06"
     },
     {
       "group": "Lifecycle",
-      "name": "DIFFICULTY: VERY EASY → VERY HARD",
+      "name": "Difficulty Setting",
       "state": "beta",
       "kind": "have",
       "detail": "Difficulty is now a build-time run setting, defaulting to Very Hard. Lifecycle v06 Runtime-confirms the Very Hard invariant across the accepted lifecycle and final reset. Other selectable values use the same guarded path and are Implementation/CI-confirmed pending representative runtime coverage.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "DIFFICULTY: VERY EASY → VERY HARD",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 3,
+      "completion": 0.9,
+      "introduced": "lifecycle v06"
     },
     {
       "group": "Items",
-      "name": "Temple scripted special check",
+      "name": "Temple Special Check",
       "state": "beta",
       "kind": "have",
       "detail": "The 1.0 policy is resolved: logical Map item 0x0D is excluded from the randomizer pool, while the scripted Temple location remains a special check. Runtime-confirmed v02 preserves its elevator/rope progression, supports a non-Map reward/visual, persists collection through title → Temple re-entry outside the 84 ordinary bits, and is cleared by lifecycle v06 at final Game Over. Arbitrary global reward assignment belongs to the pending global materializer.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Temple scripted special check",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 4,
+      "completion": 0.9,
+      "introduced": "Temple v02"
     },
     {
       "group": "1.0",
-      "name": "Full nine-tier progression validation",
+      "name": "Full Progression Validation",
       "state": "needed",
       "kind": "need",
       "detail": "All nine reward thresholds must work in the final production composition.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Full nine-tier progression validation",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 4,
+      "completion": 0.35
     },
     {
       "group": "1.0",
-      "name": "Representative full global seed",
+      "name": "Full 1.0 Seed Validation",
       "state": "needed",
       "kind": "need",
       "detail": "Final release gate after global items, solver, HUD, lifecycle, Map policy, Very Hard, and progression are composed.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "source": "1.0-Requirements-and-Roadmap.md",
+      "technicalName": "Representative full global seed",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.05
     },
     {
       "group": "Research",
-      "name": "Cross-stage item materialization / masking",
+      "name": "Cross-Stage Item Research",
       "state": "proof",
       "kind": "want",
       "detail": "Bounded proofs cover external-to-embedded conversion, Prison multi-import visuals, Earth key donor closure, immediate Fire → Wind foreign-key masking, destination-owned checkpoint semantics, Fortress stress, and arbitrary boss-reward substitution. The shared file-0x1A integration candidate in PR #126 is Runtime-confirmed + CI-green after relocation to 0x801B0970..0x801B0A5F; explicit production promotion and the global generator/solver remain pending.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Cross-stage item materialization / masking",
+      "track": "Core",
+      "scope": "extra",
+      "effort": 4,
+      "completion": 0.75,
+      "introduced": "bounded materializer proof line"
     },
     {
       "group": "Enemies",
-      "name": "ENEMY RANDOMIZATION: OFF / ON",
+      "name": "Enemy Randomization",
       "state": "beta",
       "kind": "have",
       "detail": "The deterministic 104-record enemy planner is merged as a browser/CLI option and defaults OFF. It preserves five gated/special encounters and models Prison paging/set-piece auxiliaries; representative merged seed ENEMYPLAN05 is Runtime-confirmed. Compact Water PRIS15/16 and mixed PRIS14+16 fallback materialization is implemented on a follow-up branch with CI/product runtime promotion still pending; unresolved foreign semantics fail closed.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "ENEMY RANDOMIZATION: OFF / ON",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 5,
+      "completion": 0.55,
+      "introduced": "ENEMYPLAN05 representative proof"
     },
     {
       "group": "Research",
-      "name": "MKT / Sektor takeover",
+      "name": "Playable Sektor Research",
       "state": "proof",
       "kind": "future",
       "detail": "Proof-only line through v89: v75 is the stable missile-flight baseline, v87 confirms donor-faithful rocket assets/colors, and v89 Runtime-confirms synchronous texture-slot preparation before actor-list insertion removes the stale first frame. The six-pose Run v05 physical repack is Runtime-confirmed; the P28/P29 v06 rope-owner probe is bounded Runtime-confirmed. Storage/lifecycle/cleanup and general integration remain pending.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "MKT / Sektor takeover",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 6,
+      "completion": 0.55,
+      "introduced": "Sektor v89"
     },
     {
       "group": "Presentation",
-      "name": "Donor-backed Toasty audio",
+      "name": "Toasty Voice",
       "state": "production",
       "kind": "have",
       "detail": "The genuine donor voice uses a dedicated MKMSZ audio route while stock pickup audio remains unchanged. The accepted v02 controls/CI4 Toasty composition is runtime-confirmed on the tested route.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Donor-backed Toasty audio",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 1,
+      "completion": 1,
+      "introduced": "v46 / v47 composition"
     },
     {
       "group": "Presentation",
-      "name": "Donor-backed Toasty visual",
+      "name": "Toasty Pop-In",
       "state": "production",
       "kind": "have",
       "detail": "The 78x85 lower-right presentation still uses nine CI4 (16-color) slices and a 16-entry palette, but production now stores the exact padded source through compact RLE plus a tiny native decoder. The Runtime-confirmed module is 0x1132 (4,402 bytes) at 0x801B1000..0x801B2131, reclaiming 3,262 bytes inside the existing 16 KiB reservation; production probability remains 8%.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Donor-backed Toasty visual",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 1,
+      "introduced": "v47 + compact-source v01"
     },
     {
       "group": "Presentation",
-      "name": "Seeded Temple intro audio",
+      "name": "Seeded Scorpion Intro Clips",
       "state": "proof",
       "kind": "want",
       "detail": "Runtime-confirmed production candidate in PR #120. With valid MKT Rev. 2 donor, a dedicated deterministic seed domain replaces exactly one Temple intro position with one approved donor clip while leaving the other stock; no donor means no patch. The v06 production carrier/sample reservation is Runtime-confirmed, but the candidate still requires normal production promotion and the 11-clip pool is not runtime-exhausted.",
-      "source": "Sounds-and-Music.md"
+      "source": "Sounds-and-Music.md",
+      "technicalName": "Seeded Temple intro audio",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 0.75,
+      "introduced": "Temple-audio v06 candidate"
     },
     {
       "group": "Research",
-      "name": "Generic donor-move adapter",
+      "name": "MKT Move Import Research",
       "state": "partial",
       "kind": "future",
       "detail": "The adapter now has concrete projectile creation/placement, cadence-resampling, animation-context and first-visibility evidence from the Sektor missile line. Generic strike/reaction, effects/audio/palette lifetime and production composition remain incomplete.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "Generic donor-move adapter",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 5,
+      "completion": 0.35
     },
     {
       "group": "Controls",
-      "name": "ATTACK: CLASSIC / MODERN",
+      "name": "Modern Attacks",
       "state": "beta",
       "kind": "have",
       "detail": "CLASSIC preserves stock attacks. MODERN translates Attack into context-appropriate stock punches, kicks, and combo events; Block + Attack cancels Block startup into the native LP path. Integrated in the shared builder and runtime-confirmed on the accepted v02 route.",
-      "source": "Player-Actions-and-Special-Moves.md"
+      "source": "Player-Actions-and-Special-Moves.md",
+      "technicalName": "ATTACK: CLASSIC / MODERN",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 0.9,
+      "introduced": "controls/CI4 v02 composition"
     },
     {
       "group": "Controls",
-      "name": "SPECIALS: CLASSIC / MODERN",
+      "name": "Modern Specials",
       "state": "beta",
       "kind": "have",
       "detail": "CLASSIC leaves vanilla special recognition intact. MODERN maps facing-relative Special-button chords to native moves while retaining their stock eligibility, costs, and progression checks; Slide and Super Slide use their native recognizers with real XP. Integrated and runtime-confirmed on the accepted v02 route without proof-only XP forcing.",
-      "source": "Player-Actions-and-Special-Moves.md"
+      "source": "Player-Actions-and-Special-Moves.md",
+      "technicalName": "SPECIALS: CLASSIC / MODERN",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 0.9,
+      "introduced": "controls/CI4 v02 composition"
     },
     {
       "group": "Controls",
-      "name": "JUMP: DPAD / BUTTON",
+      "name": "Jump Button",
       "state": "beta",
       "kind": "have",
       "detail": "DPAD keeps stock locomotion jumps. BUTTON uses either LK or HK to jump while standing, moving, running, or hanging from a ledge; it becomes editable only when both ATTACK and SPECIALS are MODERN. Integrated and runtime-confirmed on the accepted v02 route.",
-      "source": "Native-HUD-and-UI.md"
+      "source": "Native-HUD-and-UI.md",
+      "technicalName": "JUMP: DPAD / BUTTON",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 1,
+      "completion": 0.9,
+      "introduced": "controls/CI4 v02 composition"
     },
     {
       "group": "Controls",
-      "name": "RUN: HOLD / AUTO",
+      "name": "Auto Run",
       "state": "beta",
       "kind": "have",
       "detail": "RUN: HOLD retains stock behavior; AUTO handles live Run-to-Walk-to-Run transitions while preserving analog auto-run and Run-based chords. Integrated in the shared builder and runtime-confirmed on the accepted v02 route.",
-      "source": "Project-Status.md"
+      "source": "Project-Status.md",
+      "technicalName": "RUN: HOLD / AUTO",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 1,
+      "completion": 0.9,
+      "introduced": "controls/CI4 v02 composition"
     }
   ],
   "compatibility": [
@@ -569,5 +786,10 @@ window.MKMSZ_PROJECT_DATA = {
       "detail": "Not implied and explicitly not the accepted strategy.",
       "source": "MKT-to-MKMSZ-Compatibility-Layer.md"
     }
-  ]
+  ],
+  "progressModel": {
+    "note": "Atlas planning estimate only. 1.0 reaches 100% when effort-weighted release-scope work is complete; optional and experimental tracked work is shown beyond the 100% marker and does not increase 1.0 completion.",
+    "releaseLabel": "1.0",
+    "extraLabel": "Tracked extras"
+  }
 };
