@@ -1,3 +1,11 @@
+## 2026-10-01 — Compact Toasty production refresh
+
+- Advanced the affected Atlas snapshot data to MKMSZR commit `5d32e6388e8ab6891599087f9c756c20d4dace15`.
+- Updated Toasty production ownership from `0x801B1000..0x801B2DEF` (`0x1DF0` bytes) to the Runtime-confirmed compact RLE layout `0x801B1000..0x801B2131` (`0x1132` bytes).
+- RDRAM Space now shows the reclaimed `0xCBE` = 3,262 bytes as still reserved MKMSZR pool capacity, not confirmed-free memory.
+- Refreshed the affected high-pool composition to include the current Temple special-check helper and lifecycle-v06 helper immediately below Toasty.
+- Updated the Feature Board Toasty card and RDRAM capacity summary while preserving existing bar/row synchronized selection behavior.
+
 ## 2026-09-30 — Temple audio and current-Wiki reconciliation
 
 - Advanced the Atlas snapshot to MKMSZR commit `d953e7638eea3435065bd0112083803e3c79fa83`.
