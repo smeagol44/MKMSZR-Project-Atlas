@@ -3,7 +3,7 @@
 - Added **Ice Blast Pickup Cancel** to the Feature Board as a completed bounded proof.
 - Classified it explicitly as **4Fun** and **Post-1.0 / optional**, so it does not affect 1.0 completion.
 - The card points to the new canonical Wiki proof page and records the Runtime-confirmed normal-ground-Ice-Blast -> stock-Pickup transition while keeping Directional/Air Ice and generalized cancelling outside the claim.
-- Refreshed the project-data provenance to MKMSZR main commit `b19837ee...`, which contains the published proof documentation and reproducible tools.
+- Preserved the shared Atlas snapshot commit and recorded MKMSZR `b19837ee...` separately as the current audit-through commit containing the published proof documentation and reproducible tools.
 
 ## 2026-10-02 — Stage Atlas research + visual refresh
 
