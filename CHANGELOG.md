@@ -1,3 +1,12 @@
+## 2026-10-02 — Feature Board visual model + roadmap
+
+- Removed subsystem grouping from the Feature Board so all feature tiles flow in one dense grid.
+- Rewrote visible card names into consistent human-facing titles while preserving the former technical/project names inside the detail dialog.
+- Classified every tracked feature as **Core**, **QoL**, or **4Fun** and made that classification the tile color family: restrained blue, teal, and violet/plum respectively.
+- Expanded the detail dialog with technical name, maturity/intent, release-vs-extra scope, Atlas effort estimate, per-feature completion estimate, canonical source, and evidence/version milestone where the repository supports one.
+- Added an effort-weighted project roadmap bar. The 0..100 segment models 1.0 release completion only; optional/experimental tracked work is rendered beyond the 100% release marker and does not inflate the 1.0 percentage.
+- Current Atlas planning estimate is approximately 64% toward 1.0. This is explicitly a planning visualization, not an objective engineering metric.
+
 ## 2026-10-01 — Compact Feature Board index
 
 - Reworked the Feature tab into a dense catalog view after the first grouped-card redesign proved too text-heavy.
