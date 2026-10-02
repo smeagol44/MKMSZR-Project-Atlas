@@ -1,7 +1,7 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-10-01",
-  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
+  "snapshot": "2026-10-02",
+  "sourceCommit": "b19837ee97e5d615f8d16048abb8a98da4909702",
   "featureBoard": [
     {
       "group": "Core",
@@ -503,6 +503,20 @@ window.MKMSZ_PROJECT_DATA = {
       "effort": 2,
       "completion": 0.9,
       "introduced": "controls/CI4 v02 composition"
+    },
+    {
+      "group": "Controls",
+      "name": "Ice Blast Pickup Cancel",
+      "state": "proof",
+      "kind": "future",
+      "detail": "Runtime-confirmed bounded 4Fun proof: while Sub-Zero is standing on a valid ordinary pickup, Pickup can interrupt normal ground Ice Blast and immediately enter the stock pickup transition. Stock input/proximity/facing and award behavior remain authoritative; the proof only broadens pickup eligibility for normal Ice and clears the native special lock after those gates pass. Directional/Air Ice and generalized action cancelling are outside the proof.",
+      "source": "Pickup-Placement-and-Action-Cancel-Proofs.md",
+      "technicalName": "Normal ground Ice Blast -> Pickup action cancel",
+      "track": "4Fun",
+      "scope": "extra",
+      "effort": 1,
+      "completion": 1,
+      "introduced": "Ice Blast pickup-cancel v01 · 2026-10-02"
     },
     {
       "group": "Controls",
