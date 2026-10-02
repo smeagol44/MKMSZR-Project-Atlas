@@ -1,3 +1,12 @@
+## 2026-10-01 — Feature Board truth + readability refresh
+
+- Re-audited the Feature Board against current Project Status, 1.0 Roadmap, Runtime Validation, lifecycle, and progression owners.
+- Promoted lifecycle v06 cards from stale “Needed” entries to production-beta/current behavior: HP/lives/continues, Persistent HP, final Game Over/new-run reset, and build-time difficulty.
+- Replaced the stale open Temple Map-policy card with the resolved Runtime-confirmed Temple scripted special-check policy.
+- Updated Safe Stage Select, stage-local shuffle caveats, four-box lifecycle wording, browser/CLI run settings, materializer status, enemy-randomization product status, and the still-unmerged power-shuffle / Temple-audio candidates.
+- Redesigned the Feature tab for scanability: grouped subsystem sections, compact cards, muted status accents, clamped summaries, per-card More/Less controls, explicit source links, and global Expand/Collapse details.
+- Preserved the underlying Feature Board state/intent filters and canonical-source routing.
+
 ## 2026-10-01 — Compact Toasty production refresh
 
 - Advanced the affected Atlas snapshot data to MKMSZR commit `5d32e6388e8ab6891599087f9c756c20d4dace15`.

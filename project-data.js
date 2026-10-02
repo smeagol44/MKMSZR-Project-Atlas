@@ -24,7 +24,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Safe Stage Select",
       "state": "production",
       "kind": "have",
-      "detail": "Compact eight-stage selector and bounded flow bypasses are runtime-confirmed.",
+      "detail": "Compact eight-stage selector is Runtime-confirmed across all safe stages. Accepted v03a adds the title-blue animated cursor and exactly one title MOVE sound per valid Up/Down press without the delayed corruption seen in rejected v02. Start selects the highlighted stage; a separate confirmation chime remains deliberately deferred.",
       "source": "Project-Status.md"
     },
     {
@@ -40,7 +40,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Stage-local seeded shuffle",
       "state": "beta",
       "kind": "have",
-      "detail": "All 84 ordinary records participate in the current deterministic interim stage-local mode.",
+      "detail": "All 84 ordinary records participate in the current deterministic interim stage-local mode. Wind has a Static-confirmed ownership limitation: complete-tuple shuffling can move stage/checkpoint callback state with the reward, so STAGE-LOCAL:V1 is an interim product mode and must not become the 1.0 global-materializer model.",
       "source": "Project-Status.md"
     },
     {
@@ -48,7 +48,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Four inventory boxes",
       "state": "beta",
       "kind": "have",
-      "detail": "Box switching, transition preservation, and foreign-key masking are runtime-confirmed on documented routes.",
+      "detail": "Box switching, transition preservation, and stage-local foreign-key masking are Runtime-confirmed on documented routes. Lifecycle v06 preserves inventory through death/Continue and Runtime-confirms final Game Over clearing of run-scoped inventory/progression authority while preserving GAME SETTINGS. Immediate post-pickup foreign-key re-masking is Runtime-confirmed in a bounded v02 proof and still needs normal guarded production ownership.",
       "source": "Project-Status.md"
     },
     {
@@ -70,9 +70,9 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "Progression",
       "name": "SHUFFLE POWER PROGRESSION: OFF / ON",
-      "state": "beta",
-      "kind": "have",
-      "detail": "Default OFF preserves vanilla Power Up order. ON uses an isolated deterministic seed-derived nine-slot order, keeps gameplay gates and native Power Ups icon/help presentation synchronized, and enforces only one dependency: Ice Shatter must follow at least one of Ice Blast, Directional Ice, or Air Ice Blast. Slide and Super Slide may appear in either order. The generalized v04 mechanism is runtime-confirmed; final full nine-tier production-composition validation remains pending.",
+      "state": "proof",
+      "kind": "want",
+      "detail": "Default OFF preserves vanilla Power Up order. ON has a Runtime-confirmed bounded nine-slot mechanism that keeps gameplay gates and native Power Ups icon/help presentation synchronized, with only the Ice Shatter freezing prerequisite; Slide and Super Slide may appear in either order. Shared product implementation and web UI exist, but current Project Status still lists repository CI/merge/deployment as the remaining production gate.",
       "source": "XP-and-Progression.md"
     },
     {
@@ -128,7 +128,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Browser / CLI shared patch core",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. Build options now include Powers as pickups, Shuffle Power Progression, and Vanilla / Custom / Seed Required Power Upgrades. Every generated ROM includes the five-setting GAME SETTINGS control suite. MKMSZ N64 remains the patch target; MKT Rev. 2 remains optional and, when supplied, enables supported donor-backed Toasty and seeded Temple-intro audio.",
+      "detail": "Browser and CLI share one guarded patch core. Build-time Run Settings expose difficulty (default Very Hard), starting lives 1..10 (default 5), starting continues 0..5 (default 3), and Persistent HP (default ON), alongside progression choices and the Runtime-confirmed GAME SETTINGS control suite. The merged enemy-randomization switch defaults OFF. MKT Rev. 2 remains an optional donor for supported donor-backed features.",
       "source": "Web-Patcher-and-Product.md"
     },
     {
@@ -136,7 +136,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Global cross-stage item materialization",
       "state": "needed",
       "kind": "need",
-      "detail": "Cross-stage feasibility is runtime-proven, but production-safe destination resources and award semantics are still a release blocker. Fortress boss defeats are reward locations whose assigned logical rewards must be movable independently from the stock crystal identities.",
+      "detail": "The shared-pipeline integration candidate is Runtime-confirmed + CI-green on the bounded v03 co-resident composition, including post-Temple relocation, immediate foreign-key masking, destination-native resource plans, and generalized Fortress boss-gate emission. PR #126 still requires explicit production promotion; normal seeded generation remains stage-local until the global generator/solver is implemented.",
       "source": "1.0-Requirements-and-Roadmap.md"
     },
     {
@@ -180,35 +180,35 @@ window.MKMSZ_PROJECT_DATA = {
       "source": "1.0-Requirements-and-Roadmap.md"
     },
     {
-      "group": "1.0",
-      "name": "HP / lives / continues lifecycle",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Preserve/reset behavior must be defined and pass supported lifecycle boundaries.",
-      "source": "1.0-Requirements-and-Roadmap.md"
+      "group": "Lifecycle",
+      "name": "HP / LIVES / CONTINUES + Persistent HP",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Lifecycle v06 is the Runtime-confirmed reference baseline: Very Hard, 9 total lives, 5 continues, Persistent HP ON. Damaged HP persists only across living departure/re-entry; ordinary death/Continue construct full-health replacements and retain stock decrements. The shared product path parameterizes the same guarded lifecycle for lives 1..10, continues 0..5, and Persistent HP ON/OFF; non-reference combinations are Implementation/CI-confirmed pending representative runtime sampling.",
+      "source": "Persistence-Inventory-and-Lifecycle.md"
     },
     {
-      "group": "1.0",
+      "group": "Lifecycle",
       "name": "Game Over / new-run reset",
-      "state": "needed",
-      "kind": "need",
-      "detail": "All run-scoped MKMSZR state must reset cleanly without corrupting stock lifecycle.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Runtime-confirmed in lifecycle v06 on the accepted route. True final no-continues Game Over clears MKMSZR run state, inventory/progression authority, and Temple special-check persistence while preserving all five GAME SETTINGS preferences. The next run restores configured difficulty/lives/continues, full HP, and starter inventory.",
+      "source": "Persistence-Inventory-and-Lifecycle.md"
+    },
+    {
+      "group": "Lifecycle",
+      "name": "DIFFICULTY: VERY EASY → VERY HARD",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Difficulty is now a build-time run setting, defaulting to Very Hard. Lifecycle v06 Runtime-confirms the Very Hard invariant across the accepted lifecycle and final reset. Other selectable values use the same guarded path and are Implementation/CI-confirmed pending representative runtime coverage.",
       "source": "1.0-Requirements-and-Roadmap.md"
     },
     {
-      "group": "1.0",
-      "name": "Very Hard invariant",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Very Hard must remain enforced throughout the supported run lifecycle.",
-      "source": "1.0-Requirements-and-Roadmap.md"
-    },
-    {
-      "group": "1.0",
-      "name": "Temple Map policy",
-      "state": "open",
-      "kind": "unknown",
-      "detail": "The Map is outside the 84 ordinary records. Its 1.0 inclusion/exclusion policy and supporting trigger/lifecycle behavior remain open.",
+      "group": "Items",
+      "name": "Temple scripted special check",
+      "state": "beta",
+      "kind": "have",
+      "detail": "The 1.0 policy is resolved: logical Map item 0x0D is excluded from the randomizer pool, while the scripted Temple location remains a special check. Runtime-confirmed v02 preserves its elevator/rope progression, supports a non-Map reward/visual, persists collection through title → Temple re-entry outside the 84 ordinary bits, and is cleared by lifecycle v06 at final Game Over. Arbitrary global reward assignment belongs to the pending global materializer.",
       "source": "1.0-Requirements-and-Roadmap.md"
     },
     {
@@ -232,15 +232,15 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Cross-stage item materialization / masking",
       "state": "proof",
       "kind": "want",
-      "detail": "Bounded proofs now cover external-to-embedded conversion, Prison multi-import visuals, Earth key donor closure, checkpoint-free Prison L1 and native Fire key behavior, and the Fire -> Wind foreign-key masking lifecycle through immediate acquisition, stage reveal/use, and re-masking. Wind v01 rejected naive selector suppression; guarded location-owned checkpoint semantics are now Runtime-confirmed on bounded Circle routes through v05. Fortress arbitrary boss-reward materialization, Water/Earth ownership closure, production allocation, and final integration remain pending.",
+      "detail": "Bounded proofs cover external-to-embedded conversion, Prison multi-import visuals, Earth key donor closure, immediate Fire → Wind foreign-key masking, destination-owned checkpoint semantics, Fortress stress, and arbitrary boss-reward substitution. The shared file-0x1A integration candidate in PR #126 is Runtime-confirmed + CI-green after relocation to 0x801B0970..0x801B0A5F; explicit production promotion and the global generator/solver remain pending.",
       "source": "Project-Status.md"
     },
     {
-      "group": "Research",
-      "name": "Ordinary enemy randomization",
-      "state": "proof",
-      "kind": "future",
-      "detail": "Cross-stage compatibility is bounded Runtime-confirmed for Fire x MONK2, Water x PRIS GRUNT2/3/4, Water x FAST MONK, Water x HULK MONK, and one mixed Water 0x14 + 0x16 roster. Remaining distinct gaps include MONK1/MONK3/MONK4 terminal/cache closure, GRUNT1/GRUNT2 resources, broader mixed-family planning, bosses/scripted encounters, and production integration.",
+      "group": "Enemies",
+      "name": "ENEMY RANDOMIZATION: OFF / ON",
+      "state": "beta",
+      "kind": "have",
+      "detail": "The deterministic 104-record enemy planner is merged as a browser/CLI option and defaults OFF. It preserves five gated/special encounters and models Prison paging/set-piece auxiliaries; representative merged seed ENEMYPLAN05 is Runtime-confirmed. Compact Water PRIS15/16 and mixed PRIS14+16 fallback materialization is implemented on a follow-up branch with CI/product runtime promotion still pending; unresolved foreign semantics fail closed.",
       "source": "Project-Status.md"
     },
     {
@@ -270,9 +270,9 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "Presentation",
       "name": "Seeded Temple intro audio",
-      "state": "production",
-      "kind": "have",
-      "detail": "With a valid MKT Rev. 2 donor, a dedicated deterministic seed domain replaces exactly one Temple intro audio position with one approved donor clip while leaving the other position stock. Audio 1 has six approved clips; Audio 2 has five. No MKT donor means no Temple-audio patch. The production 0x20A carrier and bounded sample allocation were Runtime-confirmed by v06.",
+      "state": "proof",
+      "kind": "want",
+      "detail": "Runtime-confirmed production candidate in PR #120. With valid MKT Rev. 2 donor, a dedicated deterministic seed domain replaces exactly one Temple intro position with one approved donor clip while leaving the other stock; no donor means no patch. The v06 production carrier/sample reservation is Runtime-confirmed, but the candidate still requires normal production promotion and the 11-clip pool is not runtime-exhausted.",
       "source": "Sounds-and-Music.md"
     },
     {
