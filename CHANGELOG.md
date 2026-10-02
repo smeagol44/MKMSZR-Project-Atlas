@@ -1,3 +1,12 @@
+## 2026-10-02 — Maturity colors + interactive roadmap
+
+- Changed Feature Board tile color semantics from Core/QoL/4Fun to estimated maturity/completeness so production/near-production/pending work is readable at a glance again.
+- Kept Core / QoL / 4Fun as a secondary visual tag and added a dedicated Type filter.
+- Reworked the project progress card into two explicit sections: **1.0 release completion** and **Tracked extras / post-1.0**, each with its own percentage and effort summary.
+- Replaced decorative progress fills with effort-proportional per-feature segments. Each segment shows the completed portion of that feature and leaves unfinished work dark.
+- Roadmap segments are clickable: selecting one opens the same feature modal and highlights/scrolls to the corresponding tile, matching the interaction model used elsewhere in Atlas.
+- Tile headers now include the Atlas completion estimate alongside maturity, making the visual color scale auditable rather than implicit.
+
 ## 2026-10-02 — Feature Board visual model + roadmap
 
 - Removed subsystem grouping from the Feature Board so all feature tiles flow in one dense grid.
