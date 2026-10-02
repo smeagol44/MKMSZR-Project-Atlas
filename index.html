@@ -41,7 +41,7 @@
 @media(max-width:820px){.mem-stats,.board-stats,.compat-stats,.stage-stats{grid-template-columns:1fr 1fr}.mem-toolbar,.board-toolbar,.compat-toolbar{grid-template-columns:1fr}.mem-detail .meta,.stage-detail-grid{grid-template-columns:1fr}}
 @media(max-width:430px){.mem-stats,.board-stats,.compat-stats,.stage-stats{grid-template-columns:1fr}}
 </style></head><body><main class="wrap">
-<header class="hero"><div><p class="ey">Mortal Kombat Mythologies: Sub-Zero · N64 USA Rev. 0</p><h1>MKMSZR Project Atlas</h1><p class="lede">Interactive project status, stage, compatibility, decompilation, and memory maps for MKMSZR.</p></div><div class="snap"><span>Readiness snapshot</span><strong>2026-09-30</strong></div></header>
+<header class="hero"><div><p class="ey">Mortal Kombat Mythologies: Sub-Zero · N64 USA Rev. 0</p><h1>MKMSZR Project Atlas</h1><p class="lede">Interactive project status, stage, compatibility, decompilation, and memory maps for MKMSZR.</p></div><div class="snap"><span>Readiness snapshot</span><strong>2026-10-01</strong></div></header>
 <nav class="tabs" aria-label="Research views"><button class="tab active" data-view="features">Feature Board</button><button class="tab" data-view="stages">Stage Atlas</button><button class="tab" data-view="compat">MKT → MKMSZ</button><button class="tab" data-view="readiness">Decomp Readiness</button><button class="tab" data-view="rom">ROM Space</button><button class="tab" data-view="rdram">RDRAM Space</button></nav>
 <section id="view-readiness" class="view">
 <section class="card"><p><b>How to read this:</b> each square is one equal-sized <b>knowledge unit</b>, not one literal function or an equal number of ROM bytes. Green is stricter than “we can patch it”: it means the important data/control contract looks understood enough for a plausible C analogue.</p><div class="legend"><div class="li"><span class="sw g"></span><b>Green</b> — decomp-ready</div><div class="li"><span class="sw y"></span><b>Yellow</b> — partial</div><div class="li"><span class="sw b"></span><b>Black</b> — largely unknown</div></div></section>
@@ -96,7 +96,7 @@
 <section class="card mem-list"><div class="mem-list-head"><div><p class="ey">Exact bounded records</p><h2>RDRAM ownership & patch sites</h2></div><p class="hint">Physical records only; display aliases never add capacity.</p></div><div id="rdram-records" class="mem-records"></div></section>
 </section>
 <footer><span>MKMSZR Project Atlas · derivative visualization of the canonical MKMSZR Wiki.</span><span class="byline">By Smeag</span></footer>
-</main><script src="memory-data.js?v=c9ffabaa"></script><script src="patch-data.js?v=c9ffabaa"></script><script src="stage-data.js?v=c9ffabaa"></script><script src="project-data.js?v=c9ffabaa-power"></script><script>
+</main><script src="memory-data.js?v=toasty-compact-20261001"></script><script src="patch-data.js?v=toasty-compact-20261001"></script><script src="stage-data.js?v=toasty-compact-20261001"></script><script src="project-data.js?v=toasty-compact-20261001"></script><script>
 const D={cols:40,rows:[
 ["Frontend / boot / title",8,10,22,[["g","Debug stage selector","0x8000D0B8","Runtime-confirmed menu behavior and production routing are understood."],["g","Legal/logo/title owner","0x80079510","Owning frontend routine and narrow presentation bypasses are mapped."],["g","Frontend fade / normalization","0x800615D8","Call behavior is understood and preserved after the logo bypass."],["y","Title handoff","0x80078C40","Known handoff point, but the complete frontend state machine is not reconstructed."],["g","Title image package","global file 0x5E","Compression round-trip, relocation, palette handling and replacement are understood."],["y","Options/config frontend","frontend subsystem","The five-setting GAME SETTINGS menu is integrated and its cursor/state contract is documented; the broader OPTIONS/config frontend is not fully decompiled."]]],
 ["Stage flow / loading",6,10,24,[["g","Stage transition handler","0x80015088","Selection-to-current-stage transition behavior is established."],["g","Safe eight-stage flow","native stages 0,1,2,3,4,5,8,9","Selector routing and problematic entries are understood."],["y","Automatic stage save","0x800798A8","Identified and selectively bypassed, but save-flow internals are partial."],["y","Stage initialization order","stage lifecycle","Several critical boundaries are known through proofs; the complete state machine is not."],["y","Mission Objective transition","stage frontend","Important allocation/lifecycle behavior is known experimentally."]]],
@@ -310,7 +310,9 @@ function renderCapacityFocus(key,space){
       "rom.production.rainbow_file_87":["Rainbow outfit","outfit","Optional generated outfit bank"],
       "rom.production.turn_shared_prefix":["TURN shared prefix","mandatory","Mandatory native control code"],
       "rom.production.controls_extension":["Modern controls","mandatory","Mandatory ATTACK, SPECIALS, JUMP, and RUN helpers"],
-      "rom.production.toasty_module":["Toasty CI4 presentation","optional","Optional packed 16-color donor-backed module"],
+      "rom.production.temple_special_check":["Temple special check","mandatory","Runtime-confirmed Temple re-entry/check helper"],
+      "rom.production.lifecycle_v06":["Run lifecycle v06","mandatory","Runtime-confirmed HP/lives/continues/inventory lifecycle helper"],
+      "rom.production.toasty_module":["Toasty CI4 presentation","optional","Optional compact 16-color donor-backed module"],
       "rom.production.toasty_audio_sample":["Toasty audio","audio","Donor-backed encoded sample"],
       "rom.production.title_high":["Generated title","title","Current compressed title asset"]
     };
@@ -326,6 +328,9 @@ function renderCapacityFocus(key,space){
     const fixed={id:"capacity-fixed",start:0x1AF420,end:0x1AF820,range:"[0x1AF420, 0x1AF820)",class:"production",owner:"Runtime V2 fixed code/state (1 KiB)",scope:"MKMSZR reservation",lifecycle:"production",evidence:"Runtime-confirmed",production_safe:"yes",reference:"Memory-and-Allocation-Map.md",notes:"First 1 KiB of the 16 KiB reservation."};
     const turn=space.records.find(r=>r.id==="rdram.production.turn_module");
     const controls=space.records.find(r=>r.id==="rdram.production.controls_extension");
+    const rainbow=space.records.find(r=>r.id==="rdram.production.rainbow_loader_wrapper");
+    const temple=space.records.find(r=>r.id==="rdram.production.temple_special_check");
+    const lifecycle=space.records.find(r=>r.id==="rdram.production.lifecycle_v06");
     const module=space.records.find(r=>r.id==="rdram.production.toasty_module");
     const controlParts=controls?space.controlsSlices.map(slice=>{
       const range="["+memFmt(slice.start)+", "+memFmt(slice.end)+")";
@@ -337,23 +342,40 @@ function renderCapacityFocus(key,space){
     }):[];
     const reserved=(id,a,b,owner)=>({id,start:a,end:b,range:"["+memFmt(a)+", "+memFmt(b)+")",class:"production",owner,scope:"MKMSZR expansion pool",lifecycle:"build-time reservation",evidence:"production reservation",production_safe:"conditional",reference:"Memory-and-Allocation-Map.md",notes:"Reserved for MKMSZR, not generic confirmed-free memory."});
     const turnGap=turn&&controls&&reserved("capacity-turn-gap",turn.end,controls.start,"Reserved TURN-to-controls alignment");
-    const donorGap=controls&&module&&reserved("capacity-donor-gap",controls.end,module.start,"Reserved controls-to-Toasty alignment");
+    const rainbowGap=controls&&rainbow&&reserved("capacity-controls-rainbow-gap",controls.end,rainbow.start,"Reserved controls alignment");
+    const templeGap=rainbow&&temple&&reserved("capacity-rainbow-temple-gap",rainbow.end,temple.start,"Reserved Rainbow-to-Temple alignment");
+    const lifecycleGap=temple&&lifecycle&&reserved("capacity-temple-lifecycle-gap",temple.end,lifecycle.start,"Reserved Temple-to-lifecycle space");
+    const toastyGap=lifecycle&&module&&reserved("capacity-lifecycle-toasty-gap",lifecycle.end,module.start,"Reserved lifecycle-to-Toasty alignment");
     const tail=module&&reserved("capacity-tail",module.end,end,"Reserved pool tail");
     const focus=[
       {record:fixed,title:"Runtime V2 fixed area",tone:"fixed",description:"Always allocated code and state"},
       turn&&{record:turn,title:"TURN control module",tone:"mandatory",description:"Always present in the current build"},
       turnGap&&{record:turnGap,title:"TURN alignment",tone:"reserved",description:"Reserved between TURN and modern controls"},
       ...controlParts,
-      donorGap&&{record:donorGap,title:"Toasty alignment",tone:"reserved",description:"Reserved between controls and optional Toasty"},
-      module&&{record:module,title:"Toasty CI4 module",tone:"optional",description:"16-color slices; allocated with the MKT donor"},
+      rainbowGap&&{record:rainbowGap,title:"Controls alignment",tone:"reserved",description:"Reserved alignment after modern controls"},
+      rainbow&&{record:rainbow,title:"Rainbow loader wrapper",tone:"optional",description:"Optional compact Rainbow loader"},
+      templeGap&&{record:templeGap,title:"Rainbow alignment",tone:"reserved",description:"Reserved before Temple helper"},
+      temple&&{record:temple,title:"Temple special check",tone:"mandatory",description:"Runtime-confirmed Temple re-entry/check helper"},
+      lifecycleGap&&{record:lifecycleGap,title:"Reserved helper gap",tone:"reserved",description:"Includes currently unowned/materializer-candidate space; not confirmed-free"},
+      lifecycle&&{record:lifecycle,title:"Run lifecycle v06",tone:"mandatory",description:"HP/lives/continues/inventory lifecycle helper"},
+      toastyGap&&{record:toastyGap,title:"Lifecycle alignment",tone:"reserved",description:"12-byte alignment before Toasty"},
+      module&&{record:module,title:"Toasty CI4 module",tone:"optional",description:"Compact donor-backed CI4 module with native RLE decode"},
       tail&&{record:tail,title:"Reserved pool tail",tone:"reserved",description:"Held for MKMSZR; no current payload"}
     ].filter(Boolean);
     renderCapacityBreakdown(key,space,start,end,focus);
-    const pool=0x3C00,turnUsed=turn?turn.end-turn.start:0,controlsUsed=controls?controls.end-controls.start:0,optionalUsed=module?module.end-module.start:0,used=turnUsed+controlsUsed+optionalUsed,unused=pool-used;
+    const pool=0x3C00,
+          turnUsed=turn?turn.end-turn.start:0,
+          controlsUsed=controls?controls.end-controls.start:0,
+          rainbowUsed=rainbow?rainbow.end-rainbow.start:0,
+          templeUsed=temple?temple.end-temple.start:0,
+          lifecycleUsed=lifecycle?lifecycle.end-lifecycle.start:0,
+          optionalUsed=(module?module.end-module.start:0)+rainbowUsed,
+          mandatoryExpansion=turnUsed+controlsUsed+templeUsed+lifecycleUsed,
+          unused=pool-mandatoryExpansion-optionalUsed;
     document.querySelector("#rdram-capacity-note").innerHTML=
       '<div><b>16 KiB reserved</b><span>Full MKMSZR reservation below the stock arena floor.</span></div>'+
-      '<div><b>'+memBytes(0x400+turnUsed+controlsUsed)+' always allocated</b><span>Fixed runtime plus mandatory TURN and modern controls.</span></div>'+
-      '<div><b>'+memBytes(optionalUsed)+' optional · '+memBytes(unused)+' still reserved</b><span>Maximum donor-backed build; the striped remainder is not confirmed-free.</span></div>';
+      '<div><b>'+memBytes(0x400+mandatoryExpansion)+' always allocated</b><span>Fixed runtime plus TURN, modern controls, Temple helper, and lifecycle v06.</span></div>'+
+      '<div><b>'+memBytes(optionalUsed)+' optional · '+memBytes(unused)+' still reserved</b><span>Maximum Rainbow + donor-backed Toasty build; striped remainder is not confirmed-free.</span></div>';
   }
 }
 function memRender(key){
