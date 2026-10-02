@@ -1,3 +1,13 @@
+## 2026-10-02 — Stage Atlas research + visual refresh
+
+- Re-audited all eight Stage Atlas entries against the canonical stage catalogs and current Project Status.
+- Added stage-specific visual identities using restrained colors inspired by each stage while keeping the colors decorative rather than semantic status labels.
+- Replaced the old generic cards with richer stage summaries: stage tagline, ordinary-pickup count, resource-slot count, file size, and concise research badges.
+- Rebuilt the selected-stage detail panel with a stage-colored hero, compact file/resource facts, pickup composition, curated **What we know** research highlights, and explicit **What still matters / safety boundaries**.
+- Surfaced major stage-specific findings that the older UI hid, including Temple special-check closure, Wind checkpoint ownership, Water enemy-sizing/resource evidence, Earth file-0x30 correction and key donor closure, Prison extension-selector/import/checkpoint work, Fire TEST LAB/materialization evidence, Bridge checkpoint-free awards, and Fortress boss-trigger reward separation.
+- Corrected stale Temple and Fortress Stage Atlas wording: Temple Map policy is resolved as a special check, and Fortress five-import/Kia→Potion proofs are Runtime-confirmed.
+- Kept the shared Atlas snapshot commit at `5d32e638...` because the current MKMSZR commit after it does not modify any Stage-Catalog page; recorded the current `b1c2edd7...` audit commit separately.
+
 ## 2026-10-02 — Maturity colors + interactive roadmap
 
 - Changed Feature Board tile color semantics from Core/QoL/4Fun to estimated maturity/completeness so production/near-production/pending work is readable at a glance again.

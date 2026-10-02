@@ -2,6 +2,7 @@
 window.MKMSZ_STAGE_DATA = {
   "snapshot": "2026-10-01",
   "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
+  "auditedThrough": "b1c2edd7a3f4494145d816887c03864b27132769",
   "stages": [
     {
       "name": "Temple",
@@ -28,13 +29,33 @@ window.MKMSZ_STAGE_DATA = {
         "Temple's scripted Map is a separate special-actor path, not a fifth ordinary 0x30-byte record."
       ],
       "notes": [
-        "All four ordinary pickup records are Herbs and all use stage-local resource slot 15.",
-        "The Temple Map is tracked by the legacy runtime work at collected flag RDRAM 0x8026E9A4, but it is not one of the four ordinary records and is not assigned an ordinary resource slot here.",
-        "The Map's Temple trigger/reward separation and possible 85th-check/global-shuffle policy are owned by Global item materialization and solvability.",
-        "Temple intro audio is now a separate optional donor-backed production feature: a seed deterministically replaces exactly one of the opening spoken position or later laugh, while the other remains stock. Production carrier v06 is Runtime-confirmed.",
-        "Cross-stage Map retention/removal and run-lifecycle behavior are owned by Persistence, inventory, and lifecycle. This catalog records only the Temple-local boundary and does not make the Map policy canonical here."
+        "All four ordinary pickup records are Herbs and use stage-local resource slot 15.",
+        "The scripted Temple location is a separate special check. Runtime-confirmed v02 renders/awards Herbs while preserving elevator movement, rope/exit progression, title → Temple persistence, and Temple → Wind continuation.",
+        "1.0 policy is resolved: logical Map item 0x0D is excluded from the randomizer pool; the location remains an explicit special check with location-owned progression effects.",
+        "Temple intro audio is a separate optional donor-backed feature with Runtime-confirmed replacement seams and production-carrier proof."
       ],
-      "source": "Stage-Catalog-Temple.md"
+      "source": "Stage-Catalog-Temple.md",
+      "theme": [
+        "#40321c",
+        "#6a5227",
+        "#9b7733"
+      ],
+      "tagline": "Special check, intro audio, and the cleanest ordinary-pickup set",
+      "identity": "Four ordinary Herbs plus one separate scripted Temple special check.",
+      "highlights": [
+        "All four ordinary pickups are Herbs and the ordinary resource catalog is fully mapped.",
+        "The scripted Map location is a separate special check, not a fifth ordinary record. v02 Runtime-confirms alternate reward/visual presentation while preserving the elevator, rope/exit path, title re-entry persistence, and Temple → Wind progression.",
+        "Temple intro audio has separately Runtime-confirmed donor-backed replacement seams; production candidate behavior replaces exactly one intro position while leaving the other stock."
+      ],
+      "constraints": [
+        "Logical Map item 0x0D is excluded from the randomizer pool; the scripted location remains progression-owned by Temple.",
+        "Arbitrary special-check reward assignment still belongs to the global materializer/solver, not the ordinary 84-record pool."
+      ],
+      "badges": [
+        "Special check",
+        "Intro audio",
+        "Runtime mapped"
+      ]
     },
     {
       "name": "Wind",
@@ -86,7 +107,30 @@ window.MKMSZ_STAGE_DATA = {
         "Occupied slot 3 has no user among the six ordinary pickup records. Its non-pickup gameplay owner remains unresolved; the slot stays protected rather than being treated as available.",
         "No outer slot is currently classified unknown/nonstandard; empty stock slots are 6, 7, 8, 9. Per the shared schema, those zeros are logical selector capacity only and do not establish free physical storage."
       ],
-      "source": "Stage-Catalog-Wind.md"
+      "source": "Stage-Catalog-Wind.md",
+      "theme": [
+        "#1d3440",
+        "#31596a",
+        "#4d7e8e"
+      ],
+      "tagline": "The checkpoint-sensitive stage that forced reward/location separation",
+      "identity": "Six ordinary pickups, including a three-step Wind progression chain.",
+      "highlights": [
+        "Wind uses a nine-step live stage/checkpoint ladder; Circle and Triangle occupy physical selector steps 3 and 5 inside that ladder.",
+        "The original checkpoint-suppression design was Runtime-rejected: removing key-owned selector steps desynchronized world state and later caused live scene failure.",
+        "Current bounded evidence separates three owners: physical location/checkpoint state, logical inventory reward, and physical use-site progression.",
+        "Fire → Wind Circle v02 Runtime-confirms foreign-key masking: true identity persists in backing storage, appears inert outside Wind, becomes usable in Wind, then re-masks after leaving."
+      ],
+      "constraints": [
+        "Do not globally suppress or freeze Wind selector writes.",
+        "Current stage-local complete-tuple shuffling can move callback/state ownership with a reward; that is a Static-confirmed architectural limitation.",
+        "Occupied slot 3 has no ordinary-pickup user but remains protected until its non-pickup owner is resolved."
+      ],
+      "badges": [
+        "Checkpoint ladder",
+        "Key masking",
+        "High-risk semantics"
+      ]
     },
     {
       "name": "Water",
@@ -147,7 +191,30 @@ window.MKMSZ_STAGE_DATA = {
         "The supplied Lua comments identify slot 26 as mana and substitute Herbs in the virtual item pool; the native callback 0x80038A58 and presentation pointer 0x800B1C14 remain distinct from Herbs.",
         "Water's progression metadata remains stage-local: Water Three Bars requires water-triangle; Water Moon requires water-three-bars; the second Health urn requires water-moon."
       ],
-      "source": "Stage-Catalog-Water.md"
+      "source": "Stage-Catalog-Water.md",
+      "theme": [
+        "#173447",
+        "#24546f",
+        "#34789b"
+      ],
+      "tagline": "Dense pickup/resource stage and an important enemy-import sizing case",
+      "identity": "Nine ordinary pickups with three Water progression icons and mixed embedded/external resources.",
+      "highlights": [
+        "The complete 0x64E0 resource file is byte-matched in live Water gameplay; all nine ordinary records and 29 outer slots are cataloged.",
+        "Water progression is stage-local: Triangle → Three Bars → Moon, with the second Health urn gated behind Moon.",
+        "Health-urn payloads behind external IDs 0x28F..0x292 were located in the compressed source package and contributed to the successful external→embedded conversion work.",
+        "Water is also the main GRUNT1/GRUNT2 import-sizing case; current static work closes important reaction/root dependencies but the full pair still exceeds the observed replacement ceiling without more savings."
+      ],
+      "constraints": [
+        "Water key pickup callbacks touch live stage state; checkpoint suppression remains static-only and runtime pending.",
+        "Several occupied selectors have no ordinary-pickup users and stay protected.",
+        "GRUNT1/GRUNT2 foreign semantics are not yet production-closed."
+      ],
+      "badges": [
+        "29 resource slots",
+        "Enemy sizing",
+        "External resources"
+      ]
     },
     {
       "name": "Earth",
@@ -213,7 +280,30 @@ window.MKMSZ_STAGE_DATA = {
         "The supplied Lua comments identify the two slot-15 pickups as mana and substitute Herbs in the virtual item pool; the native callback 0x80038A58 and presentation pointer 0x800B1C14 remain distinct from Herbs.",
         "Earth progression metadata remains stage-local: Earth Four Square requires earth-square; Earth Triangle requires earth-four-square; later location requirements are preserved row-by-row in the ordinary-pickup table."
       ],
-      "source": "Stage-Catalog-Earth.md"
+      "source": "Stage-Catalog-Earth.md",
+      "theme": [
+        "#3b3020",
+        "#5c4b2a",
+        "#806838"
+      ],
+      "tagline": "Largest ordinary-pickup catalog and the corrected global resource donor",
+      "identity": "Twenty ordinary pickups—the largest stage catalog—with three Earth progression keys.",
+      "highlights": [
+        "All 20 ordinary pickup records are contiguous and mapped; Earth is the largest stage-local ordinary-pickup catalog.",
+        "The ordinary pickup visual catalog is global file 0x30. The earlier file-0x88 interpretation was rejected; 0x88 is MONK1 fighter data.",
+        "TEST LAB v38 Runtime-confirms all three real Earth key visuals through the destination-native Fire architecture, including correct animation and tested award behavior.",
+        "Earth is therefore bounded-closed as a cross-stage ordinary-item visual donor family."
+      ],
+      "constraints": [
+        "Only Earth Square creates the currently identified pickup-time checkpoint selector step; other key parameters update distinct live overlay state.",
+        "The Square-only checkpoint suppression candidate remains static-confirmed / runtime pending.",
+        "Do not reuse file 0x88 for pickup-resource reasoning."
+      ],
+      "badges": [
+        "20 pickups",
+        "Key donor closed",
+        "File 0x30"
+      ]
     },
     {
       "name": "Prison",
@@ -264,7 +354,30 @@ window.MKMSZ_STAGE_DATA = {
         "Disposable Proof F — Runtime-confirmed, proof-only: stock Prison selectors remained intact. Extension selector 0x123C pointed to an appended, file-relative-pointer-rebased copy of Water's embedded Potion bundle. One early Prison Herbs location became Potion while the remaining Herbs records stayed stock. The imported Potion and an untouched Herbs control both rendered and awarded correctly.",
         "Key-checkpoint diagnostic: v04/v05 moved the full seven-word Prison L1 identity tuple onto the first Herbs record. The visible CHECK POINT event followed the relocated reward identity, while suppressing the selector write or acquired-bit store did not remove the banner. No safe key-only banner seam is proven."
       ],
-      "source": "Stage-Catalog-Prison.md"
+      "source": "Stage-Catalog-Prison.md",
+      "theme": [
+        "#30243d",
+        "#49345c",
+        "#66487a"
+      ],
+      "tagline": "The extension-selector and cross-stage import proving ground",
+      "identity": "Ten ordinary pickups, three prison keys, and the strongest imported-item proof history.",
+      "highlights": [
+        "Prison has no empty stock outer selector, which motivated the extension-selector mechanism instead of inserting into the stock table.",
+        "Runtime-confirmed proofs cover selector extension, imported Potion, converted Health urn, and a five-import stress composition with Potion, Urn of Vitality, Formula, Eye, Shield, plus a stock Herbs control.",
+        "Accepted Prison L1 v08 proof removes the visible key checkpoint and selector-7 store while preserving the Level-1 door credential and natural stage-start respawn.",
+        "Enemy paging is also stage-specific: ordinary families can be randomized, but the scripted capture set-piece must keep fixed file 0x8F resident."
+      ],
+      "constraints": [
+        "Proof-expanded resource files are disposable proof ownership, not production allocation.",
+        "The no-checkpoint result is bounded to Prison L1; it must not be generalized mechanically to other keys.",
+        "Scripted capture auxiliaries are fixed dependencies even when ordinary Prison enemies are randomized."
+      ],
+      "badges": [
+        "Extension selectors",
+        "5-import proof",
+        "Enemy paging"
+      ]
     },
     {
       "name": "Fire",
@@ -333,7 +446,30 @@ window.MKMSZ_STAGE_DATA = {
         "Early raw Prison-to-Fire identity copy — Rejected / failed in this bounded route: copying the Prison identity without destination resource materialization produced no usable item because the source selector was not meaningful against Fire's stage resource file.",
         "Foreign Prison Level 1 key proof — Runtime-confirmed, proof-only: clean stock slot 5 was populated with the imported key bundle. The appended descriptor began at file-relative 0x2530; appended resource records occupied exact file-relative interval 0x2558..0x25F7. The proof resource file expanded from stock size 0x2530 to 0x2BE8, so the full appended proof-only file-relative region is 0x2530..0x2BE7."
       ],
-      "source": "Stage-Catalog-Fire.md"
+      "source": "Stage-Catalog-Fire.md",
+      "theme": [
+        "#4a211b",
+        "#703126",
+        "#963f30"
+      ],
+      "tagline": "The project’s main destination-materialization laboratory",
+      "identity": "Sixteen ordinary pickups, three Fire icons, and fifteen empty logical stock selectors.",
+      "highlights": [
+        "Fire has 15 empty logical outer selectors, making it the most flexible stock selector table—but those zeros prove logical capacity only, not free payload bytes.",
+        "Runtime-confirmed foreign Prison L1 key proof populated stock-empty selector 5 with a complete imported key bundle while preserving native Fire resources.",
+        "Fire key checkpoint-suppression v01 is Runtime-confirmed on the tested route: no key-created checkpoint event, natural stage-start death respawn, and normal Fire God progression.",
+        "TEST LAB reused Fire's destination architecture to validate 10-item and 15-item imported compositions and became the core cross-stage materialization harness."
+      ],
+      "constraints": [
+        "Raw foreign identity copy without destination resource materialization is rejected.",
+        "External-ID-only Potion transplant is rejected; successful imports need self-contained/destination-safe resource construction.",
+        "Empty selectors are not free ROM/RDRAM allocation."
+      ],
+      "badges": [
+        "15 empty selectors",
+        "TEST LAB",
+        "Foreign-key proof"
+      ]
     },
     {
       "name": "Bridge",
@@ -390,7 +526,30 @@ window.MKMSZ_STAGE_DATA = {
         "Matching external-family evidence — Static-confirmed: Bridge contains Health-urn payloads matching the same 0x28F..0x292 family used by Water and Fire. The preserved extracted raw payload lengths are 340, 272, 272, 272 bytes; the conversion/round-trip interpretation and runtime proof belong to Global item materialization and solvability, not this stage page.",
         "No Bridge-specific runtime cross-stage materialization proof is established by that payload match. It is static source/resource evidence only."
       ],
-      "source": "Stage-Catalog-Bridge.md"
+      "source": "Stage-Catalog-Bridge.md",
+      "theme": [
+        "#3b352b",
+        "#5a503d",
+        "#7a6b4e"
+      ],
+      "tagline": "A clean award-only key path with substantial logical selector headroom",
+      "identity": "Ten ordinary pickups with three Bridge icons and a checkpoint-free pickup award path.",
+      "highlights": [
+        "Bridge's three icon pickups are Static-confirmed award-only: they insert inventory and play pickup audio without direct checkpoint creation or live selector writes.",
+        "Use-time completion is separate and requires all three Bridge icons while the physical stage gate is active.",
+        "Stock Bridge has 17 empty logical outer selectors—the largest empty-selector count—but those are logical capacity only.",
+        "Bridge contains Health-urn payloads matching the Water/Fire 0x28F..0x292 family, strengthening the cross-stage conversion evidence."
+      ],
+      "constraints": [
+        "The callback high-bit semantics remain unresolved.",
+        "Occupied slot 3 has no ordinary-pickup user and remains protected.",
+        "Matching payload evidence is static; Bridge is not yet a runtime-validated arbitrary foreign-item destination."
+      ],
+      "badges": [
+        "Award-only keys",
+        "17 empty selectors",
+        "Checkpoint-free"
+      ]
     },
     {
       "name": "Fortress",
@@ -428,7 +587,8 @@ window.MKMSZ_STAGE_DATA = {
         "Runtime-confirmed: the complete Fortress resource file was byte-matched against captured runtime memory at 0x801F4E20.",
         "Runtime-confirmed: representative Fortress ordinary-pickup collection/persistence is established, but all 9 Fortress records have not been individually exhausted one by one in runtime testing.",
         "Runtime/user-observed: the three crystal reward records are spawned after defeating Kia, Jataaka, and Sareena. For randomizer semantics these are boss-defeat reward locations; the crystal identity is the stock reward, not a permanent boss-to-reward binding.",
-        "Implementation/static-confirmed, proof-only; runtime Pending: the composed five-import stress ROM contains the equivalent Fortress construction for Potion, Urn of Vitality, Formula, Eye, and Shield, with another Herbs record retained byte-for-byte as a control. The Fortress half has not been manually runtime-tested and must not inherit Prison's Runtime-confirmed status."
+        "Runtime-confirmed, proof-only: Fortress five-import stress rendered/awarded Potion, Urn of Vitality, Formula, Eye, and Shield correctly while a stock Herbs control remained normal.",
+        "Runtime-confirmed, proof-only: Kia's boss-defeat reward was replaced by Potion while preserving boss-owned activation; the reward appeared only after Kia and awarded Potion correctly."
       ],
       "notes": [
         "The stock resource file has exactly 7 occupied outer slots. Its outer table occupies file-relative 0x0000..0x001B; the first descriptor starts immediately at 0x1C. There is no empty stock logical selector.",
@@ -437,7 +597,30 @@ window.MKMSZ_STAGE_DATA = {
         "The crystal callback parameters are raw 0x00008000, 0x00008001, and 0x00008002; their low selectors correspond to inventory IDs 0x20, 0x21, and 0x22 through the stage-dependent callback, while the high-bit meaning remains unresolved.",
         "The first three catalog rows are stock spawned rewards for the Kia/Jataaka/Sareena boss checks. The global materializer must separate each boss-defeat trigger from reward identity so each boss location can emit its assigned logical item while the three crystal rewards can move elsewhere."
       ],
-      "source": "Stage-Catalog-Fortress.md"
+      "source": "Stage-Catalog-Fortress.md",
+      "theme": [
+        "#382027",
+        "#592d38",
+        "#7c3b49"
+      ],
+      "tagline": "Boss-triggered reward locations and late-game materialization stress",
+      "identity": "Nine ordinary records: six Herbs plus three assassin-triggered crystal reward locations.",
+      "highlights": [
+        "Kia, Jataaka, and Sareena each activate a specific reward record after defeat; the boss trigger and reward identity are separate concerns.",
+        "Fortress five-import stress is Runtime-confirmed: Potion, Urn of Vitality, Formula, Eye, and Shield all rendered/awarded correctly alongside a stock Herbs control.",
+        "Kia → Potion substitution is Runtime-confirmed: no reward before the boss, Potion appears only after Kia, awards Potion, and leaves the encounter/stage healthy.",
+        "Stock crystal award paths are Static-confirmed checkpoint-free; the remaining production problem is generalized destination-safe reward materialization while preserving boss activation."
+      ],
+      "constraints": [
+        "The seven stock outer slots are all occupied; adding an eighth stock word in-place would overwrite the first descriptor.",
+        "Unused-by-ordinary slots remain protected until non-pickup references are resolved.",
+        "Production still needs generalized handling across all three assassin reward records."
+      ],
+      "badges": [
+        "Boss rewards",
+        "5-import proof",
+        "Checkpoint-free"
+      ]
     }
   ]
 };
