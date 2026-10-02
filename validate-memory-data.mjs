@@ -67,6 +67,8 @@ const requiredCurrentRecords = [
   ["rom", "rom.production.shared_file_entry_1a"],
   ["rom", "rom.production.turn_shared_prefix"],
   ["rom", "rom.production.controls_extension"],
+  ["rom", "rom.production.temple_special_check"],
+  ["rom", "rom.production.lifecycle_v06"],
   ["rom", "rom.production.toasty_module"],
   ["rom", "rom.production.toasty_audio_sample"],
   ["rom", "rom.production.temple_intro_audio_sample"],
@@ -74,6 +76,8 @@ const requiredCurrentRecords = [
   ["rdram", "rdram.production.expansion_pool"],
   ["rdram", "rdram.production.turn_module"],
   ["rdram", "rdram.production.controls_extension"],
+  ["rdram", "rdram.production.temple_special_check"],
+  ["rdram", "rdram.production.lifecycle_v06"],
   ["rdram", "rdram.production.toasty_module"],
 ];
 for (const [spaceName, id] of requiredCurrentRecords) {
@@ -87,7 +91,7 @@ const controls = rdramRecord("rdram.production.controls_extension");
 const donor = rdramRecord("rdram.production.toasty_module");
 const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, 0x1B3420];
 if (focusEdges[1] !== focusEdges[2] || controls.start !== 0x1AFC30 || controls.end !== 0x1B0880 ||
-    donor.start !== 0x1B1000 || donor.end !== 0x1B2DF0 ||
+    donor.start !== 0x1B1000 || donor.end !== 0x1B2132 ||
     focusEdges.some((edge, index) => index && edge < focusEdges[index - 1]) ||
     focusEdges.at(-1) - focusEdges[0] !== 0x4000) {
   throw new Error("RDRAM focus no longer partitions the 16 KiB reservation");
