@@ -117,7 +117,7 @@ const romRecord = id => memory.rom.records.find(record => record.id === id);
 if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
     romRecord("rom.production.controls_extension").end !== 0xF69060 ||
     romRecord("rom.production.toasty_module").start !== 0xF697E0 ||
-    romRecord("rom.production.toasty_module").end !== 0xF6B5D0 ||
+    romRecord("rom.production.toasty_module").end !== 0xF6A912 ||
     romRecord("rom.production.toasty_audio_sample").start !== 0xF6B5D0 ||
     romRecord("rom.production.toasty_audio_sample").end !== 0xF6BDE6 ||
     romRecord("rom.production.temple_intro_audio_sample").start !== 0xF6BDF0 ||
