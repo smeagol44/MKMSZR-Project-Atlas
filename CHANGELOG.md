@@ -5,6 +5,7 @@
 - RDRAM Space now shows the reclaimed `0xCBE` = 3,262 bytes as still reserved MKMSZR pool capacity, not confirmed-free memory.
 - Refreshed the affected high-pool composition to include the current Temple special-check helper and lifecycle-v06 helper immediately below Toasty.
 - Updated the Feature Board Toasty card and RDRAM capacity summary while preserving existing bar/row synchronized selection behavior.
+- Updated Atlas validation expectations to the Runtime-confirmed compact Toasty end at `0x1B2132` and required current Temple/lifecycle owners.
 
 ## 2026-09-30 — Temple audio and current-Wiki reconciliation
 
