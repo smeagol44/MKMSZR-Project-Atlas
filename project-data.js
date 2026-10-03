@@ -1,15 +1,15 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-10-02",
-  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
-  "auditedThrough": "b19837ee97e5d615f8d16048abb8a98da4909702",
+  "snapshot": "2026-10-03",
+  "sourceCommit": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
+  "auditedThrough": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
   "featureBoard": [
     {
       "group": "Core",
       "name": "Safe ROM Patching",
       "state": "production",
       "kind": "have",
-      "detail": "Supported-ROM validation, separate output, guarded writes, and N64 checksum update are production behavior.",
+      "detail": "Supported-ROM validation, separate output, guarded writes, and N64 checksum update are production behavior. The target accepts standard .z64, .v64, and .n64 byte orders, normalizes them to canonical big-endian .z64, and still validates the exact supported USA Rev. 0 content before patching.",
       "source": "Project-Status.md",
       "technicalName": "Guarded clean-ROM patching",
       "track": "Core",
@@ -56,27 +56,27 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 6,
-      "completion": 0.9
+      "completion": 0.98
     },
     {
       "group": "Items",
       "name": "Seeded Item Shuffle",
       "state": "beta",
       "kind": "have",
-      "detail": "All 84 ordinary records participate in the current deterministic interim stage-local mode. Wind has a Static-confirmed ownership limitation: complete-tuple shuffling can move stage/checkpoint callback state with the reward, so STAGE-LOCAL:V1 is an interim product mode and must not become the 1.0 global-materializer model.",
+      "detail": "The shared browser/CLI path now builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. Full-seed runtime coverage remains bounded rather than exhaustive.",
       "source": "Project-Status.md",
-      "technicalName": "Stage-local seeded shuffle",
+      "technicalName": "85-check global seeded item shuffle",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.75
+      "completion": 0.95
     },
     {
       "group": "Inventory",
       "name": "Four Inventory Boxes",
       "state": "beta",
       "kind": "have",
-      "detail": "Box switching, transition preservation, and stage-local foreign-key masking are Runtime-confirmed on documented routes. Lifecycle v06 preserves inventory through death/Continue and Runtime-confirms final Game Over clearing of run-scoped inventory/progression authority while preserving GAME SETTINGS. Immediate post-pickup foreign-key re-masking is Runtime-confirmed in a bounded v02 proof and still needs normal guarded production ownership.",
+      "detail": "Box switching, transition preservation, and stage-local foreign-key masking are Runtime-confirmed on documented routes. Lifecycle v06 preserves inventory through death/Continue and Runtime-confirms final Game Over clearing of run-scoped inventory/progression authority while preserving GAME SETTINGS. Global materialization now uses the shared award/re-mask dispatcher, and the inert foreign-stage placeholder is displayed as SEALED while retaining stock internal item ID 0x08.",
       "source": "Project-Status.md",
       "technicalName": "Four inventory boxes",
       "track": "Core",
@@ -89,26 +89,26 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Powers as Pickups",
       "state": "beta",
       "kind": "have",
-      "detail": "Build-time setting, default ON. ON keeps the established nine generated progression rewards and pickup-driven XP path; OFF leaves generated Herbs ordinary, retains stock combat XP, combo EXPERIENCE display, stage caps, and normal four-box resume behavior. The pickup mode is Runtime-confirmed on bounded early-tier/lifecycle routes; the new OFF composition is Implementation/static-confirmed and runtime Pending.",
+      "detail": "Build-time setting, default ON. ON places nine Power Upgrade rewards into the global 85-check pool and keeps pickup-driven progression; OFF retains vanilla earned XP behavior. Power Upgrade pickups use Ice Blue Herbs presentation plus the Runtime-confirmed three short white Sub-Zero pulses, while foreign-stage masked items display as SEALED.",
       "source": "XP-and-Progression.md",
       "technicalName": "POWERS AS PICKUPS: ON / OFF",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.85
+      "completion": 0.95
     },
     {
       "group": "Progression",
       "name": "Required Power Upgrades",
       "state": "beta",
       "kind": "have",
-      "detail": "Build-time Fortress-gate setting. VANILLA preserves the exact stock 5100-XP requirement; CUSTOM accepts 0..9 native thresholds; SEED deterministically selects 0..9 from its own RNG namespace. The guarded patch is implemented/static-confirmed; final-fight runtime coverage and whole-run solver/HUD integration remain pending.",
+      "detail": "Build-time Fortress-gate setting. VANILLA preserves the exact stock 5100-XP requirement; CUSTOM accepts 0..9 native thresholds; SEED deterministically selects 0..9 from its own RNG namespace. The global solver now enforces the selected shuffled-Power-Up requirement when pickup mode is ON; HUD presentation and broader final-release runtime coverage remain pending.",
       "source": "XP-and-Progression.md",
       "technicalName": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.75
+      "completion": 0.88
     },
     {
       "group": "Progression",
@@ -211,7 +211,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Shared Web / CLI Builder",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. Build-time Run Settings expose difficulty (default Very Hard), starting lives 1..10 (default 5), starting continues 0..5 (default 3), and Persistent HP (default ON), alongside progression choices and the Runtime-confirmed GAME SETTINGS control suite. The merged enemy-randomization switch defaults OFF. MKT Rev. 2 remains an optional donor for supported donor-backed features.",
+      "detail": "Browser and CLI share one guarded patch core. Build-time Run Settings expose difficulty (default Very Hard), starting lives 1..10 (default 5), starting continues 0..5 (default 3), and Persistent HP (default ON), alongside global item generation, progression choices, and the Runtime-confirmed GAME SETTINGS control suite. Standard .z64/.v64/.n64 target byte orders are accepted and normalized. Enemy randomization defaults OFF; MKT Rev. 2 remains an optional donor for supported donor-backed features.",
       "source": "Web-Patcher-and-Product.md",
       "technicalName": "Browser / CLI shared patch core",
       "track": "Core",
@@ -222,9 +222,9 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "1.0",
       "name": "Cross-Stage Item Placement",
-      "state": "needed",
-      "kind": "need",
-      "detail": "The shared-pipeline integration candidate is Runtime-confirmed + CI-green on the bounded v03 co-resident composition, including post-Temple relocation, immediate foreign-key masking, destination-native resource plans, and generalized Fortress boss-gate emission. PR #126 still requires explicit production promotion; normal seeded generation remains stage-local until the global generator/solver is implemented.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Global materialization is integrated into the shared browser/CLI pipeline. The destination-aware dispatcher, immediate re-mask path, Temple special-check award wrapper, and Prison credential reconstruction now live at 0x801B2310..0x801B28EF / ROM 0xF6AAF0..0xF6B0CF, after progression flash and before Toasty audio. Wrapper semantics are Runtime-confirmed bounded; the final relocated composition is CI-confirmed pending representative runtime.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Global cross-stage item materialization",
       "track": "Core",
@@ -236,54 +236,54 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "1.0",
       "name": "Global Item Shuffle",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Replace eight independent stage-local pools with one global logical run.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Implemented global-v2 generator permutes all 85 checks in one deterministic logical run. Clean input remains 16 MiB; generated output expands to 32 MiB and owns eight 1 MiB destination-resource slots at 0x01000000..0x017FFFFF.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Deterministic global shuffle",
       "track": "Core",
       "scope": "1.0",
       "effort": 8,
-      "completion": 0.2
+      "completion": 0.9
     },
     {
       "group": "1.0",
       "name": "Deterministic Retry Logic",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Rejected layouts must advance through an explicit deterministic attempt namespace.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Implemented deterministic retry model advances through an explicit attempt namespace with a 10,000-attempt product ceiling. Accepted output records the successful attempt index.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Deterministic retry attempts",
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.2
+      "completion": 0.95
     },
     {
       "group": "1.0",
       "name": "Seed Solvability",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Every emitted 1.0 layout must reach the finalized completion predicate under current access rules.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Global-v2 fixed-point validation checks the selected completion policy before emission. ALL-85 requires every check reachable; GAME-BEATABLE requires all 21 credentials plus the configured shuffled Power Upgrade count when pickup mode is ON. Broader representative full-run runtime validation remains pending.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Whole-run solvability solver",
       "track": "Core",
       "scope": "1.0",
       "effort": 10,
-      "completion": 0.15
+      "completion": 0.85
     },
     {
       "group": "1.0",
       "name": "Power Requirement Logic",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Vanilla / Custom / Seed gate modes are implemented, but the chosen requirement still must be retry-independent, modeled against pickup or earned-XP progression as appropriate, solver-enforced, and HUD-visible in the final global run.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Vanilla / Custom / Seed gate modes are implemented and the global solver now enforces the selected shuffled-upgrade requirement in pickup mode. OFF mode correctly has zero shuffled Power Upgrade items while retaining the independent vanilla/custom/seed Fortress XP gate. HUD visibility remains pending.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Mode-aware required-power solver / HUD integration",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.5
+      "completion": 0.85
     },
     {
       "group": "1.0",
@@ -345,7 +345,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Temple Special Check",
       "state": "beta",
       "kind": "have",
-      "detail": "The 1.0 policy is resolved: logical Map item 0x0D is excluded from the randomizer pool, while the scripted Temple location remains a special check. Runtime-confirmed v02 preserves its elevator/rope progression, supports a non-Map reward/visual, persists collection through title → Temple re-entry outside the 84 ordinary bits, and is cleared by lifecycle v06 at final Game Over. Arbitrary global reward assignment belongs to the pending global materializer.",
+      "detail": "The 1.0 policy is resolved: logical Map item 0x0D is excluded from the reward pool, while the scripted Temple location remains the 85th global check. Runtime-confirmed v02 preserves elevator/rope progression and persistence; global-v2 now assigns arbitrary logical rewards through the established Temple award wrapper without moving the location-owned progression path.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Temple scripted special check",
       "track": "Core",
@@ -385,13 +385,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Cross-Stage Item Research",
       "state": "proof",
       "kind": "want",
-      "detail": "Bounded proofs cover external-to-embedded conversion, Prison multi-import visuals, Earth key donor closure, immediate Fire → Wind foreign-key masking, destination-owned checkpoint semantics, Fortress stress, and arbitrary boss-reward substitution. The shared file-0x1A integration candidate in PR #126 is Runtime-confirmed + CI-green after relocation to 0x801B0970..0x801B0A5F; explicit production promotion and the global generator/solver remain pending.",
+      "detail": "Bounded proofs established external-to-embedded conversion, multi-import visuals, destination-owned checkpoint/state semantics, foreign-key masking, and boss-trigger reward separation. Those mechanics now feed the merged global materializer and 85-check generator; the current helper allocation is 0x801B2310..0x801B28EF after the Toasty-collision correction.",
       "source": "Project-Status.md",
       "technicalName": "Cross-stage item materialization / masking",
       "track": "Core",
       "scope": "extra",
       "effort": 4,
-      "completion": 0.75,
+      "completion": 0.95,
       "introduced": "bounded materializer proof line"
     },
     {
@@ -399,13 +399,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Enemy Randomization",
       "state": "beta",
       "kind": "have",
-      "detail": "The deterministic 104-record enemy planner is merged as a browser/CLI option and defaults OFF. It preserves five gated/special encounters and models Prison paging/set-piece auxiliaries; representative merged seed ENEMYPLAN05 is Runtime-confirmed. Compact Water PRIS15/16 and mixed PRIS14+16 fallback materialization is implemented on a follow-up branch with CI/product runtime promotion still pending; unresolved foreign semantics fail closed.",
+      "detail": "The deterministic 104-record enemy planner/materializer is a merged browser/CLI option and defaults OFF. It preserves five gated/special encounters, models Prison paging/set-piece auxiliaries, and keeps unresolved foreign semantics fail-closed. Representative seed ENEMYPLAN05 is Runtime-confirmed, and the compact Water PRIS15/16 plus mixed PRIS14+16 profiles are promoted in the current source.",
       "source": "Project-Status.md",
       "technicalName": "ENEMY RANDOMIZATION: OFF / ON",
       "track": "4Fun",
       "scope": "extra",
       "effort": 5,
-      "completion": 0.55,
+      "completion": 0.72,
       "introduced": "ENEMYPLAN05 representative proof"
     },
     {
@@ -453,16 +453,16 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "Presentation",
       "name": "Seeded Scorpion Intro Clips",
-      "state": "proof",
-      "kind": "want",
-      "detail": "Runtime-confirmed production candidate in PR #120. With valid MKT Rev. 2 donor, a dedicated deterministic seed domain replaces exactly one Temple intro position with one approved donor clip while leaving the other stock; no donor means no patch. The v06 production carrier/sample reservation is Runtime-confirmed, but the candidate still requires normal production promotion and the 11-clip pool is not runtime-exhausted.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Merged optional MKT-backed Temple intro randomization now leaves stock descriptors 0x41/0x42/0x43 unchanged and replaces only Temple-owned SSEQ events 123/124 or 125 through isolated host 486→329→319. Audio-1/Friendship is Runtime-confirmed with Bridge/Prison robot audio remaining vanilla, and Audio-2/shao-laugh is Runtime-confirmed on the bounded TEMPLE-0003 proof. The full 11-clip pool is not individually runtime-exhausted.",
       "source": "Sounds-and-Music.md",
       "technicalName": "Seeded Temple intro audio",
       "track": "4Fun",
       "scope": "extra",
       "effort": 2,
-      "completion": 0.75,
-      "introduced": "Temple-audio v06 candidate"
+      "completion": 0.95,
+      "introduced": "isolated Temple audio PR #138"
     },
     {
       "group": "Research",
