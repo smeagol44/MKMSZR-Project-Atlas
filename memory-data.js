@@ -8,7 +8,7 @@ window.MKMSZ_MEMORY_DATA = {
   "rom": {
     "start": 0,
     "end": 33554432,
-    "bucketSize": 65536,
+    "bucketSize": 131072,
     "grid": 16,
     "records": [
       {
