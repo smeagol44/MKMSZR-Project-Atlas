@@ -14,8 +14,8 @@
 .space-card{overflow:hidden}
 .space-bar{position:relative;height:34px;border:1px solid #303944;border-radius:9px;background:#080b0e;overflow:hidden;margin-top:14px}
 .space-bar-focus{height:46px}
-.space-seg{position:absolute;top:0;bottom:0;min-width:2px;border-right:1px solid rgba(255,255,255,.14);opacity:.92}
-.space-seg:hover{opacity:1;filter:brightness(1.2)}
+.space-seg{position:absolute;top:0;bottom:0;min-width:2px;appearance:none;border:0;border-right:1px solid rgba(255,255,255,.14);padding:0;opacity:.92;cursor:pointer}
+.space-seg:hover,.space-seg:focus-visible{opacity:1;filter:brightness(1.2);outline:none}.space-bar.has-selection .space-seg:not(.selected){opacity:.42}.space-seg.selected{opacity:1;box-shadow:inset 0 0 0 2px #f3f5f7;z-index:3}
 .space-labels{display:flex;gap:12px;flex-wrap:wrap;margin-top:9px;color:#9ca8b4;font-size:11px}
 .space-labels span{display:flex;gap:6px;align-items:center}
 .space-labels i{width:10px;height:10px;border-radius:3px;display:inline-block}
@@ -32,7 +32,7 @@
 .board-stats,.compat-stats,.stage-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:9px 0}.board-stat,.compat-stat,.stage-stat{border:1px solid var(--b);background:var(--p);border-radius:10px;padding:9px 12px}.board-stat span,.compat-stat span,.stage-stat span{display:block;color:var(--m);font-size:10px}.board-stat strong,.compat-stat strong,.stage-stat strong{font-size:18px}
 .board-toolbar{display:grid;grid-template-columns:135px 135px 125px minmax(220px,1fr) auto;gap:8px;margin:10px 0}.compat-toolbar{display:grid;grid-template-columns:180px 180px minmax(230px,1fr) auto;gap:10px;margin:14px 0}.board-toolbar label,.compat-toolbar label{font-size:10px;color:var(--m);display:grid;gap:4px}.board-toolbar input,.board-toolbar select,.board-toolbar button,.compat-toolbar input,.compat-toolbar select,.compat-toolbar button{height:38px;background:#0e1216;color:var(--t);border:1px solid #343e48;border-radius:8px;padding:0 10px}.board-toolbar button,.compat-toolbar button{cursor:pointer}
 .feature-intro{padding:14px 16px}.feature-intro h2{margin:2px 0 5px}.feature-intro .desc{margin:0;max-width:none}
-.feature-progress-card{padding:14px 15px}.feature-progress-block+.feature-progress-block{margin-top:15px;padding-top:14px;border-top:1px solid #29343e}.feature-progress-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:7px}.feature-progress-heading div{display:grid;gap:2px}.feature-progress-heading span{font-size:10px;color:#8f9ba7;text-transform:uppercase;letter-spacing:.065em;font-weight:850}.feature-progress-heading strong{font-size:23px;line-height:1;letter-spacing:-.035em}.feature-progress-heading small{font-size:9px;color:#71808d;text-align:right}.feature-roadmap-segments{display:flex;height:30px;border:1px solid #33404c;border-radius:9px;overflow:hidden;background:#090e13}.roadmap-segment{--tone-a:#5a352d;--tone-b:#75483d;position:relative;appearance:none;border:0;border-right:1px solid rgba(255,255,255,.14);padding:0;background:#0a1015;min-width:5px;cursor:pointer;overflow:hidden}.roadmap-segment:last-child{border-right:0}.roadmap-segment-fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(180deg,var(--tone-b),var(--tone-a));box-shadow:inset 0 1px rgba(255,255,255,.08)}.roadmap-segment:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 5px,rgba(255,255,255,.025) 5px 7px);pointer-events:none}.roadmap-segment:hover,.roadmap-segment.selected{outline:2px solid #f1f5f9;outline-offset:-2px;z-index:2}.feature-progress-legend{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px;color:#71808d;font-size:9px}.feature-progress-legend b{color:#b8c4cf}.feature-progress-note{margin:9px 0 0;color:#7f8d9a;font-size:10px;line-height:1.45}
+.feature-progress-card{padding:14px 15px}.feature-progress-block+.feature-progress-block{margin-top:15px;padding-top:14px;border-top:1px solid #29343e}.feature-progress-heading{display:flex;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:7px}.feature-progress-heading div{display:grid;gap:2px}.feature-progress-heading span{font-size:10px;color:#8f9ba7;text-transform:uppercase;letter-spacing:.065em;font-weight:850}.feature-progress-heading strong{font-size:23px;line-height:1;letter-spacing:-.035em}.feature-progress-heading small{font-size:9px;color:#71808d;text-align:right}.feature-roadmap-segments{display:flex;height:30px;border:1px solid #33404c;border-radius:9px;overflow:hidden;background:#090e13}.roadmap-segment{--tone-a:#5a352d;--tone-b:#75483d;position:relative;appearance:none;border:0;border-right:1px solid rgba(255,255,255,.14);padding:0;background:#0a1015;min-width:5px;cursor:pointer;overflow:hidden}.roadmap-segment:last-child{border-right:0}.roadmap-segment-fill{position:absolute;inset:0 auto 0 0;background:linear-gradient(180deg,var(--tone-b),var(--tone-a));box-shadow:inset 0 1px rgba(255,255,255,.08)}.roadmap-segment:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 5px,rgba(255,255,255,.025) 5px 7px);pointer-events:none}.roadmap-segment:before{content:"";position:absolute;inset:1px;border:2px solid transparent;border-radius:2px;pointer-events:none;z-index:3}.roadmap-segment:hover:before,.roadmap-segment:focus-visible:before,.roadmap-segment.selected:before{border-color:#f1f5f9}.roadmap-segment:focus-visible{outline:none}.feature-progress-legend{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px;color:#71808d;font-size:9px}.feature-progress-legend b{color:#b8c4cf}.feature-progress-note{margin:9px 0 0;color:#7f8d9a;font-size:10px;line-height:1.45}
 .feature-board-card{padding:12px 13px 14px}.feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:7px}.feature-tile{--tone-a:#4c2e29;--tone-b:#633d35;--tone-c:#75483d;appearance:none;text-align:left;border:1px solid rgba(255,255,255,.11);background:radial-gradient(circle at 86% 16%,rgba(255,255,255,.08),transparent 34%),linear-gradient(145deg,var(--tone-a),var(--tone-b) 62%,var(--tone-c));color:#eef4f8;border-radius:10px;padding:9px 10px;min-height:78px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;gap:8px;transition:.12s transform,.12s filter,.12s border-color;box-shadow:inset 0 1px rgba(255,255,255,.04),0 7px 20px rgba(0,0,0,.12)}.feature-tile:hover,.feature-tile:focus-visible{transform:translateY(-1px);filter:brightness(1.09);border-color:rgba(255,255,255,.25);outline:none}.feature-tile.selected{outline:2px solid #f1f5f9;outline-offset:1px;filter:brightness(1.10)}.feature-tile-top{display:flex;justify-content:space-between;align-items:flex-start;gap:7px}.feature-track{display:inline-flex;align-items:center;border-radius:999px;padding:3px 6px;font-size:7px;font-weight:900;text-transform:uppercase;letter-spacing:.07em}.feature-track.track-core{background:#173954;color:#a9d5f4;border:1px solid #2a5f87}.feature-track.track-qol{background:#164446;color:#9ee0dc;border:1px solid #287074}.feature-track.track-4fun{background:#472c52;color:#d9b4e5;border:1px solid #73507f}.feature-state-mini{font-size:7px;font-weight:900;text-transform:uppercase;letter-spacing:.055em;color:rgba(238,244,248,.78);text-align:right}.feature-tile h3{font-size:15px;line-height:1.24;margin:0;font-weight:780;letter-spacing:-.006em;text-wrap:balance}
 .state-pill,.kind-pill,.compat-pill,.track-pill{display:inline-block;border-radius:999px;padding:3px 7px;font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:.045em;white-space:nowrap}.state-production{background:rgba(34,197,94,.16);color:#7ee7a0;border:1px solid rgba(34,197,94,.25)}.state-beta{background:rgba(74,222,128,.13);color:#8ceaaa;border:1px solid rgba(74,222,128,.22)}.state-proof{background:rgba(244,114,182,.14);color:#f4a4cd;border:1px solid rgba(244,114,182,.22)}.state-partial{background:rgba(250,204,21,.12);color:#f2da72;border:1px solid rgba(250,204,21,.20)}.state-needed{background:rgba(251,146,60,.13);color:#f6b17a;border:1px solid rgba(251,146,60,.22)}.state-open{background:rgba(96,165,250,.14);color:#9ac5fb;border:1px solid rgba(96,165,250,.22)}.kind-have{color:#75dd97}.kind-need{color:#f5a86c}.kind-want,.kind-future{color:#e994bf}.kind-unknown{color:#89b8ef}.track-core{background:#183b5a;color:#a9d5f4;border:1px solid #2b6089}.track-qol{background:#164649;color:#9ee0dc;border:1px solid #287074}.track-4fun{background:#4a2e56;color:#d9b4e5;border:1px solid #765083}
 .feature-dialog{width:min(700px,calc(100vw - 28px));max-height:min(82vh,790px);overflow:auto;border:1px solid #3b4652;border-radius:14px;background:#10161c;color:var(--t);padding:20px 21px 17px;box-shadow:0 28px 90px rgba(0,0,0,.62)}.feature-dialog::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(3px)}.feature-dialog-close{position:absolute;right:12px;top:10px;width:31px;height:31px;border:1px solid #35414d;border-radius:8px;background:#0b1015;color:#aeb9c4;font-size:18px;cursor:pointer}.feature-dialog-tags{display:flex;gap:6px;flex-wrap:wrap;padding-right:36px}.feature-dialog h2{font-size:23px;margin:12px 0 3px;letter-spacing:-.025em}.feature-dialog-tech{color:#71808e;font:10px ui-monospace,SFMono-Regular,Consolas,monospace;margin:0 0 13px}.feature-dialog .feature-detail{color:#b4bec8;font-size:13px;line-height:1.64;margin:0}.feature-dialog-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:15px}.feature-dialog-fact{border:1px solid #29343e;border-radius:9px;padding:9px 10px;background:#0c1217}.feature-dialog-fact b{display:block;color:#6f7e8b;text-transform:uppercase;font-size:8px;letter-spacing:.06em;margin-bottom:3px}.feature-dialog-fact span{font-size:11px;color:#c1ccd5}.feature-dialog-meta{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid #29343e;margin-top:16px;padding-top:12px;color:#71808e;font-size:10px}.feature-dialog-footer-left{display:grid;gap:3px}.feature-dialog-version{color:#aebbc6}.feature-dialog-meta a{color:#c4d0dc;text-decoration:none;border:1px solid #35414d;border-radius:8px;padding:7px 9px}.feature-dialog-meta a:hover{border-color:#6c7d8c;color:#fff}
@@ -341,6 +341,7 @@ const memFmt=n=>"0x"+n.toString(16).toUpperCase().padStart(8,"0");
 const memBytes=n=>n>=1048576?(n/1048576).toFixed(n%1048576?2:0)+" MiB":n>=1024?(n/1024).toFixed(n%1024?1:0)+" KiB":n+" B";
 const capacityExact=n=>n.toLocaleString("en-US")+" B";
 const currentOwnershipClasses=new Set(["production","stock-known","stock-unknown","confirmed-free","candidate-free","dynamic"]);
+const memSelected={rom:null,rdram:null};
 function memIntervals(records){return records.filter(r=>Number.isFinite(r.start)&&Number.isFinite(r.end)).map(r=>[r.start,r.end]).sort((a,b)=>a[0]-b[0])}
 function memUnion(records){const a=memIntervals(records);let total=0,s=null,e=null;for(const [x,y] of a){if(s===null){s=x;e=y}else if(x<=e)e=Math.max(e,y);else{total+=e-s;s=x;e=y}}if(s!==null)total+=e-s;return total}
 function memMatches(r,cls,q){if(cls!=="all"&&r.class!==cls)return false;if(!q)return true;return Object.values(r).join(" ").toLowerCase().includes(q)}
@@ -370,15 +371,36 @@ function patchDetail(key,p){
   d.innerHTML='<span class="mem-badge '+(prod?'c-production':'c-proof-only')+'">'+(prod?'PRODUCTION PATCH SITE':'PROOF-ONLY PATCH SITE')+'</span><h2>'+p.owner+'</h2><p class="addr">'+p.romSite+'</p><div class="meta"><div><b>Registry class</b><span>'+p.class+'</span></div><div><b>Context / VA</b><span>'+p.context+'</span></div><div><b>Expected / guard</b><span>'+p.expected+'</span></div><div><b>Replacement / effect</b><span>'+p.effect+'</span></div><div><b>Source</b><span>'+p.source+'</span></div></div><p class="mem-source"><a target="_blank" rel="noreferrer" href="'+wikiBase+'Address-and-Patch-Site-Registry.md">Open canonical patch-site registry</a></p>';
 }
 function classStyle(cls){return memClassInfo[cls]?.css||"c-unknown"}
+function syncMemorySelection(key,id){
+  const view=document.querySelector("#view-"+key);
+  if(!view)return;
+  view.querySelectorAll("[data-record-id]").forEach(el=>{
+    const selected=!!id&&el.dataset.recordId===id;
+    if(el.classList.contains("mem-record"))el.classList.toggle("active",selected);
+    else el.classList.toggle("selected",selected);
+    el.setAttribute("aria-pressed",String(selected));
+  });
+  view.querySelectorAll(".space-bar").forEach(bar=>bar.classList.toggle("has-selection",!!bar.querySelector(".space-seg.selected")));
+  view.querySelectorAll(".capacity-track").forEach(track=>track.classList.toggle("has-selection",!!track.querySelector(".capacity-slice.selected")));
+}
+function selectMemoryRecord(key,space,record,title=record.owner){
+  memSelected[key]=record.id;
+  syncMemorySelection(key,record.id);
+  memDetail(key,space,title,[record]);
+}
+function clearMemorySelection(key){
+  memSelected[key]=null;
+  syncMemorySelection(key,null);
+}
 function buildSpaceBar(id,labelsId,space,start,end,records,includeUnknown=true){
   const bar=document.querySelector("#"+id),labels=document.querySelector("#"+labelsId);bar.innerHTML="";labels.innerHTML="";
   const span=end-start;
   records.filter(r=>r.start<end&&r.end>start).forEach(r=>{
     const a=Math.max(start,r.start),z=Math.min(end,r.end),seg=document.createElement("button");
-    seg.type="button";seg.className="space-seg "+classStyle(r.class);
+    seg.type="button";seg.className="space-seg "+classStyle(r.class);seg.dataset.recordId=r.id;seg.setAttribute("aria-pressed","false");
     seg.style.left=(((a-start)/span)*100)+"%";seg.style.width=Math.max(((z-a)/span)*100,.18)+"%";
     seg.title=r.owner+" · "+r.range+" · "+r.class;
-    seg.onclick=()=>memDetail(id.startsWith("rom")?"rom":"rdram",space,r.owner,[r]);bar.appendChild(seg);
+    seg.onclick=()=>selectMemoryRecord(id.startsWith("rom")?"rom":"rdram",space,r,r.owner);bar.appendChild(seg);
   });
   const groups=[...new Set(records.filter(r=>r.start<end&&r.end>start).map(r=>r.class))];
   groups.forEach(cls=>{const x=memClassInfo[cls]||{label:cls,css:"c-unknown"};labels.innerHTML+='<span><i class="'+x.css+'"></i>'+x.label+'</span>'});
@@ -394,21 +416,21 @@ function renderCapacityBreakdown(key,space,start,end,parts){
     const ranges=p.ranges||[[p.record.start,p.record.end]],n=ranges.reduce((sum,[a,b])=>sum+b-a,0),label=p.title+": "+capacityExact(n)+(p.record?" ("+p.record.range+")":"");
     const id=p.record?.id||"unclassified";
     const activate=()=>{
+      if(p.record)selectMemoryRecord(key,space,p.record,p.title);else{clearMemorySelection(key);memDetail(key,space,p.title,[])}
       track.classList.add("has-selection");
       track.querySelectorAll(".capacity-slice").forEach(el=>{const selected=el.dataset.capacityId===id;el.classList.toggle("selected",selected);el.setAttribute("aria-pressed",String(selected))});
       items.querySelectorAll(".capacity-item").forEach(el=>{const selected=el.dataset.capacityId===id;el.classList.toggle("selected",selected);el.setAttribute("aria-pressed",String(selected))});
-      memDetail(key,space,p.title,p.record?[p.record]:[]);
     };
     ranges.forEach(([a,b])=>{
       const slice=document.createElement("button");slice.type="button";slice.className="capacity-slice capacity-"+p.tone;
-      slice.dataset.capacityId=id;slice.style.left=((a-start)/span*100)+"%";slice.style.width=((b-a)/span*100)+"%";
+      slice.dataset.capacityId=id;if(p.record)slice.dataset.recordId=p.record.id;slice.style.left=((a-start)/span*100)+"%";slice.style.width=((b-a)/span*100)+"%";
       slice.title=label;slice.setAttribute("aria-label",label);slice.setAttribute("aria-pressed","false");slice.onclick=activate;track.appendChild(slice);
     });
     const item=document.createElement("button");item.type="button";item.className="capacity-item";
     const swatch=document.createElement("i");swatch.className="capacity-swatch capacity-"+p.tone;
     const copy=document.createElement("span"),name=document.createElement("b"),detail=document.createElement("small"),size=document.createElement("span");
     name.textContent=p.title;detail.textContent=p.description;size.className="size";size.textContent=capacityExact(n);
-    copy.append(name,detail);item.append(swatch,copy,size);item.dataset.capacityId=id;item.setAttribute("aria-label",label+". "+p.description);item.setAttribute("aria-pressed","false");
+    copy.append(name,detail);item.append(swatch,copy,size);item.dataset.capacityId=id;if(p.record)item.dataset.recordId=p.record.id;item.setAttribute("aria-label",label+". "+p.description);item.setAttribute("aria-pressed","false");
     item.onclick=activate;items.appendChild(item);
   });
 }
@@ -513,10 +535,10 @@ function memRender(key){
     const visible=space.records.filter(r=>memMatches(r,cc,qq));
     const patches=patchToggle.checked?allPatches.filter(p=>!qq||Object.values(p).join(" ").toLowerCase().includes(qq)):[];
     list.innerHTML="";
-    visible.forEach(r=>{const b=document.createElement("button");b.className="mem-record";b.innerHTML='<strong>'+r.owner+'</strong><span>'+r.id+' · '+r.range+' · '+r.class+'</span>';b.onclick=()=>memDetail(key,space,r.owner,[r]);list.appendChild(b)});
-    patches.forEach(p=>{const pr=patchRangeFor(key,p);const b=document.createElement("button");b.className="mem-record patch-record";b.innerHTML='<strong>'+p.owner+'</strong><span>'+p.romSite+' · '+p.class+(pr?' · '+memBytes(pr[1]-pr[0]):'')+'</span>';b.onclick=()=>patchDetail(key,p);list.appendChild(b)});
+    visible.forEach(r=>{const b=document.createElement("button");b.className="mem-record";b.dataset.recordId=r.id;b.setAttribute("aria-pressed","false");b.innerHTML='<strong>'+r.owner+'</strong><span>'+r.id+' · '+r.range+' · '+r.class+'</span>';b.onclick=()=>selectMemoryRecord(key,space,r,r.owner);list.appendChild(b)});
+    patches.forEach(p=>{const pr=patchRangeFor(key,p);const b=document.createElement("button");b.className="mem-record patch-record";b.innerHTML='<strong>'+p.owner+'</strong><span>'+p.romSite+' · '+p.class+(pr?' · '+memBytes(pr[1]-pr[0]):'')+'</span>';b.onclick=()=>{clearMemorySelection(key);patchDetail(key,p)};list.appendChild(b)});
     if(!visible.length&&!patches.length)list.innerHTML='<p class="mem-empty">No records match this filter.</p>';
-    memDetail(key,space,key==="rom"?"Select an exact ROM record":"Select an exact physical RDRAM record",[]);
+    if(memSelected[key]){const selected=space.records.find(r=>r.id===memSelected[key]);if(selected){syncMemorySelection(key,selected.id);memDetail(key,space,selected.owner,[selected])}else{clearMemorySelection(key);memDetail(key,space,key==="rom"?"Select an exact ROM record":"Select an exact physical RDRAM record",[])}}else memDetail(key,space,key==="rom"?"Select an exact ROM record":"Select an exact physical RDRAM record",[]);
   }
   cls.onchange=refresh;q.oninput=refresh;patchToggle.onchange=refresh;
   document.querySelector("#"+key+"-reset").onclick=()=>{cls.value="all";q.value="";patchToggle.checked=true;refresh()};
