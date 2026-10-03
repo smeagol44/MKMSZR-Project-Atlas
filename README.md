@@ -56,7 +56,7 @@ This is not a binary-compatibility claim.
 
 ### ROM Coverage & Capacity
 
-A capacity-first view of the literal 16 MiB cartridge image:
+A capacity-first view that distinguishes the supported 16 MiB clean cartridge image from the current 32 MiB generated global-v2 output:
 
 - classified bounded ownership vs unknown/unclassified bytes;
 - current MKMSZR production-owned bytes;
@@ -104,7 +104,7 @@ Primary inputs include:
 - `Sounds-and-Music.md`
 - `Presentation-and-Branding.md`
 
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `d953e7638eea3435065bd0112083803e3c79fa83` (2026-09-30). It includes the Runtime-confirmed seeded Temple-intro audio feature, build-time **Powers as pickups** and **Vanilla / Custom / Seed Required Power Upgrades** modes, the accepted typeset/title-color linkage, the current compact Rainbow and CI4 Toasty layouts, the expanded cross-stage enemy proof matrix, and the newer cross-stage-item ownership results. In particular, Fire → Wind foreign-key masking is bounded Runtime-confirmed through acquisition/reveal/use/re-masking, while Wind v01 rejects naive selector suppression and v04/v05 support destination-owned, predecessor-guarded checkpoint behavior. The Earth Stage Atlas also uses the corrected file-`0x30` ordinary-pickup catalog; file `0x88` is MONK1 fighter data. The former high-ROM title relocation is retired: the current title package is an in-place file-`0x5E` owner.
+The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `c318ac19a5de8ff697350d6b43aed4314c4150ee` (2026-10-03). It includes the merged 85-check global generator/solver, deterministic retries, 32 MiB generated-output resource slots, destination-aware global materializer, configurable lifecycle/run settings, Power Upgrade pickup presentation, SEALED foreign-key UI, current enemy-randomization product state, standard `.z64` / `.v64` / `.n64` target normalization, the Runtime-confirmed blue/sounded Safe Stage selector, and the corrected isolated Temple-intro audio architecture. The former `0x20A` Temple-audio carrier and overlapping `0xF6B140` materializer allocation are explicitly superseded; Atlas now reflects the isolated `486 -> 329 -> 319` audio host and corrected materializer allocation at `0xF6AAF0..0xF6B0CF`.
 
 Important rules:
 

@@ -1,3 +1,13 @@
+## 2026-10-03 — Global-v2 / current-production refresh
+
+- Audited the latest ~20 merged MKMSZR PRs through source commit `c318ac19a5de8ff697350d6b43aed4314c4150ee`.
+- Promoted the Feature Board from the former stage-local/pending-global model to the merged **85-check global-v2** generator, deterministic retry solver, destination-safe materializer, and current run settings.
+- Expanded ROM coverage from the clean 16 MiB image to the **32 MiB generated output** model, including eight 1 MiB global stage-resource slots at `0x01000000..0x017FFFFF` and the protected unassigned tail through `0x02000000`.
+- Added current Power Upgrade flash and global-materializer ROM/RDRAM ownership, including the corrected materializer allocation `0xF6AAF0..0xF6B0CF` / `0x801B2310..0x801B28EF` after the Toasty-audio collision fix.
+- Replaced obsolete Temple-audio carrier overlays with the merged isolated architecture: stock descriptors remain unchanged, events 123/124/125 route through host `486 -> 329 -> 319`, and the rejected `0x20A` chain is no longer shown as a production edit.
+- Added SEALED inventory presentation, Power Upgrade flash, Safe Stage blue cursor/MOVE helper, standard N64 target byte-order support, and current enemy-randomization/global-materialization status.
+- Refreshed conservative Decomp Readiness notes for lifecycle, Temple special-check, global resources, foreign-key ownership, and donor audio without treating full-seed runtime coverage as complete.
+
 ## 2026-10-02 — Ice Blast pickup cancel research
 
 - Added **Ice Blast Pickup Cancel** to the Feature Board as a completed bounded proof.

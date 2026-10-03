@@ -70,15 +70,22 @@ const requiredCurrentRecords = [
   ["rom", "rom.production.temple_special_check"],
   ["rom", "rom.production.lifecycle_v06"],
   ["rom", "rom.production.toasty_module"],
+  ["rom", "rom.production.progression_flash"],
+  ["rom", "rom.production.global_materializer_helper"],
   ["rom", "rom.production.toasty_audio_sample"],
   ["rom", "rom.production.temple_intro_audio_sample"],
   ["rom", "rom.production.file_5e_title"],
+  ["rom", "rom.production.safe_selector_move_helper"],
+  ["rom", "rom.production.global_stage_resources"],
+  ["rom", "rom.generated.unassigned_tail"],
   ["rdram", "rdram.production.expansion_pool"],
   ["rdram", "rdram.production.turn_module"],
   ["rdram", "rdram.production.controls_extension"],
   ["rdram", "rdram.production.temple_special_check"],
   ["rdram", "rdram.production.lifecycle_v06"],
   ["rdram", "rdram.production.toasty_module"],
+  ["rdram", "rdram.production.progression_flash"],
+  ["rdram", "rdram.production.global_materializer_helper"],
 ];
 for (const [spaceName, id] of requiredCurrentRecords) {
   if (!memory[spaceName].records.some(record => record.id === id)) {
@@ -89,9 +96,13 @@ const rdramRecord = id => memory.rdram.records.find(record => record.id === id);
 const turn = rdramRecord("rdram.production.turn_module");
 const controls = rdramRecord("rdram.production.controls_extension");
 const donor = rdramRecord("rdram.production.toasty_module");
-const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, 0x1B3420];
+const progression = rdramRecord("rdram.production.progression_flash");
+const materializer = rdramRecord("rdram.production.global_materializer_helper");
+const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, progression.start, progression.end, materializer.start, materializer.end, 0x1B3420];
 if (focusEdges[1] !== focusEdges[2] || controls.start !== 0x1AFC30 || controls.end !== 0x1B0880 ||
     donor.start !== 0x1B1000 || donor.end !== 0x1B2132 ||
+    progression.start !== 0x1B2160 || progression.end !== 0x1B2310 ||
+    materializer.start !== 0x1B2310 || materializer.end !== 0x1B28F0 ||
     focusEdges.some((edge, index) => index && edge < focusEdges[index - 1]) ||
     focusEdges.at(-1) - focusEdges[0] !== 0x4000) {
   throw new Error("RDRAM focus no longer partitions the 16 KiB reservation");
@@ -118,11 +129,21 @@ if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
     romRecord("rom.production.controls_extension").end !== 0xF69060 ||
     romRecord("rom.production.toasty_module").start !== 0xF697E0 ||
     romRecord("rom.production.toasty_module").end !== 0xF6A912 ||
+    romRecord("rom.production.progression_flash").start !== 0xF6A940 ||
+    romRecord("rom.production.progression_flash").end !== 0xF6AAF0 ||
+    romRecord("rom.production.global_materializer_helper").start !== 0xF6AAF0 ||
+    romRecord("rom.production.global_materializer_helper").end !== 0xF6B0D0 ||
     romRecord("rom.production.toasty_audio_sample").start !== 0xF6B5D0 ||
     romRecord("rom.production.toasty_audio_sample").end !== 0xF6BDE6 ||
     romRecord("rom.production.temple_intro_audio_sample").start !== 0xF6BDF0 ||
     romRecord("rom.production.temple_intro_audio_sample").end !== 0xF6D810) {
   throw new Error("ROM controls / donor-audio bounds diverge from the canonical map");
+}
+if (romRecord("rom.production.global_stage_resources").start !== 0x1000000 ||
+    romRecord("rom.production.global_stage_resources").end !== 0x1800000 ||
+    romRecord("rom.generated.unassigned_tail").start !== 0x1800000 ||
+    romRecord("rom.generated.unassigned_tail").end !== 0x2000000) {
+  throw new Error("generated-output extension diverges from global-v2 allocation policy");
 }
 if (romRecord("rom.production.file_5e_title").start !== 0x4E3060 ||
     romRecord("rom.production.file_5e_title").end !== 0x512440 ||
@@ -130,7 +151,7 @@ if (romRecord("rom.production.file_5e_title").start !== 0x4E3060 ||
     romRecord("rom.stock.title_former_high").end !== 0xFC1000) {
   throw new Error("current in-place title ownership diverges from the canonical map");
 }
-const currentHighRom = memory.rom.records.filter(record => record.class === "production" && record.start >= 0xF00000);
+const currentHighRom = memory.rom.records.filter(record => record.class === "production" && record.start >= 0xF00000 && record.start < 0x1000000);
 const sortedHighRom = [...currentHighRom].sort((a, b) => a.start - b.start);
 if (sortedHighRom.some((record, index) => record.end > 0x1000000 ||
     (index && record.start < sortedHighRom[index - 1].end))) {
@@ -139,8 +160,11 @@ if (sortedHighRom.some((record, index) => record.end > 0x1000000 ||
 for (const id of [
   "prod-turn-action", "prod-turn-decision", "prod-turn-release", "prod-turn-menu",
   "prod-shared-file1a", "prod-toasty-trigger", "prod-toasty-init", "prod-toasty-hud",
-  "prod-required-powers-gate", "prod-temple-audio1-a", "prod-temple-audio1-b",
-  "prod-temple-audio2", "prod-temple-audio-carrier-desc", "proof-sektor-v85",
+  "prod-required-powers-gate", "prod-selector-move-helper", "prod-selector-blue-palette",
+  "prod-sealed-label", "prod-progression-flash-module", "prod-global-materializer-helper",
+  "prod-temple-audio-event123", "prod-temple-audio-event124", "prod-temple-audio-event125",
+  "prod-temple-audio-host-patch", "prod-temple-audio-host-subpatch", "prod-temple-audio-host-wave",
+  "prod-temple-audio-host-predictor", "proof-sektor-v85",
 ]) {
   if (!patches.patches.some(patch => patch.id === id)) {
     throw new Error("missing current patch record: " + id);
@@ -157,7 +181,7 @@ for (const [index, script] of inlineScripts.entries()) {
 
 for (const patch of patches.patches) {
   if (!["production", "proof-only"].includes(patch.class)) throw new Error("patch class: " + patch.id);
-  if (patch.romStart !== null && !(patch.romStart >= 0 && patch.romEnd <= 0x1000000 && patch.romStart < patch.romEnd)) {
+  if (patch.romStart !== null && !(patch.romStart >= 0 && patch.romEnd <= 0x2000000 && patch.romStart < patch.romEnd)) {
     throw new Error("patch ROM bounds: " + patch.id);
   }
   if (patch.physicalStart !== null && !(patch.physicalStart >= 0 && patch.physicalEnd <= 0x400000 && patch.physicalStart < patch.physicalEnd)) {

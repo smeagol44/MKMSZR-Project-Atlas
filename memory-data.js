@@ -1,14 +1,14 @@
 // Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
 // Unknown gaps are intentionally not classified as free.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-10-01",
+  "snapshot": "2026-10-03",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
+  "sourceCommit": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
-    "end": 16777216,
-    "bucketSize": 65536,
+    "end": 33554432,
+    "bucketSize": 131072,
     "grid": 16,
     "records": [
       {
@@ -38,6 +38,20 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "no",
         "reference": "Memory-and-Allocation-Map.md",
         "notes": "Second interval of canonical rom.proof.attack_modern_check_v01_owned_stubs; existing production owner."
+      },
+      {
+        "id": "rom.production.safe_selector_move_helper",
+        "start": 57980,
+        "end": 58032,
+        "range": "[0x0000E27C, 0x0000E2B0)",
+        "class": "production",
+        "owner": "Safe Stage Select movement-SFX helper",
+        "scope": "Global frontend code",
+        "lifecycle": "Native selector frontend",
+        "evidence": "Runtime-confirmed v03a; static target/cave closure and exact-byte guards",
+        "production_safe": "yes",
+        "reference": "stage_selector.py; Address-and-Patch-Site-Registry.md",
+        "notes": "Plays title MOVE descriptor 0x1FC only for valid Up/Down edges. No confirmation-sound hook is part of this owner."
       },
       {
         "id": "rom.production.inventory_action_cave",
@@ -572,6 +586,34 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Runtime mirror begins at 0x801B1000. The following ROM gap before fixed Toasty audio is unclassified, not confirmed-free."
       },
       {
+        "id": "rom.production.progression_flash",
+        "start": 16165184,
+        "end": 16165616,
+        "range": "[0x00F6A940, 0x00F6AAF0)",
+        "class": "production",
+        "owner": "Power Upgrade white-pulse palette and flash helper",
+        "scope": "Global high ROM / shared file 0x1A",
+        "lifecycle": "Pickup progression feedback",
+        "evidence": "TEST LAB v02 Runtime-confirmed; exact helper-delta tests and guards",
+        "production_safe": "conditional",
+        "reference": "progression_presentation.py; tests/test_progression_presentation.py",
+        "notes": "Runtime mirror [0x801B2160,0x801B2310). Present when Powers as pickups is enabled."
+      },
+      {
+        "id": "rom.production.global_materializer_helper",
+        "start": 16165616,
+        "end": 16167120,
+        "range": "[0x00F6AAF0, 0x00F6B0D0)",
+        "class": "production",
+        "owner": "Global destination-aware award / re-mask / Prison reconstruction helper",
+        "scope": "Global high ROM / shared file 0x1A",
+        "lifecycle": "Pickup award / destination-state composition",
+        "evidence": "Wrapper semantics Runtime-confirmed bounded; corrected relocation Implementation/CI-confirmed",
+        "production_safe": "yes",
+        "reference": "global_materialization.py; tests/test_global_materialization.py; Memory-and-Allocation-Map.md",
+        "notes": "Runtime mirror [0x801B2310,0x801B28F0). Ends 0x500 bytes before fixed Toasty audio; supersedes the rejected overlapping high-tail placement."
+      },
+      {
         "id": "rom.production.toasty_audio_sample",
         "start": 16168400,
         "end": 16170470,
@@ -598,6 +640,34 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "conditional",
         "reference": "temple_intro_audio.py; Sounds-and-Music.md",
         "notes": "Maximum reservation is 0x1A20 bytes. Only the selected donor sample is written; no MKT donor means this range is untouched by the feature."
+      },
+      {
+        "id": "rom.production.global_stage_resources",
+        "start": 16777216,
+        "end": 25165824,
+        "range": "[0x01000000, 0x01800000)",
+        "class": "production",
+        "owner": "Eight generated global-item destination resource slots",
+        "scope": "Generated 32 MiB output only",
+        "lifecycle": "Stage resource load / gameplay",
+        "evidence": "Bounded Temple >16 MiB relocation Runtime-confirmed; global-v2 implementation/CI-confirmed",
+        "production_safe": "conditional",
+        "reference": "resource_materialization.py; Global-Item-Materialization-and-Solvability.md",
+        "notes": "Eight 1 MiB slots for stages 0,1,2,3,4,5,8,9. Clean input remains 16 MiB; this owner exists only in generated 32 MiB output."
+      },
+      {
+        "id": "rom.generated.unassigned_tail",
+        "start": 25165824,
+        "end": 33554432,
+        "range": "[0x01800000, 0x02000000)",
+        "class": "stock-unknown",
+        "owner": "Unassigned appended generated-output capacity",
+        "scope": "Generated 32 MiB output only",
+        "lifecycle": "None",
+        "evidence": "No owner/use established",
+        "production_safe": "no",
+        "reference": "PR #137 output-size policy; Memory-and-Allocation-Map.md",
+        "notes": "Padding capacity only. It is not automatically reusable/free without an explicit owner and allocation decision."
       },
       {
         "id": "rom.proof.control_facing_v02_module",
@@ -1136,6 +1206,36 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "conditional",
         "reference": "toasty_codegen.py; tests/test_toasty.py",
         "notes": "Uses 0x1132 = 4,402 bytes and leaves 0x12EE bytes before the reserved-pool boundary; reclaimed bytes remain reserved, not confirmed-free."
+      },
+      {
+        "id": "rdram.production.progression_flash",
+        "start": 1778016,
+        "end": 1778448,
+        "range": "[0x1B2160, 0x1B2310)",
+        "aliases": "KSEG0 [0x801B2160,0x801B2310); KSEG1 [0xA01B2160,0xA01B2310)",
+        "class": "production",
+        "owner": "Power Upgrade white-pulse palette/helper",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Pickup progression feedback",
+        "evidence": "TEST LAB v02 Runtime-confirmed; CI guards/bounds",
+        "production_safe": "conditional",
+        "reference": "progression_presentation.py; Memory-and-Allocation-Map.md",
+        "notes": "Exactly 0x1B0 bytes; conditional on Powers as pickups."
+      },
+      {
+        "id": "rdram.production.global_materializer_helper",
+        "start": 1778448,
+        "end": 1779952,
+        "range": "[0x1B2310, 0x1B28F0)",
+        "aliases": "KSEG0 [0x801B2310,0x801B28F0); KSEG1 [0xA01B2310,0xA01B28F0)",
+        "class": "production",
+        "owner": "Global materializer award / destination-state helper",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Pickup award / stage-state composition",
+        "evidence": "Runtime mirror explicitly owned by canonical ROM allocation; corrected relocation Implementation/CI-confirmed",
+        "production_safe": "yes",
+        "reference": "global_materialization.py; Memory-and-Allocation-Map.md",
+        "notes": "Atlas normalization of the runtime mirror stated by rom.production.global_materializer_helper; not an additional allocation."
       },
       {
         "id": "rdram.proof.toasty_v43_feature",
