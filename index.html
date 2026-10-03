@@ -476,7 +476,10 @@ function renderCapacityFocus(key,space){
       lifecycle&&{record:lifecycle,title:"Run lifecycle v06",tone:"mandatory",description:"HP/lives/continues/inventory lifecycle helper"},
       toastyGap&&{record:toastyGap,title:"Lifecycle alignment",tone:"reserved",description:"12-byte alignment before Toasty"},
       module&&{record:module,title:"Toasty CI4 module",tone:"optional",description:"Compact donor-backed CI4 module with native RLE decode"},
-      tail&&{record:tail,title:"Reserved pool tail",tone:"reserved",description:"Held for MKMSZR; no current payload"}
+      moduleProgressionGap&&{record:moduleProgressionGap,title:"Toasty alignment",tone:"reserved",description:"Reserved alignment before Power Upgrade presentation"},
+      progression&&{record:progression,title:"Power Upgrade flash",tone:"optional",description:"Conditional pickup-progression presentation"},
+      materializer&&{record:materializer,title:"Global materializer",tone:"mandatory",description:"85-check award, re-mask, Temple-special, and destination-state helper"},
+      materializerTail&&{record:materializerTail,title:"Reserved pool tail",tone:"reserved",description:"Held for MKMSZR; no current payload"}
     ].filter(Boolean);
     renderCapacityBreakdown(key,space,start,end,focus);
     const pool=0x3C00,
@@ -485,12 +488,14 @@ function renderCapacityFocus(key,space){
           rainbowUsed=rainbow?rainbow.end-rainbow.start:0,
           templeUsed=temple?temple.end-temple.start:0,
           lifecycleUsed=lifecycle?lifecycle.end-lifecycle.start:0,
-          optionalUsed=(module?module.end-module.start:0)+rainbowUsed,
-          mandatoryExpansion=turnUsed+controlsUsed+templeUsed+lifecycleUsed,
+          progressionUsed=progression?progression.end-progression.start:0,
+          materializerUsed=materializer?materializer.end-materializer.start:0,
+          optionalUsed=(module?module.end-module.start:0)+rainbowUsed+progressionUsed,
+          mandatoryExpansion=turnUsed+controlsUsed+templeUsed+lifecycleUsed+materializerUsed,
           unused=pool-mandatoryExpansion-optionalUsed;
     document.querySelector("#rdram-capacity-note").innerHTML=
       '<div><b>16 KiB reserved</b><span>Full MKMSZR reservation below the stock arena floor.</span></div>'+
-      '<div><b>'+memBytes(0x400+mandatoryExpansion)+' always allocated</b><span>Fixed runtime plus TURN, modern controls, Temple helper, and lifecycle v06.</span></div>'+
+      '<div><b>'+memBytes(0x400+mandatoryExpansion)+' always allocated</b><span>Fixed runtime plus TURN, modern controls, Temple helper, lifecycle v06, and the global materializer.</span></div>'+
       '<div><b>'+memBytes(optionalUsed)+' optional · '+memBytes(unused)+' still reserved</b><span>Maximum Rainbow + donor-backed Toasty + Power Upgrade presentation build; striped remainder is not confirmed-free.</span></div>';
   }
 }
