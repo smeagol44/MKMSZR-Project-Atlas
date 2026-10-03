@@ -1,7 +1,7 @@
 // Snapshot of the eight canonical MKMSZR stage catalogs.
 window.MKMSZ_STAGE_DATA = {
-  "snapshot": "2026-10-01",
-  "sourceCommit": "5d32e6388e8ab6891599087f9c756c20d4dace15",
+  "snapshot": "2026-10-03",
+  "sourceCommit": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
   "auditedThrough": "b1c2edd7a3f4494145d816887c03864b27132769",
   "stages": [
     {
@@ -45,11 +45,11 @@ window.MKMSZ_STAGE_DATA = {
       "highlights": [
         "All four ordinary pickups are Herbs and the ordinary resource catalog is fully mapped.",
         "The scripted Map location is a separate special check, not a fifth ordinary record. v02 Runtime-confirms alternate reward/visual presentation while preserving the elevator, rope/exit path, title re-entry persistence, and Temple → Wind progression.",
-        "Temple intro audio has separately Runtime-confirmed donor-backed replacement seams; production candidate behavior replaces exactly one intro position while leaving the other stock."
+        "Temple intro audio is merged and Runtime-confirmed on both bounded positions. Stock descriptors 0x41/0x42/0x43 remain unchanged; Audio 1 edits only events 123/124 and Audio 2 only event 125 through isolated host 486→329→319, avoiding the rejected shared carrier."
       ],
       "constraints": [
         "Logical Map item 0x0D is excluded from the randomizer pool; the scripted location remains progression-owned by Temple.",
-        "Arbitrary special-check reward assignment still belongs to the global materializer/solver, not the ordinary 84-record pool."
+        "The scripted location is now the 85th global check: global-v2 may assign its logical reward through the dedicated Temple award wrapper while Map item 0x0D remains excluded from the reward pool."
       ],
       "badges": [
         "Special check",
@@ -103,7 +103,7 @@ window.MKMSZ_STAGE_DATA = {
         "The six ordinary records are two Herbs, one Extra-life urn, and the three Wind icons.",
         "The progression metadata remains stage-local: Wind Triangle requires wind-circle; Wind Three Bars requires wind-triangle.",
         "Logical reward identity is now separated from physical Wind location/state ownership: the mixed key callback awards inventory through permanent helper 0x80075448 while Circle/Triangle checkpoint effects belong to their physical stage locations.",
-        "Fire -> Wind Circle masking v02 Runtime-confirms the foreign-key lifecycle on a bounded route: true key identity remains in backing storage, LIVE is inert Glass outside Wind immediately after acquisition, the real Circle is revealed/useable in Wind, and it re-masks after leaving.",
+        "Fire -> Wind Circle masking v02 Runtime-confirms the foreign-key lifecycle on a bounded route: true key identity remains in backing storage, LIVE is inert SEALED placeholder outside Wind immediately after acquisition, the real Circle is revealed/useable in Wind, and it re-masks after leaving.",
         "Occupied slot 3 has no user among the six ordinary pickup records. Its non-pickup gameplay owner remains unresolved; the slot stays protected rather than being treated as available.",
         "No outer slot is currently classified unknown/nonstandard; empty stock slots are 6, 7, 8, 9. Per the shared schema, those zeros are logical selector capacity only and do not establish free physical storage."
       ],
@@ -541,7 +541,7 @@ window.MKMSZ_STAGE_DATA = {
         "Bridge contains Health-urn payloads matching the Water/Fire 0x28F..0x292 family, strengthening the cross-stage conversion evidence."
       ],
       "constraints": [
-        "The callback high-bit semantics remain unresolved.",
+        "The record high bit is resolved as a destination-owned activation gate and is preserved independently of the randomized logical reward.",
         "Occupied slot 3 has no ordinary-pickup user and remains protected.",
         "Matching payload evidence is static; Bridge is not yet a runtime-validated arbitrary foreign-item destination."
       ],
@@ -609,12 +609,12 @@ window.MKMSZ_STAGE_DATA = {
         "Kia, Jataaka, and Sareena each activate a specific reward record after defeat; the boss trigger and reward identity are separate concerns.",
         "Fortress five-import stress is Runtime-confirmed: Potion, Urn of Vitality, Formula, Eye, and Shield all rendered/awarded correctly alongside a stock Herbs control.",
         "Kia → Potion substitution is Runtime-confirmed: no reward before the boss, Potion appears only after Kia, awards Potion, and leaves the encounter/stage healthy.",
-        "Stock crystal award paths are Static-confirmed checkpoint-free; the remaining production problem is generalized destination-safe reward materialization while preserving boss activation."
+        "Stock crystal award paths are Static-confirmed checkpoint-free. The merged global materializer preserves each boss-owned bit-15 activation gate and encounter-controlled location while allowing the logical reward to change."
       ],
       "constraints": [
         "The seven stock outer slots are all occupied; adding an eighth stock word in-place would overwrite the first descriptor.",
         "Unused-by-ordinary slots remain protected until non-pickup references are resolved.",
-        "Production still needs generalized handling across all three assassin reward records."
+        "The shared global materializer now generalizes the destination activation-gate contract across all three assassin reward records; broader full-seed runtime coverage remains pending."
       ],
       "badges": [
         "Boss rewards",
