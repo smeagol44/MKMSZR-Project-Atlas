@@ -181,6 +181,14 @@ for (const [index, script] of inlineScripts.entries()) {
 if (/\btail&&\{record:tail\b/.test(html)) {
   throw new Error("dashboard contains stale undefined RDRAM capacity tail reference");
 }
+if (!html.includes("seg.dataset.recordId=r.id") ||
+    !html.includes("selectMemoryRecord(key,space,r,r.owner)") ||
+    !html.includes("function syncMemorySelection(key,id)")) {
+  throw new Error("ROM/RDRAM bars and exact records are not wired into shared selection state");
+}
+if (html.includes('.roadmap-segment:hover,.roadmap-segment.selected{outline')) {
+  throw new Error("roadmap selector uses the old clipped outline geometry");
+}
 if (!html.includes("materializerTail&&{record:materializerTail") ||
     !html.includes("progression&&{record:progression") ||
     !html.includes("materializer&&{record:materializer")) {
