@@ -178,6 +178,14 @@ const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script
 for (const [index, script] of inlineScripts.entries()) {
   new vm.Script(script, { filename: "index-inline-" + index + ".js" });
 }
+if (/\btail&&\{record:tail\b/.test(html)) {
+  throw new Error("dashboard contains stale undefined RDRAM capacity tail reference");
+}
+if (!html.includes("materializerTail&&{record:materializerTail") ||
+    !html.includes("progression&&{record:progression") ||
+    !html.includes("materializer&&{record:materializer")) {
+  throw new Error("RDRAM capacity renderer is missing current progression/materializer slices");
+}
 
 for (const patch of patches.patches) {
   if (!["production", "proof-only"].includes(patch.class)) throw new Error("patch class: " + patch.id);
