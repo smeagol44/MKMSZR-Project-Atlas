@@ -212,7 +212,7 @@ if (!html.includes("inventoryHudTail&&{record:inventoryHudTail") ||
     !html.includes("inventoryHud&&{record:inventoryHud")) {
   throw new Error("RDRAM capacity renderer is missing current progression/materializer/Inventory HUD slices");
 }
-if (!html.includes("TURN: TOGGLE") ||
+if (!html.includes("Game Over inventory boundary") ||
     !html.includes("Native Inventory HUD") ||
     !html.includes("Inventory HUD generated assets")) {
   throw new Error("Decomp Readiness is missing current lifecycle/HUD findings");
