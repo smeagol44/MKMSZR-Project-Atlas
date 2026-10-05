@@ -63,7 +63,8 @@ A capacity-first view that distinguishes the supported 16 MiB clean cartridge im
 - confirmed reusable free bytes;
 - proof-only footprints kept separate from current ownership;
 - a proportional whole-image strip plus a zoomed high-ROM generated-output strip;
-- distinct colors and exact sizes for each current high-ROM purpose; proof artifacts appear only in the exact records, since they can overlap the current build;
+- distinct colors and exact sizes for each current high-ROM purpose, including the native Inventory HUD tail at `0xF6B0D0..0xF6B5CF`; proof artifacts appear only in the exact records, since they can overlap the current build;
+- appended-output ownership now shows the Inventory HUD portrait atlas, relocated common-package capacity, and fixed HUD data block at `0x01800000..0x018151FF` before the remaining unassigned tail;
 - exact interval and patch-site browser with canonical provenance.
 
 The view deliberately does **not** infer free space from `00`/`FF` patterns or from gaps in current research. Decompilation knowledge is shown separately in **Decomp Readiness**; byte ownership and code understanding are not the same metric.
@@ -79,6 +80,7 @@ A physical-memory ownership/capacity view for the 4 MiB N64 target:
 - a focused breakdown of the exact 16 KiB MKMSZR reservation;
 - separate ATTACK, SPECIALS, JUMP, and RUN display slices within the single modern-controls allocation, alongside the existing separate TURN module;
 - separate colors for always allocated code, conditional donor content, and striped reserved gaps, with exact byte counts below the proportional bar;
+- explicit native Inventory HUD runtime ownership at `0x801B28F0..0x801B2DEF`, following the global materializer and before the remaining reserved pool tail;
 - current Runtime V2 fixed use, 15 KiB expansion-pool capacity, conditional donor-backed allocation, and reserved remainder shown separately;
 - exact physical interval and patch-site browser.
 
@@ -104,7 +106,7 @@ Primary inputs include:
 - `Sounds-and-Music.md`
 - `Presentation-and-Branding.md`
 
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `c318ac19a5de8ff697350d6b43aed4314c4150ee` (2026-10-03). It includes the merged 85-check global generator/solver, deterministic retries, 32 MiB generated-output resource slots, destination-aware global materializer, configurable lifecycle/run settings, Power Upgrade pickup presentation, SEALED foreign-key UI, current enemy-randomization product state, standard `.z64` / `.v64` / `.n64` target normalization, the Runtime-confirmed blue/sounded Safe Stage selector, and the corrected isolated Temple-intro audio architecture. The former `0x20A` Temple-audio carrier and overlapping `0xF6B140` materializer allocation are explicitly superseded; Atlas now reflects the isolated `486 -> 329 -> 319` audio host and corrected materializer allocation at `0xF6AAF0..0xF6B0CF`.
+The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `52139f021212c94bb483cc6ec1a6cecda5c94fa1` (2026-10-05). In addition to the merged global-v2 generator/solver, 32 MiB output model, destination-aware materializer, configurable lifecycle, standard N64 byte-order normalization, current enemy randomization, Safe Stage presentation, and isolated Temple audio, Atlas now includes the accepted native Inventory HUD and v23 nonblocking Power feedback. The HUD adds colored `STG#` credentials, real selected-item titles/portraits, `STG CHECKS KEYS`, required-Power status, and `XX/85`, plus explicit ROM/RDRAM/generated-output ownership for its runtime tail, portrait atlas, common-package capacity, and data block. The browser snapshot also reflects the worker-based responsive patcher, selection-time ROM validation, current seeded/randomization defaults, drag/drop inputs, live summaries, and completion UI from PRs #142/#144/#145. Final representative full-seed production validation remains the release gate.
 
 Important rules:
 
