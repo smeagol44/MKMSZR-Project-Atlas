@@ -1,3 +1,15 @@
+## 2026-10-05 — Native Inventory HUD / browser-product refresh
+
+- Audited the latest MKMSZR merge window through source commit `52139f021212c94bb483cc6ec1a6cecda5c94fa1`, covering the post-global-v2 browser work and the accepted native Inventory HUD / nonblocking Power-feedback closure.
+- Promoted **Randomizer HUD** from a needed 1.0 item to **Production beta**: v21 Runtime-confirms colored `STG#` credential labels, real selected-item titles, streamed 36×48 CI8 portraits, the eight-stage `STG CHECKS KEYS` table, `REQUIRED POWERS X/Y`, right-aligned `XX/85`, and ordinary-row font/palette forwarding on the bounded TEST LAB route.
+- Updated Power Upgrade presentation to the accepted v23 lifecycle: awards remain synchronous while one guarded child process owns the three 2-tick white pulses, so rapid adjacent Power pickups still award immediately.
+- Added the native Inventory HUD's literal ownership to ROM/RDRAM maps: shared-file tail `0xF6B0D0..0xF6B5CF` / `0x801B28F0..0x801B2DEF`, generated portrait atlas `0x01800000..0x01808DBF`, common-package capacity `0x01809000..0x01813FFF`, and HUD data `0x01814000..0x018151FF`. The unassigned 32 MiB output tail now begins at `0x01815200`.
+- Added exact Inventory presentation patch overlays for row/preview hooks, the reclaimed `0x74EB8..0x74FA7` helper span, the v20 `0x1200` first-load allocator correction, and the required-power / check-count render hooks.
+- Refreshed **Shuffled Power Order** to shared-product / 1.0 Production beta and current browser default ON; refreshed **Enemy Randomization** to browser default ON; removed stale HUD-pending wording from Required Power / solver cards.
+- Added the current browser-patcher product surface from PRs #142/#144/#145: Web Worker execution, selection-time target/donor validation, current seeded/randomization defaults, drag/drop file zones, settings/build summaries, seed Randomize/Copy, the 80-message progress deck, and the dedicated completion/download state.
+- Refreshed Decomp Readiness named units for the resolved Game Over inventory boundary, SEALED masking presentation, v23 nonblocking Power feedback, native Inventory HUD composition, and generated HUD assets while keeping the aggregate 600-unit readiness model conservative.
+- Advanced all Atlas snapshot datasets to the same current MKMSZR source revision; Stage Atlas and MKT compatibility were re-audited with no unsupported new stage/donor-semantic claims added.
+
 ## 2026-10-03 — Global-v2 / current-production refresh
 
 - Audited the latest ~20 merged MKMSZR PRs through source commit `c318ac19a5de8ff697350d6b43aed4314c4150ee`.
