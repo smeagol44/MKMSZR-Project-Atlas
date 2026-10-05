@@ -1,8 +1,8 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-10-03",
-  "sourceCommit": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
-  "auditedThrough": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
+  "snapshot": "2026-10-05",
+  "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "auditedThrough": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
   "featureBoard": [
     {
       "group": "Core",
@@ -76,22 +76,9 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Four Inventory Boxes",
       "state": "beta",
       "kind": "have",
-      "detail": "Box switching, transition preservation, and stage-local foreign-key masking are Runtime-confirmed on documented routes. Lifecycle v06 preserves inventory through death/Continue and Runtime-confirms final Game Over clearing of run-scoped inventory/progression authority while preserving GAME SETTINGS. Global materialization now uses the shared award/re-mask dispatcher, and the inert foreign-stage placeholder is displayed as SEALED while retaining stock internal item ID 0x08.",
+      "detail": "Box switching, transition preservation, stage-local foreign-key masking, death/Continue preservation, and final Game Over cleanup are Runtime-confirmed on bounded routes. The native Inventory HUD now resolves authoritative backing-box identity for colored stage credentials, real selected-item titles/portraits, per-stage check/key state, and SEALED foreign-stage presentation.",
       "source": "Project-Status.md",
       "technicalName": "Four inventory boxes",
-      "track": "Core",
-      "scope": "1.0",
-      "effort": 5,
-      "completion": 0.9
-    },
-    {
-      "group": "Progression",
-      "name": "Powers as Pickups",
-      "state": "beta",
-      "kind": "have",
-      "detail": "Build-time setting, default ON. ON places nine Power Upgrade rewards into the global 85-check pool and keeps pickup-driven progression; OFF retains vanilla earned XP behavior. Power Upgrade pickups use Ice Blue Herbs presentation plus the Runtime-confirmed three short white Sub-Zero pulses, while foreign-stage masked items display as SEALED.",
-      "source": "XP-and-Progression.md",
-      "technicalName": "POWERS AS PICKUPS: ON / OFF",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
@@ -99,30 +86,44 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "group": "Progression",
+      "name": "Powers as Pickups",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Build-time setting, default ON. ON places nine Power Upgrade rewards into the global 85-check pool; OFF retains vanilla earned XP. Power Upgrade pickups use Ice Blue Herbs presentation. v23 Runtime-confirms synchronous award plus one guarded asynchronous child for the three short white pulses, so rapid adjacent Power pickups still award immediately.",
+      "source": "XP-and-Progression.md",
+      "technicalName": "POWERS AS PICKUPS: ON / OFF",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 5,
+      "completion": 0.98,
+      "introduced": "v23 nonblocking Power feedback"
+    },
+    {
+      "group": "Progression",
       "name": "Required Power Upgrades",
       "state": "beta",
       "kind": "have",
-      "detail": "Build-time Fortress-gate setting. VANILLA preserves the exact stock 5100-XP requirement; CUSTOM accepts 0..9 native thresholds; SEED deterministically selects 0..9 from its own RNG namespace. The global solver now enforces the selected shuffled-Power-Up requirement when pickup mode is ON; HUD presentation and broader final-release runtime coverage remain pending.",
+      "detail": "Build-time Fortress-gate setting. VANILLA preserves the stock 5100-XP requirement; CUSTOM accepts 0..9; SEED deterministically selects 0..9 from its own namespace and is the browser default. The native Inventory HUD now shows current/required Power status; final representative full-seed/final-fight runtime coverage remains pending.",
       "source": "XP-and-Progression.md",
       "technicalName": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.88
+      "completion": 0.95
     },
     {
       "group": "Progression",
       "name": "Shuffled Power Order",
-      "state": "proof",
-      "kind": "want",
-      "detail": "Default OFF preserves vanilla Power Up order. ON has a Runtime-confirmed bounded nine-slot mechanism that keeps gameplay gates and native Power Ups icon/help presentation synchronized, with only the Ice Shatter freezing prerequisite; Slide and Super Slide may appear in either order. Shared product implementation and web UI exist, but current Project Status still lists repository CI/merge/deployment as the remaining production gate.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "The shared browser/CLI product exposes deterministic nine-slot Power order shuffling and the browser defaults it ON. Gameplay gates and native Power Ups icon/help presentation stay synchronized, with only the Ice Shatter freezing prerequisite; Slide and Super Slide may appear in either order. The bounded v04 mechanism is Runtime-confirmed; final representative all-tier production validation remains pending.",
       "source": "XP-and-Progression.md",
       "technicalName": "SHUFFLE POWER PROGRESSION: OFF / ON",
       "track": "Core",
-      "scope": "extra",
+      "scope": "1.0",
       "effort": 3,
-      "completion": 0.65,
-      "introduced": "power-order v04 proof"
+      "completion": 0.93,
+      "introduced": "power-order v04 + shared product integration"
     },
     {
       "group": "UI",
@@ -211,13 +212,28 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Shared Web / CLI Builder",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. Build-time Run Settings expose difficulty (default Very Hard), starting lives 1..10 (default 5), starting continues 0..5 (default 3), and Persistent HP (default ON), alongside global item generation, progression choices, and the Runtime-confirmed GAME SETTINGS control suite. Standard .z64/.v64/.n64 target byte orders are accepted and normalized. Enemy randomization defaults OFF; MKT Rev. 2 remains an optional donor for supported donor-backed features.",
+      "detail": "Browser and CLI share one guarded patch core. The browser now runs Pyodide in a Web Worker, validates/caches target and optional donor immediately on selection, accepts .z64/.v64/.n64 target byte orders, and stays responsive while patching. Current browser defaults are seeded outfit, Shuffle Power Progression ON, Enemy Randomization ON, Required powers Seed, Very Hard / 5 lives / 3 continues / Persistent HP ON. Drag/drop file zones, live build/settings summaries, seed Randomize/Copy, progress flavor deck, and a dedicated success/download state are deployed. MKT Rev. 2 remains optional for donor-backed Toasty and Temple-intro audio.",
       "source": "Web-Patcher-and-Product.md",
       "technicalName": "Browser / CLI shared patch core",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.9
+      "completion": 0.97,
+      "introduced": "PRs #142, #144, #145"
+    },
+    {
+      "group": "Product",
+      "name": "Browser Patcher Experience",
+      "state": "production",
+      "kind": "have",
+      "detail": "The deployed web patcher validates target/donor files at selection time, runs CPU-heavy Pyodide patching in a Web Worker, supports click/browse and drag/drop ROM inputs, exposes live settings/build summaries plus seed Randomize/Copy, keeps an animated 80-message non-repeating flavor deck during builds, and presents a dedicated success/download card. Failures still surface real worker/Python diagnostics.",
+      "source": "Web-Patcher-and-Product.md",
+      "technicalName": "Responsive browser patcher UX / preflight validation",
+      "track": "QoL",
+      "scope": "extra",
+      "effort": 2,
+      "completion": 1,
+      "introduced": "PRs #142, #144, #145"
     },
     {
       "group": "1.0",
@@ -277,26 +293,27 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Power Requirement Logic",
       "state": "beta",
       "kind": "have",
-      "detail": "Vanilla / Custom / Seed gate modes are implemented and the global solver now enforces the selected shuffled-upgrade requirement in pickup mode. OFF mode correctly has zero shuffled Power Upgrade items while retaining the independent vanilla/custom/seed Fortress XP gate. HUD visibility remains pending.",
+      "detail": "Vanilla / Custom / Seed gate modes are implemented and the global solver enforces the selected shuffled-upgrade requirement in pickup mode. OFF mode correctly has zero shuffled Power Upgrade items while retaining the independent Fortress XP gate. The native Inventory HUD now exposes the current/required Power state; final representative production validation remains pending.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Mode-aware required-power solver / HUD integration",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.85
+      "completion": 0.95
     },
     {
       "group": "1.0",
       "name": "Randomizer HUD",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Checks, progression requirement/current state, box state, key progress, and pickup feedback are required.",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Implementation complete / Production beta. v21 Runtime-confirms the completed native Inventory presentation on the bounded TEST LAB route: colored STG# credential labels, real paper titles, selected 36×48 CI8 portraits, eight-stage STG CHECKS KEYS, REQUIRED POWERS X/Y, right-aligned XX/85, and ordinary-row font/palette forwarding alongside BOX n OF 4. v23 separately Runtime-confirms nonblocking temporary Power feedback. Shared browser/CLI integration is guarded; final representative full-seed production-composition validation remains the acceptance gate.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Full native randomizer HUD",
       "track": "Core",
       "scope": "1.0",
       "effort": 8,
-      "completion": 0.25
+      "completion": 0.93,
+      "introduced": "Inventory HUD v21 + Power feedback v23"
     },
     {
       "group": "Lifecycle",
@@ -372,13 +389,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Full 1.0 Seed Validation",
       "state": "needed",
       "kind": "need",
-      "detail": "Final release gate after global items, solver, HUD, lifecycle, Map policy, Very Hard, and progression are composed.",
+      "detail": "Final release gate after the now-integrated global items/solver, native Inventory HUD, lifecycle, Temple special check, configurable run settings, and progression systems are exercised together on a representative production seed.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Representative full global seed",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.05
+      "completion": 0.08
     },
     {
       "group": "Research",
@@ -399,13 +416,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Enemy Randomization",
       "state": "beta",
       "kind": "have",
-      "detail": "The deterministic 104-record enemy planner/materializer is a merged browser/CLI option and defaults OFF. It preserves five gated/special encounters, models Prison paging/set-piece auxiliaries, and keeps unresolved foreign semantics fail-closed. Representative seed ENEMYPLAN05 is Runtime-confirmed, and the compact Water PRIS15/16 plus mixed PRIS14+16 profiles are promoted in the current source.",
+      "detail": "The deterministic 104-record enemy planner/materializer is a merged browser/CLI option. The browser now defaults it ON; the shared configuration/CLI remain user-selectable. It preserves five gated/special encounters, models Prison paging/set-piece auxiliaries, and keeps unresolved foreign semantics fail-closed. Representative seed ENEMYPLAN05 and the promoted compact Water PRIS profiles provide bounded runtime evidence; broader product runtime coverage remains non-exhaustive.",
       "source": "Project-Status.md",
       "technicalName": "ENEMY RANDOMIZATION: OFF / ON",
       "track": "4Fun",
       "scope": "extra",
       "effort": 5,
-      "completion": 0.72,
+      "completion": 0.76,
       "introduced": "ENEMYPLAN05 representative proof"
     },
     {
