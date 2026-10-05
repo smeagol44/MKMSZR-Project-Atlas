@@ -1,9 +1,9 @@
 // Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
 // Unknown gaps are intentionally not classified as free.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-10-03",
+  "snapshot": "2026-10-05",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "c318ac19a5de8ff697350d6b43aed4314c4150ee",
+  "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -11,6 +11,20 @@ window.MKMSZ_MEMORY_DATA = {
     "bucketSize": 131072,
     "grid": 16,
     "records": [
+      {
+        "id": "rom.production.safe_selector_move_helper",
+        "start": 57980,
+        "end": 58032,
+        "range": "[0x0000E27C, 0x0000E2B0)",
+        "class": "production",
+        "owner": "Safe Stage Select movement-SFX helper",
+        "scope": "Global frontend code",
+        "lifecycle": "Native selector frontend",
+        "evidence": "Runtime-confirmed v03a; static target/cave closure and exact-byte guards",
+        "production_safe": "yes",
+        "reference": "stage_selector.py; Address-and-Patch-Site-Registry.md",
+        "notes": "Plays title MOVE descriptor 0x1FC only for valid Up/Down edges. No confirmation-sound hook is part of this owner."
+      },
       {
         "id": "rom.proof.attack_modern_check_v01_owned_stubs",
         "start": 488912,
@@ -38,20 +52,6 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "no",
         "reference": "Memory-and-Allocation-Map.md",
         "notes": "Second interval of canonical rom.proof.attack_modern_check_v01_owned_stubs; existing production owner."
-      },
-      {
-        "id": "rom.production.safe_selector_move_helper",
-        "start": 57980,
-        "end": 58032,
-        "range": "[0x0000E27C, 0x0000E2B0)",
-        "class": "production",
-        "owner": "Safe Stage Select movement-SFX helper",
-        "scope": "Global frontend code",
-        "lifecycle": "Native selector frontend",
-        "evidence": "Runtime-confirmed v03a; static target/cave closure and exact-byte guards",
-        "production_safe": "yes",
-        "reference": "stage_selector.py; Address-and-Patch-Site-Registry.md",
-        "notes": "Plays title MOVE descriptor 0x1FC only for valid Up/Down edges. No confirmation-sound hook is part of this owner."
       },
       {
         "id": "rom.production.inventory_action_cave",
@@ -502,6 +502,20 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Mandatory prefix of shared file 0x1A. The frontend menu wrapper is global/title-resident; this gameplay module is loaded only at stage init."
       },
       {
+        "id": "rom.proof.attack_modern_check_v01_low_extension",
+        "start": 16155652,
+        "end": 16156160,
+        "range": "[0x00F68404, 0x00F68600)",
+        "class": "proof-only",
+        "owner": "ATTACK disposable full-composition helper after TURN prefix",
+        "scope": "Bounded disposable proof",
+        "lifecycle": "Proof artifact only",
+        "evidence": "User-reported Runtime-confirmed; builder guards/bounds statically checked",
+        "production_safe": "no",
+        "reference": "Memory-and-Allocation-Map.md",
+        "notes": "Loaded at [0x801AFC24,0x801AFE20); bounded before Toasty source and runtime; not generally free."
+      },
+      {
         "id": "rom.production.controls_extension",
         "start": 16155664,
         "end": 16158816,
@@ -528,20 +542,6 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "conditional",
         "reference": "rainbow_palette.py; Address-and-Patch-Site-Registry.md",
         "notes": "Runtime mirror is [0x801B0880,0x801B08D8); wrapper extends file 0x1A only when needed and remains below Toasty's fixed source/runtime slice."
-      },
-      {
-        "id": "rom.proof.attack_modern_check_v01_low_extension",
-        "start": 16155652,
-        "end": 16156160,
-        "range": "[0x00F68404, 0x00F68600)",
-        "class": "proof-only",
-        "owner": "ATTACK disposable full-composition helper after TURN prefix",
-        "scope": "Bounded disposable proof",
-        "lifecycle": "Proof artifact only",
-        "evidence": "User-reported Runtime-confirmed; builder guards/bounds statically checked",
-        "production_safe": "no",
-        "reference": "Memory-and-Allocation-Map.md",
-        "notes": "Loaded at [0x801AFC24,0x801AFE20); bounded before Toasty source and runtime; not generally free."
       },
       {
         "id": "rom.production.temple_special_check",
@@ -591,13 +591,13 @@ window.MKMSZ_MEMORY_DATA = {
         "end": 16165616,
         "range": "[0x00F6A940, 0x00F6AAF0)",
         "class": "production",
-        "owner": "Power Upgrade white-pulse palette and flash helper",
+        "owner": "Power Upgrade white-pulse palette + nonblocking flash helper",
         "scope": "Global high ROM / shared file 0x1A",
         "lifecycle": "Pickup progression feedback",
-        "evidence": "TEST LAB v02 Runtime-confirmed; exact helper-delta tests and guards",
+        "evidence": "v23 Runtime-confirmed architecture; production relocation guarded/tested",
         "production_safe": "conditional",
         "reference": "progression_presentation.py; tests/test_progression_presentation.py",
-        "notes": "Runtime mirror [0x801B2160,0x801B2310). Present when Powers as pickups is enabled."
+        "notes": "Runtime mirror [0x801B2160,0x801B2310). Helper [0x801B21E0,0x801B230C); active flag word 0x801B230C. Award is synchronous; one guarded child owns all pulse sleeps/yields. Conditional on Powers as pickups."
       },
       {
         "id": "rom.production.global_materializer_helper",
@@ -612,6 +612,20 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "yes",
         "reference": "global_materialization.py; tests/test_global_materialization.py; Memory-and-Allocation-Map.md",
         "notes": "Runtime mirror [0x801B2310,0x801B28F0). Ends 0x500 bytes before fixed Toasty audio; supersedes the rejected overlapping high-tail placement."
+      },
+      {
+        "id": "rom.production.inventory_hud_runtime",
+        "start": 16167120,
+        "end": 16168400,
+        "range": "[0x00F6B0D0, 0x00F6B5D0)",
+        "class": "production",
+        "owner": "Native randomizer Inventory HUD helpers/state",
+        "scope": "Global high ROM / shared file 0x1A",
+        "lifecycle": "Inventory render / open",
+        "evidence": "v21 Runtime-confirmed bounded presentation; production guards/tests",
+        "production_safe": "yes",
+        "reference": "inventory_hud.py; tests/test_inventory_hud.py; Native-HUD-and-UI.md",
+        "notes": "Runtime mirror [0x801B28F0,0x801B2DF0). Exactly fills the former materializer-to-Toasty gap and ends at fixed Toasty audio ROM start."
       },
       {
         "id": "rom.production.toasty_audio_sample",
@@ -640,34 +654,6 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "conditional",
         "reference": "temple_intro_audio.py; Sounds-and-Music.md",
         "notes": "Maximum reservation is 0x1A20 bytes. Only the selected donor sample is written; no MKT donor means this range is untouched by the feature."
-      },
-      {
-        "id": "rom.production.global_stage_resources",
-        "start": 16777216,
-        "end": 25165824,
-        "range": "[0x01000000, 0x01800000)",
-        "class": "production",
-        "owner": "Eight generated global-item destination resource slots",
-        "scope": "Generated 32 MiB output only",
-        "lifecycle": "Stage resource load / gameplay",
-        "evidence": "Bounded Temple >16 MiB relocation Runtime-confirmed; global-v2 implementation/CI-confirmed",
-        "production_safe": "conditional",
-        "reference": "resource_materialization.py; Global-Item-Materialization-and-Solvability.md",
-        "notes": "Eight 1 MiB slots for stages 0,1,2,3,4,5,8,9. Clean input remains 16 MiB; this owner exists only in generated 32 MiB output."
-      },
-      {
-        "id": "rom.generated.unassigned_tail",
-        "start": 25165824,
-        "end": 33554432,
-        "range": "[0x01800000, 0x02000000)",
-        "class": "stock-unknown",
-        "owner": "Unassigned appended generated-output capacity",
-        "scope": "Generated 32 MiB output only",
-        "lifecycle": "None",
-        "evidence": "No owner/use established",
-        "production_safe": "no",
-        "reference": "PR #137 output-size policy; Memory-and-Allocation-Map.md",
-        "notes": "Padding capacity only. It is not automatically reusable/free without an explicit owner and allocation decision."
       },
       {
         "id": "rom.proof.control_facing_v02_module",
@@ -710,6 +696,76 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "no",
         "reference": "Memory-and-Allocation-Map.md; historical rom.production.title_high",
         "notes": "Clean FF bytes and former reservation do not by themselves certify reusable or free space."
+      },
+      {
+        "id": "rom.production.global_stage_resources",
+        "start": 16777216,
+        "end": 25165824,
+        "range": "[0x01000000, 0x01800000)",
+        "class": "production",
+        "owner": "Eight generated global-item destination resource slots",
+        "scope": "Generated 32 MiB output only",
+        "lifecycle": "Stage resource load / gameplay",
+        "evidence": "Bounded Temple >16 MiB relocation Runtime-confirmed; global-v2 implementation/CI-confirmed",
+        "production_safe": "conditional",
+        "reference": "resource_materialization.py; Global-Item-Materialization-and-Solvability.md",
+        "notes": "Eight 1 MiB slots for stages 0,1,2,3,4,5,8,9. Clean input remains 16 MiB; this owner exists only in generated 32 MiB output."
+      },
+      {
+        "id": "rom.production.inventory_hud_portraits",
+        "start": 25165824,
+        "end": 25202112,
+        "range": "[0x01800000, 0x01808DC0)",
+        "class": "production",
+        "owner": "Inventory HUD credential portrait atlas",
+        "scope": "Generated 32 MiB output",
+        "lifecycle": "Inventory selected-item preview",
+        "evidence": "v21 Runtime-confirmed bounded presentation; build-time extraction/guards",
+        "production_safe": "yes",
+        "reference": "inventory_hud.py; Native-HUD-and-UI.md",
+        "notes": "21 clean-ROM-derived 36x48 CI8 credential portraits. No ROM-derived asset bytes are stored in source."
+      },
+      {
+        "id": "rom.production.inventory_hud_common_package",
+        "start": 25202688,
+        "end": 25247744,
+        "range": "[0x01809000, 0x01814000)",
+        "class": "production",
+        "owner": "Inventory HUD relocated common image package capacity",
+        "scope": "Generated 32 MiB output",
+        "lifecycle": "Inventory portrait carrier",
+        "evidence": "Package append/LZW round-trip guarded; v21 presentation architecture",
+        "production_safe": "yes",
+        "reference": "inventory_hud.py; tests/test_inventory_hud.py",
+        "notes": "Capacity for relocated common file 0x5D with shared sprite 0x46C. Actual compressed end is build-derived and remains below 0x01814000."
+      },
+      {
+        "id": "rom.production.inventory_hud_data",
+        "start": 25247744,
+        "end": 25252352,
+        "range": "[0x01814000, 0x01815200)",
+        "class": "production",
+        "owner": "Inventory HUD labels, titles, stage table, fonts and status strings",
+        "scope": "Generated 32 MiB output",
+        "lifecycle": "Inventory render",
+        "evidence": "v21 Runtime-confirmed bounded presentation; fixed-size guard",
+        "production_safe": "yes",
+        "reference": "inventory_hud.py; Native-HUD-and-UI.md",
+        "notes": "Fixed 0x1200-byte source block. Lazily DMA-loaded into one exact 0x1200-byte arena allocation per stage lifecycle."
+      },
+      {
+        "id": "rom.generated.unassigned_tail",
+        "start": 25252352,
+        "end": 33554432,
+        "range": "[0x01815200, 0x02000000)",
+        "class": "stock-unknown",
+        "owner": "Unassigned appended generated-output capacity",
+        "scope": "Generated 32 MiB output only",
+        "lifecycle": "None",
+        "evidence": "No owner/use established",
+        "production_safe": "no",
+        "reference": "PR #137 output-size policy; Inventory HUD allocations; Memory-and-Allocation-Map.md",
+        "notes": "Remaining appended output capacity after Inventory HUD generated assets. It is not automatically reusable/free without an explicit owner and allocation decision."
       }
     ]
   },
@@ -718,13 +774,39 @@ window.MKMSZ_MEMORY_DATA = {
     "end": 4194304,
     "bucketSize": 16384,
     "grid": 16,
-    // Display-only slices of rdram.production.controls_extension, in builder emission order.
-    // Shared helpers and alignment remain owned by the single canonical parent record.
     "controlsSlices": [
-      { "id": "attack", "title": "ATTACK", "start": 1768496, "end": 1769104, "description": "Event, attack, combo and block helpers", "notes": "Includes the shared event helper; this is an emitter-order slice, not exclusive ATTACK ownership." },
-      { "id": "specials", "title": "SPECIALS", "start": 1769104, "end": 1770256, "description": "Specials helper and alignment", "notes": "Contains the Specials helper and alignment to the following Jump helper." },
-      { "id": "jump", "title": "JUMP", "start": 1770256, "end": 1771152, "description": "Standing, moving, block-start and ledge helpers", "notes": "The block-start helper is also used by ATTACK; this is an emitter-order slice, not exclusive JUMP ownership." },
-      { "id": "run", "title": "RUN", "start": 1771152, "end": 1771648, "description": "Run helpers, state and shared event dispatch", "notes": "Includes shared capture/event dispatch after the RUN helpers; this is an emitter-order slice, not exclusive RUN ownership." }
+      {
+        "id": "attack",
+        "title": "ATTACK",
+        "start": 1768496,
+        "end": 1769104,
+        "description": "Event, attack, combo and block helpers",
+        "notes": "Includes the shared event helper; this is an emitter-order slice, not exclusive ATTACK ownership."
+      },
+      {
+        "id": "specials",
+        "title": "SPECIALS",
+        "start": 1769104,
+        "end": 1770256,
+        "description": "Specials helper and alignment",
+        "notes": "Contains the Specials helper and alignment to the following Jump helper."
+      },
+      {
+        "id": "jump",
+        "title": "JUMP",
+        "start": 1770256,
+        "end": 1771152,
+        "description": "Standing, moving, block-start and ledge helpers",
+        "notes": "The block-start helper is also used by ATTACK; this is an emitter-order slice, not exclusive JUMP ownership."
+      },
+      {
+        "id": "run",
+        "title": "RUN",
+        "start": 1771152,
+        "end": 1771648,
+        "description": "Run helpers, state and shared event dispatch",
+        "notes": "Includes shared capture/event dispatch after the RUN helpers; this is an emitter-order slice, not exclusive RUN ownership."
+      }
     ],
     "records": [
       {
@@ -1103,21 +1185,6 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "GAME SETTINGS uses KSEG1 0xA01AF81C transiently while open. Durable TURN ownership is 0x800A60E8 bit 0x0200. Not free."
       },
       {
-        "id": "rdram.production.expansion_pool",
-        "start": 1767456,
-        "end": 1782816,
-        "range": "[0x1AF820, 0x1B3420)",
-        "aliases": "KSEG0 [0x801AF820,0x801B3420); KSEG1 [0xA01AF820,0xA01B3420)",
-        "class": "production",
-        "owner": "MKMSZR 15 KiB expansion-pool reservation",
-        "scope": "Reserved MKMSZR block",
-        "lifecycle": "Global reservation; feature slices assigned at build time",
-        "evidence": "16 KiB arena-floor proof Runtime-confirmed across all eight safe stages; allocator/bounds CI-confirmed",
-        "production_safe": "yes",
-        "reference": "allocations.py; tests/test_expansion_allocations.py",
-        "notes": "Parent reservation, not free space. TURN and modern controls own mandatory low suballocations; compact Rainbow conditionally owns the first 0x58 bytes after controls; optional CI4 Toasty owns the high suballocation when present."
-      },
-      {
         "id": "rdram.production.turn_module",
         "start": 1767456,
         "end": 1768484,
@@ -1131,6 +1198,36 @@ window.MKMSZ_MEMORY_DATA = {
         "production_safe": "yes",
         "reference": "game_settings_turn.py; tests/test_game_settings_turn.py",
         "notes": "Loaded only at stage init through shared file 0x1A; never loaded from the frontend."
+      },
+      {
+        "id": "rdram.proof.toasty_v43_feature",
+        "start": 1767456,
+        "end": 1769376,
+        "range": "[0x1AF820, 0x1AFFA0)",
+        "aliases": "KSEG0 [0x801AF820,0x801AFFA0); KSEG1 [0xA01AF820,0xA01AFFA0)",
+        "class": "proof-only",
+        "owner": "Toasty v43 loaded feature slice",
+        "scope": "Disposable proof",
+        "lifecycle": "Stage init / gameplay",
+        "evidence": "v42 presentation runtime-confirmed; v43 trigger wrapper static-confirmed",
+        "production_safe": "no",
+        "reference": "Toasty-Visual-Research.md",
+        "notes": "Historical proof suballocation inside the now-production expansion pool. It does not establish reusable space."
+      },
+      {
+        "id": "rdram.production.expansion_pool",
+        "start": 1767456,
+        "end": 1782816,
+        "range": "[0x1AF820, 0x1B3420)",
+        "aliases": "KSEG0 [0x801AF820,0x801B3420); KSEG1 [0xA01AF820,0xA01B3420)",
+        "class": "production",
+        "owner": "MKMSZR 15 KiB expansion-pool reservation",
+        "scope": "Reserved MKMSZR block",
+        "lifecycle": "Global reservation; feature slices assigned at build time",
+        "evidence": "16 KiB arena-floor proof Runtime-confirmed across all eight safe stages; allocator/bounds CI-confirmed",
+        "production_safe": "yes",
+        "reference": "allocations.py; tests/test_expansion_allocations.py",
+        "notes": "Parent reservation, not free space. TURN and modern controls own mandatory low suballocations; compact Rainbow conditionally owns the first 0x58 bytes after controls; optional CI4 Toasty owns the high suballocation when present."
       },
       {
         "id": "rdram.production.controls_extension",
@@ -1214,13 +1311,13 @@ window.MKMSZ_MEMORY_DATA = {
         "range": "[0x1B2160, 0x1B2310)",
         "aliases": "KSEG0 [0x801B2160,0x801B2310); KSEG1 [0xA01B2160,0xA01B2310)",
         "class": "production",
-        "owner": "Power Upgrade white-pulse palette/helper",
+        "owner": "Power Upgrade white-pulse palette + nonblocking flash helper",
         "scope": "Expansion-pool suballocation",
         "lifecycle": "Pickup progression feedback",
-        "evidence": "TEST LAB v02 Runtime-confirmed; CI guards/bounds",
+        "evidence": "v23 Runtime-confirmed architecture; production bounds/tests",
         "production_safe": "conditional",
         "reference": "progression_presentation.py; Memory-and-Allocation-Map.md",
-        "notes": "Exactly 0x1B0 bytes; conditional on Powers as pickups."
+        "notes": "Exactly 0x1B0 bytes. Helper [0x801B21E0,0x801B230C); active flag at 0x801B230C. Award is synchronous; one guarded child owns pulse sleeps/yields."
       },
       {
         "id": "rdram.production.global_materializer_helper",
@@ -1238,19 +1335,19 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Atlas normalization of the runtime mirror stated by rom.production.global_materializer_helper; not an additional allocation."
       },
       {
-        "id": "rdram.proof.toasty_v43_feature",
-        "start": 1767456,
-        "end": 1769376,
-        "range": "[0x1AF820, 0x1AFFA0)",
-        "aliases": "KSEG0 [0x801AF820,0x801AFFA0); KSEG1 [0xA01AF820,0xA01AFFA0)",
-        "class": "proof-only",
-        "owner": "Toasty v43 loaded feature slice",
-        "scope": "Disposable proof",
-        "lifecycle": "Stage init / gameplay",
-        "evidence": "v42 presentation runtime-confirmed; v43 trigger wrapper static-confirmed",
-        "production_safe": "no",
-        "reference": "Toasty-Visual-Research.md",
-        "notes": "Historical proof suballocation inside the now-production expansion pool. It does not establish reusable space."
+        "id": "rdram.production.inventory_hud_runtime",
+        "start": 1779952,
+        "end": 1781232,
+        "range": "[0x1B28F0, 0x1B2DF0)",
+        "aliases": "KSEG0 [0x801B28F0,0x801B2DF0); KSEG1 [0xA01B28F0,0xA01B2DF0)",
+        "class": "production",
+        "owner": "Native randomizer Inventory HUD helpers/state",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Inventory render / open",
+        "evidence": "v21 Runtime-confirmed bounded presentation; production guards/tests",
+        "production_safe": "yes",
+        "reference": "inventory_hud.py; Native-HUD-and-UI.md",
+        "notes": "Runtime mirror of rom.production.inventory_hud_runtime. The lazily allocated 0x1200 HUD data block is arena-owned/dynamic and is not counted as a second fixed suballocation here."
       },
       {
         "id": "rdram.stock.pickup_context_pointer",
