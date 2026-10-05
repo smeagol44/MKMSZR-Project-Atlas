@@ -72,6 +72,10 @@ const requiredCurrentRecords = [
   ["rom", "rom.production.toasty_module"],
   ["rom", "rom.production.progression_flash"],
   ["rom", "rom.production.global_materializer_helper"],
+  ["rom", "rom.production.inventory_hud_runtime"],
+  ["rom", "rom.production.inventory_hud_portraits"],
+  ["rom", "rom.production.inventory_hud_common_package"],
+  ["rom", "rom.production.inventory_hud_data"],
   ["rom", "rom.production.toasty_audio_sample"],
   ["rom", "rom.production.temple_intro_audio_sample"],
   ["rom", "rom.production.file_5e_title"],
@@ -86,6 +90,7 @@ const requiredCurrentRecords = [
   ["rdram", "rdram.production.toasty_module"],
   ["rdram", "rdram.production.progression_flash"],
   ["rdram", "rdram.production.global_materializer_helper"],
+  ["rdram", "rdram.production.inventory_hud_runtime"],
 ];
 for (const [spaceName, id] of requiredCurrentRecords) {
   if (!memory[spaceName].records.some(record => record.id === id)) {
@@ -98,11 +103,13 @@ const controls = rdramRecord("rdram.production.controls_extension");
 const donor = rdramRecord("rdram.production.toasty_module");
 const progression = rdramRecord("rdram.production.progression_flash");
 const materializer = rdramRecord("rdram.production.global_materializer_helper");
-const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, progression.start, progression.end, materializer.start, materializer.end, 0x1B3420];
+const inventoryHud = rdramRecord("rdram.production.inventory_hud_runtime");
+const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, progression.start, progression.end, materializer.start, materializer.end, inventoryHud.start, inventoryHud.end, 0x1B3420];
 if (focusEdges[1] !== focusEdges[2] || controls.start !== 0x1AFC30 || controls.end !== 0x1B0880 ||
     donor.start !== 0x1B1000 || donor.end !== 0x1B2132 ||
     progression.start !== 0x1B2160 || progression.end !== 0x1B2310 ||
     materializer.start !== 0x1B2310 || materializer.end !== 0x1B28F0 ||
+    inventoryHud.start !== 0x1B28F0 || inventoryHud.end !== 0x1B2DF0 ||
     focusEdges.some((edge, index) => index && edge < focusEdges[index - 1]) ||
     focusEdges.at(-1) - focusEdges[0] !== 0x4000) {
   throw new Error("RDRAM focus no longer partitions the 16 KiB reservation");
@@ -133,6 +140,8 @@ if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
     romRecord("rom.production.progression_flash").end !== 0xF6AAF0 ||
     romRecord("rom.production.global_materializer_helper").start !== 0xF6AAF0 ||
     romRecord("rom.production.global_materializer_helper").end !== 0xF6B0D0 ||
+    romRecord("rom.production.inventory_hud_runtime").start !== 0xF6B0D0 ||
+    romRecord("rom.production.inventory_hud_runtime").end !== 0xF6B5D0 ||
     romRecord("rom.production.toasty_audio_sample").start !== 0xF6B5D0 ||
     romRecord("rom.production.toasty_audio_sample").end !== 0xF6BDE6 ||
     romRecord("rom.production.temple_intro_audio_sample").start !== 0xF6BDF0 ||
@@ -141,9 +150,15 @@ if (romRecord("rom.production.controls_extension").start !== 0xF68410 ||
 }
 if (romRecord("rom.production.global_stage_resources").start !== 0x1000000 ||
     romRecord("rom.production.global_stage_resources").end !== 0x1800000 ||
-    romRecord("rom.generated.unassigned_tail").start !== 0x1800000 ||
+    romRecord("rom.production.inventory_hud_portraits").start !== 0x1800000 ||
+    romRecord("rom.production.inventory_hud_portraits").end !== 0x1808DC0 ||
+    romRecord("rom.production.inventory_hud_common_package").start !== 0x1809000 ||
+    romRecord("rom.production.inventory_hud_common_package").end !== 0x1814000 ||
+    romRecord("rom.production.inventory_hud_data").start !== 0x1814000 ||
+    romRecord("rom.production.inventory_hud_data").end !== 0x1815200 ||
+    romRecord("rom.generated.unassigned_tail").start !== 0x1815200 ||
     romRecord("rom.generated.unassigned_tail").end !== 0x2000000) {
-  throw new Error("generated-output extension diverges from global-v2 allocation policy");
+  throw new Error("generated-output extension diverges from global-v2 / Inventory HUD allocation policy");
 }
 if (romRecord("rom.production.file_5e_title").start !== 0x4E3060 ||
     romRecord("rom.production.file_5e_title").end !== 0x512440 ||
@@ -162,6 +177,8 @@ for (const id of [
   "prod-shared-file1a", "prod-toasty-trigger", "prod-toasty-init", "prod-toasty-hud",
   "prod-required-powers-gate", "prod-selector-move-helper", "prod-selector-blue-palette",
   "prod-sealed-label", "prod-progression-flash-module", "prod-global-materializer-helper",
+  "prod-inventory-hud-preview", "prod-inventory-hud-row", "prod-inventory-hud-helper-span",
+  "prod-inventory-hud-data-size", "prod-inventory-hud-required-label", "prod-inventory-hud-check-count",
   "prod-temple-audio-event123", "prod-temple-audio-event124", "prod-temple-audio-event125",
   "prod-temple-audio-host-patch", "prod-temple-audio-host-subpatch", "prod-temple-audio-host-wave",
   "prod-temple-audio-host-predictor", "proof-sektor-v85",
@@ -189,10 +206,24 @@ if (!html.includes("seg.dataset.recordId=r.id") ||
 if (html.includes('.roadmap-segment:hover,.roadmap-segment.selected{outline')) {
   throw new Error("roadmap selector uses the old clipped outline geometry");
 }
-if (!html.includes("materializerTail&&{record:materializerTail") ||
+if (!html.includes("inventoryHudTail&&{record:inventoryHudTail") ||
     !html.includes("progression&&{record:progression") ||
-    !html.includes("materializer&&{record:materializer")) {
-  throw new Error("RDRAM capacity renderer is missing current progression/materializer slices");
+    !html.includes("materializer&&{record:materializer") ||
+    !html.includes("inventoryHud&&{record:inventoryHud")) {
+  throw new Error("RDRAM capacity renderer is missing current progression/materializer/Inventory HUD slices");
+}
+if (!html.includes("TURN: TOGGLE") ||
+    !html.includes("Native Inventory HUD") ||
+    !html.includes("Inventory HUD generated assets")) {
+  throw new Error("Decomp Readiness is missing current lifecycle/HUD findings");
+}
+const shuffledPower = project.featureBoard.find(feature => feature.name === "Shuffled Power Order");
+const hudFeature = project.featureBoard.find(feature => feature.name === "Randomizer HUD");
+const webFeature = project.featureBoard.find(feature => feature.name === "Browser Patcher Experience");
+if (!shuffledPower || shuffledPower.state !== "beta" || shuffledPower.scope !== "1.0" ||
+    !hudFeature || hudFeature.state !== "beta" || hudFeature.kind !== "have" ||
+    !webFeature || webFeature.state !== "production") {
+  throw new Error("Feature Board is missing current shuffled-power / HUD / web-patcher state");
 }
 
 for (const patch of patches.patches) {
