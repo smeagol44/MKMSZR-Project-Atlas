@@ -63,7 +63,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Seeded Item Shuffle",
       "state": "beta",
       "kind": "have",
-      "detail": "The shared browser/CLI path builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. The feature is complete; final integrated release validation is tracked separately by Full 1.0 Seed Validation.",
+      "detail": "The shared browser/CLI path builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. The feature is complete.",
       "source": "Project-Status.md",
       "technicalName": "85-check global seeded item shuffle",
       "track": "Core",
@@ -103,13 +103,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Required Power Upgrades",
       "state": "beta",
       "kind": "have",
-      "detail": "Build-time Fortress-gate setting. VANILLA preserves the stock 5100-XP requirement; CUSTOM accepts 0..9; SEED deterministically selects 0..9 from its own namespace and is the browser default. The solver enforces the selected shuffled-upgrade requirement when pickup mode is ON, and the native Inventory HUD shows current/required Power status. Remaining feature-specific work is final Fortress-gate runtime coverage across the selectable modes.",
+      "detail": "Build-time Fortress-gate setting. VANILLA preserves the stock 5100-XP requirement; CUSTOM accepts 0..9; SEED deterministically selects 0..9 from its own namespace and is the browser default. The solver enforces the selected shuffled-upgrade requirement when pickup mode is ON, and the native Inventory HUD shows current/required Power status.",
       "source": "XP-and-Progression.md",
       "technicalName": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.95
+      "completion": 1
     },
     {
       "group": "Progression",
@@ -212,7 +212,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Shared Web / CLI Builder",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. The browser now runs Pyodide in a Web Worker, validates/caches target and optional donor immediately on selection, accepts .z64/.v64/.n64 target byte orders, and stays responsive while patching. Current browser defaults are seeded outfit, Shuffle Power Progression ON, Enemy Randomization ON, Required powers Seed, Very Hard / 5 lives / 3 continues / Persistent HP ON. Drag/drop file zones, live build/settings summaries, seed Randomize/Copy, progress flavor deck, and a dedicated success/download state are deployed. MKT Rev. 2 remains optional for donor-backed Toasty and Temple-intro audio. The builder feature is complete; final integrated gameplay validation is owned by Full 1.0 Seed Validation.",
+      "detail": "Browser and CLI share one guarded patch core. The browser now runs Pyodide in a Web Worker, validates/caches target and optional donor immediately on selection, accepts .z64/.v64/.n64 target byte orders, and stays responsive while patching. Current browser defaults are seeded outfit, Shuffle Power Progression ON, Enemy Randomization ON, Required powers Seed, Very Hard / 5 lives / 3 continues / Persistent HP ON. Drag/drop file zones, live build/settings summaries, seed Randomize/Copy, progress flavor deck, and a dedicated success/download state are deployed. MKT Rev. 2 remains optional for donor-backed Toasty and Temple-intro audio. The builder feature is complete.",
       "source": "Web-Patcher-and-Product.md",
       "technicalName": "Browser / CLI shared patch core",
       "track": "Core",
@@ -335,13 +335,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Difficulty Setting",
       "state": "beta",
       "kind": "have",
-      "detail": "Difficulty is now a build-time run setting, defaulting to Very Hard. Lifecycle v06 Runtime-confirms the Very Hard invariant across the accepted lifecycle and final reset. Other selectable values use the same guarded path and are Implementation/CI-confirmed pending representative runtime coverage.",
+      "detail": "Difficulty is a build-time run setting from Very Easy through Very Hard, defaulting to Very Hard. The lifecycle-owned difficulty path is validated in the current product; the recent apparent difficulty issue was traced to a different selected difficulty rather than a lifecycle defect.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "DIFFICULTY: VERY EASY → VERY HARD",
       "track": "Core",
       "scope": "1.0",
       "effort": 3,
-      "completion": 0.9,
+      "completion": 1,
       "introduced": "lifecycle v06"
     },
     {
@@ -357,32 +357,6 @@ window.MKMSZ_PROJECT_DATA = {
       "effort": 4,
       "completion": 1,
       "introduced": "Temple v02"
-    },
-    {
-      "group": "1.0",
-      "name": "Full Progression Validation",
-      "state": "needed",
-      "kind": "need",
-      "detail": "All nine reward thresholds must work in the final production composition.",
-      "source": "1.0-Requirements-and-Roadmap.md",
-      "technicalName": "Full nine-tier progression validation",
-      "track": "Core",
-      "scope": "1.0",
-      "effort": 4,
-      "completion": 0.35
-    },
-    {
-      "group": "1.0",
-      "name": "Full 1.0 Seed Validation",
-      "state": "needed",
-      "kind": "need",
-      "detail": "Single owner for the final representative everything-together 1.0 runtime pass. It validates the integrated global items/solver, native Inventory HUD, lifecycle, Temple special check, configurable run settings, progression systems, and their composition without holding already-complete feature cards below 100%.",
-      "source": "1.0-Requirements-and-Roadmap.md",
-      "technicalName": "Representative full global seed",
-      "track": "Core",
-      "scope": "1.0",
-      "effort": 5,
-      "completion": 0.08
     },
     {
       "group": "Research",
@@ -807,7 +781,7 @@ window.MKMSZ_PROJECT_DATA = {
     }
   ],
   "progressModel": {
-    "note": "Feature-card completion measures the feature itself: implementation plus its feature-specific validation. Final everything-together runtime coverage is owned by Full 1.0 Seed Validation and does not hold otherwise complete feature cards below 100%. Optional and experimental tracked work remains beyond the 1.0 marker.",
+    "note": "Feature-card completion measures the feature itself: implementation plus feature-specific validation. End-to-end release testing is tracked as release process/evidence rather than as a feature card. Optional and experimental tracked work remains beyond the 1.0 marker.",
     "releaseLabel": "1.0",
     "extraLabel": "Tracked extras"
   }
