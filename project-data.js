@@ -1,6 +1,6 @@
 // Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-10-05",
+  "snapshot": "2026-10-06",
   "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
   "auditedThrough": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
   "featureBoard": [
@@ -56,20 +56,20 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 6,
-      "completion": 0.98
+      "completion": 1
     },
     {
       "group": "Items",
       "name": "Seeded Item Shuffle",
       "state": "beta",
       "kind": "have",
-      "detail": "The shared browser/CLI path now builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. Full-seed runtime coverage remains bounded rather than exhaustive.",
+      "detail": "The shared browser/CLI path builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. The feature is complete; final integrated release validation is tracked separately by Full 1.0 Seed Validation.",
       "source": "Project-Status.md",
       "technicalName": "85-check global seeded item shuffle",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.95
+      "completion": 1
     },
     {
       "group": "Inventory",
@@ -82,7 +82,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.95
+      "completion": 1
     },
     {
       "group": "Progression",
@@ -95,7 +95,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.98,
+      "completion": 1,
       "introduced": "v23 nonblocking Power feedback"
     },
     {
@@ -103,7 +103,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Required Power Upgrades",
       "state": "beta",
       "kind": "have",
-      "detail": "Build-time Fortress-gate setting. VANILLA preserves the stock 5100-XP requirement; CUSTOM accepts 0..9; SEED deterministically selects 0..9 from its own namespace and is the browser default. The native Inventory HUD now shows current/required Power status; final representative full-seed/final-fight runtime coverage remains pending.",
+      "detail": "Build-time Fortress-gate setting. VANILLA preserves the stock 5100-XP requirement; CUSTOM accepts 0..9; SEED deterministically selects 0..9 from its own namespace and is the browser default. The solver enforces the selected shuffled-upgrade requirement when pickup mode is ON, and the native Inventory HUD shows current/required Power status. Remaining feature-specific work is final Fortress-gate runtime coverage across the selectable modes.",
       "source": "XP-and-Progression.md",
       "technicalName": "REQUIRED POWER UPGRADES: VANILLA / CUSTOM / SEED",
       "track": "Core",
@@ -116,13 +116,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Shuffled Power Order",
       "state": "beta",
       "kind": "have",
-      "detail": "The shared browser/CLI product exposes deterministic nine-slot Power order shuffling and the browser defaults it ON. Gameplay gates and native Power Ups icon/help presentation stay synchronized, with only the Ice Shatter freezing prerequisite; Slide and Super Slide may appear in either order. The bounded v04 mechanism is Runtime-confirmed; final representative all-tier production validation remains pending.",
+      "detail": "The shared browser/CLI product exposes deterministic nine-slot Power order shuffling and the browser defaults it ON. Gameplay gates and native Power Ups icon/help presentation stay synchronized, with only the Ice Shatter freezing prerequisite; Slide and Super Slide may appear in either order. The generalized nine-slot mechanism and product integration are complete and Runtime-confirmed on the accepted bounded route.",
       "source": "XP-and-Progression.md",
       "technicalName": "SHUFFLE POWER PROGRESSION: OFF / ON",
       "track": "Core",
       "scope": "1.0",
       "effort": 3,
-      "completion": 0.93,
+      "completion": 1,
       "introduced": "power-order v04 + shared product integration"
     },
     {
@@ -130,13 +130,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "In-Game Settings",
       "state": "beta",
       "kind": "have",
-      "detail": "The shared browser/CLI builder now includes the Runtime-confirmed v02 GAME SETTINGS composition: TURN, ATTACK, SPECIALS, JUMP, RUN, EXIT. ATTACK and SPECIALS offer CLASSIC / MODERN; JUMP offers DPAD / BUTTON when both are MODERN; RUN offers HOLD / AUTO. Gameplay claims remain bounded to the user-tested route.",
+      "detail": "The shared browser/CLI builder includes the Runtime-confirmed v02 GAME SETTINGS composition: TURN, ATTACK, SPECIALS, JUMP, RUN, EXIT. ATTACK and SPECIALS offer CLASSIC / MODERN; JUMP offers DPAD / BUTTON when both are MODERN; RUN offers HOLD / AUTO. The menu/frontend feature is complete; the separate Earth-boss TURN edge belongs to Turn Lock.",
       "source": "Project-Status.md",
       "technicalName": "Native GAME SETTINGS menu",
       "track": "QoL",
       "scope": "extra",
       "effort": 2,
-      "completion": 0.85,
+      "completion": 1,
       "introduced": "controls/CI4 v02 composition"
     },
     {
@@ -184,13 +184,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Randomizer Title Screen",
       "state": "beta",
       "kind": "have",
-      "detail": "The accepted vector/typeset title and configurable <NAME> EDITION were visually confirmed through the production webapp. The native CI8 package uses a 16-color visual palette; every non-vanilla outfit option now also tints the title palette, while rainbow uses a fixed five-hue title treatment. Exact in-game acceptance of the color-linked variants remains Pending.",
+      "detail": "The accepted vector/typeset title and configurable <NAME> EDITION were visually confirmed through the production webapp. The native CI8 package uses a 16-color visual palette; every non-vanilla outfit option also tints the title palette, while rainbow uses a fixed five-hue title treatment. Title implementation is complete; broader cosmetic spot-checks do not hold this feature below 100%.",
       "source": "Presentation-and-Branding.md",
       "technicalName": "Randomizer title branding",
       "track": "4Fun",
       "scope": "extra",
       "effort": 2,
-      "completion": 0.8,
+      "completion": 1,
       "introduced": "2026-09-29 accepted design"
     },
     {
@@ -212,13 +212,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Shared Web / CLI Builder",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. The browser now runs Pyodide in a Web Worker, validates/caches target and optional donor immediately on selection, accepts .z64/.v64/.n64 target byte orders, and stays responsive while patching. Current browser defaults are seeded outfit, Shuffle Power Progression ON, Enemy Randomization ON, Required powers Seed, Very Hard / 5 lives / 3 continues / Persistent HP ON. Drag/drop file zones, live build/settings summaries, seed Randomize/Copy, progress flavor deck, and a dedicated success/download state are deployed. MKT Rev. 2 remains optional for donor-backed Toasty and Temple-intro audio.",
+      "detail": "Browser and CLI share one guarded patch core. The browser now runs Pyodide in a Web Worker, validates/caches target and optional donor immediately on selection, accepts .z64/.v64/.n64 target byte orders, and stays responsive while patching. Current browser defaults are seeded outfit, Shuffle Power Progression ON, Enemy Randomization ON, Required powers Seed, Very Hard / 5 lives / 3 continues / Persistent HP ON. Drag/drop file zones, live build/settings summaries, seed Randomize/Copy, progress flavor deck, and a dedicated success/download state are deployed. MKT Rev. 2 remains optional for donor-backed Toasty and Temple-intro audio. The builder feature is complete; final integrated gameplay validation is owned by Full 1.0 Seed Validation.",
       "source": "Web-Patcher-and-Product.md",
       "technicalName": "Browser / CLI shared patch core",
       "track": "Core",
       "scope": "1.0",
       "effort": 5,
-      "completion": 0.97,
+      "completion": 1,
       "introduced": "PRs #142, #144, #145"
     },
     {
@@ -240,13 +240,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Cross-Stage Item Placement",
       "state": "beta",
       "kind": "have",
-      "detail": "Global materialization is integrated into the shared browser/CLI pipeline. The destination-aware dispatcher, immediate re-mask path, Temple special-check award wrapper, and Prison credential reconstruction now live at 0x801B2310..0x801B28EF / ROM 0xF6AAF0..0xF6B0CF, after progression flash and before Toasty audio. Wrapper semantics are Runtime-confirmed bounded; the final relocated composition is CI-confirmed pending representative runtime.",
+      "detail": "Global materialization is integrated into the shared browser/CLI pipeline. The destination-aware dispatcher, immediate re-mask path, Temple special-check award wrapper, and Prison credential reconstruction live at 0x801B2310..0x801B28EF / ROM 0xF6AAF0..0xF6B0CF, after progression flash and before Toasty audio. Wrapper semantics are Runtime-confirmed bounded and the corrected relocated composition is integrated; final whole-product validation is tracked separately.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Global cross-stage item materialization",
       "track": "Core",
       "scope": "1.0",
       "effort": 10,
-      "completion": 0.85,
+      "completion": 1,
       "introduced": "materializer v03 integration proof"
     },
     {
@@ -260,7 +260,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 8,
-      "completion": 0.9
+      "completion": 1
     },
     {
       "group": "1.0",
@@ -273,46 +273,33 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.95
+      "completion": 1
     },
     {
       "group": "1.0",
       "name": "Seed Solvability",
       "state": "beta",
       "kind": "have",
-      "detail": "Global-v2 fixed-point validation checks the selected completion policy before emission. ALL-85 requires every check reachable; GAME-BEATABLE requires all 21 credentials plus the configured shuffled Power Upgrade count when pickup mode is ON. Broader representative full-run runtime validation remains pending.",
+      "detail": "Global-v2 fixed-point validation checks the selected completion policy before emission. ALL-85 requires every check reachable; GAME-BEATABLE requires all 21 credentials plus the configured shuffled Power Upgrade count when pickup mode is ON. The solver feature is complete; final end-to-end release validation is tracked separately.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Whole-run solvability solver",
       "track": "Core",
       "scope": "1.0",
       "effort": 10,
-      "completion": 0.85
-    },
-    {
-      "group": "1.0",
-      "name": "Power Requirement Logic",
-      "state": "beta",
-      "kind": "have",
-      "detail": "Vanilla / Custom / Seed gate modes are implemented and the global solver enforces the selected shuffled-upgrade requirement in pickup mode. OFF mode correctly has zero shuffled Power Upgrade items while retaining the independent Fortress XP gate. The native Inventory HUD now exposes the current/required Power state; final representative production validation remains pending.",
-      "source": "1.0-Requirements-and-Roadmap.md",
-      "technicalName": "Mode-aware required-power solver / HUD integration",
-      "track": "Core",
-      "scope": "1.0",
-      "effort": 5,
-      "completion": 0.95
+      "completion": 1
     },
     {
       "group": "1.0",
       "name": "Randomizer HUD",
       "state": "beta",
       "kind": "have",
-      "detail": "Implementation complete / Production beta. v21 Runtime-confirms the completed native Inventory presentation on the bounded TEST LAB route: colored STG# credential labels, real paper titles, selected 36×48 CI8 portraits, eight-stage STG CHECKS KEYS, REQUIRED POWERS X/Y, right-aligned XX/85, and ordinary-row font/palette forwarding alongside BOX n OF 4. v23 separately Runtime-confirms nonblocking temporary Power feedback. Shared browser/CLI integration is guarded; final representative full-seed production-composition validation remains the acceptance gate.",
+      "detail": "Implementation complete. v21 Runtime-confirms the native Inventory presentation: colored STG# credential labels, real paper titles, selected 36×48 CI8 portraits, eight-stage STG CHECKS KEYS, required-Power status, right-aligned total checks, ordinary-row font/palette forwarding, and BOX n OF 4. v23 Runtime-confirms nonblocking Power feedback. The current source also contains the corrected WATER1/WATER2 portrait donor order.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Full native randomizer HUD",
       "track": "Core",
       "scope": "1.0",
       "effort": 8,
-      "completion": 0.93,
+      "completion": 1,
       "introduced": "Inventory HUD v21 + Power feedback v23"
     },
     {
@@ -320,13 +307,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Run Health & Resources",
       "state": "beta",
       "kind": "have",
-      "detail": "Lifecycle v06 is the Runtime-confirmed reference baseline: Very Hard, 9 total lives, 5 continues, Persistent HP ON. Damaged HP persists only across living departure/re-entry; ordinary death/Continue construct full-health replacements and retain stock decrements. The shared product path parameterizes the same guarded lifecycle for lives 1..10, continues 0..5, and Persistent HP ON/OFF; non-reference combinations are Implementation/CI-confirmed pending representative runtime sampling.",
+      "detail": "Lifecycle v06 is the Runtime-confirmed reference baseline: Very Hard, 9 total lives, 5 continues, Persistent HP ON. Damaged HP persists only across living departure/re-entry; ordinary death/Continue construct full-health replacements and retain stock decrements. The shared path parameterizes lives 1..10, continues 0..5, and Persistent HP ON/OFF; broader combinatorial sampling belongs to integrated release validation rather than feature completion.",
       "source": "Persistence-Inventory-and-Lifecycle.md",
       "technicalName": "HP / LIVES / CONTINUES + Persistent HP",
       "track": "Core",
       "scope": "1.0",
       "effort": 7,
-      "completion": 0.95,
+      "completion": 1,
       "introduced": "lifecycle v06"
     },
     {
@@ -340,7 +327,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.95,
+      "completion": 1,
       "introduced": "lifecycle v06"
     },
     {
@@ -362,13 +349,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Temple Special Check",
       "state": "beta",
       "kind": "have",
-      "detail": "The 1.0 policy is resolved: logical Map item 0x0D is excluded from the reward pool, while the scripted Temple location remains the 85th global check. Runtime-confirmed v02 preserves elevator/rope progression and persistence; global-v2 now assigns arbitrary logical rewards through the established Temple award wrapper without moving the location-owned progression path.",
+      "detail": "The 1.0 policy is resolved: logical Map item 0x0D is excluded from the reward pool, while the scripted Temple location remains the 85th global check. Runtime-confirmed v02 preserves elevator/rope progression and persistence; global-v2 now assigns arbitrary logical rewards through the established Temple award wrapper without moving the location-owned progression path. The Temple-specific acceptance criterion is satisfied; final global-run integration is tracked separately.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Temple scripted special check",
       "track": "Core",
       "scope": "1.0",
       "effort": 4,
-      "completion": 0.9,
+      "completion": 1,
       "introduced": "Temple v02"
     },
     {
@@ -389,7 +376,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Full 1.0 Seed Validation",
       "state": "needed",
       "kind": "need",
-      "detail": "Final release gate after the now-integrated global items/solver, native Inventory HUD, lifecycle, Temple special check, configurable run settings, and progression systems are exercised together on a representative production seed.",
+      "detail": "Single owner for the final representative everything-together 1.0 runtime pass. It validates the integrated global items/solver, native Inventory HUD, lifecycle, Temple special check, configurable run settings, progression systems, and their composition without holding already-complete feature cards below 100%.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Representative full global seed",
       "track": "Core",
@@ -408,7 +395,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "Core",
       "scope": "extra",
       "effort": 4,
-      "completion": 0.95,
+      "completion": 1,
       "introduced": "bounded materializer proof line"
     },
     {
@@ -472,13 +459,13 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Seeded Scorpion Intro Clips",
       "state": "beta",
       "kind": "have",
-      "detail": "Merged optional MKT-backed Temple intro randomization now leaves stock descriptors 0x41/0x42/0x43 unchanged and replaces only Temple-owned SSEQ events 123/124 or 125 through isolated host 486→329→319. Audio-1/Friendship is Runtime-confirmed with Bridge/Prison robot audio remaining vanilla, and Audio-2/shao-laugh is Runtime-confirmed on the bounded TEMPLE-0003 proof. The full 11-clip pool is not individually runtime-exhausted.",
+      "detail": "Merged optional MKT-backed Temple intro randomization leaves stock descriptors 0x41/0x42/0x43 unchanged and replaces only Temple-owned SSEQ events 123/124 or 125 through isolated host 486→329→319. Audio-1/Friendship and Audio-2/shao-laugh provide Runtime-confirmed representative routes with unrelated Bridge/Prison audio preserved. Exhaustive clip-by-clip testing is not required for feature completion.",
       "source": "Sounds-and-Music.md",
       "technicalName": "Seeded Temple intro audio",
       "track": "4Fun",
       "scope": "extra",
       "effort": 2,
-      "completion": 0.95,
+      "completion": 1,
       "introduced": "isolated Temple audio PR #138"
     },
     {
@@ -505,7 +492,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "QoL",
       "scope": "extra",
       "effort": 2,
-      "completion": 0.9,
+      "completion": 1,
       "introduced": "controls/CI4 v02 composition"
     },
     {
@@ -519,7 +506,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "QoL",
       "scope": "extra",
       "effort": 2,
-      "completion": 0.9,
+      "completion": 1,
       "introduced": "controls/CI4 v02 composition"
     },
     {
@@ -547,7 +534,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "QoL",
       "scope": "extra",
       "effort": 1,
-      "completion": 0.9,
+      "completion": 1,
       "introduced": "controls/CI4 v02 composition"
     },
     {
@@ -561,7 +548,7 @@ window.MKMSZ_PROJECT_DATA = {
       "track": "QoL",
       "scope": "extra",
       "effort": 1,
-      "completion": 0.9,
+      "completion": 1,
       "introduced": "controls/CI4 v02 composition"
     }
   ],
@@ -820,7 +807,7 @@ window.MKMSZ_PROJECT_DATA = {
     }
   ],
   "progressModel": {
-    "note": "Atlas planning estimate only. 1.0 reaches 100% when effort-weighted release-scope work is complete; optional and experimental tracked work is shown beyond the 100% marker and does not increase 1.0 completion.",
+    "note": "Feature-card completion measures the feature itself: implementation plus its feature-specific validation. Final everything-together runtime coverage is owned by Full 1.0 Seed Validation and does not hold otherwise complete feature cards below 100%. Optional and experimental tracked work remains beyond the 1.0 marker.",
     "releaseLabel": "1.0",
     "extraLabel": "Tracked extras"
   }
