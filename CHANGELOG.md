@@ -1,3 +1,12 @@
+## 2026-10-06 — Feature completion accounting cleanup
+
+- Changed Atlas completion accounting so individual feature cards measure the feature itself rather than reserving percentage for the final integrated full-run gate.
+- Promoted completed features to 100%: Persistent Pickups, Seeded Item Shuffle, Four Inventory Boxes, Powers as Pickups, Shuffled Power Order, In-Game Settings, Randomizer Title Screen, Shared Web / CLI Builder, Cross-Stage Item Placement, Global Item Shuffle, Deterministic Retry Logic, Seed Solvability, Randomizer HUD, Run Health & Resources, New Run Reset, Temple Special Check, Cross-Stage Item Research, Seeded Scorpion Intro Clips, Modern Attacks, Modern Specials, Jump Button, and Auto Run.
+- Removed the duplicate **Power Requirement Logic** feature card; its user-facing responsibility remains under **Required Power Upgrades**, with solver behavior represented by **Seed Solvability** and presentation by **Randomizer HUD**.
+- Kept **Required Power Upgrades**, **Turn Lock**, and **Difficulty Setting** below 100% because they still have feature-specific validation gaps.
+- Made **Full 1.0 Seed Validation** the single owner of the final representative everything-together runtime pass.
+- Refreshed relevant card wording so completed cards no longer claim final full-seed validation as their own remaining work.
+
 ## 2026-10-05 — Native Inventory HUD / browser-product refresh
 
 - Audited the latest MKMSZR merge window through source commit `52139f021212c94bb483cc6ec1a6cecda5c94fa1`, covering the post-global-v2 browser work and the accepted native Inventory HUD / nonblocking Power-feedback closure.
