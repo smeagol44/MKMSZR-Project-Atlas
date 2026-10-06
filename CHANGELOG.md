@@ -1,3 +1,12 @@
+## 2026-10-06 — Remove validation-only feature cards
+
+- Removed **Full Progression Validation** from the Feature Board because it represented end-to-end/runtime coverage rather than a product feature.
+- Removed **Full 1.0 Seed Validation** for the same reason; final E2E release testing remains release evidence/process, not a feature card.
+- Promoted **Difficulty Setting** to 100% after the recent apparent difficulty issue was confirmed to be a different selected setting rather than a product defect.
+- Promoted **Required Power Upgrades** to 100%; its remaining full-run coverage no longer counts against feature completion.
+- Updated completion-model wording and removed stale references to the deleted full-seed card.
+- **Turn Lock** remains below 100% pending the Earth boss type `0x19` runtime check.
+
 ## 2026-10-06 — Feature completion accounting cleanup
 
 - Changed Atlas completion accounting so individual feature cards measure the feature itself rather than reserving percentage for the final integrated full-run gate.
