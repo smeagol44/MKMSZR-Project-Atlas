@@ -90,3 +90,18 @@
 @media(max-width:1000px){.compat-controls{grid-template-columns:1fr 1fr}.compat-card-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:730px){.compat-kpis{grid-template-columns:1fr 1fr}.compat-path{grid-template-columns:1fr}.compat-path-arrow{transform:rotate(90deg)}.compat-card-grid{grid-template-columns:1fr}.compat-controls{grid-template-columns:1fr 1fr}.compat-controls label:nth-child(3){grid-column:1/-1}}
 @media(max-width:490px){.compat-kpis,.compat-controls{grid-template-columns:1fr}.compat-controls label:nth-child(3){grid-column:auto}.compat-section-head{align-items:flex-start;flex-direction:column}.compat-result-head{align-items:flex-start;flex-direction:column}}
+
+/* Versioned, bounded Sektor milestone rail. */
+.compat-proof-panel{padding:18px;margin:12px 0 15px;background:linear-gradient(155deg,#101c26,#0d151d);border:1px solid #294453;border-radius:15px}
+.compat-proof-panel .ey{margin:0 0 5px;font-size:9px;color:#8da8b4}
+.compat-proof-panel .compat-section-head h3{font-size:16px;color:#f0f7fa;letter-spacing:-.02em}
+.compat-milestones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:12px}
+.compat-milestone{min-width:0;border:1px solid #31505a;border-top:2px solid #71c0bf;background:#101d26;border-radius:10px;padding:13px;display:flex;flex-direction:column;align-items:start}
+.compat-milestone-head{width:100%;display:flex;justify-content:space-between;gap:6px;align-items:center}
+.compat-milestone-head strong{font-size:16px;color:#9fefea;font-family:ui-monospace,Consolas,monospace}
+.compat-milestone-head span{color:#85a6b4;font-size:9px;text-align:right}
+.compat-milestone h4{font-size:13px;line-height:1.35;margin:13px 0 5px;color:#e5f2f6}
+.compat-milestone p{font-size:11px;line-height:1.6;color:#a8bac5;margin:0 0 13px}
+.compat-milestone .compat-source{margin-top:auto}
+@media(max-width:900px){.compat-milestones{grid-template-columns:1fr 1fr}}
+@media(max-width:530px){.compat-milestones{grid-template-columns:1fr}}

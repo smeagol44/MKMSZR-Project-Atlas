@@ -1,4 +1,4 @@
-// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
+// Curated public-facing snapshot from current canonical MKMSZR owners.
 window.MKMSZ_PROJECT_DATA = {
   "snapshot": "2026-10-10",
   "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
@@ -786,5 +786,35 @@ window.MKMSZ_PROJECT_DATA = {
     "extraLabel": "Tracked extras"
   },
   "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
-  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature.",
+  "compatibilityMilestones": [
+    {
+      "version": "v62",
+      "title": "Common combo graph",
+      "evidence": "Runtime-confirmed bounded",
+      "detail": "Sektor's MKT combo strings work on the tested host route after translating game-local reaction selectors to MKMSZ-native meanings.",
+      "source": "MKT-Adapter-Primitives.md"
+    },
+    {
+      "version": "v75",
+      "title": "Stable missile flight",
+      "evidence": "Runtime-confirmed bounded",
+      "detail": "Facing-aware launch, two-substep cadence folding and tuned velocity retain a stable straight-missile baseline on the tested route.",
+      "source": "Sektor-Takeover-Proof-History.md"
+    },
+    {
+      "version": "v87",
+      "title": "Faithful rocket visuals",
+      "evidence": "Runtime-confirmed bounded",
+      "detail": "Native-compatible rocket image and dynamic palette work as a donor-faithful visual proof; this is not a generic resource pipeline.",
+      "source": "Sektor-Takeover-Proof-History.md"
+    },
+    {
+      "version": "v89",
+      "title": "Correct first visible frame",
+      "evidence": "Runtime-confirmed bounded",
+      "detail": "Synchronous texture-slot preparation before actor-list insertion fixes the stale Ice-derived first frame in the bounded straight-missile proof.",
+      "source": "MKT-Adapter-Primitives.md"
+    }
+  ]
 };

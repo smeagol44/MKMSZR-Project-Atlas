@@ -10,6 +10,7 @@ const search=root.querySelector("#compat-q");
 const reset=root.querySelector("#compat-reset");
 const areaChips=root.querySelector("#compat-areas");
 const stats=root.querySelector("#compat-stats");
+const milestones=root.querySelector("#compat-milestones");
 const scale=root.querySelector("#compat-status-scale");
 const count=root.querySelector("#compat-count");
 const groups=root.querySelector("#compat-groups");
@@ -27,6 +28,20 @@ const statusList=[
  ["rejected","Rejected","Unsupported direct path"]
 ];
 const labels=Object.fromEntries(statusList.map(x=>[x[0],x[1]]));
+for(const item of (window.MKMSZ_PROJECT_DATA.compatibilityMilestones||[])){
+ const tile=document.createElement("article");tile.className="compat-milestone";
+ const top=document.createElement("div");top.className="compat-milestone-head";
+ const version=document.createElement("strong");version.textContent=item.version;
+ const ev=document.createElement("span");ev.textContent=item.evidence;
+ top.append(version,ev);
+ const title=document.createElement("h4");title.textContent=item.title;
+ const description=document.createElement("p");description.textContent=item.detail;
+ const anchor=document.createElement("a");anchor.className="compat-source";
+ anchor.textContent="See proof owner ↗";
+ anchor.href=wiki+encodeURIComponent(item.source);anchor.target="_blank";anchor.rel="noopener noreferrer";
+ tile.append(top,title,description,anchor);milestones.append(tile);
+}
+
 const areas=[...new Set(data.map(x=>x.area))];
 let mode="cards";
 function node(tag,cls,text){
