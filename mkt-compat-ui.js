@@ -32,7 +32,7 @@ for(const item of (window.MKMSZ_PROJECT_DATA.compatibilityMilestones||[])){
  const tile=document.createElement("article");tile.className="compat-milestone";
  const top=document.createElement("div");top.className="compat-milestone-head";
  const version=document.createElement("strong");version.textContent=item.version;
- const ev=document.createElement("span");ev.textContent=item.evidence;
+ const ev=document.createElement("span");ev.textContent="PROOF · "+item.version;
  top.append(version,ev);
  const title=document.createElement("h4");title.textContent=item.title;
  const description=document.createElement("p");description.textContent=item.detail;
@@ -128,17 +128,14 @@ function flow(row){
  wrap.append(donor,arrow,target);
  return wrap;
 }
-function details(row){
- const box=node("details","compat-expand");
- const summary=node("summary","","Evidence & implementation boundary");
- const body=node("div","compat-expand-body");
- body.append(node("p","",row.detail),sourceLink(row));
- box.append(summary,body);
- return box;
+function insight(row){
+ const wrap=node("div","compat-insight");
+ wrap.append(node("p","compat-insight-copy",row.detail),sourceLink(row));
+ return wrap;
 }
 function card(row){
  const article=node("article","compat-capability status-"+row.status);
- article.append(makeBadgeRow(row),node("h3","",row.capability),flow(row),details(row));
+ article.append(makeBadgeRow(row),node("h3","",row.capability),flow(row),insight(row));
  return article;
 }
 function tableCell(row,key){
@@ -187,8 +184,10 @@ function renderCards(items){
    const group=node("section","compat-area-group");
    const header=node("div","compat-area-head");
    header.append(node("h3","",area),node("span","",items.filter(x=>x.area===area).length+" capabilities"));
+   const rows=items.filter(x=>x.area===area);
    const list=node("div","compat-card-grid");
-   for(const row of items.filter(x=>x.area===area))list.append(card(row));
+   list.dataset.count=String(rows.length);
+   for(const row of rows)list.append(card(row));
    group.append(header,list);groups.append(group);
  }
 }
@@ -198,7 +197,7 @@ function render(){
   (stat==="all"||x.status===stat) &&
   (!term||[x.area,x.capability,x.donor,x.target,x.status,x.detail].join(" ").toLowerCase().includes(term)));
  const result=String(filtered.length)+" of "+data.length+" capabilities";
- count.textContent=result+(filtered.length?" · open a card's evidence for technical context":" · no matches; try Reset");
+ count.textContent=result+(filtered.length?" · Browse the translation cards below":" · No matches — try Reset");
  for(const chip of areaChips.querySelectorAll("button")){
   const active=chip.dataset.area===area;
   chip.classList.toggle("is-active",active);

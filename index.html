@@ -61,7 +61,7 @@
 .research-controls select,.research-controls input,.research-controls button,.research-more{height:40px;border-radius:9px;border:1px solid #354453;background:#0c141d;color:#e6edf5;padding:0 12px;min-width:0}
 .research-controls button,.research-more{cursor:pointer}.research-more{display:block;margin:10px auto}.research-more[hidden]{display:none}
 @media(max-width:650px){.research-controls,.research-findings,.research-records{grid-template-columns:1fr}}
-</style><link rel="stylesheet" href="mkt-compat.css?v=20261010" /></head><body><main class="wrap">
+</style><link rel="stylesheet" href="mkt-compat.css?v=20261010b" /></head><body><main class="wrap">
 <header class="hero"><div><p class="ey">Mortal Kombat Mythologies: Sub-Zero · N64 USA Rev. 0</p><h1>MKMSZR Project Atlas</h1><p class="lede">Interactive project status, stage, compatibility, decompilation, and memory maps for MKMSZR.</p></div><div class="snap"><span>Research update</span><strong>2026-10-10</strong></div></header>
 <nav class="tabs" aria-label="Research views"><button class="tab active" data-view="features">Feature Board</button><button class="tab" data-view="stages">Stage Atlas</button><button class="tab" data-view="compat">MKT → MKMSZ</button><button class="tab" data-view="readiness">Decomp Readiness</button><button class="tab" data-view="research">Research &amp; Ghidra</button><button class="tab" data-view="rom">ROM Space</button><button class="tab" data-view="rdram">RDRAM Space</button></nav>
 <section id="view-readiness" class="view">
@@ -94,9 +94,9 @@
 <section class="compat-hero">
 <div>
 <p class="ey">Source-level adapter · MK Trilogy N64 → Mythologies N64</p>
-<h2>Two engines. One semantic bridge.</h2>
-<p class="compat-hero-intro">The accepted porting strategy preserves <strong>donor intent, timing, animation and combat meaning</strong> while translating only the engine-facing primitives into MKMSZ-native calls and assets. The compatibility map below separates target primitives, bounded runtime proofs, missing translators and rejected direct paths.</p>
-<div class="compat-hero-chips"><span class="compat-hero-chip">28 documented capabilities</span><span class="compat-hero-chip">Sektor proof-only</span><span class="compat-hero-chip">Direct binary reuse rejected</span></div>
+<h2>Two engines. <em>One fighting chance.</em></h2>
+<p class="compat-hero-intro">Take the moves, attitude and animations of <strong>Mortal Kombat Trilogy</strong>. Rebuild what matters inside <strong>Mythologies</strong>. Every fighter action crosses a different engine — and every bridge below is backed by actual research.</p>
+<div class="compat-hero-chips"><span class="compat-hero-chip">28 translation contracts</span><span class="compat-hero-chip">Sektor: experimental fighter</span><span class="compat-hero-chip">No binary shortcuts</span></div>
 </div>
 <div class="compat-path" aria-label="MKT donor intent is converted through a semantic adapter into MKMSZ host primitives">
 <div class="compat-path-node donor"><small>01 / DONOR</small><strong>Mortal Kombat Trilogy</strong><span>N64 USA Rev. 2 · move phases, fighter art, objects and animation grammar</span></div>
@@ -128,7 +128,7 @@
 </div>
 <div id="compat-groups"></div>
 <div id="compat-table" class="compat-table-shell" hidden></div>
-<p class="compat-boundary"><strong>Evidence boundary.</strong> “Runtime-proven” means a specific bounded proof, not a generic adapter or shipping Sektor feature. “Covered” means a target-side primitive is known; it does not imply a donor move is fully integrated. The canonical <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/MKT-to-MKMSZ-Compatibility-Layer.md" target="_blank" rel="noopener noreferrer">compatibility owner</a>, <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/MKT-Adapter-Primitives.md" target="_blank" rel="noopener noreferrer">adapter owner</a> and <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/Sektor-Takeover-Proof-History.md" target="_blank" rel="noopener noreferrer">proof history</a> remain authoritative.</p>
+<p class="compat-boundary"><strong>THE RULES OF THE ARENA.</strong> Runtime-proven means a <em>specific tested route</em>, not a completed fighter. Covered means a native primitive is understood, not that every move works. The canonical <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/MKT-to-MKMSZ-Compatibility-Layer.md" target="_blank" rel="noopener noreferrer">compatibility owner</a>, <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/MKT-Adapter-Primitives.md" target="_blank" rel="noopener noreferrer">adapter owner</a> and <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/Sektor-Takeover-Proof-History.md" target="_blank" rel="noopener noreferrer">proof history</a> remain authoritative.</p>
 </section>
 
 <section id="view-research" class="view">
@@ -587,4 +587,4 @@ const projectSource=document.createElement("p");projectSource.className="mem-sou
 const stageSource=document.createElement("p");stageSource.className="mem-source";stageSource.innerHTML='Stage-catalog targeted refresh: <code>'+stageData.sourceCommit.slice(0,12)+'</code> · eight canonical Stage-Catalog-* owners.';document.querySelector("#view-stages .card").appendChild(stageSource);
 
 
-</script><script src="research-ui.js?v=research-20261010"></script><script src="mkt-compat-ui.js?v=20261010"></script></body></html>
+</script><script src="research-ui.js?v=research-20261010"></script><script src="mkt-compat-ui.js?v=20261010b"></script></body></html>

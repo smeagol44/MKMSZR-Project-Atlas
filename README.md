@@ -53,11 +53,11 @@ Empty logical selectors are never presented as free storage.
 
 ### MKT → MKMSZ Compatibility
 
-The October 10 redesign replaces the wide, hard-to-scan legacy matrix with a **responsive semantic-adapter cockpit**:
+The October 10 redesign replaces the wide, hard-to-scan legacy matrix with a **responsive semantic-adapter cockpit**, followed by a typography/density pass informed by maintainer screenshots:
 
 - A donor → translation → host diagram that explicitly rejects binary relocation.
 - Status distribution and counts (not a completion percentage), plus interactive area/status chips and search.
-- Grouped, keyboard-accessible capability cards with inline evidence and canonical owner links, and an optional full comparison table.
+- Dense 2/3-column, category-count-aware capability cards with larger type, visible research notes, canonical owner links, and no stranded last-row card. An optional full comparison table remains available.
 - Four independently provenance-linked, **bounded proof** milestones: v62 combo graph, v75 straight-missile flight, v87 rocket art/palette, v89 first-frame publication.
 - All **28** existing compatibility statuses and capability definitions are preserved. "Covered" is a host-side primitive, "Runtime-proven" remains bounded, and Sektor is not a production fighter.
 
