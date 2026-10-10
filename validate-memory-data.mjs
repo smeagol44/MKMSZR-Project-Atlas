@@ -236,15 +236,16 @@ for (const field of ["compat-area","compat-status","compat-q","compat-reset",
   if (!html.includes('id="'+field+'"'))
     throw new Error("MKT redesigned UI missing element "+field);
 }
-if (!html.includes('href="mkt-compat.css?v=20261010"') ||
-    !html.includes('src="mkt-compat-ui.js?v=20261010"') ||
+if (!html.includes('href="mkt-compat.css?v=20261010b"') ||
+    !html.includes('src="mkt-compat-ui.js?v=20261010b"') ||
     html.includes("function compatRender()") ||
-    !mktScript.includes('setAttribute("aria-expanded"') ||
+    !mktScript.includes('function insight(row)') ||
+    !mktScript.includes('list.dataset.count=String(rows.length)') ||
     !mktScript.includes('setAttribute("aria-pressed"') ||
     !mktScript.includes("sourceLink(row)") ||
     !mktScript.includes("renderCards(filtered)") ||
     !mktScript.includes("renderTable(filtered)") ||
-    !mktCss.includes("@media(max-width:490px)"))
+    !mktCss.includes("MKMSZR ARCADE CODEX V2"))
   throw new Error("MKT presentation regression: no source-linked accessible interactive card/table layout");
 const counts={Function:139,Global:35,"Code label":2,Bookmark:105,Type:12,"Typed data":1,Comment:232};
 if (ghidra.sourceRepo !== "smeagol44/MKMSZ-Ghidra" ||
