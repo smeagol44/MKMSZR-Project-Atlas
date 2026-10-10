@@ -1,9 +1,10 @@
+import "./validate-mkt-ui.mjs";
 import fs from "node:fs";
 import vm from "node:vm";
 
 const context = { window: {} };
 vm.createContext(context);
-for (const file of ["memory-data.js", "patch-data.js", "stage-data.js", "project-data.js"]) {
+for (const file of ["memory-data.js", "patch-data.js", "stage-data.js", "project-data.js", "ghidra-data.js"]) {
   vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
 }
 
@@ -11,7 +12,8 @@ const memory = context.window.MKMSZ_MEMORY_DATA;
 const patches = context.window.MKMSZ_PATCH_DATA;
 const stages = context.window.MKMSZ_STAGE_DATA;
 const project = context.window.MKMSZ_PROJECT_DATA;
-for (const [name, value] of Object.entries({ memory, patches, stages, project })) {
+const ghidra = context.window.MKMSZ_GHIDRA_DATA;
+for (const [name, value] of Object.entries({ memory, patches, stages, project, ghidra })) {
   if (!value) throw new Error(name + " data is missing");
   if (!/^[0-9a-f]{40}$/.test(value.sourceCommit)) {
     throw new Error(name + ": sourceCommit must be a full Git SHA");
@@ -104,6 +106,12 @@ const donor = rdramRecord("rdram.production.toasty_module");
 const progression = rdramRecord("rdram.production.progression_flash");
 const materializer = rdramRecord("rdram.production.global_materializer_helper");
 const inventoryHud = rdramRecord("rdram.production.inventory_hud_runtime");
+const switchOwner = rdramRecord("rdram.production.inventory_menu_switch");
+const legendOwner = rdramRecord("rdram.production.inventory_legend");
+if (!switchOwner || !legendOwner ||
+    switchOwner.start !== inventoryHud.end || switchOwner.end !== 0x1B2F44 ||
+    legendOwner.start !== 0x1B2F50 || legendOwner.end !== 0x1B30E6)
+  throw new Error("Inventory four-box/legend runtime owners drifted");
 const focusEdges = [0x1AF420, 0x1AF820, turn.start, turn.end, controls.start, controls.end, donor.start, donor.end, progression.start, progression.end, materializer.start, materializer.end, inventoryHud.start, inventoryHud.end, 0x1B3420];
 if (focusEdges[1] !== focusEdges[2] || controls.start !== 0x1AFC30 || controls.end !== 0x1B0880 ||
     donor.start !== 0x1B1000 || donor.end !== 0x1B2132 ||
@@ -156,7 +164,11 @@ if (romRecord("rom.production.global_stage_resources").start !== 0x1000000 ||
     romRecord("rom.production.inventory_hud_common_package").end !== 0x1814000 ||
     romRecord("rom.production.inventory_hud_data").start !== 0x1814000 ||
     romRecord("rom.production.inventory_hud_data").end !== 0x1815200 ||
-    romRecord("rom.generated.unassigned_tail").start !== 0x1815200 ||
+    romRecord("rom.production.inventory_menu_switch_transport").start !== 0x1816000 ||
+     romRecord("rom.production.inventory_menu_switch_transport").end !== 0x1819C00 ||
+     romRecord("rom.generated.inventory_transport_alignment").start !== 0x1815200 ||
+     romRecord("rom.generated.inventory_transport_alignment").end !== 0x1816000 ||
+     romRecord("rom.generated.unassigned_tail").start !== 0x1819C00 ||
     romRecord("rom.generated.unassigned_tail").end !== 0x2000000) {
   throw new Error("generated-output extension diverges from global-v2 / Inventory HUD allocation policy");
 }
@@ -179,6 +191,8 @@ for (const id of [
   "prod-sealed-label", "prod-progression-flash-module", "prod-global-materializer-helper",
   "prod-inventory-hud-preview", "prod-inventory-hud-row", "prod-inventory-hud-helper-span",
   "prod-inventory-hud-data-size", "prod-inventory-hud-required-label", "prod-inventory-hud-check-count",
+  "prod-inventory-menu-switch-hook", "prod-inventory-legend-hook",
+  "prod-inventory-empty-box-power-ups", "prod-shared-file-1a-transport",
   "prod-temple-audio-event123", "prod-temple-audio-event124", "prod-temple-audio-event125",
   "prod-temple-audio-host-patch", "prod-temple-audio-host-subpatch", "prod-temple-audio-host-wave",
   "prod-temple-audio-host-predictor", "proof-sektor-v85",
@@ -189,6 +203,70 @@ for (const id of [
 }
 
 const html = fs.readFileSync("index.html", "utf8");
+new vm.Script(fs.readFileSync("research-ui.js", "utf8"), {filename:"research-ui.js"});
+const mktScript=fs.readFileSync("mkt-compat-ui.js", "utf8");
+const mktCss=fs.readFileSync("mkt-compat.css", "utf8");
+new vm.Script(mktScript,{filename:"mkt-compat-ui.js"});
+const compat=project.compatibility;
+const canonicalStatuses=["established","covered","runtime","partial","pending","missing","rejected"];
+if (compat.length!==28 || project.compatibilityMilestones?.length!==4)
+  throw new Error("MKT compatibility and proof-milestone population drift");
+for (const row of compat) {
+  if (!row.area || !row.capability || !row.donor || !row.target ||
+      !row.detail || !/^[A-Za-z0-9-]+\.md$/.test(row.source) ||
+      !canonicalStatuses.includes(row.status))
+    throw new Error("MKT evidence / source schema invalid: "+row.capability);
+}
+if (new Set(compat.map(row=>row.area+"::"+row.capability)).size!==compat.length)
+  throw new Error("Duplicate MKT capability");
+if (compat.filter(r=>r.status==="rejected").length!==2 ||
+    compat.filter(r=>r.status==="runtime").length!==7 ||
+    compat.filter(r=>r.status==="missing").length!==5)
+  throw new Error("MKT evidence classes changed unexpectedly");
+for (const m of project.compatibilityMilestones) {
+  if (!/^v(62|75|87|89)$/.test(m.version) ||
+      m.evidence!=="Runtime-confirmed bounded" || !m.detail || !m.title ||
+      !/^[A-Za-z0-9-]+\.md$/.test(m.source))
+    throw new Error("Invalid bounded MKT proof milestone");
+}
+for (const field of ["compat-area","compat-status","compat-q","compat-reset",
+                    "compat-stats","compat-status-scale","compat-areas","compat-count",
+                    "compat-groups","compat-table","compat-mode-cards","compat-mode-table",
+                    "compat-milestones"]) {
+  if (!html.includes('id="'+field+'"'))
+    throw new Error("MKT redesigned UI missing element "+field);
+}
+if (!html.includes('href="mkt-compat.css?v=20261010"') ||
+    !html.includes('src="mkt-compat-ui.js?v=20261010"') ||
+    html.includes("function compatRender()") ||
+    !mktScript.includes('setAttribute("aria-expanded"') ||
+    !mktScript.includes('setAttribute("aria-pressed"') ||
+    !mktScript.includes("sourceLink(row)") ||
+    !mktScript.includes("renderCards(filtered)") ||
+    !mktScript.includes("renderTable(filtered)") ||
+    !mktCss.includes("@media(max-width:490px)"))
+  throw new Error("MKT presentation regression: no source-linked accessible interactive card/table layout");
+const counts={Function:139,Global:35,"Code label":2,Bookmark:105,Type:12,"Typed data":1,Comment:232};
+if (ghidra.sourceRepo !== "smeagol44/MKMSZ-Ghidra" ||
+    ghidra.maintainerImport.exact !== 623 || ghidra.maintainerImport.checked !== 623 ||
+    ghidra.maintainerImport.mismatches !== 0 ||
+    ghidra.records.length !== 526) throw new Error("Ghidra verified manifest snapshot is inconsistent");
+for (const [cat,num] of Object.entries(counts)) {
+  if (ghidra.records.filter(r=>r.category===cat).length!==num)
+    throw new Error("Ghidra metadata category drift: "+cat);
+}
+if (!ghidra.records.some(r=>r.category==="Typed data" && r.address==="0x800B0F68" &&
+      r.title==="stock_low_kick_special_descriptor") ||
+    !ghidra.records.some(r=>r.category==="Bookmark" && r.address==="0x80030974" &&
+      r.detail.includes("switch arm of 0x800304C0")))
+  throw new Error("Ghidra stock-knowledge navigation regression");
+if (!html.includes('data-view="research"') || !html.includes('id="research-records"') ||
+    !html.includes('src="ghidra-data.js?v=research-20261010"') ||
+    !html.includes('src="research-ui.js?v=research-20261010"'))
+  throw new Error("Ghidra research page assets not wired up");
+if (!project.featureBoard.find(f=>f.name==="Randomizer HUD")?.detail.includes("upstream correction Pending") ||
+    !project.featureBoard.find(f=>f.name==="Four Inventory Boxes")?.detail.includes("Left/Right"))
+  throw new Error("Recent Inventory feature state absent");
 const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]
   .map(match => match[1])
   .filter(script => script.trim());
@@ -207,6 +285,8 @@ if (html.includes('.roadmap-segment:hover,.roadmap-segment.selected{outline')) {
   throw new Error("roadmap selector uses the old clipped outline geometry");
 }
 if (!html.includes("inventoryHudTail&&{record:inventoryHudTail") ||
+     !html.includes("inventorySwitch&&{record:inventorySwitch") ||
+     !html.includes("inventoryLegend&&{record:inventoryLegend") ||
     !html.includes("progression&&{record:progression") ||
     !html.includes("materializer&&{record:materializer") ||
     !html.includes("inventoryHud&&{record:inventoryHud")) {

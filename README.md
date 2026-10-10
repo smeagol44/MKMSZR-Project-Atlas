@@ -6,6 +6,14 @@ Public site:
 
 **https://smeagol44.github.io/MKMSZR-Project-Atlas/**
 
+## Snapshot update — 2026-10-10
+
+This is a **targeted refresh** over the prior October 5/6 Atlas base, pinned to MKMSZ-Randomizer source commit `a8601aac6de0ad2f1db1a86c868242902cbab850` and MKMSZ-Ghidra metadata `1c73998221cc20b5c67b35c4fae8efd566725af5`. Unchanged older allocations, stages, compatibility rows and decomp-readiness tiles are **not** represented as exhaustively re-audited just because the snapshot date advanced.
+
+The new **Research & Ghidra** view contains 526 searchable metadata navigation records (139 named functions, 35 global labels, 2 code labels, 105 bookmarks, 12 managed types, 1 typed data instance, 232 comments) with exact manifest links. The user's clean-ROM Ghidra importer and audits achieved **623/623 exact checks**, with zero mismatches; this is a measure of imported curated records, not of entire retail game code. The distinct 927/927 enumerated-knowledge routing result is also not a decompilation percentage.
+
+Updated feature and stage evidence includes native in-Inventory four-box Left/Right navigation, Inventory legend and HUD, Fire/Bridge credential ownership, earned-XP persistence with Powers-as-pickups OFF, and the latest audio/FIFO trace findings. The ROM/RDRAM maps now include the canonical file-0x1A generated transport, switch and legend allocation, plus their guarded ROM hook sites. Full rich Inventory audio closure remains Pending; no FIFO-enqueue retry or production correction is claimed.
+
 ## Views
 
 ### Decomp Readiness
@@ -18,6 +26,10 @@ The original 40 × 15 (600-unit) qualitative heatmap remains intact.
 
 The 600 squares are equal-sized **knowledge units**, not equal code-size buckets, literal functions, or equal numbers of ROM bytes.
 The integrated ATTACK, SPECIALS, JUMP, and RUN input paths are named within the existing partial player-action units; product integration does not by itself establish a fully decompiled player state machine.
+
+### Research & Ghidra
+
+An independent, filterable research view for the latest curated Ghidra global metadata and recent evidence. Shows maintainer-verified 623/623 import checks, routes to reviewed ROM-free manifests and current Wiki owners, and distinguishes trace-confirmed observations from unresolved production causes. It does **not** change the 600-unit qualitative Decomp Readiness heatmap.
 
 ### Feature Board
 
@@ -41,7 +53,15 @@ Empty logical selectors are never presented as free storage.
 
 ### MKT → MKMSZ Compatibility
 
-A colored source-level compatibility matrix for the donor-port effort.
+The October 10 redesign replaces the wide, hard-to-scan legacy matrix with a **responsive semantic-adapter cockpit**:
+
+- A donor → translation → host diagram that explicitly rejects binary relocation.
+- Status distribution and counts (not a completion percentage), plus interactive area/status chips and search.
+- Grouped, keyboard-accessible capability cards with inline evidence and canonical owner links, and an optional full comparison table.
+- Four independently provenance-linked, **bounded proof** milestones: v62 combo graph, v75 straight-missile flight, v87 rocket art/palette, v89 first-frame publication.
+- All **28** existing compatibility statuses and capability definitions are preserved. "Covered" is a host-side primitive, "Runtime-proven" remains bounded, and Sektor is not a production fighter.
+
+This is a source-level compatibility matrix for the donor-port effort.
 
 It distinguishes:
 

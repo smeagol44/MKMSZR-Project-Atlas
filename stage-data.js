@@ -1,8 +1,8 @@
-// Snapshot of the eight canonical MKMSZR stage catalogs.
+// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
 window.MKMSZ_STAGE_DATA = {
-  "snapshot": "2026-10-05",
-  "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
-  "auditedThrough": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "snapshot": "2026-10-10",
+  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "auditedThrough": "a8601aac6de0ad2f1db1a86c868242902cbab850",
   "stages": [
     {
       "name": "Temple",
@@ -444,7 +444,8 @@ window.MKMSZ_STAGE_DATA = {
         "Stock Fire has 15 empty logical outer slots, selectors 5..19, in the 27-word table. This is Static-confirmed selector-table capacity only. It is not evidence of 15 free physical payload regions, unused RDRAM, or production-safe allocation space, and the foreign-key proof below runtime-tested only one of those logical slots.",
         "Slots 20..26 are stock ordinary-item resources. Fire Potion (slot 24) uses external IDs 0x27F..0x286; Fire Health urn (slot 26) uses external IDs 0x28F..0x292. Formula, Eye, Shield, Extra-life urn, and Health urn also preserve their exact external-ID records in the table above. Cross-stage storage-form equivalence and external-to-embedded conversion are owned by Global item materialization and solvability.",
         "Early raw Prison-to-Fire identity copy — Rejected / failed in this bounded route: copying the Prison identity without destination resource materialization produced no usable item because the source selector was not meaningful against Fire's stage resource file.",
-        "Foreign Prison Level 1 key proof — Runtime-confirmed, proof-only: clean stock slot 5 was populated with the imported key bundle. The appended descriptor began at file-relative 0x2530; appended resource records occupied exact file-relative interval 0x2558..0x25F7. The proof resource file expanded from stock size 0x2530 to 0x2BE8, so the full appended proof-only file-relative region is 0x2530..0x2BE7."
+        "Foreign Prison Level 1 key proof — Runtime-confirmed, proof-only: clean stock slot 5 was populated with the imported key bundle. The appended descriptor began at file-relative 0x2530; appended resource records occupied exact file-relative interval 0x2558..0x25F7. The proof resource file expanded from stock size 0x2530 to 0x2BE8, so the full appended proof-only file-relative region is 0x2530..0x2BE7.",
+        "October 6 Fire/Bridge multi-box gate v03 is bounded runtime-confirmed in production composition; does not establish exhaustive stage-playthrough safety."
       ],
       "source": "Stage-Catalog-Fire.md",
       "theme": [
@@ -458,7 +459,8 @@ window.MKMSZ_STAGE_DATA = {
         "Fire has 15 empty logical outer selectors, making it the most flexible stock selector table—but those zeros prove logical capacity only, not free payload bytes.",
         "Runtime-confirmed foreign Prison L1 key proof populated stock-empty selector 5 with a complete imported key bundle while preserving native Fire resources.",
         "Fire key checkpoint-suppression v01 is Runtime-confirmed on the tested route: no key-created checkpoint event, natural stage-start death respawn, and normal Fire God progression.",
-        "TEST LAB reused Fire's destination architecture to validate 10-item and 15-item imported compositions and became the core cross-stage materialization harness."
+        "TEST LAB reused Fire's destination architecture to validate 10-item and 15-item imported compositions and became the core cross-stage materialization harness.",
+        "Runtime-confirmed bounded: use-time Fire gate accepts credentials distributed across all four authoritative Inventory boxes; this is separate from reward-materialization semantics."
       ],
       "constraints": [
         "Raw foreign identity copy without destination resource materialization is rejected.",
@@ -524,7 +526,8 @@ window.MKMSZ_STAGE_DATA = {
         "Stock Bridge has 17 empty logical outer slots, selectors 4..20, in the 25-word table. This is Static-confirmed selector-table capacity only; it is not evidence of 17 free physical payload regions, unused RDRAM, or production-safe allocation space.",
         "Slots 21 and 22 are embedded Herbs and Extra-life-urn bundles. Slot 23 is Potion using external IDs 0x27F..0x286; slot 24 is Health urn using external IDs 0x28F..0x292.",
         "Matching external-family evidence — Static-confirmed: Bridge contains Health-urn payloads matching the same 0x28F..0x292 family used by Water and Fire. The preserved extracted raw payload lengths are 340, 272, 272, 272 bytes; the conversion/round-trip interpretation and runtime proof belong to Global item materialization and solvability, not this stage page.",
-        "No Bridge-specific runtime cross-stage materialization proof is established by that payload match. It is static source/resource evidence only."
+        "No Bridge-specific runtime cross-stage materialization proof is established by that payload match. It is static source/resource evidence only.",
+        "October 6 v03 four-box credential gate succeeds with icons spread across backing boxes while stock stage/activation ownership remains intact."
       ],
       "source": "Stage-Catalog-Bridge.md",
       "theme": [
@@ -538,7 +541,8 @@ window.MKMSZ_STAGE_DATA = {
         "Bridge's three icon pickups are Static-confirmed award-only: they insert inventory and play pickup audio without direct checkpoint creation or live selector writes.",
         "Use-time completion is separate and requires all three Bridge icons while the physical stage gate is active.",
         "Stock Bridge has 17 empty logical outer selectors—the largest empty-selector count—but those are logical capacity only.",
-        "Bridge contains Health-urn payloads matching the Water/Fire 0x28F..0x292 family, strengthening the cross-stage conversion evidence."
+        "Bridge contains Health-urn payloads matching the Water/Fire 0x28F..0x292 family, strengthening the cross-stage conversion evidence.",
+        "Runtime-confirmed bounded: Bridge three-icon use-time gate now recognizes ownership across all four authoritative Inventory boxes, not just the ten-slot LIVE window."
       ],
       "constraints": [
         "The record high bit is resolved as a destination-owned activation gate and is preserved independently of the randomized logical reward.",
@@ -622,5 +626,7 @@ window.MKMSZ_STAGE_DATA = {
         "Checkpoint-free"
       ]
     }
-  ]
+  ],
+  "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
 };

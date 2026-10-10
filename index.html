@@ -48,9 +48,22 @@
 .mem-toolbar{grid-template-columns:190px minmax(240px,1fr) auto auto}.patch-toggle{display:flex!important;align-items:center!important;gap:8px!important;align-self:end;height:42px;border:1px solid #343e48;border-radius:9px;padding:0 10px!important;color:#c7d1db!important;background:#0e1216}.patch-toggle input{height:auto!important;margin:0;accent-color:#fff}.patch-mark{position:absolute;width:9px;height:9px;border:1px solid #fff;transform:rotate(45deg);z-index:7;cursor:pointer;padding:0}.patch-mark.prod{background:#38bdf8}.patch-mark.proof{background:#f472b6}.patch-mark:hover{transform:rotate(45deg) scale(1.35)}.patch-legend{font-size:10px;color:#8f9ba7;margin:6px 0 0}.patch-legend i{display:inline-block;width:8px;height:8px;transform:rotate(45deg);margin:0 5px 0 12px;border:1px solid #fff}.patch-legend i:first-child{margin-left:0}.patch-legend .prod{background:#38bdf8}.patch-legend .proof{background:#f472b6}
 @media(max-width:820px){.mem-stats,.board-stats,.compat-stats,.stage-stats{grid-template-columns:1fr 1fr}.mem-toolbar,.board-toolbar,.compat-toolbar{grid-template-columns:1fr}.mem-detail .meta,.stage-detail-grid{grid-template-columns:1fr}}
 @media(max-width:430px){.mem-stats,.board-stats,.compat-stats,.stage-stats{grid-template-columns:1fr}}
-</style></head><body><main class="wrap">
-<header class="hero"><div><p class="ey">Mortal Kombat Mythologies: Sub-Zero · N64 USA Rev. 0</p><h1>MKMSZR Project Atlas</h1><p class="lede">Interactive project status, stage, compatibility, decompilation, and memory maps for MKMSZR.</p></div><div class="snap"><span>Readiness snapshot</span><strong>2026-10-05</strong></div></header>
-<nav class="tabs" aria-label="Research views"><button class="tab active" data-view="features">Feature Board</button><button class="tab" data-view="stages">Stage Atlas</button><button class="tab" data-view="compat">MKT → MKMSZ</button><button class="tab" data-view="readiness">Decomp Readiness</button><button class="tab" data-view="rom">ROM Space</button><button class="tab" data-view="rdram">RDRAM Space</button></nav>
+/* Reviewable Ghidra metadata and bounded research notes */
+.research-findings,.research-records{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:10px;margin:13px 0}
+.research-finding,.research-record{border:1px solid #30404d;background:#0d141b;border-radius:12px;padding:14px;min-width:0}
+.research-finding h3,.research-record h3{font-size:14px;overflow-wrap:anywhere;margin:4px 0 7px}
+.research-finding p,.research-record p{font-size:12px;line-height:1.58;color:#b2c1ce}
+.research-meta{font-size:11px;color:#94a3b8;overflow-wrap:anywhere}
+.research-record .address{font:12px ui-monospace,Consolas,monospace;color:#facc15}
+.research-finding a,.research-record a{font-size:12px;color:#93c5fd;text-decoration:underline;text-underline-offset:2px}
+.research-controls{display:grid;grid-template-columns:180px minmax(200px,1fr) auto;gap:9px;align-items:end}
+.research-controls label{font-size:11px;color:#94a3b8;display:grid;gap:5px}
+.research-controls select,.research-controls input,.research-controls button,.research-more{height:40px;border-radius:9px;border:1px solid #354453;background:#0c141d;color:#e6edf5;padding:0 12px;min-width:0}
+.research-controls button,.research-more{cursor:pointer}.research-more{display:block;margin:10px auto}.research-more[hidden]{display:none}
+@media(max-width:650px){.research-controls,.research-findings,.research-records{grid-template-columns:1fr}}
+</style><link rel="stylesheet" href="mkt-compat.css?v=20261010" /></head><body><main class="wrap">
+<header class="hero"><div><p class="ey">Mortal Kombat Mythologies: Sub-Zero · N64 USA Rev. 0</p><h1>MKMSZR Project Atlas</h1><p class="lede">Interactive project status, stage, compatibility, decompilation, and memory maps for MKMSZR.</p></div><div class="snap"><span>Research update</span><strong>2026-10-10</strong></div></header>
+<nav class="tabs" aria-label="Research views"><button class="tab active" data-view="features">Feature Board</button><button class="tab" data-view="stages">Stage Atlas</button><button class="tab" data-view="compat">MKT → MKMSZ</button><button class="tab" data-view="readiness">Decomp Readiness</button><button class="tab" data-view="research">Research &amp; Ghidra</button><button class="tab" data-view="rom">ROM Space</button><button class="tab" data-view="rdram">RDRAM Space</button></nav>
 <section id="view-readiness" class="view">
 <section class="card"><p><b>How to read this:</b> each square is one equal-sized <b>knowledge unit</b>, not one literal function or an equal number of ROM bytes. Green is stricter than “we can patch it”: it means the important data/control contract looks understood enough for a plausible C analogue.</p><div class="legend"><div class="li"><span class="sw g"></span><b>Green</b> — decomp-ready</div><div class="li"><span class="sw y"></span><b>Yellow</b> — partial</div><div class="li"><span class="sw b"></span><b>Black</b> — largely unknown</div></div></section>
 <section class="stats"><div class="stat sg"><span>Green</span><strong id="gc"></strong><small id="gp"></small></div><div class="stat sy"><span>Yellow</span><strong id="yc"></strong><small id="yp"></small></div><div class="stat"><span>Black</span><strong id="bc"></strong><small id="bp"></small></div><div class="stat"><span>Total</span><strong id="tc"></strong><small>knowledge units</small></div></section>
@@ -78,14 +91,58 @@
 </section>
 
 <section id="view-compat" class="view">
-<section class="card"><p class="ey">Donor semantics → target-native behavior</p><h2>MKT → MKMSZ Compatibility Matrix</h2><p class="desc">A compact view of what can already be translated, what works only in bounded proofs, what still needs an adapter, and which tempting “direct” paths have been explicitly rejected.</p><div class="mem-note">This is a source-level translation matrix, not a binary-compatibility claim. MKT code, pointers, selectors, codecs, and object layouts are not assumed interchangeable with MKMSZ.</div></section>
-<section id="compat-stats" class="compat-stats"></section>
-<section class="compat-toolbar"><label>Area<select id="compat-area"></select></label><label>Status<select id="compat-status"></select></label><label>Search<input id="compat-q" type="search" placeholder="animation, reaction, Type-5, no-repel"></label><button id="compat-reset">Reset</button></section>
-<section class="card compat-shell"><div id="compat-grid" class="compat-grid"><div class="ch">Area</div><div class="ch">Capability</div><div class="ch">MKT / donor side</div><div class="ch">MKMSZ target</div><div class="ch">Status</div></div></section>
-<section id="compat-detail" class="detail"><span class="badge n">MATRIX</span><h2>Translation status</h2><p class="desc">Rows summarize the current canonical compatibility owners. Hover or click is not required; each row is self-contained, and search/filtering narrows the matrix.</p></section>
+<section class="compat-hero">
+<div>
+<p class="ey">Source-level adapter · MK Trilogy N64 → Mythologies N64</p>
+<h2>Two engines. One semantic bridge.</h2>
+<p class="compat-hero-intro">The accepted porting strategy preserves <strong>donor intent, timing, animation and combat meaning</strong> while translating only the engine-facing primitives into MKMSZ-native calls and assets. The compatibility map below separates target primitives, bounded runtime proofs, missing translators and rejected direct paths.</p>
+<div class="compat-hero-chips"><span class="compat-hero-chip">28 documented capabilities</span><span class="compat-hero-chip">Sektor proof-only</span><span class="compat-hero-chip">Direct binary reuse rejected</span></div>
+</div>
+<div class="compat-path" aria-label="MKT donor intent is converted through a semantic adapter into MKMSZ host primitives">
+<div class="compat-path-node donor"><small>01 / DONOR</small><strong>Mortal Kombat Trilogy</strong><span>N64 USA Rev. 2 · move phases, fighter art, objects and animation grammar</span></div>
+<div class="compat-path-arrow" aria-hidden="true">→</div>
+<div class="compat-path-node bridge"><small>02 / TRANSLATION</small><strong>Semantic adapter</strong><span>Map movement, actions, reactions, palette, Type-5 and lifecycle meaning</span></div>
+<div class="compat-path-arrow" aria-hidden="true">→</div>
+<div class="compat-path-node host"><small>03 / TARGET</small><strong>MK Mythologies: Sub-Zero</strong><span>N64 USA Rev. 0 · native scheduler, actor/process ABI and resource formats</span></div>
+</div>
+</section>
+<section class="compat-proof-panel" aria-labelledby="compat-proof-heading">
+<div class="compat-section-head"><div><p class="ey">Sektor proof trail</p><h3 id="compat-proof-heading">What we have actually demonstrated</h3></div><p>Bounded runtime milestones, not a production playable character</p></div>
+<div id="compat-milestones" class="compat-milestones"></div>
+</section>
+<div id="compat-stats" class="compat-kpis" aria-label="Compatibility evidence categories"></div>
+<section class="compat-status-summary" aria-label="Evidence distribution and interactive filters">
+<div class="compat-section-head"><h3>Evidence breakdown</h3><p>Counts describe capability records, not overall port completion.</p></div>
+<div id="compat-status-scale"></div>
+</section>
+<nav id="compat-areas" class="compat-areas" aria-label="Filter by compatibility area"></nav>
+<section class="compat-controls" aria-label="Compatibility filters">
+<label>Area<select id="compat-area"><option value="all">All areas</option></select></label>
+<label>Evidence status<select id="compat-status"><option value="all">All statuses</option></select></label>
+<label>Find a capability<input id="compat-q" type="search" placeholder="reaction, launch, palette, token…" autocomplete="off"></label>
+<button id="compat-reset" type="button">Reset filters</button>
+</section>
+<div class="compat-result-head">
+<p id="compat-count" class="compat-result-count" aria-live="polite"></p>
+<div class="compat-mode" role="group" aria-label="Comparison display"><button type="button" id="compat-mode-cards" aria-pressed="true">Capability cards</button><button type="button" id="compat-mode-table" aria-pressed="false">Compare table</button></div>
+</div>
+<div id="compat-groups"></div>
+<div id="compat-table" class="compat-table-shell" hidden></div>
+<p class="compat-boundary"><strong>Evidence boundary.</strong> “Runtime-proven” means a specific bounded proof, not a generic adapter or shipping Sektor feature. “Covered” means a target-side primitive is known; it does not imply a donor move is fully integrated. The canonical <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/MKT-to-MKMSZ-Compatibility-Layer.md" target="_blank" rel="noopener noreferrer">compatibility owner</a>, <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/MKT-Adapter-Primitives.md" target="_blank" rel="noopener noreferrer">adapter owner</a> and <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/Sektor-Takeover-Proof-History.md" target="_blank" rel="noopener noreferrer">proof history</a> remain authoritative.</p>
 </section>
 
-
+<section id="view-research" class="view">
+<section class="card"><p class="ey">Reviewed native metadata · user-local verification</p><h2>Research &amp; Ghidra</h2>
+<p class="desc">Search the exact versioned global function names, data symbols, code labels, types, comments and navigation bookmarks imported into the clean-ROM Ghidra program. The migration makes established research navigable; it does not mean the entire game is decompiled.</p>
+<div class="mem-note"><b>Different denominators:</b> the 623/623 result audits Ghidra manifest records; the 927/927 count routes separately enumerated Wiki findings. Neither is a percentage of unknown game code. The Wiki remains authoritative.</div></section>
+<div id="research-stats" class="mem-stats"></div>
+<section class="card"><p class="ey">Since the previous Atlas snapshot</p><h2>Recent evidence &amp; open questions</h2><div id="research-findings" class="research-findings"></div>
+<p class="mem-note">The rich Inventory's accelerated music remains a 1.0 release blocker. The complete FIFO replay is a trace confirmation, not a production fix or proof that all upstream corruption is excluded.</p></section>
+<section class="card"><p class="ey">ROM-free versioned catalog</p><h2>Ghidra metadata explorer</h2>
+<div class="research-controls"><label>Kind<select id="research-kind"><option value="all">All record types</option></select></label><label>Search<input id="research-query" type="search" placeholder="0x80030974, animation, FIFO, MKMSZ..."></label><button id="research-reset" type="button">Reset</button></div>
+<p id="research-count" class="mem-source" aria-live="polite"></p><div id="research-records" class="research-records"></div>
+<button id="research-more" type="button" class="research-more">Show more matching records</button>
+<p class="mem-source"><a href="https://github.com/smeagol44/MKMSZ-Ghidra/tree/main/analysis" target="_blank" rel="noreferrer">Ghidra manifests</a> · <a href="https://github.com/smeagol44/MKMSZ-Ghidra/blob/main/docs/local-migration-handoff.md" target="_blank" rel="noreferrer">Local audit sign-off</a> · <a href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/Project-Status.md" target="_blank" rel="noreferrer">Current Wiki status</a></p></section></section>
 <section id="view-rom" class="view">
 <section class="card mem-intro"><p class="ey">Clean image 16 MiB · generated output up to 32 MiB</p><h2>ROM Coverage & Capacity</h2><p class="desc">This view separates the supported 16 MiB clean image from the generated 32 MiB output used by global-v2. It answers four separate questions: how much has bounded ownership we understand, how much remains unclassified, how much the current MKMSZR composition owns, and how much reusable free space is actually proven. It no longer treats a coarse address grid as the main result.</p><div class="mem-note"><b>Knowledge ≠ allocation.</b> Decomp Readiness measures how well code/subsystems are understood. This page measures bounded byte ownership and capacity. Unknown bytes are not free; proof-only footprints are not production allocations.</div><div id="rom-legend" class="mem-legend"></div></section>
 <section id="rom-stats" class="mem-stats mem-stats-dashboard"></section>
@@ -106,7 +163,7 @@
 <section class="card mem-list"><div class="mem-list-head"><div><p class="ey">Exact bounded records</p><h2>RDRAM ownership & patch sites</h2></div><p class="hint">Physical records only; display aliases never add capacity.</p></div><div id="rdram-records" class="mem-records"></div></section>
 </section>
 <footer><span>MKMSZR Project Atlas · derivative visualization of the canonical MKMSZR Wiki.</span><span class="byline">By Smeag</span></footer>
-</main><script src="memory-data.js?v=inventory-hud-20261005"></script><script src="patch-data.js?v=inventory-hud-20261005"></script><script src="stage-data.js?v=inventory-hud-20261005"></script><script src="project-data.js?v=inventory-hud-20261005"></script><script>
+</main><script src="memory-data.js?v=research-20261010"></script><script src="patch-data.js?v=research-20261010"></script><script src="stage-data.js?v=research-20261010"></script><script src="project-data.js?v=research-20261010"></script><script src="ghidra-data.js?v=research-20261010"></script><script>
 const D={cols:40,rows:[
 ["Frontend / boot / title",8,10,22,[["g","Debug stage selector","0x8000D0B8","Runtime-confirmed menu behavior and production routing are understood."],["g","Legal/logo/title owner","0x80079510","Owning frontend routine and narrow presentation bypasses are mapped."],["g","Frontend fade / normalization","0x800615D8","Call behavior is understood and preserved after the logo bypass."],["y","Title handoff","0x80078C40","Known handoff point, but the complete frontend state machine is not reconstructed."],["g","Title image package","global file 0x5E","Compression round-trip, relocation, palette handling and replacement are understood."],["y","Options/config frontend","frontend subsystem","The five-setting GAME SETTINGS menu is integrated and its cursor/state contract is documented; the broader OPTIONS/config frontend is not fully decompiled."]]],
 ["Stage flow / loading",6,10,24,[["g","Stage transition handler","0x80015088","Selection-to-current-stage transition behavior is established."],["g","Safe eight-stage flow","native stages 0,1,2,3,4,5,8,9","Selector routing and problematic entries are understood."],["y","Automatic stage save","0x800798A8","Identified and selectively bypassed, but save-flow internals are partial."],["y","Stage initialization order","stage lifecycle","Several critical boundaries are known through proofs; the complete state machine is not."],["y","Mission Objective transition","stage frontend","Important allocation/lifecycle behavior is known experimentally."]]],
@@ -299,39 +356,7 @@ function stageRender(){
   });
 }
 
-function compatRender(){
-  const data=projectData.compatibility,grid=document.querySelector("#compat-grid"),
-        area=document.querySelector("#compat-area"),status=document.querySelector("#compat-status"),q=document.querySelector("#compat-q");
-  const areas=[...new Set(data.map(x=>x.area))],statuses=["established","covered","runtime","partial","pending","missing","rejected"];
-  const labels={established:"Established",covered:"Covered",runtime:"Runtime proven",partial:"Partial",pending:"Pending",missing:"Missing adapter",rejected:"Rejected direct path"};
-  area.innerHTML='<option value="all">All areas</option>'+areas.map(x=>'<option>'+x+'</option>').join("");
-  status.innerHTML='<option value="all">All statuses</option>'+statuses.map(x=>'<option value="'+x+'">'+labels[x]+'</option>').join("");
-  const covered=data.filter(x=>x.status==="covered"||x.status==="established").length,
-        runtime=data.filter(x=>x.status==="runtime").length,
-        partial=data.filter(x=>x.status==="partial"||x.status==="pending").length,
-        missing=data.filter(x=>x.status==="missing"||x.status==="rejected").length;
-  document.querySelector("#compat-stats").innerHTML=
-    '<div class="compat-stat"><span>Established / covered</span><strong>'+covered+'</strong></div>'+
-    '<div class="compat-stat"><span>Runtime-proven translations</span><strong>'+runtime+'</strong></div>'+
-    '<div class="compat-stat"><span>Partial / pending</span><strong>'+partial+'</strong></div>'+
-    '<div class="compat-stat"><span>Missing / rejected direct</span><strong>'+missing+'</strong></div>';
-  const header=grid.innerHTML;
-  function refresh(){
-    const a=area.value,s=status.value,qq=q.value.trim().toLowerCase();grid.innerHTML=header;
-    data.filter(x=>(a==="all"||x.area===a)&&(s==="all"||x.status===s)&&(!qq||Object.values(x).join(" ").toLowerCase().includes(qq))).forEach(x=>{
-      const row=document.createElement("div");row.className="crow";
-      const cells=[
-        ['compat-area',x.area],['compat-cap',x.capability],['',x.donor],['',x.target],['compat-pill cs-'+x.status,labels[x.status]]
-      ];
-      cells.forEach(([cl,txt])=>{const d=document.createElement("div");d.className=cl;d.textContent=txt;d.title=x.detail;d.onclick=()=>{document.querySelector("#compat-detail").innerHTML='<span class="compat-pill cs-'+x.status+'">'+labels[x.status]+'</span><h2>'+x.capability+'</h2><p class="addr">'+x.area+'</p><p class="desc">'+x.detail+'</p><p class="mem-source"><a target="_blank" rel="noreferrer" href="'+wikiBase+x.source+'">Open canonical source</a></p>'};row.appendChild(d)});
-      grid.appendChild(row);
-    });
-    if(grid.children.length===5){const d=document.createElement("div");d.style.gridColumn="1 / -1";d.className="mem-empty";d.textContent="No compatibility rows match this filter.";grid.appendChild(d)}
-  }
-  area.onchange=refresh;status.onchange=refresh;q.oninput=refresh;document.querySelector("#compat-reset").onclick=()=>{area.value="all";status.value="all";q.value="";refresh()};refresh();
-}
-
-featureRender();stageRender();compatRender();
+featureRender();stageRender();
 
 
 const memClasses=[
@@ -471,6 +496,8 @@ function renderCapacityFocus(key,space){
     const progression=space.records.find(r=>r.id==="rdram.production.progression_flash");
     const materializer=space.records.find(r=>r.id==="rdram.production.global_materializer_helper");
     const inventoryHud=space.records.find(r=>r.id==="rdram.production.inventory_hud_runtime");
+    const inventorySwitch=space.records.find(r=>r.id==="rdram.production.inventory_menu_switch");
+    const inventoryLegend=space.records.find(r=>r.id==="rdram.production.inventory_legend");
     const controlParts=controls?space.controlsSlices.map(slice=>{
       const range="["+memFmt(slice.start)+", "+memFmt(slice.end)+")";
       const record={...controls,id:"rdram.view.controls_"+slice.id,start:slice.start,end:slice.end,range,
@@ -486,7 +513,7 @@ function renderCapacityFocus(key,space){
     const lifecycleGap=temple&&lifecycle&&reserved("capacity-temple-lifecycle-gap",temple.end,lifecycle.start,"Reserved Temple-to-lifecycle space");
     const toastyGap=lifecycle&&module&&reserved("capacity-lifecycle-toasty-gap",lifecycle.end,module.start,"Reserved lifecycle-to-Toasty alignment");
     const moduleProgressionGap=module&&progression&&reserved("capacity-toasty-progression-gap",module.end,progression.start,"Reserved Toasty-to-progression alignment");
-    const inventoryHudTail=inventoryHud&&reserved("capacity-tail",inventoryHud.end,end,"Reserved pool tail");
+    const inventoryHudTail=inventoryLegend&&reserved("capacity-tail",inventoryLegend.end,end,"Reserved pool tail");
     const focus=[
       {record:fixed,title:"Runtime V2 fixed area",tone:"fixed",description:"Always allocated code and state"},
       turn&&{record:turn,title:"TURN control module",tone:"mandatory",description:"Always present in the current build"},
@@ -504,6 +531,8 @@ function renderCapacityFocus(key,space){
       progression&&{record:progression,title:"Power Upgrade flash",tone:"optional",description:"Conditional pickup-progression presentation"},
       materializer&&{record:materializer,title:"Global materializer",tone:"mandatory",description:"85-check award, re-mask, Temple-special, and destination-state helper"},
       inventoryHud&&{record:inventoryHud,title:"Native Inventory HUD",tone:"mandatory",description:"Credential labels, portraits, paper status, stage checks/keys, required powers and XX/85 helpers"},
+      inventorySwitch&&{record:inventorySwitch,title:"Inventory box switch",tone:"mandatory",description:"Left/Right four-box wraparound while Inventory stays open"},
+      inventoryLegend&&{record:inventoryLegend,title:"Native Inventory legend",tone:"mandatory",description:"Four-box control legend; six native panel tiles preserved"},
       inventoryHudTail&&{record:inventoryHudTail,title:"Reserved pool tail",tone:"reserved",description:"Held for MKMSZR; no current fixed payload"}
     ].filter(Boolean);
     renderCapacityBreakdown(key,space,start,end,focus);
@@ -515,13 +544,15 @@ function renderCapacityFocus(key,space){
           lifecycleUsed=lifecycle?lifecycle.end-lifecycle.start:0,
           progressionUsed=progression?progression.end-progression.start:0,
           materializerUsed=materializer?materializer.end-materializer.start:0,
+          switchUsed=inventorySwitch?inventorySwitch.end-inventorySwitch.start:0,
+          legendUsed=inventoryLegend?inventoryLegend.end-inventoryLegend.start:0,
           inventoryHudUsed=inventoryHud?inventoryHud.end-inventoryHud.start:0,
           optionalUsed=(module?module.end-module.start:0)+rainbowUsed+progressionUsed,
-          mandatoryExpansion=turnUsed+controlsUsed+templeUsed+lifecycleUsed+materializerUsed+inventoryHudUsed,
+          mandatoryExpansion=turnUsed+controlsUsed+templeUsed+lifecycleUsed+materializerUsed+inventoryHudUsed+switchUsed+legendUsed,
           unused=pool-mandatoryExpansion-optionalUsed;
     document.querySelector("#rdram-capacity-note").innerHTML=
       '<div><b>16 KiB reserved</b><span>Full MKMSZR reservation below the stock arena floor.</span></div>'+
-      '<div><b>'+memBytes(0x400+mandatoryExpansion)+' always allocated</b><span>Fixed runtime plus TURN, modern controls, Temple helper, lifecycle v06, global materializer, and native Inventory HUD.</span></div>'+
+      '<div><b>'+memBytes(0x400+mandatoryExpansion)+' always allocated</b><span>Fixed runtime plus TURN, modern controls, Temple helper, lifecycle v06, global materializer, and native Inventory HUD, box-switch and legend modules.</span></div>'+
       '<div><b>'+memBytes(optionalUsed)+' optional · '+memBytes(unused)+' still reserved</b><span>Maximum Rainbow + donor-backed Toasty + Power Upgrade presentation build; striped remainder is not confirmed-free.</span></div>';
   }
 }
@@ -550,10 +581,10 @@ function memRender(key){
 }
 memRender("rom");memRender("rdram");
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));t.classList.add("active");document.querySelector("#view-"+t.dataset.view).classList.add("active");history.replaceState(null,"","#"+t.dataset.view)});
-const initial=location.hash.replace("#","");if(["readiness","features","stages","compat","rom","rdram"].includes(initial)){const t=document.querySelector('.tab[data-view="'+initial+'"]');if(t)t.click()}
-const memSource=document.createElement("p");memSource.className="mem-source";memSource.innerHTML='Memory-map snapshot: <code>'+window.MKMSZ_MEMORY_DATA.sourceCommit.slice(0,12)+'</code> · <a target="_blank" rel="noreferrer" href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/Memory-and-Allocation-Map.md">canonical Memory and Allocation Map</a>. Coverage is bounded ownership, not decompilation percentage; unknown gaps are not classified as free.';document.querySelector("#view-rom .mem-intro").appendChild(memSource);document.querySelector("#view-rdram .mem-intro").appendChild(memSource.cloneNode(true));
-const projectSource=document.createElement("p");projectSource.className="mem-source";projectSource.innerHTML='Project snapshot: <code>'+projectData.sourceCommit.slice(0,12)+'</code> · canonical Project Status + 1.0 Roadmap + MKT owners.';document.querySelector("#view-features .card").appendChild(projectSource);document.querySelector("#view-compat .card").appendChild(projectSource.cloneNode(true));
-const stageSource=document.createElement("p");stageSource.className="mem-source";stageSource.innerHTML='Stage-catalog snapshot: <code>'+stageData.sourceCommit.slice(0,12)+'</code> · eight canonical Stage-Catalog-* owners.';document.querySelector("#view-stages .card").appendChild(stageSource);
+const initial=location.hash.replace("#","");if(["readiness","features","stages","compat","research","rom","rdram"].includes(initial)){const t=document.querySelector('.tab[data-view="'+initial+'"]');if(t)t.click()}
+const memSource=document.createElement("p");memSource.className="mem-source";memSource.innerHTML='Targeted memory-map refresh (older records retain Oct 5 audit base): <code>'+window.MKMSZ_MEMORY_DATA.sourceCommit.slice(0,12)+'</code> · <a target="_blank" rel="noreferrer" href="https://github.com/smeagol44/MKMSZ-Randomizer/blob/main/wiki/Memory-and-Allocation-Map.md">canonical Memory and Allocation Map</a>. Coverage is bounded ownership, not decompilation percentage; unknown gaps are not classified as free.';document.querySelector("#view-rom .mem-intro").appendChild(memSource);document.querySelector("#view-rdram .mem-intro").appendChild(memSource.cloneNode(true));
+const projectSource=document.createElement("p");projectSource.className="mem-source";projectSource.innerHTML='Project targeted refresh: <code>'+projectData.sourceCommit.slice(0,12)+'</code> · canonical Project Status + 1.0 Roadmap + MKT owners.';document.querySelector("#view-features .card").appendChild(projectSource);document.querySelector("#view-compat .card").appendChild(projectSource.cloneNode(true));
+const stageSource=document.createElement("p");stageSource.className="mem-source";stageSource.innerHTML='Stage-catalog targeted refresh: <code>'+stageData.sourceCommit.slice(0,12)+'</code> · eight canonical Stage-Catalog-* owners.';document.querySelector("#view-stages .card").appendChild(stageSource);
 
 
-</script></body></html>
+</script><script src="research-ui.js?v=research-20261010"></script><script src="mkt-compat-ui.js?v=20261010"></script></body></html>

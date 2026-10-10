@@ -1,3 +1,20 @@
+## 2026-10-10 — MKT compatibility experience redesign (Atlas PR #32)
+
+- Refactored the MKT tab into a purpose-built responsive donor → adapter → host view, retaining all 28 canonically scoped capability rows and their evidence statuses.
+- Added an interactive evidence distribution, quick area filter chips, grouped cards with expandable source-linked boundaries, full-text search, compact comparison table mode, reset, keyboard focus, and mobile layouts.
+- Added four canonical bounded Sektor proof milestones (v62, v75, v87, v89). No generic move integration or production-safe allocation is implied.
+- The old decompilation-readiness heatmap, feature completion accounting, and MKT compatibility data semantics remain unchanged. Static CI now checks schema, status counts, cited ownership and UI wiring.
+
+## 2026-10-10 — Ghidra migration and bounded October research refresh
+
+- Added a searchable **Research & Ghidra** tab: 526 reviewed global metadata navigation entries, provenance links, a separately grounded 623/623 maintainer-local importer audit and the non-comparable 927/927 Wiki-claim routing figure. This is not a 100%-reverse-engineered claim.
+- Refreshed Feature Board descriptions for accepted four-box Inventory navigation/legend, bounded rich HUD behavior, earned-XP persistence with shuffled pickups OFF, Stage Select audio-helper negative controls, and retained 1.0 audio blocker. Did not create validation-only feature tiles or artificially recolor Decomp Readiness.
+- Added current Fire/Bridge cross-box credential gate evidence in Stage Atlas.
+- Added exact generated ROM transport `[0x01816000,0x01819C00)`, switch RDRAM `[0x1B2DF0,0x1B2F44)`, legend RDRAM `[0x1B2F50,0x1B30E6)`, guarded Inventory hook/power-toggle/file-table patch entries, and capacity visualization slices.
+- Corrected the appended unclassified gap around the new transport rather than counting reserved bytes as confirmed-free.
+- Pinned the targeted refresh to MKMSZ-Randomizer `a8601aac6de0ad2f1db1a86c868242902cbab850` and Ghidra `1c73998221cc20b5c67b35c4fae8efd566725af5`. Unchanged older Atlas intervals remain their October 5/6 audited baseline, **not** silently considered reverified.
+- No ROM modifications or automated emulator validation performed.
+
 ## 2026-10-06 — Remove validation-only feature cards
 
 - Removed **Full Progression Validation** from the Feature Board because it represented end-to-end/runtime coverage rather than a product feature.
