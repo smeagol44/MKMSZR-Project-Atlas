@@ -1,3 +1,4 @@
+import "./validate-mkt-ui.mjs";
 import fs from "node:fs";
 import vm from "node:vm";
 
