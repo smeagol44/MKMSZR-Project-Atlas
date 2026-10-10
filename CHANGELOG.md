@@ -1,3 +1,10 @@
+## 2026-10-10 — MKT compatibility experience redesign (Atlas PR #32)
+
+- Refactored the MKT tab into a purpose-built responsive donor → adapter → host view, retaining all 28 canonically scoped capability rows and their evidence statuses.
+- Added an interactive evidence distribution, quick area filter chips, grouped cards with expandable source-linked boundaries, full-text search, compact comparison table mode, reset, keyboard focus, and mobile layouts.
+- Added four canonical bounded Sektor proof milestones (v62, v75, v87, v89). No generic move integration or production-safe allocation is implied.
+- The old decompilation-readiness heatmap, feature completion accounting, and MKT compatibility data semantics remain unchanged. Static CI now checks schema, status counts, cited ownership and UI wiring.
+
 ## 2026-10-10 — Ghidra migration and bounded October research refresh
 
 - Added a searchable **Research & Ghidra** tab: 526 reviewed global metadata navigation entries, provenance links, a separately grounded 623/623 maintainer-local importer audit and the non-comparable 927/927 Wiki-claim routing figure. This is not a 100%-reverse-engineered claim.

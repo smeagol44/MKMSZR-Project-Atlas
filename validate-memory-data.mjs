@@ -203,6 +203,48 @@ for (const id of [
 
 const html = fs.readFileSync("index.html", "utf8");
 new vm.Script(fs.readFileSync("research-ui.js", "utf8"), {filename:"research-ui.js"});
+const mktScript=fs.readFileSync("mkt-compat-ui.js", "utf8");
+const mktCss=fs.readFileSync("mkt-compat.css", "utf8");
+new vm.Script(mktScript,{filename:"mkt-compat-ui.js"});
+const compat=project.compatibility;
+const canonicalStatuses=["established","covered","runtime","partial","pending","missing","rejected"];
+if (compat.length!==28 || project.compatibilityMilestones?.length!==4)
+  throw new Error("MKT compatibility and proof-milestone population drift");
+for (const row of compat) {
+  if (!row.area || !row.capability || !row.donor || !row.target ||
+      !row.detail || !/^[A-Za-z0-9-]+\.md$/.test(row.source) ||
+      !canonicalStatuses.includes(row.status))
+    throw new Error("MKT evidence / source schema invalid: "+row.capability);
+}
+if (new Set(compat.map(row=>row.area+"::"+row.capability)).size!==compat.length)
+  throw new Error("Duplicate MKT capability");
+if (compat.filter(r=>r.status==="rejected").length!==2 ||
+    compat.filter(r=>r.status==="runtime").length!==7 ||
+    compat.filter(r=>r.status==="missing").length!==5)
+  throw new Error("MKT evidence classes changed unexpectedly");
+for (const m of project.compatibilityMilestones) {
+  if (!/^v(62|75|87|89)$/.test(m.version) ||
+      m.evidence!=="Runtime-confirmed bounded" || !m.detail || !m.title ||
+      !/^[A-Za-z0-9-]+\.md$/.test(m.source))
+    throw new Error("Invalid bounded MKT proof milestone");
+}
+for (const field of ["compat-area","compat-status","compat-q","compat-reset",
+                    "compat-stats","compat-status-scale","compat-areas","compat-count",
+                    "compat-groups","compat-table","compat-mode-cards","compat-mode-table",
+                    "compat-milestones"]) {
+  if (!html.includes('id="'+field+'"'))
+    throw new Error("MKT redesigned UI missing element "+field);
+}
+if (!html.includes('href="mkt-compat.css?v=20261010"') ||
+    !html.includes('src="mkt-compat-ui.js?v=20261010"') ||
+    html.includes("function compatRender()") ||
+    !mktScript.includes('setAttribute("aria-expanded"') ||
+    !mktScript.includes('setAttribute("aria-pressed"') ||
+    !mktScript.includes("sourceLink(row)") ||
+    !mktScript.includes("renderCards(filtered)") ||
+    !mktScript.includes("renderTable(filtered)") ||
+    !mktCss.includes("@media(max-width:490px)"))
+  throw new Error("MKT presentation regression: no source-linked accessible interactive card/table layout");
 const counts={Function:139,Global:35,"Code label":2,Bookmark:105,Type:12,"Typed data":1,Comment:232};
 if (ghidra.sourceRepo !== "smeagol44/MKMSZ-Ghidra" ||
     ghidra.maintainerImport.exact !== 623 || ghidra.maintainerImport.checked !== 623 ||

@@ -53,7 +53,15 @@ Empty logical selectors are never presented as free storage.
 
 ### MKT → MKMSZ Compatibility
 
-A colored source-level compatibility matrix for the donor-port effort.
+The October 10 redesign replaces the wide, hard-to-scan legacy matrix with a **responsive semantic-adapter cockpit**:
+
+- A donor → translation → host diagram that explicitly rejects binary relocation.
+- Status distribution and counts (not a completion percentage), plus interactive area/status chips and search.
+- Grouped, keyboard-accessible capability cards with inline evidence and canonical owner links, and an optional full comparison table.
+- Four independently provenance-linked, **bounded proof** milestones: v62 combo graph, v75 straight-missile flight, v87 rocket art/palette, v89 first-frame publication.
+- All **28** existing compatibility statuses and capability definitions are preserved. "Covered" is a host-side primitive, "Runtime-proven" remains bounded, and Sektor is not a production fighter.
+
+This is a source-level compatibility matrix for the donor-port effort.
 
 It distinguishes:
 
