@@ -1,3 +1,11 @@
+## 2026-10-10 — MKT Arcade Codex visual refinement (Atlas screenshots)
+
+- Maintainer screenshot review exposed small 9–11px labels, oversized donor/target boxes and empty card rows, especially a lone Projectile record. Refactored the category-count-aware capability grid: 3 columns on wide screens, 2 at mid widths, 1 on mobile; 5th item spans its final row with intentional horizontal layout instead of leaving blank columns.
+- Increased title, labels, donor/target, description, source-link, filter and milestone type scales, while reducing excessive panel and vertical gaps.
+- Exposed each capability's full canonical evidence description and direct source link by default rather than hiding information behind repetitive tiny expandable controls. Kept all original evidence classifications and 28 data records.
+- Converted the Sektor proof milestones into a compact visual rail; made the translation architecture and evidence sections feel like an explorable arcade codex, not an admin report. Responsive widths and reduced-motion accessibility are preserved.
+- Bumped MKT CSS/JS asset query revisions for GitHub Pages cache invalidation, adapted DOM smoke assertions. Changes are presentation-only; no release/evidence status revisions.
+
 ## 2026-10-10 — MKT compatibility experience redesign (Atlas PR #32)
 
 - Refactored the MKT tab into a purpose-built responsive donor → adapter → host view, retaining all 28 canonically scoped capability rows and their evidence statuses.

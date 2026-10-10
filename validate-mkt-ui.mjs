@@ -64,6 +64,11 @@ assert.equal(els["compat-count"].textContent.startsWith("28 of 28"),true);
 assert.equal(els["compat-stats"].children.length,4);
 assert.equal(els["compat-milestones"].children.length,4);
 assert.equal(els["compat-groups"].children.length,new Set(data.map(r=>r.area)).size);
+for (const group of els["compat-groups"].children) {
+  const list=group.children[1];
+  assert.equal(Number(list.dataset.count),list.children.length);
+}
+assert.equal(els["compat-groups"].children.find(g=>g.children[1].dataset.count==="5").children[1].children.length,5);
 assert.equal(els["compat-table"].hidden,true);
 assert.equal(els["compat-mode-cards"].attributes["aria-pressed"],"true");
 const filtered=els["compat-status"];
@@ -91,8 +96,9 @@ assert.equal(els["compat-count"].textContent.startsWith("28 of 28"),true);
 els["compat-mode-cards"].dispatch("click");
 assert.equal(els["compat-groups"].hidden,false);
 const item=els["compat-groups"].children[0].children[1].children[0];
-const evidence=item.children.find(x=>x.tagName==="details");
-assert.ok(evidence && evidence.children.some(x=>x.tagName==="div"&&x.children.some(c=>c.tagName==="a"&&c.href.includes("github.com"))));
+const evidence=item.children.find(x=>x.className==="compat-insight");
+assert.ok(evidence && evidence.children.some(c=>c.tagName==="p"&&c.textContent.length>10));
+assert.ok(evidence && evidence.children.some(c=>c.tagName==="a"&&c.href.includes("github.com")));
 const areaChips=els["compat-areas"].querySelectorAll("button");
 assert.ok(areaChips.length>5);
 areaChips[1].dispatch("click");
