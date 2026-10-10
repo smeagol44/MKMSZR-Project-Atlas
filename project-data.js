@@ -1,8 +1,8 @@
-// Curated public-facing snapshot from current canonical MKMSZR owners.
+// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-10-06",
-  "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
-  "auditedThrough": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "snapshot": "2026-10-10",
+  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "auditedThrough": "a8601aac6de0ad2f1db1a86c868242902cbab850",
   "featureBoard": [
     {
       "group": "Core",
@@ -36,7 +36,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Stage Select",
       "state": "production",
       "kind": "have",
-      "detail": "Compact eight-stage selector is Runtime-confirmed across all safe stages. Accepted v03a adds the title-blue animated cursor and exactly one title MOVE sound per valid Up/Down press without the delayed corruption seen in rejected v02. Start selects the highlighted stage; a separate confirmation chime remains deliberately deferred.",
+      "detail": "Compact eight-stage selector and title-blue cursor are Runtime-confirmed; accepted v03a MOVE-sound presentation passed its initial bounded test. Later Fortress audio Traces 7–11 isolate a timing-sensitive helper-associated effect: disabling the whole helper removes sustained failures in one control, but muting its sound or preserving s0 does not. Audio root cause Pending; do not call v03a exhaustively safe.",
       "source": "Project-Status.md",
       "technicalName": "Safe Stage Select",
       "track": "Core",
@@ -63,7 +63,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Seeded Item Shuffle",
       "state": "beta",
       "kind": "have",
-      "detail": "The shared browser/CLI path builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. The feature is complete.",
+      "detail": "The shared browser/CLI path builds a deterministic 85-check global layout: 84 ordinary pickups plus the Temple scripted special check. Destination-safe materialization preserves location-owned checkpoint/activation semantics while reward identity moves globally. The shared 85-check generator/materializer is integrated and implementation-complete; representative cross-stage/full-seed acceptance remains bounded, and the 1.0 release is still blocked by Inventory/audio.",
       "source": "Project-Status.md",
       "technicalName": "85-check global seeded item shuffle",
       "track": "Core",
@@ -76,7 +76,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Four Inventory Boxes",
       "state": "beta",
       "kind": "have",
-      "detail": "Box switching, transition preservation, stage-local foreign-key masking, death/Continue preservation, and final Game Over cleanup are Runtime-confirmed on bounded routes. The native Inventory HUD now resolves authoritative backing-box identity for colored stage credentials, real selected-item titles/portraits, per-stage check/key state, and SEALED foreign-stage presentation.",
+      "detail": "Production-composition v03 Runtime-confirms Left/Right switching across all four authoritative boxes while Inventory stays open, including wraparound and empty boxes. The native legend also passed bounded tests; staged foreign-key masking and Fire/Bridge multi-box use gates preserve authoritative backing ownership. Post-Inventory audio stability remains a separate unresolved release blocker.",
       "source": "Project-Status.md",
       "technicalName": "Four inventory boxes",
       "track": "Core",
@@ -89,7 +89,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Powers as Pickups",
       "state": "beta",
       "kind": "have",
-      "detail": "Build-time setting, default ON. ON places nine Power Upgrade rewards into the global 85-check pool; OFF retains vanilla earned XP. Power Upgrade pickups use Ice Blue Herbs presentation. v23 Runtime-confirms synchronous award plus one guarded asynchronous child for the three short white pulses, so rapid adjacent Power pickups still award immediately.",
+      "detail": "ON adds nine explicit Power Upgrade rewards to the deterministic 85-check global pool; OFF preserves vanilla XP earnings. October 6 focused all-stage test Runtime-confirms restoring earned XP from MKSV +0x44 on supported lifecycle re-entry in OFF builds; full-seed coverage remains bounded.",
       "source": "XP-and-Progression.md",
       "technicalName": "POWERS AS PICKUPS: ON / OFF",
       "track": "Core",
@@ -293,7 +293,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Randomizer HUD",
       "state": "beta",
       "kind": "have",
-      "detail": "Implementation complete. v21 Runtime-confirms the native Inventory presentation: colored STG# credential labels, real paper titles, selected 36×48 CI8 portraits, eight-stage STG CHECKS KEYS, required-Power status, right-aligned total checks, ordinary-row font/palette forwarding, and BOX n OF 4. v23 Runtime-confirms nonblocking Power feedback. The current source also contains the corrected WATER1/WATER2 portrait donor order.",
+      "detail": "The accepted rich native Inventory presentation retains colored STG# credentials, correct images/paper titles, four-box legend, required powers and XX/85 checks. v21/legend/box switching passed bounded gameplay routes; materialized row-state proof v01 passed additional manual scenarios. Full-production rich Inventory composition still has intermittent accelerated music (native PCM FIFO rejections); upstream correction Pending and PR #156 unmerged. This is a 1.0 release gate, not grounds to drop the accepted visual design.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Full native randomizer HUD",
       "track": "Core",
@@ -307,7 +307,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Run Health & Resources",
       "state": "beta",
       "kind": "have",
-      "detail": "Lifecycle v06 is the Runtime-confirmed reference baseline: Very Hard, 9 total lives, 5 continues, Persistent HP ON. Damaged HP persists only across living departure/re-entry; ordinary death/Continue construct full-health replacements and retain stock decrements. The shared path parameterizes lives 1..10, continues 0..5, and Persistent HP ON/OFF; broader combinatorial sampling belongs to integrated release validation rather than feature completion.",
+      "detail": "Lifecycle v06 remains the Runtime-confirmed bounded HP/lives/continues baseline (Very Hard, 9 total lives, 5 continues, persistent HP ON). Earned XP in Powers-as-pickups OFF now persists across supported stage re-entry using existing MKSV +0x44 and stage-entry restore; unsupported routes and full-seed completion remain pending.",
       "source": "Persistence-Inventory-and-Lifecycle.md",
       "technicalName": "HP / LIVES / CONTINUES + Persistent HP",
       "track": "Core",
@@ -377,7 +377,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Enemy Randomization",
       "state": "beta",
       "kind": "have",
-      "detail": "The deterministic 104-record enemy planner/materializer is a merged browser/CLI option. The browser now defaults it ON; the shared configuration/CLI remain user-selectable. It preserves five gated/special encounters, models Prison paging/set-piece auxiliaries, and keeps unresolved foreign semantics fail-closed. Representative seed ENEMYPLAN05 and the promoted compact Water PRIS profiles provide bounded runtime evidence; broader product runtime coverage remains non-exhaustive.",
+      "detail": "The deterministic 104-record enemy planner/materializer is a merged browser/CLI option. The browser now defaults it ON; the shared configuration/CLI remain user-selectable. It preserves five gated/special encounters, models Prison paging/set-piece auxiliaries, and keeps unresolved foreign semantics fail-closed. Representative seed ENEMYPLAN05 and the promoted compact Water PRIS profiles provide bounded runtime evidence; broader product runtime coverage remains non-exhaustive. MKT donor binaries and stage selector identities are not transferable to host actors merely by matching numeric IDs.",
       "source": "Project-Status.md",
       "technicalName": "ENEMY RANDOMIZATION: OFF / ON",
       "track": "4Fun",
@@ -391,7 +391,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Playable Sektor Research",
       "state": "proof",
       "kind": "future",
-      "detail": "Proof-only line through v89: v75 is the stable missile-flight baseline, v87 confirms donor-faithful rocket assets/colors, and v89 Runtime-confirms synchronous texture-slot preparation before actor-list insertion removes the stale first frame. The six-pose Run v05 physical repack is Runtime-confirmed; the P28/P29 v06 rope-owner probe is bounded Runtime-confirmed. Storage/lifecycle/cleanup and general integration remain pending.",
+      "detail": "Proof-only line through v89: v75 is the stable missile-flight baseline, v87 confirms donor-faithful rocket assets/colors, and v89 Runtime-confirms synchronous texture-slot preparation before actor-list insertion removes the stale first frame. The six-pose Run v05 physical repack is Runtime-confirmed; the P28/P29 v06 rope-owner probe is bounded Runtime-confirmed. Storage/lifecycle/cleanup and general integration remain pending. This remains a donor-to-host proof line, not a production playable-character feature.",
       "source": "Project-Status.md",
       "technicalName": "MKT / Sektor takeover",
       "track": "4Fun",
@@ -784,5 +784,7 @@ window.MKMSZ_PROJECT_DATA = {
     "note": "Feature-card completion measures the feature itself: implementation plus feature-specific validation. End-to-end release testing is tracked as release process/evidence rather than as a feature card. Optional and experimental tracked work remains beyond the 1.0 marker.",
     "releaseLabel": "1.0",
     "extraLabel": "Tracked extras"
-  }
+  },
+  "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
 };

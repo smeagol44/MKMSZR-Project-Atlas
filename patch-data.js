@@ -1,7 +1,7 @@
-// Generated from the canonical MKMSZR Address-and-Patch-Site-Registry.md snapshot.
+// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
 window.MKMSZ_PATCH_DATA = {
-  "snapshot": "2026-10-05",
-  "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "snapshot": "2026-10-10",
+  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
   "patches": [
     {
       "id": "prod-0",
@@ -1211,6 +1211,23 @@ window.MKMSZ_PATCH_DATA = {
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
+      "id": "prod-inventory-legend-hook",
+      "class": "production",
+      "owner": "Native four-box legend trampoline",
+      "romSite": "0x0007372C..0x000737EF",
+      "romStart": 472876,
+      "romEnd": 473072,
+      "romExact": true,
+      "context": "0x80072B2C (Inventory legend)",
+      "vaStart": 2147953452,
+      "vaEnd": 2147953648,
+      "physicalStart": 469804,
+      "physicalEnd": 470000,
+      "expected": "guarded stock C4-byte text-emission block",
+      "effect": "Branch to 0xA01B2F50, NOP remaining stock text emission; preserve six-tile panel and return 0x80072BF0",
+      "source": "Address-and-Patch-Site-Registry.md"
+    },
+    {
       "id": "prod-inventory-hud-preview",
       "class": "production",
       "owner": "Native Inventory HUD preview hook",
@@ -1226,6 +1243,40 @@ window.MKMSZ_PATCH_DATA = {
       "expected": "0C01CF3B",
       "effect": "Route selected credential preview through backing-ID-aware streamed portrait wrapper",
       "source": "Address-and-Patch-Site-Registry.md; inventory_hud.py"
+    },
+    {
+      "id": "prod-inventory-menu-switch-hook",
+      "class": "production",
+      "owner": "In-Inventory four-box switch trampoline",
+      "romSite": "0x00074324..0x00074333",
+      "romStart": 475940,
+      "romEnd": 475956,
+      "romExact": true,
+      "context": "0x80073724 (Inventory loop)",
+      "vaStart": 2147956516,
+      "vaEnd": 2147956532,
+      "physicalStart": 472868,
+      "physicalEnd": 472884,
+      "expected": "1640000F 00000000 0C01D06D 00000000",
+      "effect": "Guarded 16-byte trampoline to 0xA01B2DF0; preserves Items/Power-Ups flow while switching authoritative boxes",
+      "source": "Address-and-Patch-Site-Registry.md"
+    },
+    {
+      "id": "prod-inventory-empty-box-power-ups",
+      "class": "production",
+      "owner": "Inventory empty-box Power-Ups recovery",
+      "romSite": "0x00074748",
+      "romStart": 477000,
+      "romEnd": 477004,
+      "romExact": true,
+      "context": "0x80073B48",
+      "vaStart": 2147957576,
+      "vaEnd": 2147957580,
+      "physicalStart": 473928,
+      "physicalEnd": 473932,
+      "expected": "18400005",
+      "effect": "NOP only Items count rejection; native positive Power count still required",
+      "source": "Address-and-Patch-Site-Registry.md"
     },
     {
       "id": "prod-inventory-hud-row",
@@ -1548,6 +1599,23 @@ window.MKMSZ_PATCH_DATA = {
       "physicalEnd": null,
       "expected": "guarded clean zero entry",
       "effect": "Points at mandatory TURN and modern controls; optional CI4 Toasty extends the same file",
+      "source": "Address-and-Patch-Site-Registry.md"
+    },
+    {
+      "id": "prod-shared-file-1a-transport",
+      "class": "production",
+      "owner": "Shared file 0x1A generated transport",
+      "romSite": "0x000A5148",
+      "romStart": 676168,
+      "romEnd": 676180,
+      "romExact": true,
+      "context": "ROM global file table, file ID 0x1A",
+      "vaStart": null,
+      "vaEnd": null,
+      "physicalStart": null,
+      "physicalEnd": null,
+      "expected": "guarded clean zero entry",
+      "effect": "Retarget staged shared-prefix+Inventory switch+legend file 0x1A to ROM [0x01816000,0x01819C00) capacity; runtime load at 0x801AF820, no overwrite of fixed Toasty audio source",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -2128,5 +2196,7 @@ window.MKMSZ_PATCH_DATA = {
       "effect": "Runtime-confirmed bounded proof",
       "source": "Address-and-Patch-Site-Registry.md"
     }
-  ]
+  ],
+  "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
 };

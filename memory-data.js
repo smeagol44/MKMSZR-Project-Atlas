@@ -1,9 +1,8 @@
-// Generated from the canonical MKMSZR Memory-and-Allocation-Map.md snapshot.
-// Unknown gaps are intentionally not classified as free.
+// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-10-05",
+  "snapshot": "2026-10-10",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -754,10 +753,38 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Fixed 0x1200-byte source block. Lazily DMA-loaded into one exact 0x1200-byte arena allocation per stage lifecycle."
       },
       {
-        "id": "rom.generated.unassigned_tail",
+        "id": "rom.generated.inventory_transport_alignment",
         "start": 25252352,
+        "end": 25255936,
+        "range": "[0x01815200, 0x01816000)",
+        "class": "stock-unknown",
+        "owner": "Unclassified gap before generated Inventory switch transport",
+        "scope": "32 MiB generated output",
+        "lifecycle": "None",
+        "evidence": "No assigned owner in current canonical map",
+        "production_safe": "no",
+        "reference": "Memory-and-Allocation-Map.md",
+        "notes": "Bytes between Inventory HUD fixed data and file-1A transport; not confirmed reusable."
+      },
+      {
+        "id": "rom.production.inventory_menu_switch_transport",
+        "start": 25255936,
+        "end": 25271296,
+        "range": "[0x01816000, 0x01819C00)",
+        "class": "production",
+        "owner": "Relocated shared 0x1A, in-Inventory switch and native four-box legend transport",
+        "scope": "Generated 32 MiB output",
+        "lifecycle": "Stage-init file load / Inventory",
+        "evidence": "Switch v03 and legend v01 Runtime-confirmed bounded; source prefix and capacity guarded",
+        "production_safe": "yes",
+        "reference": "Memory-and-Allocation-Map.md; inventory_menu_switch.py; inventory_legend.py",
+        "notes": "Exact 0x35D0-byte shared prefix + 0x154 switch + 0x0C alignment + 0x196 legend, in 0x3C00 reserved transport. Legend source begins ROM 0x01819730 / KSEG0 0x801B2F50. Unused capacity remains owner-reserved."
+      },
+      {
+        "id": "rom.generated.unassigned_tail",
+        "start": 25271296,
         "end": 33554432,
-        "range": "[0x01815200, 0x02000000)",
+        "range": "[0x01819C00, 0x02000000)",
         "class": "stock-unknown",
         "owner": "Unassigned appended generated-output capacity",
         "scope": "Generated 32 MiB output only",
@@ -765,7 +792,7 @@ window.MKMSZ_MEMORY_DATA = {
         "evidence": "No owner/use established",
         "production_safe": "no",
         "reference": "PR #137 output-size policy; Inventory HUD allocations; Memory-and-Allocation-Map.md",
-        "notes": "Remaining appended output capacity after Inventory HUD generated assets. It is not automatically reusable/free without an explicit owner and allocation decision."
+        "notes": "Remaining appended output capacity above owned Inventory switch/legend transport. Unknown is not confirmed-free."
       }
     ]
   },
@@ -1350,6 +1377,36 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Runtime mirror of rom.production.inventory_hud_runtime. The lazily allocated 0x1200 HUD data block is arena-owned/dynamic and is not counted as a second fixed suballocation here."
       },
       {
+        "id": "rdram.production.inventory_menu_switch",
+        "start": 1781232,
+        "end": 1781572,
+        "range": "[0x001B2DF0, 0x001B2F44)",
+        "aliases": "KSEG0 [0x801B2DF0,0x801B2F44); KSEG1 [0xA01B2DF0,0xA01B2F44)",
+        "class": "production",
+        "owner": "Items-mode in-Inventory four-box switch helper",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Inventory open / item navigation",
+        "evidence": "Runtime-confirmed v03 bounded full production composition",
+        "production_safe": "yes",
+        "reference": "Memory-and-Allocation-Map.md; inventory_menu_switch.py",
+        "notes": "Native 0x154-byte helper; follows HUD runtime and cycles all four backing boxes without exiting Inventory."
+      },
+      {
+        "id": "rdram.production.inventory_legend",
+        "start": 1781584,
+        "end": 1781990,
+        "range": "[0x001B2F50, 0x001B30E6)",
+        "aliases": "KSEG0 [0x801B2F50,0x801B30E6); KSEG1 [0xA01B2F50,0xA01B30E6)",
+        "class": "production",
+        "owner": "Native four-box Inventory legend/label helper",
+        "scope": "Expansion-pool suballocation",
+        "lifecycle": "Inventory open / item navigation",
+        "evidence": "Runtime-confirmed legend v01 bounded",
+        "production_safe": "yes",
+        "reference": "Memory-and-Allocation-Map.md; inventory_legend.py",
+        "notes": "0x196-byte legend helper in relocated shared file 0x1A. Prior 0x0C alignment remains reserved; six stock panel tiles retained."
+      },
+      {
         "id": "rdram.stock.pickup_context_pointer",
         "start": 3067424,
         "end": 3067428,
@@ -1365,5 +1422,7 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Corrects superseded 0x802FCE20; surrounding overlay/runtime space is not inferred from this word."
       }
     ]
-  }
+  },
+  "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
 };
