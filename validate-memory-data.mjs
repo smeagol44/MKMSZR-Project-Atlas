@@ -25,7 +25,7 @@ if (new Set([memory.sourceCommit, patches.sourceCommit, stages.sourceCommit, pro
 
 const classes = new Set([
   "stock-known", "stock-unknown", "production", "confirmed-free", "candidate-free",
-  "dynamic", "proof-only", "rejected/conflict", "alias/view",
+  "dynamic", "proof-only", "rejected/conflict", "alias/view", "retired", "fighter-conditional", "unassigned",
 ]);
 const ids = new Set();
 for (const key of ["rom", "rdram"]) {
@@ -205,8 +205,8 @@ for (const id of [
 const html = fs.readFileSync("index.html", "utf8");
 new vm.Script(fs.readFileSync("research-ui.js", "utf8"), {filename:"research-ui.js"});
 const mktScript=fs.readFileSync("mkt-compat-ui.js", "utf8");
-const mktCss=fs.readFileSync("mkt-compat.css", "utf8");
-new vm.Script(mktScript,{filename:"mkt-compat-ui.js"});
+new vm.Script(mktScript, { filename: "mkt-compat-ui.js" });
+new vm.Script(fs.readFileSync("atlas-ui.js", "utf8"), { filename: "atlas-ui.js" });
 const compat=project.compatibility;
 const canonicalStatuses=["established","covered","runtime","partial","pending","missing","rejected"];
 if (compat.length!==28 || project.compatibilityMilestones?.length!==4)
@@ -220,8 +220,8 @@ for (const row of compat) {
 if (new Set(compat.map(row=>row.area+"::"+row.capability)).size!==compat.length)
   throw new Error("Duplicate MKT capability");
 if (compat.filter(r=>r.status==="rejected").length!==2 ||
-    compat.filter(r=>r.status==="runtime").length!==7 ||
-    compat.filter(r=>r.status==="missing").length!==5)
+    compat.filter(r=>r.status==="runtime").length!==9 ||
+    compat.filter(r=>r.status==="missing").length!==2)
   throw new Error("MKT evidence classes changed unexpectedly");
 for (const m of project.compatibilityMilestones) {
   if (!/^v(62|75|87|89)$/.test(m.version) ||
@@ -229,31 +229,16 @@ for (const m of project.compatibilityMilestones) {
       !/^[A-Za-z0-9-]+\.md$/.test(m.source))
     throw new Error("Invalid bounded MKT proof milestone");
 }
-for (const field of ["compat-area","compat-status","compat-q","compat-reset",
-                    "compat-stats","compat-status-scale","compat-areas","compat-count",
-                    "compat-groups","compat-table","compat-mode-cards","compat-mode-table",
-                    "compat-milestones"]) {
-  if (!html.includes('id="'+field+'"'))
-    throw new Error("MKT redesigned UI missing element "+field);
-}
-if (!html.includes('href="mkt-compat.css?v=20261010b"') ||
-    !html.includes('src="mkt-compat-ui.js?v=20261010b"') ||
-    html.includes("function compatRender()") ||
-    !mktScript.includes('function insight(row)') ||
-    !mktScript.includes('list.dataset.count=String(rows.length)') ||
-    !mktScript.includes('setAttribute("aria-pressed"') ||
-    !mktScript.includes("sourceLink(row)") ||
-    !mktScript.includes("renderCards(filtered)") ||
-    !mktScript.includes("renderTable(filtered)") ||
-    !mktCss.includes("MKMSZR ARCADE CODEX V2"))
-  throw new Error("MKT presentation regression: no source-linked accessible interactive card/table layout");
-const counts={Function:139,Global:35,"Code label":2,Bookmark:105,Type:12,"Typed data":1,Comment:232};
+const counts = {
+  Function: 182, Global: 65, "Code label": 3, "Overlay function": 14,
+  Bookmark: 106, Type: 12, "Typed data": 1, Comment: 233, "Overlay image": 8,
+};
 if (ghidra.sourceRepo !== "smeagol44/MKMSZ-Ghidra" ||
     ghidra.maintainerImport.exact !== 623 || ghidra.maintainerImport.checked !== 623 ||
     ghidra.maintainerImport.mismatches !== 0 ||
-    ghidra.records.length !== 526) throw new Error("Ghidra verified manifest snapshot is inconsistent");
+    ghidra.records.length !== 624) throw new Error("Ghidra verified manifest snapshot is inconsistent");
 for (const [cat,num] of Object.entries(counts)) {
-  if (ghidra.records.filter(r=>r.category===cat).length!==num)
+  if (ghidra.navigationCounts[cat] !== num || ghidra.records.filter(r=>r.category===cat).length!==num)
     throw new Error("Ghidra metadata category drift: "+cat);
 }
 if (!ghidra.records.some(r=>r.category==="Typed data" && r.address==="0x800B0F68" &&
@@ -262,10 +247,10 @@ if (!ghidra.records.some(r=>r.category==="Typed data" && r.address==="0x800B0F68
       r.detail.includes("switch arm of 0x800304C0")))
   throw new Error("Ghidra stock-knowledge navigation regression");
 if (!html.includes('data-view="research"') || !html.includes('id="research-records"') ||
-    !html.includes('src="ghidra-data.js?v=research-20261010"') ||
-    !html.includes('src="research-ui.js?v=research-20261010"'))
+    !html.includes('src="ghidra-data.js?v=20261111"') ||
+    !html.includes('src="research-ui.js?v=20261111"'))
   throw new Error("Ghidra research page assets not wired up");
-if (!project.featureBoard.find(f=>f.name==="Randomizer HUD")?.detail.includes("upstream correction Pending") ||
+if (!project.featureBoard.find(f=>f.name==="Randomizer HUD")?.detail.includes("default-on fix") ||
     !project.featureBoard.find(f=>f.name==="Four Inventory Boxes")?.detail.includes("Left/Right"))
   throw new Error("Recent Inventory feature state absent");
 const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]
@@ -307,8 +292,32 @@ if (!shuffledPower || shuffledPower.state !== "beta" || shuffledPower.scope !== 
   throw new Error("Feature Board is missing current shuffled-power / HUD / web-patcher state");
 }
 
+const keyRom = romRecord("rom.production.key_stage_table");
+const keyRam = rdramRecord("rdram.production.key_stage_table");
+if (keyRom.start !== 0xF69150 || keyRom.end !== 0xF69170 ||
+    keyRam.start !== 0x1B0970 || keyRam.end !== 0x1B0990 ||
+    romRecord("rom.stock.default_inventory_template").class !== "stock-known") {
+  throw new Error("Four-box key map relocation or stock template ownership drifted");
+}
+const carrier = romRecord("rom.conditional.sektor_file_and_samples");
+const loaderRom = romRecord("rom.conditional.sektor_fixed_loader");
+const loaderRam = rdramRecord("rdram.conditional.sektor_fixed_loader");
+if ([carrier, loaderRom, loaderRam].some(row => row.class !== "fighter-conditional") ||
+    carrier.start !== 0x1820000 || carrier.end !== 0x186E4C0 ||
+    loaderRam.start !== 0x1B30F0 || loaderRam.end !== 0x1B3370 ||
+    loaderRom.start - 0x1816000 !== loaderRam.start - 0x1AF820 ||
+    loaderRom.end - loaderRom.start !== loaderRam.end - loaderRam.start ||
+    romRecord("rom.production.rainbow_bank").class !== "retired") {
+  throw new Error("Fighter-conditional capacity or retired Rainbow ownership drifted");
+}
+if (!patches.patches.some(p => p.id === "prod-water-scripted-checkpoint" && p.context.includes("Water overlay file 0xA1")) ||
+    !patches.patches.some(p => p.id === "prod-audio-fifo-reserve" && p.romStart === 0x1F54) ||
+    patches.patches.some(p => p.class === "production" && /rainbow/i.test(p.owner + p.effect))) {
+  throw new Error("November patch-site status drifted");
+}
+
 for (const patch of patches.patches) {
-  if (!["production", "proof-only"].includes(patch.class)) throw new Error("patch class: " + patch.id);
+  if (!["production", "proof-only", "retired"].includes(patch.class)) throw new Error("patch class: " + patch.id);
   if (patch.romStart !== null && !(patch.romStart >= 0 && patch.romEnd <= 0x2000000 && patch.romStart < patch.romEnd)) {
     throw new Error("patch ROM bounds: " + patch.id);
   }

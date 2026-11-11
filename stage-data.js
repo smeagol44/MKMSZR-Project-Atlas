@@ -1,8 +1,7 @@
-// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
+// Targeted November refresh. Unchanged records retain the previous Atlas evidence base.
 window.MKMSZ_STAGE_DATA = {
-  "snapshot": "2026-10-10",
-  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
-  "auditedThrough": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "snapshot": "2026-11-11",
+  "sourceCommit": "7e86e4009cfac206a3c736e29bf4c7b5de6b4a6f",
   "stages": [
     {
       "name": "Temple",
@@ -206,7 +205,7 @@ window.MKMSZ_STAGE_DATA = {
         "Water is also the main GRUNT1/GRUNT2 import-sizing case; current static work closes important reaction/root dependencies but the full pair still exceeds the observed replacement ceiling without more savings."
       ],
       "constraints": [
-        "Water key pickup callbacks touch live stage state; checkpoint suppression remains static-only and runtime pending.",
+        "Water key callbacks touch live stage state. The Triangle / Three Bars / Moon checkpoint-free awards were runtime-confirmed in TEST LAB. The separate boss-area script now commits checkpoint 6 even if the prior checkpoint was skipped. Later-checkpoint re-entry remains pending.",
         "Several occupied selectors have no ordinary-pickup users and stay protected.",
         "GRUNT1/GRUNT2 foreign semantics are not yet production-closed."
       ],
@@ -628,5 +627,6 @@ window.MKMSZ_STAGE_DATA = {
     }
   ],
   "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
-  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature.",
+  "previousSnapshotCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850"
 };

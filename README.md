@@ -1,154 +1,38 @@
 # MKMSZR Project Atlas
 
-Interactive project-status, stage, compatibility, decompilation, ROM, and RDRAM atlas for **Mortal Kombat Mythologies: Sub-Zero (N64, USA Rev. 0 / NMYE)**, derived from the ongoing [MKMSZR](https://github.com/smeagol44/MKMSZ-Randomizer) project.
+[Open the Atlas](https://smeagol44.github.io/MKMSZR-Project-Atlas/)
 
-Public site:
+An interactive reference for the Mortal Kombat Mythologies: Sub-Zero Randomizer (N64 USA Rev. 0 / NMYE). The [Randomizer Wiki](https://github.com/smeagol44/MKMSZ-Randomizer/tree/main/wiki) owns product and research status. The [Ghidra manifests](https://github.com/smeagol44/MKMSZ-Ghidra/tree/main/analysis) own the versioned metadata.
 
-**https://smeagol44.github.io/MKMSZR-Project-Atlas/**
+## November 11, 2026 snapshot
 
-## Snapshot update — 2026-10-10
+Reviewed [Randomizer PRs #174–203](https://github.com/smeagol44/MKMSZ-Randomizer/pulls?q=is%3Apr) and [Ghidra PRs #7–13](https://github.com/smeagol44/MKMSZ-Ghidra/pulls?q=is%3Apr). Randomizer #203 was open at the snapshot. Ghidra #7 closed unmerged. Atlas shows both in context.
 
-This is a **targeted refresh** over the prior October 5/6 Atlas base, pinned to MKMSZ-Randomizer source commit `a8601aac6de0ad2f1db1a86c868242902cbab850` and MKMSZ-Ghidra metadata `1c73998221cc20b5c67b35c4fae8efd566725af5`. Unchanged older allocations, stages, compatibility rows and decomp-readiness tiles are **not** represented as exhaustively re-audited just because the snapshot date advanced.
+- Randomizer source revision [`7e86e4009cfa`](https://github.com/smeagol44/MKMSZ-Randomizer/commit/7e86e4009cfac206a3c736e29bf4c7b5de6b4a6f)
+- Ghidra source revision [`8d73880`](https://github.com/smeagol44/MKMSZ-Ghidra/commit/8d73880)
 
-The new **Research & Ghidra** view contains 526 searchable metadata navigation records (139 named functions, 35 global labels, 2 code labels, 105 bookmarks, 12 managed types, 1 typed data instance, 232 comments) with exact manifest links. The user's clean-ROM Ghidra importer and audits achieved **623/623 exact checks**, with zero mismatches; this is a measure of imported curated records, not of entire retail game code. The distinct 927/927 enumerated-knowledge routing result is also not a decompilation percentage.
-
-Updated feature and stage evidence includes native in-Inventory four-box Left/Right navigation, Inventory legend and HUD, Fire/Bridge credential ownership, earned-XP persistence with Powers-as-pickups OFF, and the latest audio/FIFO trace findings. The ROM/RDRAM maps now include the canonical file-0x1A generated transport, switch and legend allocation, plus their guarded ROM hook sites. Full rich Inventory audio closure remains Pending; no FIFO-enqueue retry or production correction is claimed.
+The update is targeted. Existing stage, memory and readiness records outside the affected areas retain their prior evidence base. Each updated data file pins its upstream source revision.
 
 ## Views
 
-### Decomp Readiness
+| View | What you can look up |
+| --- | --- |
+| Features | Recent product changes, production and proof status, and the estimated roadmap. Completion colors and effort points are editorial estimates. |
+| Stages | The eight main stages, 84 ordinary pickups, overlay identities, progression, and bounded checkpoint or materialization evidence. |
+| MKT Fighter Import | Sektor and Reptile status, 28 translation capabilities, and historical proof milestones. Search or filter the compact list and use **Compare** for side-by-side donor and host details. |
+| Ghidra Research | 624 selected navigation records from the pinned manifests, including 182 global function entries, 65 global symbols, and eight separately identified overlay images. Filter by type or scope and expand a result for the evidence and manifest link. |
+| Decomp Readiness | A qualitative 40 × 15 heatmap of 600 research units. Green represents sufficient understanding for a plausible C analogue. Yellow marks partial knowledge. Black marks largely unmapped areas. |
+| ROM | Bounded stock and generated ownership, exact guarded patch sites, and the conditional Sektor carrier in 32 MiB output. The supported clean input is 16 MiB. |
+| RDRAM | Physical memory ownership and the 16 KiB MKMSZR reservation, including the separate TURN, ATTACK, SPECIALS, JUMP and RUN display slices and the conditional Sektor loader. |
 
-The original 40 × 15 (600-unit) qualitative heatmap remains intact.
+Ghidra’s October 9 local audit covered 623 exact checks with zero mismatches. The newer manifest entries await a fresh maintainer import and audit. The October 927/927 Wiki routing count measures a separate set of enumerated findings. The readiness heatmap has its own qualitative denominator.
 
-- **Green** — sufficiently understood to reproduce with confidence in a C reimplementation.
-- **Yellow** — meaningful structure/behavior is known, but important semantics or coverage are still missing.
-- **Black** — substantially unmapped from a decompilation-readiness perspective.
+ROM offsets, physical RDRAM and runtime VAs retain their own coordinates. KSEG0 and KSEG1 aliases refer to the same physical bytes. Conditional and historical proof ranges retain their scope. Unclassified bytes and empty selectors do not establish reusable capacity.
 
-The 600 squares are equal-sized **knowledge units**, not equal code-size buckets, literal functions, or equal numbers of ROM bytes.
-The integrated ATTACK, SPECIALS, JUMP, and RUN input paths are named within the existing partial player-action units; product integration does not by itself establish a fully decompiled player state machine.
+## Updating Atlas
 
-### Research & Ghidra
+1. Read Project Status, then the relevant Wiki owner and merged implementation or Ghidra manifests.
+2. Update the affected data records and source revisions. Preserve evidence limits and stage scope.
+3. Run `node validate-memory-data.mjs` from the repository root. It validates the maps and exercises the MKT and Ghidra filters, disclosures, comparison, and source navigation.
 
-An independent, filterable research view for the latest curated Ghidra global metadata and recent evidence. Shows maintainer-verified 623/623 import checks, routes to reviewed ROM-free manifests and current Wiki owners, and distinguishes trace-confirmed observations from unresolved production causes. It does **not** change the 600-unit qualitative Decomp Readiness heatmap.
-
-### Feature Board
-
-A public-facing feature/roadmap view showing what MKMSZR already ships, what is production beta, what exists only as a bounded proof, what 1.0 still requires, and what remains deliberately open or post-1.0 research.
-
-This view is intentionally easier to browse than the canonical Roadmap. The Wiki remains authoritative for exact requirements and acceptance gates.
-
-### Stage Atlas
-
-An eight-card atlas for Temple, Wind, Water, Earth, Prison, Fire, Bridge, and Fortress, sourced from the normalized stage catalogs.
-
-Each stage exposes:
-
-- compact/native stage IDs;
-- resource-file ROM range, size, file-table entry, and verified runtime base;
-- ordinary pickup count and pickup mix;
-- outer-slot shape, empty selectors, and unknown/nonstandard selectors;
-- bounded evidence and important stage-local caveats.
-
-Empty logical selectors are never presented as free storage.
-
-### MKT → MKMSZ Compatibility
-
-The October 10 redesign replaces the wide, hard-to-scan legacy matrix with a **responsive semantic-adapter cockpit**, followed by a typography/density pass informed by maintainer screenshots:
-
-- A donor → translation → host diagram that explicitly rejects binary relocation.
-- Status distribution and counts (not a completion percentage), plus interactive area/status chips and search.
-- Dense 2/3-column, category-count-aware capability cards with larger type, visible research notes, canonical owner links, and no stranded last-row card. An optional full comparison table remains available.
-- Four independently provenance-linked, **bounded proof** milestones: v62 combo graph, v75 straight-missile flight, v87 rocket art/palette, v89 first-frame publication.
-- All **28** existing compatibility statuses and capability definitions are preserved. "Covered" is a host-side primitive, "Runtime-proven" remains bounded, and Sektor is not a production fighter.
-
-This is a source-level compatibility matrix for the donor-port effort.
-
-It distinguishes:
-
-- established/covered target primitives;
-- runtime-proven translations;
-- partial adapters;
-- missing semantic translators;
-- pending production composition;
-- rejected direct paths such as binary/code or donor-codec reuse.
-
-This is not a binary-compatibility claim.
-
-### ROM Coverage & Capacity
-
-A capacity-first view that distinguishes the supported 16 MiB clean cartridge image from the current 32 MiB generated global-v2 output:
-
-- classified bounded ownership vs unknown/unclassified bytes;
-- current MKMSZR production-owned bytes;
-- confirmed reusable free bytes;
-- proof-only footprints kept separate from current ownership;
-- a proportional whole-image strip plus a zoomed high-ROM generated-output strip;
-- distinct colors and exact sizes for each current high-ROM purpose, including the native Inventory HUD tail at `0xF6B0D0..0xF6B5CF`; proof artifacts appear only in the exact records, since they can overlap the current build;
-- appended-output ownership now shows the Inventory HUD portrait atlas, relocated common-package capacity, and fixed HUD data block at `0x01800000..0x018151FF` before the remaining unassigned tail;
-- exact interval and patch-site browser with canonical provenance.
-
-The view deliberately does **not** infer free space from `00`/`FF` patterns or from gaps in current research. Decompilation knowledge is shown separately in **Decomp Readiness**; byte ownership and code understanding are not the same metric.
-
-### RDRAM Coverage & Capacity
-
-A physical-memory ownership/capacity view for the 4 MiB N64 target:
-
-- classified physical ownership vs unknown/unclassified bytes;
-- current MKMSZR production reservation/ownership;
-- confirmed reusable free bytes;
-- physical aliases counted once even when KSEG0/KSEG1 views exist;
-- a focused breakdown of the exact 16 KiB MKMSZR reservation;
-- separate ATTACK, SPECIALS, JUMP, and RUN display slices within the single modern-controls allocation, alongside the existing separate TURN module;
-- separate colors for always allocated code, conditional donor content, and striped reserved gaps, with exact byte counts below the proportional bar;
-- explicit native Inventory HUD runtime ownership at `0x801B28F0..0x801B2DEF`, following the global materializer and before the remaining reserved pool tail;
-- current Runtime V2 fixed use, 15 KiB expansion-pool capacity, conditional donor-backed allocation, and reserved remainder shown separately;
-- exact physical interval and patch-site browser.
-
-Reserved-but-unused MKMSZR bytes are shown as reserved capacity, **not** as generic confirmed-free memory.
-
-## Canonical authority
-
-The visualization is a derivative snapshot. Current truth remains in the version-controlled MKMSZR Wiki.
-
-Primary inputs include:
-
-- `Project-Status.md`
-- `1.0-Requirements-and-Roadmap.md`
-- `Memory-and-Allocation-Map.md`
-- `Address-and-Patch-Site-Registry.md`
-- `Stage-Catalogs.md` + the eight `Stage-Catalog-*` pages
-- `MKT-to-MKMSZ-Compatibility-Layer.md`
-- `MKT-Adapter-Primitives.md`
-- `MKT-Fighter-Asset-Translation.md`
-- `Sub-Zero-to-Sektor-Animation-Mapping.md`
-- `Global-Item-Materialization-and-Solvability.md`
-- `XP-and-Progression.md`
-- `Sounds-and-Music.md`
-- `Presentation-and-Branding.md`
-
-The snapshot data files embed the source MKMSZR commit so a displayed state can be traced back to the source revision. The current refresh follows MKMSZR through commit `52139f021212c94bb483cc6ec1a6cecda5c94fa1` (2026-10-05). In addition to the merged global-v2 generator/solver, 32 MiB output model, destination-aware materializer, configurable lifecycle, standard N64 byte-order normalization, current enemy randomization, Safe Stage presentation, and isolated Temple audio, Atlas now includes the accepted native Inventory HUD and v23 nonblocking Power feedback. The HUD adds colored `STG#` credentials, real selected-item titles/portraits, `STG CHECKS KEYS`, required-Power status, and `XX/85`, plus explicit ROM/RDRAM/generated-output ownership for its runtime tail, portrait atlas, common-package capacity, and data block. The browser snapshot also reflects the worker-based responsive patcher, selection-time ROM validation, current seeded/randomization defaults, drag/drop inputs, live summaries, and completion UI from PRs #142/#144/#145. Final representative full-seed production validation remains the release gate.
-
-Important rules:
-
-- ROM offset is not silently treated as a runtime VA.
-- KSEG0/KSEG1 aliases are not independent allocations.
-- Stage-overlay ownership remains stage/source qualified.
-- Zero/FF/padding or unused-looking selectors are not evidence of free space.
-- Proof-only ranges do not become production-safe merely because a disposable ROM worked.
-- Unknown gaps remain unknown.
-- A compatibility proof does not imply arbitrary donor compatibility.
-
-## Updating the maps
-
-1. Read current `wiki/Project-Status.md` first.
-2. Read the canonical owner for the view being changed.
-3. Refresh derivative data only from current bounded Wiki facts.
-4. Keep evidence scope and proof-vs-production boundaries intact.
-5. Update the embedded source commit/snapshot date.
-6. Run the research-map validator before deployment.
-
-## Deployment
-
-`.github/workflows/pages.yml` deploys this static site to GitHub Pages on every push to `main`.
-
-No build step or external JavaScript dependency is required.
+The site is static. The Pages workflow publishes pushes to `main` with no build step or runtime dependencies.

@@ -1,8 +1,7 @@
-// Curated public-facing snapshot from current canonical MKMSZR owners.
+// Targeted November refresh. Unchanged records retain the previous Atlas evidence base.
 window.MKMSZ_PROJECT_DATA = {
-  "snapshot": "2026-10-10",
-  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
-  "auditedThrough": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "snapshot": "2026-11-11",
+  "sourceCommit": "7e86e4009cfac206a3c736e29bf4c7b5de6b4a6f",
   "featureBoard": [
     {
       "group": "Core",
@@ -76,7 +75,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Four Inventory Boxes",
       "state": "beta",
       "kind": "have",
-      "detail": "Production-composition v03 Runtime-confirms Left/Right switching across all four authoritative boxes while Inventory stays open, including wraparound and empty boxes. The native legend also passed bounded tests; staged foreign-key masking and Fire/Bridge multi-box use gates preserve authoritative backing ownership. Post-Inventory audio stability remains a separate unresolved release blocker.",
+      "detail": "Left/Right switches across all four boxes in Items, including wraparound and empty boxes. The key-to-stage map now lives in shared file 0x1A, clear of the stock password handler’s writes. The optional Start with all stage keys debug setting seeds 21 credentials across the four boxes on a fresh run.",
       "source": "Project-Status.md",
       "technicalName": "Four inventory boxes",
       "track": "Core",
@@ -89,7 +88,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Powers as Pickups",
       "state": "beta",
       "kind": "have",
-      "detail": "ON adds nine explicit Power Upgrade rewards to the deterministic 85-check global pool; OFF preserves vanilla XP earnings. October 6 focused all-stage test Runtime-confirms restoring earned XP from MKSV +0x44 on supported lifecycle re-entry in OFF builds; full-seed coverage remains bounded.",
+      "detail": "ON uses Power Upgrade items and native new-power feedback. OFF retains earned combat XP and persists it through MKSV +0x44. Both use the common 20,000-XP maximum. OFF has no stage-specific XP caps. Required powers still configures the independent Fortress gate.",
       "source": "XP-and-Progression.md",
       "technicalName": "POWERS AS PICKUPS: ON / OFF",
       "track": "Core",
@@ -184,7 +183,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Randomizer Title Screen",
       "state": "beta",
       "kind": "have",
-      "detail": "The accepted vector/typeset title and configurable <NAME> EDITION were visually confirmed through the production webapp. The native CI8 package uses a 16-color visual palette; every non-vanilla outfit option also tints the title palette, while rainbow uses a fixed five-hue title treatment. Title implementation is complete; broader cosmetic spot-checks do not hold this feature below 100%.",
+      "detail": "The selected fighter supplies the title art; supported outfit colors tint the title. The browser/CLI integrate the fighter-aware title. Runtime evidence for the newer title and pose follow-ups is pending.",
       "source": "Presentation-and-Branding.md",
       "technicalName": "Randomizer title branding",
       "track": "4Fun",
@@ -198,7 +197,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Outfit Colors",
       "state": "production",
       "kind": "have",
-      "detail": "Static modes and the 64-phase rainbow mode are normal browser/CLI options. Compact-tail v01 is runtime-confirmed across all eight safe stages: stock file 0x87 stays in place, only an 8 KiB palette bank is stored in high ROM, and the prior 0x459E0-byte duplicate fighter copy is gone.",
+      "detail": "Static color modes remain available, including imported-fighter recoloring. Rainbow was retired on November 9 because its loader and the imported fighter share the file-0x87 hooks.",
       "source": "Project-Status.md",
       "technicalName": "Outfit recoloring",
       "track": "4Fun",
@@ -212,7 +211,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Shared Web / CLI Builder",
       "state": "beta",
       "kind": "have",
-      "detail": "Browser and CLI share one guarded patch core. The browser now runs Pyodide in a Web Worker, validates/caches target and optional donor immediately on selection, accepts .z64/.v64/.n64 target byte orders, and stays responsive while patching. Current browser defaults are seeded outfit, Shuffle Power Progression ON, Enemy Randomization ON, Required powers Seed, Very Hard / 5 lives / 3 continues / Persistent HP ON. Drag/drop file zones, live build/settings summaries, seed Randomize/Copy, progress flavor deck, and a dedicated success/download state are deployed. MKT Rev. 2 remains optional for donor-backed Toasty and Temple-intro audio. The builder feature is complete.",
+      "detail": "Both surfaces use the guarded patch core and agree byte for byte on the tested Sektor build. PR #182 sped up a measured Python build by about 11× through faster change reporting and cached resource decompression.",
       "source": "Web-Patcher-and-Product.md",
       "technicalName": "Browser / CLI shared patch core",
       "track": "Core",
@@ -293,7 +292,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Randomizer HUD",
       "state": "beta",
       "kind": "have",
-      "detail": "The accepted rich native Inventory presentation retains colored STG# credentials, correct images/paper titles, four-box legend, required powers and XX/85 checks. v21/legend/box switching passed bounded gameplay routes; materialized row-state proof v01 passed additional manual scenarios. Full-production rich Inventory composition still has intermittent accelerated music (native PCM FIFO rejections); upstream correction Pending and PR #156 unmerged. This is a 1.0 release gate, not grounds to drop the accepted visual design.",
+      "detail": "The native Inventory HUD and four-box controls have bounded runtime evidence. Wind2/Wind3 portraits are corrected and pickup-mode Power Upgrades trigger the native new-power popup. The vanilla audio speed-up has a separate default-on fix. Representative full-seed HUD and lifecycle coverage is pending.",
       "source": "1.0-Requirements-and-Roadmap.md",
       "technicalName": "Full native randomizer HUD",
       "track": "Core",
@@ -307,7 +306,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Run Health & Resources",
       "state": "beta",
       "kind": "have",
-      "detail": "Lifecycle v06 remains the Runtime-confirmed bounded HP/lives/continues baseline (Very Hard, 9 total lives, 5 continues, persistent HP ON). Earned XP in Powers-as-pickups OFF now persists across supported stage re-entry using existing MKSV +0x44 and stage-entry restore; unsupported routes and full-seed completion remain pending.",
+      "detail": "The v06 policy preserves configured health and resources across the supported lifecycle routes. Transport v07 keeps the same policy and module bounds while using t9/t8 and a stack spill to avoid k0/k1 clobber across interrupts. The maintainer validated the v07 proof on a bounded route.",
       "source": "Persistence-Inventory-and-Lifecycle.md",
       "technicalName": "HP / LIVES / CONTINUES + Persistent HP",
       "track": "Core",
@@ -375,10 +374,10 @@ window.MKMSZ_PROJECT_DATA = {
     {
       "group": "Enemies",
       "name": "Enemy Randomization",
-      "state": "beta",
-      "kind": "have",
-      "detail": "The deterministic 104-record enemy planner/materializer is a merged browser/CLI option. The browser now defaults it ON; the shared configuration/CLI remain user-selectable. It preserves five gated/special encounters, models Prison paging/set-piece auxiliaries, and keeps unresolved foreign semantics fail-closed. Representative seed ENEMYPLAN05 and the promoted compact Water PRIS profiles provide bounded runtime evidence; broader product runtime coverage remains non-exhaustive. MKT donor binaries and stage selector identities are not transferable to host actors merely by matching numeric IDs.",
-      "source": "Project-Status.md",
+      "state": "partial",
+      "kind": "want",
+      "detail": "Experimental implementation with bounded stage-specific evidence. The web setting defaults off. Project Status defers this workstream for reimplementation.",
+      "source": "Enemy-Randomization.md",
       "technicalName": "ENEMY RANDOMIZATION: OFF / ON",
       "track": "4Fun",
       "scope": "extra",
@@ -388,17 +387,17 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "group": "Research",
-      "name": "Playable Sektor Research",
-      "state": "proof",
-      "kind": "future",
-      "detail": "Proof-only line through v89: v75 is the stable missile-flight baseline, v87 confirms donor-faithful rocket assets/colors, and v89 Runtime-confirms synchronous texture-slot preparation before actor-list insertion removes the stale first frame. The six-pose Run v05 physical repack is Runtime-confirmed; the P28/P29 v06 rope-owner probe is bounded Runtime-confirmed. Storage/lifecycle/cleanup and general integration remain pending. This remains a donor-to-host proof line, not a production playable-character feature.",
-      "source": "Project-Status.md",
-      "technicalName": "MKT / Sektor takeover",
+      "name": "Sektor Fighter Swap",
+      "state": "beta",
+      "kind": "have",
+      "detail": "Swap character on the web or use --fighter sektor in the CLI with MKT N64 USA Rev. 2 and SPECIALS: CLASSIC. The production builder reproduces the bounded v13 composition, including teleport uppercut, straight rocket, homing rocket, and Double Missile. Full-seed Sektor validation and runtime checks of the newer shared pickup/grab poses are pending.",
+      "source": "MKT-to-MKMSZ-Compatibility-Layer.md",
+      "technicalName": "FighterSwapPatch / Sektor",
       "track": "4Fun",
       "scope": "extra",
       "effort": 6,
-      "completion": 0.55,
-      "introduced": "Sektor v89"
+      "completion": 0.9,
+      "introduced": "PR #194"
     },
     {
       "group": "Presentation",
@@ -447,8 +446,8 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "MKT Move Import Research",
       "state": "partial",
       "kind": "future",
-      "detail": "The adapter now has concrete projectile creation/placement, cadence-resampling, animation-context and first-visibility evidence from the Sektor missile line. Generic strike/reaction, effects/audio/palette lifetime and production composition remain incomplete.",
-      "source": "Project-Status.md",
+      "detail": "The shared animation-script grammar, command records, Reptile/Sektor special readings and engine-neutral components now drive a recompiler. The generic body builder reproduces Sektor; the projectile backend reproduces the bounded forceball proof byte for byte. Full Reptile integration is still in progress.",
+      "source": "Fighter-Recompiler-Status.md",
       "technicalName": "Generic donor-move adapter",
       "track": "4Fun",
       "scope": "extra",
@@ -516,7 +515,7 @@ window.MKMSZ_PROJECT_DATA = {
       "name": "Auto Run",
       "state": "beta",
       "kind": "have",
-      "detail": "RUN: HOLD retains stock behavior; AUTO handles live Run-to-Walk-to-Run transitions while preserving analog auto-run and Run-based chords. Integrated in the shared builder and runtime-confirmed on the accepted v02 route.",
+      "detail": "HOLD and AUTO are available in GAME SETTINGS. The RUN state word now uses uncached alias 0xA01B0800 so the raw file-0x1A reload cannot be overwritten by a stale cached line. The maintainer verified the cache-contract follow-up on a bounded route.",
       "source": "Project-Status.md",
       "technicalName": "RUN: HOLD / AUTO",
       "track": "QoL",
@@ -524,6 +523,20 @@ window.MKMSZ_PROJECT_DATA = {
       "effort": 1,
       "completion": 1,
       "introduced": "controls/CI4 v02 composition"
+    },
+    {
+      "group": "Core",
+      "name": "Vanilla Audio FIFO Fix",
+      "state": "production",
+      "kind": "have",
+      "detail": "The stock speed-up/crunch was reproduced in clean USA Rev. 0. The guarded fix lowers the reserve from 320 to 272 samples and is enabled by default. A bounded maintainer test passed the speed-up scenario. Brief pops were still heard and their source is pending.",
+      "source": "Sounds-and-Music.md",
+      "technicalName": "AudioFifoReservePatch",
+      "track": "Core",
+      "scope": "1.0",
+      "effort": 2,
+      "completion": 1,
+      "introduced": "PR #183"
     }
   ],
   "compatibility": [
@@ -612,27 +625,27 @@ window.MKMSZ_PROJECT_DATA = {
       "area": "Animation",
       "capability": "Generic control-token translation",
       "donor": "Donor script callbacks/tokens",
-      "target": "Equivalent MKMSZ callback/token",
-      "status": "missing",
-      "detail": "No generic translator yet.",
+      "target": "Shared script grammar and token/callback map",
+      "status": "partial",
+      "detail": "MKT and MKMSZ share the animation-script grammar. The decoder maps operand counts and game-local tokens. Per-move semantics and full backend coverage still require translation.",
       "source": "MKT-Adapter-Primitives.md"
     },
     {
       "area": "Assets",
       "capability": "Frame / texture translation",
       "donor": "Heap-relative descriptors + codecs 22/24/15",
-      "target": "Rebuilt descriptors + native Type-5",
+      "target": "Native Type-5 frame packing from fighter descriptions",
       "status": "runtime",
-      "detail": "Known donor formats can be decoded offline and rebuilt into runtime-proven MKMSZ-native storage.",
+      "detail": "The generic builder reproduces Sektor byte for byte and produced the owner-accepted Reptile body v03. Some other roster codec-16 palette semantics remain open.",
       "source": "MKT-Fighter-Asset-Translation.md"
     },
     {
       "area": "Assets",
       "capability": "Palette translation / binding",
       "donor": "MKT palette semantics",
-      "target": "MKMSZ source palette + runtime binding",
+      "target": "Ramp-aware reduction and native TLUT binding",
       "status": "runtime",
-      "detail": "Color conversion and Sektor palette binding are runtime-proven in bounded takeover work.",
+      "detail": "Reptile v03 uses the per-fighter table at 0x800A3660 and preserves colour ramps. The owner accepted the corrected colours. Sektor’s explicit palette and layout are pinned.",
       "source": "MKT-Fighter-Asset-Translation.md"
     },
     {
@@ -675,9 +688,9 @@ window.MKMSZ_PROJECT_DATA = {
       "area": "Combos",
       "capability": "Normal combo graph",
       "donor": "MKT combo records",
-      "target": "MKMSZ normal-combo graph",
+      "target": "Native combo graph with relocated donor records",
       "status": "runtime",
-      "detail": "Runtime-confirmed at Sektor v62 scope after translating game-local reaction selectors.",
+      "detail": "Sektor’s accepted v62 records are the regression fixture. The generic translator and Reptile combo/throw input proof are in open PR #203. Reptile’s input proof awaits manual testing.",
       "source": "MKT-Adapter-Primitives.md"
     },
     {
@@ -691,21 +704,21 @@ window.MKMSZ_PROJECT_DATA = {
     },
     {
       "area": "Fighter",
-      "capability": "Common Sektor animation takeover",
+      "capability": "Common fighter animations",
       "donor": "Sektor / robot animation families",
-      "target": "Sub-Zero file 0x87 animation slots",
+      "target": "Reusable common-action body builder",
       "status": "runtime",
-      "detail": "Broad common-action coverage, v62 combos, and the six-pose Run v05 physical repack are Runtime-confirmed in bounded proof routes.",
-      "source": "Sub-Zero-to-Sektor-Animation-Mapping.md"
+      "detail": "Sektor’s bounded common-animation evidence carries forward. The generic builder supports fighter descriptions, computed layouts and the accepted Reptile body. The newer shared pickup and grabbed-by-enemy recipes await runtime confirmation.",
+      "source": "Fighter-Recompiler-Status.md"
     },
     {
       "area": "Projectiles",
       "capability": "Projectile actor creation / ownership",
       "donor": "setup_proj_obj + create_proj_proc",
-      "target": "Resource actor + secondary projectile actor/process path",
-      "status": "partial",
-      "detail": "Target actor/process ownership is statically reconciled and repeatedly exercised by the straight-missile proofs; a generic wrapper is still pending.",
-      "source": "MKT-Adapter-Primitives.md"
+      "target": "Native enemy-projectile path and type-4 player projectile",
+      "status": "runtime",
+      "detail": "Proof v06 demonstrated Reptile’s MKT forceball from Sub-Zero. The move-program backend reproduces it in v07 without modifying the Ice Blast root. This is bounded evidence for one route.",
+      "source": "Fighter-Recompiler-Components.md"
     },
     {
       "area": "Projectiles",
@@ -738,10 +751,10 @@ window.MKMSZ_PROJECT_DATA = {
       "area": "Projectiles",
       "capability": "Projectile palette / effects / impact lifecycle",
       "donor": "rocket palette, smoke, sound, explosion, strike semantics",
-      "target": "Native palette/audio/effect/strike translations",
-      "status": "missing",
-      "detail": "Palette translation is now materially stronger through v86/v87, but balanced palette release, smoke/sound/explosion, strike semantics, and production-safe generic integration remain distinct pending tasks.",
-      "source": "MKT-Adapter-Primitives.md"
+      "target": "Sektor-specific effects plus a reusable projectile backend",
+      "status": "partial",
+      "detail": "Sektor’s straight and homing rockets exercised donor art, palette, impact and sound on bounded routes. Full reusable palette/texture/effect lifecycle coverage remains pending.",
+      "source": "Fighter-Recompiler-Components.md"
     },
     {
       "area": "Fighter",
@@ -756,19 +769,19 @@ window.MKMSZ_PROJECT_DATA = {
       "area": "Integration",
       "capability": "Arbitrary special-move integration",
       "donor": "MKT command/action behavior",
-      "target": "MKMSZ input + action ABI",
-      "status": "missing",
-      "detail": "Not solved by animation replacement; requires the semantic adapter.",
-      "source": "MKT-to-MKMSZ-Compatibility-Layer.md"
+      "target": "Special commands, move programs and host components",
+      "status": "partial",
+      "detail": "Sektor’s four specials run in the bounded composition. Every Reptile/Sektor special has an annotated MKT reading and a move program. Reusable host lowering beyond the demonstrated projectile remains in progress.",
+      "source": "Fighter-Recompiler-MKT-Moves.md"
     },
     {
       "area": "Integration",
       "capability": "Production-safe fighter/move allocation",
       "donor": "Translated fighter/move payload",
-      "target": "Current MKMSZR composition",
-      "status": "pending",
-      "detail": "Proof allocations establish feasibility only; conflict-free production composition remains pending.",
-      "source": "MKT-Fighter-Asset-Translation.md"
+      "target": "Relocatable payload inside file 0x87, conditional 32 MiB carrier",
+      "status": "runtime",
+      "detail": "The stock-size fighter file holds the payload. Sektor’s file and samples load above 16 MiB, with a guarded file-0x1A loader in the reserved pool. The bounded v13 composition underlies the released option.",
+      "source": "Sektor-Takeover-Proof-History.md"
     },
     {
       "area": "Architecture",
@@ -816,5 +829,102 @@ window.MKMSZ_PROJECT_DATA = {
       "detail": "Synchronous texture-slot preparation before actor-list insertion fixes the stale Ice-derived first frame in the bounded straight-missile proof.",
       "source": "MKT-Adapter-Primitives.md"
     }
-  ]
+  ],
+  "previousSnapshotCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "recentUpdates": [
+    [
+      "Fighter swap",
+      "Sektor is available in the browser and CLI. Full-seed testing is pending.",
+      "MKT-to-MKMSZ-Compatibility-Layer.md",
+      [
+        192,
+        193,
+        194,
+        195,
+        196
+      ]
+    ],
+    [
+      "Audio speed-up",
+      "Default-on production fix lowers the vanilla AI FIFO reserve from 320 to 272 samples.",
+      "Sounds-and-Music.md",
+      [
+        183
+      ]
+    ],
+    [
+      "Runtime corrections",
+      "Water’s boss checkpoint targets selector 6. The key map, lifecycle transport and RUN cache access were also corrected.",
+      "Status-Update-Log.md",
+      [
+        175,
+        179,
+        180,
+        181,
+        184
+      ]
+    ],
+    [
+      "XP and inventory",
+      "Removed stage XP caps in OFF mode, corrected Wind portraits and added debug starting keys.",
+      "XP-and-Progression.md",
+      [
+        174
+      ]
+    ]
+  ],
+  "fighterUpdates": [
+    [
+      "Sektor fighter swap",
+      "Production beta",
+      "Four specials and R4 power-tier integration in the bounded composition. Browser/CLI support is merged. Full-seed validation is pending.",
+      "MKT-to-MKMSZ-Compatibility-Layer.md",
+      [
+        193,
+        194,
+        195,
+        196
+      ]
+    ],
+    [
+      "Recompiler milestones 1–3",
+      "Merged",
+      "Fighter descriptions, roster body decoding and move readings feed the host backend. Sektor’s pinned body reproduces byte for byte. Reptile’s forceball ran through the native enemy-projectile path on Sub-Zero in v06. Backend v07 reproduces it byte for byte.",
+      "Fighter-Recompiler-Status.md",
+      [
+        197,
+        198,
+        199,
+        200,
+        201,
+        202
+      ]
+    ],
+    [
+      "Reptile milestone 4",
+      "Bounded body proof",
+      "The owner accepted the v03 body. Combo and throw translation is in open PR #203 with manual testing pending. The specials and full fighter composition are still in progress.",
+      "Fighter-Recompiler-Status.md",
+      [
+        202,
+        203
+      ]
+    ]
+  ],
+  "reviewedPulls": {
+    "randomizer": {
+      "first": 174,
+      "last": 203,
+      "open": [
+        203
+      ]
+    },
+    "ghidra": {
+      "first": 7,
+      "last": 13,
+      "closedUnmerged": [
+        7
+      ]
+    }
+  }
 };

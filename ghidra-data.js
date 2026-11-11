@@ -1,10 +1,9 @@
-// Generated from reviewed versioned Ghidra global manifests; local confirmation from maintainer script outputs.
-// A curated metadata catalog, NOT a claim of full Ghidra or Wiki coverage.
+// Selected metadata from pinned Ghidra manifests. Maintainer import audit is a separate historical snapshot.
 window.MKMSZ_GHIDRA_DATA = {
-  "snapshot": "2026-10-10",
+  "snapshot": "2026-11-11",
   "sourceRepo": "smeagol44/MKMSZ-Ghidra",
-  "sourceCommit": "1c73998221cc20b5c67b35c4fae8efd566725af5",
-  "projectCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "sourceCommit": "8d73880ea5feb5838460f9df67c1e8f5527028b8",
+  "projectCommit": "7e86e4009cfac206a3c736e29bf4c7b5de6b4a6f",
   "maintainerImport": {
     "date": "2026-10-09",
     "checked": 623,
@@ -22,13 +21,15 @@ window.MKMSZ_GHIDRA_DATA = {
     "bookmarks": 105
   },
   "navigationCounts": {
-    "functions": 139,
-    "globals": 35,
-    "codeLabels": 2,
-    "bookmarks": 105,
-    "types": 12,
-    "typedData": 1,
-    "comments": 232
+    "Function": 182,
+    "Global": 65,
+    "Code label": 3,
+    "Overlay function": 14,
+    "Bookmark": 106,
+    "Type": 12,
+    "Typed data": 1,
+    "Comment": 233,
+    "Overlay image": 8
   },
   "knowledgeScope": {
     "owners": 40,
@@ -37,64 +38,58 @@ window.MKMSZ_GHIDRA_DATA = {
     "ghidraTargetClaims": 263,
     "anchoredSections": 253,
     "totalSections": 713,
-    "statement": "These are known-knowledge routing measures, not a completion percentage of unknown game code; imported records and claims use different denominators."
+    "statement": "These are known-knowledge routing measures, not a completion percentage of unknown game code; imported records and claims use different denominators.",
+    "date": "2026-10-09"
   },
   "findings": [
     {
-      "title": "Ghidra global import: independently audited",
-      "evidence": "Maintainer-local Ghidra confirmed",
-      "date": "2026-10-09",
-      "detail": "The clean USA Rev 0 global program matches all 623 listed metadata checks, including 139 functions, 35 globals, 12 managed types, 232 comments and 105 bookmarks. Import scripts and read-only audits are reproducible; this is not a full Ghidra database sync or a statement that all game code is decompiled.",
-      "sourceRepo": "smeagol44/MKMSZ-Ghidra",
-      "source": "docs/local-migration-handoff.md"
+      "title": "Floor regions, ledge entry and XP",
+      "evidence": "Merged metadata",
+      "detail": "Three function names, five globals and the live XP-tier evaluation note. The reading of ledge state 1 as the hang state remains a strong inference.",
+      "pr": 13,
+      "source": "analysis/functions.tsv"
     },
     {
-      "title": "Rich Inventory audio: upstream cause unresolved",
-      "evidence": "Trace-confirmed downstream; root cause Pending",
-      "date": "2026-10-09",
-      "detail": "Across Traces 7–11, closed-loop event replay matches 59,992 FIFO status reads, 59,489 AI_LEN reads, 58,971 PCM sizes, and 513 rejected submissions. No missing active-VI native audio services were observed. FIFO timing/phase explains rejection bursts, but the first unfavorable trigger and portable correction remain open; rich Inventory presentation remains accepted, PR #156 unmerged, and 1.0 audio gate blocked.",
-      "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-      "source": "wiki/Production-Rich-Inventory-Music-Static-Investigation.md"
+      "title": "Sektor rocket and throw research",
+      "evidence": "Merged metadata",
+      "detail": "Projectile processes, texture slots, palette copy, Ice spawn offsets, effects and reactions from the straight, homing and Double Missile work.",
+      "pr": 12,
+      "source": "analysis/globals.tsv"
     },
     {
-      "title": "Inventory: native four-box navigation and legend",
-      "evidence": "Runtime-confirmed bounded; production composition",
-      "date": "2026-10-06",
-      "detail": "Items-mode Left/Right now cycles all four authoritative boxes with wraparound while Inventory stays open, including empty-box traversal; the native four-box legend and correct live/backing reconstruction passed bounded manual tests. Rich HUD stability and delayed audio remain a separate unresolved release gate.",
-      "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-      "source": "wiki/Persistence-Inventory-and-Lifecycle.md"
+      "title": "Sektor rocket and throw functions",
+      "evidence": "Merged metadata",
+      "detail": "Adds process and actor helpers, texture slots, Ice companions and hit effects, stage reactions and throw identities.",
+      "pr": 11,
+      "source": "analysis/functions.tsv"
     },
     {
-      "title": "Powers-as-pickups OFF: stock XP persistence",
-      "evidence": "Runtime-confirmed bounded",
-      "date": "2026-10-06",
-      "detail": "OFF builds retain stock earned XP and now mirror it into MKSV+0x44 and restore at the established stage-entry boundary. This is a focused lifecycle correction, not exhaustive full-seed coverage.",
-      "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-      "source": "wiki/XP-and-Progression.md"
+      "title": "Animation script interpreter",
+      "evidence": "Merged metadata",
+      "detail": "Vertical flip, nine callback functions and two table globals. The interpreter remains a global MKMSZ identity.",
+      "pr": 10,
+      "source": "analysis/functions.tsv"
     },
     {
-      "title": "Fire and Bridge: credentials across all boxes",
-      "evidence": "Runtime-confirmed bounded",
-      "date": "2026-10-06",
-      "detail": "Stock Fire and Bridge use-time gate checks historically scanned only the ten-slot live window. The bounded correction recognizes stage credentials distributed across all four backing boxes while respecting location/state ownership.",
-      "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-      "source": "wiki/Persistence-Inventory-and-Lifecycle.md"
+      "title": "Password, Options and exception handler",
+      "evidence": "Merged metadata",
+      "detail": "The password writer, Options dispatch, interrupt clobber and cache-related globals are visible in the manifests.",
+      "pr": 9,
+      "source": "analysis/functions.tsv"
     },
     {
-      "title": "Sektor: donor translation remains proof-only",
-      "evidence": "Runtime-confirmed bounded through v89",
-      "date": "2026-10-05",
-      "detail": "The proof lineage includes 33 common states, Run and combo coverage, rocket/first-visible-frame experiments. Portability and production-safe move/asset composition remain unresolved; MKT donor binaries are not interchangeable with MKMSZ host code.",
-      "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-      "source": "wiki/Sektor-Takeover-Proof-History.md"
+      "title": "Water scripted selector",
+      "evidence": "Merged · Water overlay",
+      "detail": "One comment and one bookmark identify the original checkpoint increment and store in overlay file 0xA1.",
+      "pr": 8,
+      "source": "analysis/comments.tsv"
     },
     {
-      "title": "Memory: no fixed expansion/arena overlap found",
-      "evidence": "Static-confirmed bounded; peak headroom Pending",
-      "date": "2026-10-09",
-      "detail": "Known shared file 0x1A payload bounds and named 16 KiB expansion suballocations were audited against the production/diagnostic composition. No fixed overlap was identified, but dynamic arena headroom and upstream audio causality remain open.",
-      "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-      "source": "wiki/Memory-and-Allocation-Map.md"
+      "title": "Audio setup proposal",
+      "evidence": "Closed · unmerged",
+      "detail": "PR #7 proposed setup/restore metadata. The catalog reflects the merged manifests. The audio reserve correction is recorded in the Randomizer Wiki.",
+      "pr": 7,
+      "source": null
     }
   ],
   "records": [
@@ -183,7 +178,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x8001BDA0",
       "title": "actor_render_descriptor_bind",
       "evidence": "Static-confirmed",
-      "detail": "Writes `+0x74/+0x7C` descriptor geometry; initialized `+0x8C bit 0x40` path marks `+0xFA` dirty and resolves `+0x68/+0x80` from texture slot `+0x9C` and palette selector `+0x9E`; both relevant zero-preword entries mark dirty even on same-shape binds",
+      "detail": "Writes `+0x74/+0x7C` descriptor geometry; initialized `+0x8C bit 0x40` path marks `+0xFA` dirty and resolves `+0x68/+0x80` from texture slot `+0x9C` and palette selector `+0x9E`; both relevant zero-preword entries mark dirty even on same-shape binds A non-zero word just before the descriptor is a texture-slot override: drawn from that slot, no +0xFA increment, slot record 0x802E83F0 + word*0x10 written. Generated descriptors must be preceded by zero (Sektor proofs v35-v39). See Wiki Data-Structures-and-Encodings (Frame descriptor and the preceding word).",
       "source": "analysis/functions.tsv"
     },
     {
@@ -199,7 +194,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x8001C2B4",
       "title": "dynamic_texture_alloc",
       "evidence": "Static-confirmed",
-      "detail": "Allocates/reuses dynamic texture records in slot range 0x200..0x2FF.",
+      "detail": "Allocates/reuses dynamic texture records in slot range 0x200..0x2FF. Reuse requires record +0x0C > 0; fresh stack storage comes top-down from 0x800BF2FC and returns -1 when it would cross the texture bump 0x801AE478.",
       "source": "analysis/functions.tsv"
     },
     {
@@ -207,7 +202,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x8001C528",
       "title": "presentation_resource_load",
       "evidence": "Static/runtime-confirmed at known callers",
-      "detail": "Loads presentation resource/palette state; semantics are bounded to traced callers. Traced glyph path acquires by source pointer; active cache hit increments u16 refs and returns handle without conversion/upload. Miss allocates/converts/uploads; no audio causation established.",
+      "detail": "Loads presentation resource/palette state; semantics are bounded to traced callers. Traced glyph path acquires by source pointer; active cache hit increments u16 refs and returns handle without conversion/upload. Miss allocates/converts/uploads; no audio causation established. The source pointer is the colours themselves (palette_slot_copy 0x8001C6D0 copies them as is): callers pass record + 4, past the count word (pickup manager, Sektor effects from proof v43; v35-v42 passed the record start and shifted every colour by two entries).",
       "source": "analysis/functions.tsv"
     },
     {
@@ -279,7 +274,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x8002830C",
       "title": "controller_clone_alloc",
       "evidence": "Static-confirmed",
-      "detail": "Allocates/links a controller-process and clones current controller context fields.",
+      "detail": "Allocates/links a controller-process and clones current controller context fields. Returns the new controller (0 when free list 0x80111DC8 is empty; 64 controllers), linked after the current process; copies +0x6E0, +0x6E4 and +0x6F4..+0x718.",
       "source": "analysis/functions.tsv"
     },
     {
@@ -399,7 +394,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x800304C0",
       "title": "animation_advance",
       "evidence": "Static-confirmed",
-      "detail": "Advances the current animation script/cursor.",
+      "detail": "Fighter animation script interpreter: advances the current script/cursor; tokens 1..16 via 0x800AD450. See Wiki Data-Structures-and-Encodings (Fighter animation script grammar).",
       "source": "analysis/functions.tsv"
     },
     {
@@ -719,7 +714,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x8004CDF8",
       "title": "projectile_actor_child_exit",
       "evidence": "Static-confirmed",
-      "detail": "Removes actor through `0x80028408/0x80024B00`, then terminates the active projectile process through `0x80028564`; reached on generic flight offscreen/lifetime paths.",
+      "detail": "Removes actor through `0x80028408/0x80024B00`, then terminates the active projectile process through `0x80028564`; reached on generic flight offscreen/lifetime paths. Also callable from the flight loop's per-tick callback to end the projectile (Sektor homing rocket proximity miss, proofs v43-v46).",
       "source": "analysis/functions.tsv"
     },
     {
@@ -815,7 +810,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x80065D64",
       "title": "raw_file_load",
       "evidence": "Static-confirmed",
-      "detail": "Synchronous raw-file loader used by MKMSZR runtime bootstrap.",
+      "detail": "Synchronous raw-file loader used by MKMSZR runtime bootstrap. No `cache` instruction in it or its callees within three call levels (Static-confirmed 2026-11-06): raw-loaded code/state must use uncached KSEG1 aliases. See Wiki Memory-and-Allocation-Map.",
       "source": "analysis/functions.tsv"
     },
     {
@@ -983,7 +978,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x80074FBC",
       "title": "xp_tier_evaluate",
       "evidence": "Static-confirmed",
-      "detail": "Evaluates/clamps XP tier using native threshold table.",
+      "detail": "Evaluates/clamps XP tier using native threshold table. Clamps g_current_xp to the stage cap (0x800A63FC), stores g_xp_level_value 0x802C1BA4 and returns the tier count 0..9. Special-move gates call it live on current XP (e.g. 0x8003CA24 Slide, 0x8004A2A0 Ice Clone) and compare with slti, so current XP alone decides usable powers.",
       "source": "analysis/functions.tsv"
     },
     {
@@ -1047,7 +1042,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "0x8007AD00",
       "title": "stock_inventory_sanitizer",
       "evidence": "Runtime-confirmed/replaced",
-      "detail": "Production stage-key masking copy replacing stock sanitizer. Clean-ROM implementation; production randomizer replaces it.",
+      "detail": "Production stage-key masking copy replacing stock sanitizer. Clean-ROM implementation; production randomizer replaces it. Since 2026-11-06 the production routine reads its key-to-stage table uncached at 0xA01B0970 (formerly the stock template 0x800A5FE4).",
       "source": "analysis/functions.tsv"
     },
     {
@@ -1208,6 +1203,350 @@ window.MKMSZ_GHIDRA_DATA = {
       "title": "ai_fifo_full",
       "evidence": "Static-confirmed",
       "detail": "Reads AI_STATUS FIFO-full predicate used by native enqueue.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8007550C",
+      "title": "password_screen_handler",
+      "evidence": "Static-confirmed",
+      "detail": "Options password screen and password-effect handler (Options entry 3). Password `NXCVSZ` writes word 5 into 0x800A5FE4..0x800A6008; stage passwords write current stage 0x8009A910 and current XP 0x8011200C. Unpatched by MKMSZR. See Wiki Persistence-Inventory-and-Lifecycle.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800762C4",
+      "title": "options_menu_dispatcher",
+      "evidence": "Static-confirmed",
+      "detail": "Five-entry Options menu; jump table 0x800AEAB8 targets 0x8007739C, 0x80076D74, 0x8007816C, 0x8007550C (password), 0x800766BC (GAME SETTINGS editor). Labels of entries 0-2 not individually confirmed.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800766BC",
+      "title": "game_settings_editor",
+      "evidence": "Static-confirmed",
+      "detail": "GAME SETTINGS editor (Options entry 4); extended by MKMSZR's TURN/ATTACK/SPECIALS/JUMP/RUN frontend. See Wiki Native-HUD-and-UI.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80095DE0",
+      "title": "os_exception_handler",
+      "evidence": "Static-confirmed",
+      "detail": "libultra-pattern exception entry. Overwrites k1 with Status at 0x80095DEC; the return path restores at/t8/t9 from the thread context (0x800965E4, 0x80096640, 0x80096644) but leaves k0 = 0xA430000C and k1 = RCP mask before eret at 0x8009670C. Injected code must not carry state in k0/k1. See Wiki Persistence-Inventory-and-Lifecycle.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800318B8",
+      "title": "actor_flip_vertical",
+      "evidence": "Static-confirmed",
+      "detail": "Toggles actor +0x8C bit 0x20 and runs 0x8001BDA0; animation token 9.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80028BF4",
+      "title": "anim_cb_set_rate",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 1 (table 0x8009F95C, token 6): consumes one script word; low halfword -> period +0x6A6 and countdown +0x6A8. See Wiki Data-Structures-and-Encodings (Fighter animation script grammar).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80028C18",
+      "title": "anim_cb_play_sfx",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 2: consumes one script word and plays that gameplay SFX descriptor via 0x80064C18 with facing-dependent pan. See Wiki Data-Structures-and-Encodings (Fighter animation script grammar).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800288E0",
+      "title": "anim_cb_set_actor_flag_2000",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 3: actor +0x64 |= 0x2000.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800288FC",
+      "title": "anim_cb_clear_actor_flag_2000",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 4: actor +0x64 &= ~0x2000.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8002891C",
+      "title": "anim_cb_set_actor_flag_20",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 5: actor +0x64 |= 0x20.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80028938",
+      "title": "anim_cb_clear_actor_flag_20",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 6: actor +0x64 &= ~0x20.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80028958",
+      "title": "anim_cb_adjust_position",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 7: actor +0x2C -= 0x19000; for actor type 0x0B wraps by +/-0x32000 into [0x5D00,0x333CB].",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800289E0",
+      "title": "anim_cb_set_actor_flag_100",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 9: actor +0x64 |= 0x100.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800289FC",
+      "title": "anim_cb_spawn_effect_process",
+      "evidence": "Static-confirmed",
+      "detail": "Animation callback 8: spawns class-0x100 process 0x80028A24, which builds a resource actor with a randomly chosen variant; effect identity Pending.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8001C424",
+      "title": "dynamic_texture_release",
+      "evidence": "Static-confirmed",
+      "detail": "Clears slot record +0x0E. For stack storage (+0x0C == 0) that is the current lowest, raises 0x800BF2FC to the lowest remaining active stack storage above it, or 0x80400000. See Wiki Data-Structures-and-Encodings (Dynamic gameplay texture-slot record).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8001CA38",
+      "title": "texture_storage_stage_reset",
+      "evidence": "Static-confirmed",
+      "detail": "Stage setup: texture bump pointer 0x801AE478 = 0x8034B000, dynamic-slot top-down pointer 0x800BF2FC = 0x80400000.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800245A4",
+      "title": "object_alloc",
+      "evidence": "Static-confirmed",
+      "detail": "Takes an object from free list 0x802D0E34 (79 x 0x118 bytes), zeroes it, sets +0x88 = 0x01000100 and +0x90 = 0xFFFF; returns 0 when empty.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80024B00",
+      "title": "actor_list_remove",
+      "evidence": "Static-confirmed",
+      "detail": "Removes an actor from a list (a1 = list head, e.g. 0x80111C98); counterpart of actor_list_insert 0x80024650.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80028564",
+      "title": "process_exit",
+      "evidence": "Static-confirmed",
+      "detail": "Ends the current process (controller returns to the free list); does not return.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8007CAF8",
+      "title": "process_context_save_switch",
+      "evidence": "Static-confirmed",
+      "detail": "Saves ra, sp, fp, gp and s0..s7 at controller +0x08 and switches to the next process (used by process_sleep 0x80028794).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8007CB84",
+      "title": "process_context_restart",
+      "evidence": "Static-confirmed",
+      "detail": "Restarts the current process at the entry stored in its context (+0x08) with the stack from +0x0C.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80060A3C",
+      "title": "ice_companion_helper_process",
+      "evidence": "Static-confirmed; removal Runtime-confirmed (Sektor proof v35/v40)",
+      "detail": "Class-0x100 Ice helper: sets 0x8009A5F0 = 1, takes a 0x50x0x50 texture slot, binds Ice palette 0x800B1A24, constructs an actor from file 0x87 table +0xF88[+0x718] plus a mirror copy (the blue 'ghosts'), inserts both, then continues in 0x80060D14.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80060D14",
+      "title": "ice_companion_helper_update",
+      "evidence": "Static-confirmed",
+      "detail": "Per-frame loop of 0x80060A3C: advance 0x800304C0, copy to the mirror, sleep *(0x800A1600); at script end remove both actors, sleep 2, release the slot, exit.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8004AB48",
+      "title": "ice_hit_tint_process",
+      "evidence": "Static-confirmed",
+      "detail": "Hit-time counterpart of ice_screen_tint_process: 0x80044964(0x80,0x80,0xC0,0x80,0xD) then exit. Started by the Ice hit child 0x8004BB64.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80044964",
+      "title": "positioned_screen_effect_start",
+      "evidence": "Static-confirmed; purpose partly inferred",
+      "detail": "Reads the caller controller's +0x6F4/+0x6F8/+0x6FC position and starts process 0x80060E68 with colour/duration arguments; used by the Ice tint processes.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80049C34",
+      "title": "ice_blast_lp_callback",
+      "evidence": "Static-confirmed",
+      "detail": "LP Ice Blast record action: transfers to selector 0 (ice_projectile_action_root) when grounded. Sektor proofs lift it into the payload (selector 4).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8004BB64",
+      "title": "ice_projectile_hit_child",
+      "evidence": "Static-confirmed",
+      "detail": "Ice contact process: Ice hit sound (0x8004BB94), moves the projectile to the victim, starts the Ice helper (0x8004BCB4) and hit tint (0x8004BCD0), then exits through 0x8004CDF8.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80051280",
+      "title": "fire_trap_stumble_reaction",
+      "evidence": "Static-confirmed; Runtime-confirmed as Sektor's rocket reaction (proofs v34-v41)",
+      "detail": "Fire spiked-rod trap victim reaction (installed by the Fire overlay): hit voice, preamble 0x80053028 (airborne handler 0x800533C8), 8-tick hit pause at 0x80051318, push +/-0x56666 backwards, stumble phase slot 0x20 at 6 ticks/frame, exit 0x800328FC.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80053028",
+      "title": "reaction_preamble",
+      "evidence": "Static-confirmed",
+      "detail": "Common victim-reaction preamble; a1 = airborne handler (e.g. 0x800533C8).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8005BC8C",
+      "title": "player_throw",
+      "evidence": "Static-confirmed; sound sites Runtime-confirmed (Sektor v41)",
+      "detail": "Attacker throw: voice category 11 at 0x8005BCD4 (the grab sound), grab phase 0x80034578 at 0x8005BD58, victim made current and throw phase 0x80034578 at 0x8005BDC8 (attacker in s0), finish 0x8005BB84 at 0x8005BDF8.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8005BB84",
+      "title": "player_throw_finish",
+      "evidence": "Static-confirmed",
+      "detail": "Throw finish: sets action id (a0) and continues through 0x8005BEA0.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80064B00",
+      "title": "voice_category_play",
+      "evidence": "Static-confirmed",
+      "detail": "(category, 0, random, fighter type +0x78): plays the category entry of the type's voice table (player type 4: 0x800A2EC8, 12 categories); a 0 entry is skipped. See Wiki Sounds-and-Music (Imported fighter voice rule).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8000339C",
+      "title": "embedded_image_type2_decode",
+      "evidence": "Static-confirmed",
+      "detail": "Run-length decoder: 24-bit little-endian size incl. header; control n >= 0 copies n+1 literals, n < 0 repeats one byte 1-n times.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8001D6EC",
+      "title": "texture_upload_queue",
+      "evidence": "Static-confirmed",
+      "detail": "Queues (mode, src, slot, width, height@sp+0x10) at 0x802C11C0 (20-byte entries, top index 0x802C16C0; no bound check).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8001D7F0",
+      "title": "texture_upload_drain",
+      "evidence": "Static-confirmed",
+      "detail": "Runs queued uploads; mode 1 copies to slot storage 0x800ED940[slot], byte copy 0x800202CC when slot header bits 0x180 == 0x80, otherwise a nibble-swapping half-width copy.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x800202CC",
+      "title": "mem_copy_words",
+      "evidence": "Static-confirmed",
+      "detail": "Word-wise copy when length and both pointers are 4-aligned, otherwise falls back to 0x8008E854.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8001DC00",
+      "title": "sprite_render_build",
+      "evidence": "Static-confirmed",
+      "detail": "Builds render nodes for a sprite: rows per chunk 0x708 / align8(slot width), quad subdivision for large screen area, submission 0x8001EAE4 (draw table index & 0x3FF).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80024BA8",
+      "title": "actor_floor_check",
+      "evidence": "Static-confirmed; Runtime-confirmed (teleport v07, v40)",
+      "detail": "Per-tick floor check for the player / fighter processes: finds the floor region (0x80025ED4) or sets controller +0x6B4 = 0x7FBC00 ('no floor below') and, when +0x6B0 is zero, installs the stock fall 0x80025230.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80028510",
+      "title": "find_process_by_class",
+      "evidence": "Static-confirmed; Runtime-confirmed as the Sektor homing target scan (proof v45)",
+      "detail": "(class, mask): first process in the list, other than the current one, with +0x6D8 & mask == class, else 0. Ordinary enemies are classes 2-4 (spawn slots 0x71..0x73); the Ice root calls it with 0x700 at 0x8004ABB0 to refuse a second live projectile. See Wiki Player-Actions-and-Special-Moves (Heat-seeking rocket and Double Missile host findings).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x8001C6D0",
+      "title": "palette_slot_copy",
+      "evidence": "Static-confirmed; Runtime-confirmed through the Sektor effect palette fix (proof v43)",
+      "detail": "Called by presentation_resource_load 0x8001C528 on a cache miss: copies count colours (at most 0x100) from the source pointer as is into the palette slot. The source must be the colours, not a count-prefixed record (pass record + 4).",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80025230",
+      "title": "actor_walkoff_fall",
+      "evidence": "Static-confirmed",
+      "detail": "Stock walk-off/fall callback installed by actor_floor_check 0x80024BA8 when no floor matches and controller +0x6B0 is zero: busy input map, action 0x30A, stock jump/fall 0x800321D0 (sentinel 0xD, gravity 0x7851), exit 0x800328FC. Sektor composition v03 fall-through ended here.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80025ED4",
+      "title": "floor_region_test",
+      "evidence": "Static-confirmed",
+      "detail": "Tests an actor against the stock floor regions (count g_floor_region_count 0x80290998, records *g_floor_region_table 0x800C2568, stride 0xB8); on a match writes floor << 8 to actor y +0x30 and controller +0x6B4. Airborne (+0x6B2 or actor +0x10 non-zero) lands only by crossing from previous y +0x3C. Flag 0x800 regions: ledge branch snaps a falling fighter to the nearest region end, plays sound 0x13 and installs ledge_grab_enter 0x80025E48 via 0x80032CD4.",
+      "source": "analysis/functions.tsv"
+    },
+    {
+      "category": "Function",
+      "address": "0x80025E48",
+      "title": "ledge_grab_enter",
+      "evidence": "Static-confirmed mechanics; ledge-hang meaning Hypothesis / strong inference",
+      "detail": "Installed by the ledge branch of floor_region_test 0x80025ED4. Sets controller +0x6DC = 1 (player state request); for process classes 2-3 appends the previous callback +0x6F0 to the list at 0x801AE480 (count 0x802E7DF4); restarts the process at live dispatch 0x80028F3C and context-switches through 0x8007CB84.",
       "source": "analysis/functions.tsv"
     },
     {
@@ -1491,6 +1830,246 @@ window.MKMSZ_GHIDRA_DATA = {
       "source": "analysis/globals.tsv"
     },
     {
+      "category": "Global",
+      "address": "0x800A5FE4",
+      "title": "g_default_inventory_template",
+      "evidence": "Static-confirmed",
+      "detail": "Stock ten-word default-inventory template, obsolete under MKMSZR after the default loader is replaced. Still written by password `NXCVSZ` (0x8007550C). Former MKMSZR key-to-stage table location until 2026-11-06; do not reuse.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800AE940",
+      "title": "g_password_buffer",
+      "evidence": "Static-confirmed",
+      "detail": "Six-character password entry buffer (default `BCDFGH`) used by 0x8007550C; the legacy Lua randomizer used it for seed entry.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800AEAB8",
+      "title": "g_options_menu_jump_table",
+      "evidence": "Static-confirmed",
+      "detail": "Five-word jump table used by the Options dispatcher 0x800762C4.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800AD450",
+      "title": "g_anim_token_jump_table",
+      "evidence": "Static-confirmed",
+      "detail": "Sixteen-word jump table for animation interpreter 0x800304C0 tokens 1..16 (dispatch at 0x80030584). See Wiki Data-Structures-and-Encodings (Fighter animation script grammar).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x8009F95C",
+      "title": "g_anim_callback_table",
+      "evidence": "Static-confirmed",
+      "detail": "Ten-word animation callback table for token 6; index 0 is null (no-op), 1..9 are the anim_cb_* functions. See Wiki Data-Structures-and-Encodings (Fighter animation script grammar).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x802E83F0",
+      "title": "g_texture_slot_records",
+      "evidence": "Static-confirmed",
+      "detail": "16-byte dynamic texture-slot records (IDs 0x200..0x2FF). See Wiki Data-Structures-and-Encodings (Dynamic gameplay texture-slot record).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800ED940",
+      "title": "g_texture_slot_storage",
+      "evidence": "Static-confirmed",
+      "detail": "Per-slot storage pointers, indexed by slot ID.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800BF2FC",
+      "title": "g_texture_stack_top",
+      "evidence": "Static-confirmed",
+      "detail": "Lowest live dynamic-slot storage address (top-down; reset to 0x80400000).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x801AE478",
+      "title": "g_texture_bump",
+      "evidence": "Static-confirmed",
+      "detail": "Texture-storage bump pointer advanced by 0x8001BF70 without a bound check (reset to 0x8034B000).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x8009A5F0",
+      "title": "g_texture_slot_mode",
+      "evidence": "Static-confirmed",
+      "detail": "Render-mode index for the next fresh dynamic slot (header bits 0x60); reset to 0 every frame; the Ice helper sets 1.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x8009F6F4",
+      "title": "g_slot_render_modes",
+      "evidence": "Static-confirmed",
+      "detail": "Four render-mode words indexed by slot header bits 0x60 (all 0x404240).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x8009F704",
+      "title": "g_slot_render_alpha",
+      "evidence": "Static-confirmed",
+      "detail": "Four alpha bytes indexed by slot header bits 0x60: 0x80, 0xC0, 0x40, 0x20.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800EEB8C",
+      "title": "g_image_decode_cursor",
+      "evidence": "Static-confirmed",
+      "detail": "Per-frame decode scratch cursor used by 0x8000322C; reset each frame from *0x80112014.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x80112014",
+      "title": "g_frame_scratch_base",
+      "evidence": "Static-confirmed",
+      "detail": "Per-frame scratch base (0x802C1C00 in the gameplay setters).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x802E7E20",
+      "title": "g_type4_ring",
+      "evidence": "Static-confirmed",
+      "detail": "1024-byte ring of the type-4 decoder 0x80003428; not cleared between images (output byte k at index (1+k) & 0x3FF).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x80111DC8",
+      "title": "g_process_free_list",
+      "evidence": "Static-confirmed",
+      "detail": "Free-list head of the 64 process controllers (0x720 bytes each).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x802D0E34",
+      "title": "g_object_free_list",
+      "evidence": "Static-confirmed",
+      "detail": "Free-list head of the 79 objects (0x118 bytes each).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x80291C10",
+      "title": "g_fighter_file_87_base",
+      "evidence": "Static-confirmed",
+      "detail": "Resident fighter file 0x87 base (written at stage load 0x8000D34C).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800A1190",
+      "title": "g_reaction_table",
+      "evidence": "Static-confirmed",
+      "detail": "Victim reaction routine table indexed by strike reaction byte; entry 0x23 is the unused endless-sleep 0x8004E0C0.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800AF484",
+      "title": "g_projectile_strike_table",
+      "evidence": "Static-confirmed",
+      "detail": "Per-type projectile strike-record pointer table read by 0x8004CE6C; player type 4 selector 0x13 = straight projectile.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800A2EC8",
+      "title": "g_player_voice_table",
+      "evidence": "Static-confirmed",
+      "detail": "Player (type 4) voice table: 12 category halfwords -> SFX descriptors 0x20..0x2C; category 11 is the grab.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x802C11C0",
+      "title": "g_texture_upload_queue",
+      "evidence": "Static-confirmed",
+      "detail": "Texture upload queue (20-byte entries) filled by 0x8001D6EC; top index at 0x802C16C0 (-1 idle).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800A9FB8",
+      "title": "g_image_type_jump_table",
+      "evidence": "Static-confirmed",
+      "detail": "Six-word jump table of 0x8000322C for image types 0..5.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x80111DB8",
+      "title": "g_ice_spawn_x_offset",
+      "evidence": "Static-confirmed",
+      "detail": "Ice root spawn x offset: set per mode (0x7000 for mode 0 at 0x8004AD40), then overwritten by the staging block with the computed x (0x8004AE18); a second creation must re-run 0x8004AD40 (Sektor Double Missile, proof v46).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x802E7E08",
+      "title": "g_ice_spawn_y_offset",
+      "evidence": "Static-confirmed",
+      "detail": "Ice root spawn y offset: 0x55F0 for mode 0 (0x8004AD50), then overwritten by the staging block with the computed y (0x8004AE54).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x80290998",
+      "title": "g_floor_region_count",
+      "evidence": "Static-confirmed",
+      "detail": "Number of stock floor regions (word), read by floor_region_test 0x80025ED4; first fixed state after the arena bump bound 0x80290990.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800C2568",
+      "title": "g_floor_region_table",
+      "evidence": "Static-confirmed",
+      "detail": "Pointer to the floor-region records, stride 0xB8: base x/y/z words +0/+4/+8 (world units), point count +0x0C, points from +0x10 (dx, dy signed halfwords, stride 8), flags +0x94 (0x300 shaping modes, 0x800 ledge). Applies when abs(z - base z) <= 0x80 and x lies between the first and last point; floor = base y + dy of the first point whose x exceeds the actor's. Modelled read-only by the Sektor teleport floor probe (composition v03/v04).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x801AE580",
+      "title": "g_floor_region_enabled",
+      "evidence": "Static-confirmed",
+      "detail": "One enable byte per floor region (index as g_floor_region_table).",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x802C1BA4",
+      "title": "g_xp_level_value",
+      "evidence": "Static-confirmed",
+      "detail": "Level value stored by xp_tier_evaluate 0x80074FBC from current XP (curve sum >> 8); read by the Power Ups strip builder 0x800750F0.",
+      "source": "analysis/globals.tsv"
+    },
+    {
+      "category": "Global",
+      "address": "0x800C1248",
+      "title": "g_power_ups_count",
+      "evidence": "Static-confirmed",
+      "detail": "Power Ups strip count: the tier count from xp_tier_evaluate, stored (capped at 9) by the strip builder 0x800750F0.",
+      "source": "analysis/globals.tsv"
+    },
+    {
       "category": "Code label",
       "address": "0x80003314",
       "title": "image_dispatch_type5_case",
@@ -1505,6 +2084,154 @@ window.MKMSZ_GHIDRA_DATA = {
       "evidence": "Static-confirmed; Ghidra listing-confirmed",
       "detail": "Switch arm inside animation_advance 0x800304C0; original ROM jump-table entry 0x800AD478 equals 0x80030974 and dispatch 0x80030584 is jr v0. Not a standalone function.",
       "source": "analysis/code_labels.tsv"
+    },
+    {
+      "category": "Code label",
+      "address": "0x800185B8",
+      "title": "render_frame_decode_upload",
+      "evidence": "Static-confirmed",
+      "detail": "Inside the per-actor render pass: when actor +0xFA is set, decodes frame record +0x7C through 0x8000322C, writes the decoded pointer back into the record, sets slot +0x08/+0x0A and queues the upload via 0x8001D6EC. Inside actor_motion_integrate 0x80017F80 (the per-frame actor pass); not a separate function.",
+      "source": "analysis/code_labels.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802F52B0",
+      "scope": "overlay_earth",
+      "location": "Earth · file 0x9C",
+      "title": "earth_key_award",
+      "evidence": "Static-confirmed",
+      "detail": "Earth icon callback",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EDF50",
+      "scope": "overlay_earth",
+      "location": "Earth · file 0x9C",
+      "title": "earth_boss_construct",
+      "evidence": "Static-confirmed",
+      "detail": "Earth custom boss constructor",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802F1E44",
+      "scope": "overlay_prison",
+      "location": "Prison · file 0x9F",
+      "title": "prison_trigger_dispatch",
+      "evidence": "Static-confirmed; Ghidra decompilation maintainer-observed; L1-door identity Pending",
+      "detail": "Long-running Prison trigger process: initializes globals, scans 0x3C-byte records at 0x801114F4 (count 0x802E8228), bounds-tests player position, dispatches via 0x802F26A8 stage-local callback table, yields via process_sleep 0x80028794(2), repeats. The existing symbol describes its trigger-dispatch role; not merely a one-shot routine.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EE320",
+      "scope": "overlay_prison",
+      "location": "Prison · file 0x9F",
+      "title": "prison_scene_actor_update",
+      "evidence": "Static-confirmed; Ghidra MIPS32 decompilation maintainer-observed 2026-10-08; first L1 group bit0 Runtime-confirmed bounded",
+      "detail": "Persistent Prison three-panel door/scene mover: config current controller +0x6F4; constructs child animation actors from stage resources and 0x48-stride scene records at 0x80111FF8; subentry +0x20 bits consume 0x802C0D54 for panel state. Initial sleep(0x78) then polling sleep(2); player scene/collision/input predicates govern movement. Moves paired scene records, 0xB8-stride collision entry at 0x800C2568, 0x3C-stride scene entry at 0x802E729C, associated child actors and camera; plays movement sounds. First L1 scene group indices 0xFB/0xFC and enable credential bit0 already established in Global Item wiki; other groups remain bounded.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802F0754",
+      "scope": "overlay_prison",
+      "location": "Prison · file 0x9F",
+      "title": "prison_capture_grunt_present",
+      "evidence": "Static-confirmed; Ghidra MIPS32 decompilation maintainer-observed 2026-10-08; v01 resource removal failed and v02 retained asset Runtime-confirmed bounded",
+      "detail": "Persistent Prison scripted staff-grunt capture/presentation controller. Reads file 0x8F slot 0x80112008; loads visual assets via 0x8001C528; creates two actors with +0x9C=0x21 and 0x22 via 0x800281A0 and 0x80024650; steps animation via 0x800304C0. Player/actor gates schedule class-0x15 helper 0x8005ED88, audio, and conditional selector 0x802C18F8=5 with reconstruction 0x80035F38. Polls via process_sleep(4); not ordinary stream combat. Ghidra giant artificial stack arrays not verified as real allocations.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EF178",
+      "scope": "overlay_bridge",
+      "location": "Bridge · file 0x9B",
+      "title": "bridge_icon_award",
+      "evidence": "Static-confirmed",
+      "detail": "Bridge three-icons callback",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802ED888",
+      "scope": "overlay_bridge",
+      "location": "Bridge · file 0x9B",
+      "title": "bridge_scene_trigger_dispatch",
+      "evidence": "Static-confirmed",
+      "detail": "Bridge trigger dispatcher",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EFDB0",
+      "scope": "overlay_fortress",
+      "location": "Fortress · file 0x9E",
+      "title": "fortress_assassin_reward_manager",
+      "evidence": "Static-confirmed",
+      "detail": "Fortress assassin manager",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EF30C",
+      "scope": "overlay_fortress",
+      "location": "Fortress · file 0x9E",
+      "title": "fortress_crystal_progression_dispatch",
+      "evidence": "Static-confirmed",
+      "detail": "Crystal progression",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EEC54",
+      "scope": "overlay_temple",
+      "location": "Temple · file 0xA0",
+      "title": "temple_scripted_map_actor",
+      "evidence": "Static-confirmed; known stage-owned scripted Map callback; exact function entry clean ROM",
+      "detail": "Temple scripted Map/special-check actor callback; maintains location-owned elevator/progression path separately from special reward/persistence; not an ordinary pickup.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802EE9FC",
+      "scope": "overlay_wind",
+      "location": "Wind · file 0xA2",
+      "title": "wind_spatial_trigger_dispatch",
+      "evidence": "Static-confirmed; named Wind spatial-trigger controller",
+      "detail": "Wind 0x3C-stride stage spatial-trigger records at 0x801114F4, player-position/event dispatch; maintains stage/selector physical state, not a pure pickup helper.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802F2CB4",
+      "scope": "overlay_wind",
+      "location": "Wind · file 0xA2",
+      "title": "wind_mixed_icon_award",
+      "evidence": "Static-confirmed; checkpoint suppression v01 rejected",
+      "detail": "Wind Circle/Triangle/Three Bars pickup callback; combines inventory award with required stage-local checkpoint/selector events; cannot globally suppress physical-state updates.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802F2448",
+      "scope": "overlay_water",
+      "location": "Water · file 0xA1",
+      "title": "water_icon_award",
+      "evidence": "Static-confirmed; function entry in stock Water overlay",
+      "detail": "Water Triangle/Three Bars/Moon icon award callback, stage-qualified; detailed full bounds unverified.",
+      "source": "analysis/overlay_functions.tsv"
+    },
+    {
+      "category": "Overlay function",
+      "address": "0x802F0EBC",
+      "scope": "overlay_fire",
+      "location": "Fire · file 0x9D",
+      "title": "fire_icon_award",
+      "evidence": "Static-confirmed; bounded Fire checkpoint-free proof Runtime-confirmed",
+      "detail": "Fire three icon awards, parameters 0..2; stock stage selector/checkpoint presentation writes present, bounded v01 route isolated suppression; not a general override.",
+      "source": "analysis/overlay_functions.tsv"
     },
     {
       "category": "Bookmark",
@@ -2347,6 +3074,16 @@ window.MKMSZ_GHIDRA_DATA = {
       "source": "analysis/bookmarks.tsv"
     },
     {
+      "category": "Bookmark",
+      "address": "0x802F11A8",
+      "scope": "overlay_water",
+      "location": "Water · file 0xA1",
+      "title": "MKMSZ/checkpoint-trace",
+      "evidence": "Static-confirmed; bounded owner report",
+      "detail": "Water 0xA1 stage-only selector commit sh v0,0x18F8(at), raw ROM 0xB9338. Producer at 0x802F11A0 / ROM 0xB9330 formerly increments current selector; targeted product edit loads constant 6 instead. Existing native reconstruction remains stock; higher-selector revisit Pending. Wiki: Stage-Catalog-Water.md.",
+      "source": "analysis/bookmarks.tsv"
+    },
+    {
       "category": "Type",
       "address": "/MKMSZ",
       "title": "MKMSZ_ItemId",
@@ -2359,7 +3096,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_BoxBacking",
       "evidence": "Static-confirmed; Runtime-confirmed bounded",
-      "detail": "Structure · 0xA8 bytes. Four ten-word authoritative inventory boxes and settings/magic following at contiguous addresses",
+      "detail": "Struct · 0xA8 bytes. Four ten-word authoritative inventory boxes and settings/magic following at contiguous addresses",
       "source": "analysis/types.tsv"
     },
     {
@@ -2367,7 +3104,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_PickupRecord",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x30 bytes. Stage-Catalogs and Data-Structures-and-Encodings; ordinary 0x30-byte record",
+      "detail": "Struct · 0x30 bytes. Stage-Catalogs and Data-Structures-and-Encodings; ordinary 0x30-byte record",
       "source": "analysis/types.tsv"
     },
     {
@@ -2375,7 +3112,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_PersistenceV2",
       "evidence": "Static-confirmed; production lifecycle Runtime-confirmed bounded",
-      "detail": "Structure · 0x50 bytes. MKMSZR production state; not vanilla ROM structure",
+      "detail": "Struct · 0x50 bytes. MKMSZR production state; not vanilla ROM structure",
       "source": "analysis/types.tsv"
     },
     {
@@ -2383,7 +3120,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_EnemySpawnRecord",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x1C bytes. Only common opcodes 0/1/9; opcode 6 uses different 0x20 grammar",
+      "detail": "Struct · 0x1C bytes. Only common opcodes 0/1/9; opcode 6 uses different 0x20 grammar",
       "source": "analysis/types.tsv"
     },
     {
@@ -2391,7 +3128,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_AuxTriggerRecord",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x3C bytes. Only 0x00..0x18 identified; remaining subtype arguments are context-specific",
+      "detail": "Struct · 0x3C bytes. Only 0x00..0x18 identified; remaining subtype arguments are context-specific",
       "source": "analysis/types.tsv"
     },
     {
@@ -2399,7 +3136,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_RenderNode",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x58 bytes. Partial field layout from Native UI owner; other bytes deliberately undefined",
+      "detail": "Struct · 0x58 bytes. Partial field layout from Native UI owner; other bytes deliberately undefined",
       "source": "analysis/types.tsv"
     },
     {
@@ -2407,7 +3144,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_DynamicTextureSlot",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x10 bytes. Native gameplay allocator record; sparse fields",
+      "detail": "Struct · 0x10 bytes. Native gameplay allocator record; sparse fields",
       "source": "analysis/types.tsv"
     },
     {
@@ -2415,7 +3152,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_Type5ImageHeader",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x0C bytes. Compressed bitstream begins at +0x0C; variable length follows fixed header",
+      "detail": "Struct · 0x0C bytes. Compressed bitstream begins at +0x0C; variable length follows fixed header",
       "source": "analysis/types.tsv"
     },
     {
@@ -2423,7 +3160,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_EnemySpawnConditionalRecord",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x20 bytes. Data-Structures-and-Encodings.md",
+      "detail": "Struct · 0x20 bytes. Data-Structures-and-Encodings.md",
       "source": "analysis/types.tsv"
     },
     {
@@ -2431,7 +3168,7 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_Type5ModelTableHeader",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x04 bytes. Data-Structures-and-Encodings.md",
+      "detail": "Struct · 0x04 bytes. Data-Structures-and-Encodings.md",
       "source": "analysis/types.tsv"
     },
     {
@@ -2439,14 +3176,14 @@ window.MKMSZ_GHIDRA_DATA = {
       "address": "/MKMSZ",
       "title": "MKMSZ_SpecialActionDescriptor",
       "evidence": "Static-confirmed",
-      "detail": "Structure · 0x2C bytes. Stock special-action descriptor, one Low Kick record at VA0x800B0F68 before 0x800B0F94 sentinel; Player-Actions-and-Special-Moves.md",
+      "detail": "Struct · 0x2C bytes. Stock special-action descriptor, one Low Kick record at VA0x800B0F68 before 0x800B0F94 sentinel; Player-Actions-and-Special-Moves.md",
       "source": "analysis/types.tsv"
     },
     {
       "category": "Typed data",
       "address": "0x800B0F68",
       "title": "stock_low_kick_special_descriptor",
-      "evidence": "Static-confirmed; maintainer-local imported",
+      "evidence": "Static-confirmed; maintainer-local imported 2026-10-09",
       "detail": "MKMSZ_SpecialActionDescriptor: Single 0x2C-byte stock Low Kick descriptor; sentinel at 0x800B0F94 and separate HK table at 0x800B0F98. Guarded importer preserves existing typed data.",
       "source": "analysis/data.tsv"
     },
@@ -4305,6 +5042,96 @@ window.MKMSZ_GHIDRA_DATA = {
       "evidence": "Static-confirmed",
       "detail": "Native process context-switch routine used by stock process sleep and main scheduler. Stock 0x80028794 records sleep at controller+0x6DA before yielding. Not an additional OS VI audio callback. Source: Function-Registry.md.",
       "source": "analysis/comments.tsv"
+    },
+    {
+      "category": "Comment",
+      "address": "0x802F11A0",
+      "scope": "overlay_water",
+      "location": "Water · file 0xA1",
+      "title": "repeatable comment",
+      "evidence": "Static-confirmed code; bounded owner runtime report",
+      "detail": "Water file 0xA1 raw ROM 0xB9330: stock addiu v0,v0,1 reads selector at ROM 0xB9320; subsequent commit at ROM 0xB9338 and reconstruction call at ROM 0xB9344. Owner reported the disposable constant-6 (24020006) replacement working; now guarded by product pipeline. Exact boss-script attribution and later Water re-entry with selector >6 are not exhaustively validated. Do not assume this overlapping VA is global or flatten the overlay identity. Wiki: Stage-Catalog-Water.md.",
+      "source": "analysis/comments.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_earth",
+      "location": "Earth · file 0x9C",
+      "title": "Earth overlay",
+      "evidence": "Static-confirmed",
+      "detail": "File 0x9C, ROM [0x000D8B90, 0x000E1B80); SHA-256 f4152a08069f42890136f6ccca97061475661dd707434c379df4ee1ce555dbc0.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_prison",
+      "location": "Prison · file 0x9F",
+      "title": "Prison overlay",
+      "evidence": "Static-confirmed",
+      "detail": "File 0x9F, ROM [0x000C4C70, 0x000CA510); SHA-256 a7f5e4999a74e65c576af1e823cfd3f9e68725d2683eba3dd53b9f344e5ff8fd.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_bridge",
+      "location": "Bridge · file 0x9B",
+      "title": "Bridge overlay",
+      "evidence": "Static-confirmed",
+      "detail": "File 0x9B, ROM [0x000BAF60, 0x000C0330); SHA-256 3ab3439c99d5c857599f29657e66a798fa5a347ff949e7be9ea30a20b63438e7.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_fortress",
+      "location": "Fortress · file 0x9E",
+      "title": "Fortress overlay",
+      "evidence": "Static-confirmed",
+      "detail": "File 0x9E, ROM [0x000C0330, 0x000C4C70); SHA-256 bd46bf0ecb461a62fe9d3534f1be127b3dd2597021317c53117311ee5596c6c8.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_temple",
+      "location": "Temple · file 0xA0",
+      "title": "Temple overlay",
+      "evidence": "Static-confirmed: stock file table, stage loader, pickup/callback mapping",
+      "detail": "File 0xA0, ROM [0x000CA510, 0x000CF160); SHA-256 eab72de2e8a9104bcb050807bff3cb0ae3ce1640b76857c90d30ec66346b89ce.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_wind",
+      "location": "Wind · file 0xA2",
+      "title": "Wind overlay",
+      "evidence": "Static-confirmed: stock file table, stage loader, pickup/callback mapping",
+      "detail": "File 0xA2, ROM [0x000CF160, 0x000D8B90); SHA-256 f7339eebe4f44efcafdf6da994f7709e9e21ac3895650f59ad194537c508164b.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_water",
+      "location": "Water · file 0xA1",
+      "title": "Water overlay",
+      "evidence": "Static-confirmed: stock file table, stage loader, pickup/callback mapping",
+      "detail": "File 0xA1, ROM [0x000B4FC0, 0x000BAF60); SHA-256 9e1c1491b8665822ade09697abb6dd53f62c7950a4eadbabf34fa6536e3cfac4.",
+      "source": "analysis/overlays.tsv"
+    },
+    {
+      "category": "Overlay image",
+      "address": "0x802ECE30",
+      "scope": "overlay_fire",
+      "location": "Fire · file 0x9D",
+      "title": "Fire overlay",
+      "evidence": "Static-confirmed: stock file table, stage loader, pickup/callback mapping",
+      "detail": "File 0x9D, ROM [0x000E1B80, 0x000E6610); SHA-256 ee65b26e06694ff36412fdcbb30e20b4ba15ab6fe76e96c1a7c689cac20e36a4.",
+      "source": "analysis/overlays.tsv"
     }
   ]
 };
