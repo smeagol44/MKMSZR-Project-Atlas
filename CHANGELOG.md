@@ -1,3 +1,11 @@
+## 2026-11-11 — November research update and Atlas layout
+
+- Refreshed the Feature Board, Water stage, MKT capabilities and selected readiness descriptions using Randomizer PRs #174–203. Sektor is a build option, the vanilla audio fix is default-on, and Reptile’s open input proof is labeled separately.
+- Refreshed the Ghidra catalog using the merged manifests through PR #13. Scope, stage, and file ID distinguish overlapping virtual addresses. The October local audit and Wiki routing figures remain dated.
+- Replaced the MKT and Ghidra card grids with compact expandable rows, with a separate MKT comparison table. Unified navigation, typography, controls, and source links across the Atlas.
+- Updated ROM and RDRAM ownership for the relocated key map, conditional Sektor carrier and loader, and retired Rainbow slices. Recorded guarded audio and Water patch sites.
+- Preserved the 600-unit readiness ratings and older bounded proof history.
+
 ## 2026-10-10 — MKT Arcade Codex visual refinement (Atlas screenshots)
 
 - Maintainer screenshot review exposed small 9–11px labels, oversized donor/target boxes and empty card rows, especially a lone Projectile record. Refactored the category-count-aware capability grid: 3 columns on wide screens, 2 at mid widths, 1 on mobile; 5th item spans its final row with intentional horizontal layout instead of leaving blank columns.

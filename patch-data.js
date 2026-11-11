@@ -1,7 +1,7 @@
-// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
+// Targeted November refresh. Unchanged records retain the previous Atlas evidence base.
 window.MKMSZ_PATCH_DATA = {
-  "snapshot": "2026-10-10",
-  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "snapshot": "2026-11-11",
+  "sourceCommit": "7e86e4009cfac206a3c736e29bf4c7b5de6b4a6f",
   "patches": [
     {
       "id": "prod-0",
@@ -39,7 +39,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-01",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x0000DF40",
       "romStart": 57152,
@@ -56,7 +56,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-01",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x0000DF50",
       "romStart": 57168,
@@ -107,7 +107,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-02",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x0000E384",
       "romStart": 58244,
@@ -124,7 +124,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-02",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x0000E394",
       "romStart": 58260,
@@ -141,7 +141,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-03",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x0000EF00",
       "romStart": 61184,
@@ -158,7 +158,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-03",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x0000EF10",
       "romStart": 61200,
@@ -175,7 +175,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-04",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x0000F628",
       "romStart": 63016,
@@ -192,7 +192,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-04",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x0000F638",
       "romStart": 63032,
@@ -209,7 +209,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-05",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x0000FEB0",
       "romStart": 65200,
@@ -226,7 +226,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-05",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x0000FEC0",
       "romStart": 65216,
@@ -243,7 +243,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-06",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x000105B0",
       "romStart": 66992,
@@ -260,7 +260,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-06",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x000105C0",
       "romStart": 67008,
@@ -277,7 +277,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-07",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x000106B0",
       "romStart": 67248,
@@ -294,7 +294,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-07",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x000106C0",
       "romStart": 67264,
@@ -311,7 +311,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-08",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x00010DBC",
       "romStart": 69052,
@@ -328,7 +328,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-08",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x00010DCC",
       "romStart": 69068,
@@ -345,7 +345,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-09",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x000116DC",
       "romStart": 71388,
@@ -362,7 +362,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-09",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x000116EC",
       "romStart": 71404,
@@ -379,7 +379,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-10",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x000117DC",
       "romStart": 71644,
@@ -396,7 +396,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-10",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x000117EC",
       "romStart": 71660,
@@ -413,7 +413,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-11",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x00011EA4",
       "romStart": 73380,
@@ -430,7 +430,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-11",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x00011EB4",
       "romStart": 73396,
@@ -447,7 +447,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-12",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x000125B4",
       "romStart": 75188,
@@ -464,7 +464,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-12",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x000125C4",
       "romStart": 75204,
@@ -481,7 +481,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-13",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x00012F70",
       "romStart": 77680,
@@ -498,7 +498,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-13",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x00012F80",
       "romStart": 77696,
@@ -515,7 +515,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-14",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x00013068",
       "romStart": 77928,
@@ -532,7 +532,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-14",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x00013078",
       "romStart": 77944,
@@ -617,7 +617,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-5",
-      "class": "production",
+      "class": "retired",
       "owner": "Rainbow outfit",
       "romSite": "0x0001C9A0..0x0001C9AF",
       "romStart": 117152,
@@ -634,7 +634,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-alloc-15",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero allocation",
       "romSite": "0x00024768",
       "romStart": 149352,
@@ -651,7 +651,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-load-15",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow Sub-Zero load",
       "romSite": "0x00024778",
       "romStart": 149368,
@@ -1671,7 +1671,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-32",
-      "class": "production",
+      "class": "retired",
       "owner": "Rainbow outfit",
       "romSite": "0x000A5664",
       "romStart": 677476,
@@ -1688,7 +1688,7 @@ window.MKMSZ_PATCH_DATA = {
     },
     {
       "id": "prod-rainbow-bank-entry",
-      "class": "production",
+      "class": "retired",
       "owner": "Compact rainbow bank transport",
       "romSite": "0x000A56E8..0x000A56F3",
       "romStart": 677608,
@@ -1724,17 +1724,17 @@ window.MKMSZ_PATCH_DATA = {
       "id": "prod-17",
       "class": "production",
       "owner": "Four-box keys",
-      "romSite": "0x000A6BE4..0x000A6C0B",
-      "romStart": 682980,
-      "romEnd": 683020,
+      "romSite": "0x00F69150",
+      "romStart": 16159056,
+      "romEnd": 16159088,
       "romExact": true,
-      "context": "0x800A5FE4..0x800A600B",
-      "vaStart": 2148163556,
-      "vaEnd": 2148163596,
-      "physicalStart": 679908,
-      "physicalEnd": 679948,
-      "expected": "guarded obsolete default-inventory template",
-      "effect": "Write item-0x0D..0x22 stage map",
+      "context": "0x801B0970",
+      "vaStart": 2149255536,
+      "vaEnd": 2149255568,
+      "physicalStart": 1771888,
+      "physicalEnd": 1771920,
+      "expected": "Exact 0x20-byte FF slice inside shared file 0x1A",
+      "effect": "Install 22-byte key-to-stage map; leave the old stock template intact.",
       "source": "Address-and-Patch-Site-Registry.md"
     },
     {
@@ -2195,8 +2195,43 @@ window.MKMSZ_PATCH_DATA = {
       "expected": "Proof-only / artifact-specific",
       "effect": "Runtime-confirmed bounded proof",
       "source": "Address-and-Patch-Site-Registry.md"
+    },
+    {
+      "id": "prod-audio-fifo-reserve",
+      "class": "production",
+      "owner": "Vanilla audio FIFO reserve",
+      "romSite": "0x00001F54",
+      "romStart": 8020,
+      "romEnd": 8024,
+      "romExact": true,
+      "context": "0x80001354",
+      "vaStart": 2147488596,
+      "vaEnd": 2147488600,
+      "physicalStart": 4948,
+      "physicalEnd": 4952,
+      "expected": "0x24020140 (reserve 320)",
+      "effect": "0x24020110 (reserve 272), enabled by default.",
+      "source": "Address-and-Patch-Site-Registry.md"
+    },
+    {
+      "id": "prod-water-scripted-checkpoint",
+      "class": "production",
+      "owner": "Water boss-area scripted checkpoint",
+      "romSite": "0x000B9330",
+      "romStart": 758576,
+      "romEnd": 758580,
+      "romExact": true,
+      "context": "Water overlay file 0xA1 · 0x802F11A0",
+      "vaStart": 2150568352,
+      "vaEnd": 2150568356,
+      "physicalStart": 3084704,
+      "physicalEnd": 3084708,
+      "expected": "0x24420001 within the guarded 48-byte stock sequence",
+      "effect": "0x24020006 commits selector 6 before reconstruction.",
+      "source": "Address-and-Patch-Site-Registry.md"
     }
   ],
   "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
-  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature.",
+  "previousSnapshotCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850"
 };

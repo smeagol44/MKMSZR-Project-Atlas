@@ -1,8 +1,8 @@
-// Targeted canonical Atlas refresh; unchanged older records retain their documented audit base.
+// Targeted November refresh. Unchanged records retain the previous Atlas evidence base.
 window.MKMSZ_MEMORY_DATA = {
-  "snapshot": "2026-10-10",
+  "snapshot": "2026-11-11",
   "sourceRepo": "smeagol44/MKMSZ-Randomizer",
-  "sourceCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850",
+  "sourceCommit": "7e86e4009cfac206a3c736e29bf4c7b5de6b4a6f",
   "sourcePage": "wiki/Memory-and-Allocation-Map.md",
   "rom": {
     "start": 0,
@@ -165,18 +165,18 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Repoints title package to high-ROM allocation."
       },
       {
-        "id": "rom.production.key_stage_table",
+        "id": "rom.stock.default_inventory_template",
         "start": 682980,
         "end": 683020,
         "range": "[0x000A6BE4, 0x000A6C0C)",
-        "class": "production",
-        "owner": "Four-box key-to-stage map",
+        "class": "stock-known",
+        "owner": "Stock default-inventory template",
         "scope": "Global data",
-        "lifecycle": "Gameplay / transition",
-        "evidence": "Runtime-confirmed masking behavior; Implementation/CI-confirmed 40-byte table",
-        "production_safe": "yes",
+        "lifecycle": "Options / Password",
+        "evidence": "Static-confirmed writer and bounded control proof",
+        "production_safe": "no",
         "reference": "inventory_boxes.py",
-        "notes": "Reuses the obsolete stock default-inventory template after loader replacement."
+        "notes": "The stock password handler writes the live template. The key-to-stage map moved to shared file 0x1A."
       },
       {
         "id": "rom.production.live_inventory_initializer",
@@ -435,14 +435,14 @@ window.MKMSZ_MEMORY_DATA = {
         "start": 15859712,
         "end": 15867904,
         "range": "[0x00F20000, 0x00F22000)",
-        "class": "production",
+        "class": "retired",
         "owner": "Optional 64-phase rainbow palette bank, raw file 0x92",
         "scope": "Generated ROM output",
         "lifecycle": "Rainbow gameplay only",
         "evidence": "Runtime-confirmed in compact-tail all-stage proof v01",
-        "production_safe": "conditional",
+        "production_safe": "historical",
         "reference": "rainbow_palette.py; guarded zero file-0x92 entry, exact 0x2000 bank, and all 15 stock file-0x87 loader pairs",
-        "notes": "Stock file 0x87 remains at retail ROM and is not duplicated or repointed. This supersedes the former [0xF20000,0xF679E0) relocated-file owner."
+        "notes": "Stock file 0x87 remains at retail ROM and is not duplicated or repointed. This supersedes the former [0xF20000,0xF679E0) relocated-file owner. Retired November 9 after the loader conflict with imported fighters."
       },
       {
         "id": "rom.proof.sektor_v62_file_87",
@@ -533,14 +533,14 @@ window.MKMSZ_MEMORY_DATA = {
         "start": 16158816,
         "end": 16158904,
         "range": "[0x00F69060, 0x00F690B8)",
-        "class": "production",
+        "class": "retired",
         "owner": "Optional compact-rainbow file-0x87 loader wrapper in shared file 0x1A",
         "scope": "Global high ROM",
         "lifecycle": "Stage resource load",
         "evidence": "Runtime-confirmed by compact-tail all-stage proof; CI guards/bounds",
-        "production_safe": "conditional",
+        "production_safe": "historical",
         "reference": "rainbow_palette.py; Address-and-Patch-Site-Registry.md",
-        "notes": "Runtime mirror is [0x801B0880,0x801B08D8); wrapper extends file 0x1A only when needed and remains below Toasty's fixed source/runtime slice."
+        "notes": "Runtime mirror is [0x801B0880,0x801B08D8); wrapper extends file 0x1A only when needed and remains below Toasty's fixed source/runtime slice. Retired November 9 after the loader conflict with imported fighters."
       },
       {
         "id": "rom.production.temple_special_check",
@@ -557,18 +557,32 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Runtime mirror [0x801B08E0,0x801B0970); starts after the optional Rainbow wrapper."
       },
       {
+        "id": "rom.production.key_stage_table",
+        "start": 16159056,
+        "end": 16159088,
+        "range": "[0x00F69150, 0x00F69170)",
+        "class": "production",
+        "owner": "Four-box key-to-stage map",
+        "scope": "Shared file 0x1A",
+        "lifecycle": "Gameplay / transition",
+        "evidence": "Runtime-confirmed bounded",
+        "production_safe": "yes",
+        "reference": "inventory_boxes.py; Memory-and-Allocation-Map.md",
+        "notes": "22 bytes used in a 32-byte allocation. The mask routine reads the uncached alias. The final generated file-0x1A copy begins this slice at ROM 0x01817150."
+      },
+      {
         "id": "rom.production.lifecycle_v06",
         "start": 16159296,
         "end": 16160724,
         "range": "[0x00F69240, 0x00F697D4)",
         "class": "production",
-        "owner": "Lifecycle v06 helper blob",
+        "owner": "Lifecycle v07 transport helper blob",
         "scope": "Global lifecycle code / shared file 0x1A",
         "lifecycle": "Pause Quit / death / reconstruction / stage completion / constructor / Game Over",
-        "evidence": "Runtime-confirmed bounded v06; Implementation/CI-confirmed exact 0x594-byte blob",
+        "evidence": "Runtime-confirmed bounded v06; Implementation/CI-confirmed exact 0x594-byte blob; v07 transport Runtime-confirmed bounded",
         "production_safe": "yes",
         "reference": "run_lifecycle.py; Persistence-Inventory-and-Lifecycle.md",
-        "notes": "Runtime mirror [0x801B0A60,0x801B0FF4); ends 12 bytes before Toasty."
+        "notes": "Runtime mirror [0x801B0A60,0x801B0FF4); ends 12 bytes before Toasty. v07 uses t9/t8 and a stack spill for interrupt-safe transport. Bounds are unchanged."
       },
       {
         "id": "rom.production.toasty_module",
@@ -781,18 +795,46 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Exact 0x35D0-byte shared prefix + 0x154 switch + 0x0C alignment + 0x196 legend, in 0x3C00 reserved transport. Legend source begins ROM 0x01819730 / KSEG0 0x801B2F50. Unused capacity remains owner-reserved."
       },
       {
+        "id": "rom.conditional.sektor_fixed_loader",
+        "start": 25270480,
+        "end": 25271120,
+        "range": "[0x018198D0, 0x01819B50)",
+        "class": "fighter-conditional",
+        "owner": "Sektor fixed loader in file 0x1A",
+        "scope": "Generated Sektor build",
+        "lifecycle": "File 0x87 load / gameplay",
+        "evidence": "Implementation/CI-confirmed; bounded composition runtime evidence",
+        "production_safe": "Sektor only",
+        "reference": "fighter_swap.py; Memory-and-Allocation-Map.md",
+        "notes": "Inside the existing 0x1A generated transport capacity. Loads into the reserved RDRAM pool tail."
+      },
+      {
         "id": "rom.generated.unassigned_tail",
         "start": 25271296,
         "end": 33554432,
         "range": "[0x01819C00, 0x02000000)",
-        "class": "stock-unknown",
-        "owner": "Unassigned appended generated-output capacity",
+        "class": "unassigned",
+        "owner": "Baseline generated-output tail",
         "scope": "Generated 32 MiB output only",
         "lifecycle": "None",
         "evidence": "No owner/use established",
         "production_safe": "no",
         "reference": "PR #137 output-size policy; Inventory HUD allocations; Memory-and-Allocation-Map.md",
-        "notes": "Remaining appended output capacity above owned Inventory switch/legend transport. Unknown is not confirmed-free."
+        "notes": "Baseline Sub-Zero build leaves this span unassigned. Selecting Sektor claims the separately marked fighter carrier inside it. Unassigned capacity does not establish reusable stock ROM space."
+      },
+      {
+        "id": "rom.conditional.sektor_file_and_samples",
+        "start": 25296896,
+        "end": 25617600,
+        "range": "[0x01820000, 0x0186E4C0)",
+        "class": "fighter-conditional",
+        "owner": "Sektor fighter file and sample carrier",
+        "scope": "Generated Sektor build",
+        "lifecycle": "File 0x87 load / gameplay",
+        "evidence": "Implementation/CI-confirmed; bounded composition runtime evidence",
+        "production_safe": "Sektor only",
+        "reference": "fighter_swap.py; Memory-and-Allocation-Map.md",
+        "notes": "Guarded carrier. File 0x87 [0x01820000, 0x018659E0); samples [0x01866000, 0x0186E4C0). Includes alignment between them."
       }
     ]
   },
@@ -927,19 +969,19 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "Runtime table reflects the patched file descriptor."
       },
       {
-        "id": "rdram.production.key_stage_table",
+        "id": "rdram.stock.default_inventory_template",
         "start": 679908,
         "end": 679948,
         "range": "[0x0A5FE4, 0x0A600C)",
         "aliases": "KSEG0 [0x800A5FE4,0x800A600C); KSEG1 [0xA00A5FE4,0xA00A600C)",
-        "class": "production",
-        "owner": "Key-to-stage map",
+        "class": "stock-known",
+        "owner": "Stock default-inventory template",
         "scope": "Global data",
-        "lifecycle": "Gameplay / transition",
-        "evidence": "Runtime-confirmed masking; CI-confirmed 40 bytes",
-        "production_safe": "yes",
-        "reference": "inventory_boxes.py",
-        "notes": "Directly precedes live inventory but is a separate owner."
+        "lifecycle": "Options / Password",
+        "evidence": "Static-confirmed stock writer; bounded control proof",
+        "production_safe": "no",
+        "reference": "Memory-and-Allocation-Map.md",
+        "notes": "The stock password handler can write all ten words. The key-to-stage map now lives in file 0x1A."
       },
       {
         "id": "rdram.production.live_inventory",
@@ -1128,13 +1170,13 @@ window.MKMSZ_MEMORY_DATA = {
         "range": "[0x1AF700, 0x1AF7D0)",
         "aliases": "KSEG0 [0x801AF700,0x801AF7D0); KSEG1 [0xA01AF700,0xA01AF7D0)",
         "class": "production",
-        "owner": "Optional Runtime V2 feature code tail",
+        "owner": "Reserved Runtime V2 tail",
         "scope": "Reserved MKMSZR block",
         "lifecycle": "Gameplay",
         "evidence": "Runtime-confirmed by compact rainbow v01; CI-confirmed bounds",
         "production_safe": "yes",
         "reference": "runtime_v2.py, rainbow_palette.py",
-        "notes": "Rainbow owns the full 0xD0-byte tail in rainbow builds; the compact helper adds the proof-validated defensive phase mask. In non-rainbow builds the interval remains reserved/zero."
+        "notes": "The former Rainbow helper is retired. These bytes remain inside the fixed MKMSZR reservation."
       },
       {
         "id": "rdram.production.state_header",
@@ -1187,14 +1229,14 @@ window.MKMSZ_MEMORY_DATA = {
         "end": 1767452,
         "range": "[0x1AF818, 0x1AF81C)",
         "aliases": "KSEG0 0x801AF818; KSEG1 0xA01AF818",
-        "class": "production",
+        "class": "retired",
         "owner": "Optional rainbow phase word",
         "scope": "Persistent MKMSZR state",
         "lifecycle": "Rainbow gameplay",
         "evidence": "Runtime-confirmed in full-composition v01",
-        "production_safe": "conditional",
+        "production_safe": "historical",
         "reference": "rainbow_palette.py state offset +0x48",
-        "notes": "Used only in rainbow mode; initialized by the common V2 state initializer."
+        "notes": "Used only in rainbow mode; initialized by the common V2 state initializer. Retired November 9 after the loader conflict with imported fighters."
       },
       {
         "id": "rdram.production.state_reserved_tail",
@@ -1277,14 +1319,14 @@ window.MKMSZ_MEMORY_DATA = {
         "end": 1771736,
         "range": "[0x1B0880, 0x1B08D8)",
         "aliases": "KSEG0 [0x801B0880,0x801B08D8); KSEG1 [0xA01B0880,0xA01B08D8)",
-        "class": "production",
+        "class": "retired",
         "owner": "Optional compact-rainbow file-0x87 loader wrapper",
         "scope": "Expansion-pool suballocation",
         "lifecycle": "Stage resource load",
         "evidence": "Runtime-confirmed by compact-tail all-stage proof; CI guards/bounds",
-        "production_safe": "conditional",
+        "production_safe": "historical",
         "reference": "rainbow_palette.py",
-        "notes": "Uses only the start of the established controls-to-Toasty gap; Toasty remains fixed at 0x801B1000."
+        "notes": "Uses only the start of the established controls-to-Toasty gap; Toasty remains fixed at 0x801B1000. Retired November 9 after the loader conflict with imported fighters."
       },
       {
         "id": "rdram.production.temple_special_check",
@@ -1302,19 +1344,34 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "0x90 bytes immediately after the optional Rainbow wrapper."
       },
       {
+        "id": "rdram.production.key_stage_table",
+        "start": 1771888,
+        "end": 1771920,
+        "range": "[0x001B0970, 0x001B0990)",
+        "class": "production",
+        "owner": "Four-box key-to-stage map",
+        "scope": "Shared file 0x1A",
+        "lifecycle": "Gameplay / transition",
+        "evidence": "Runtime-confirmed bounded",
+        "production_safe": "yes",
+        "reference": "inventory_boxes.py; Memory-and-Allocation-Map.md",
+        "notes": "22 bytes used in a 32-byte allocation. The mask routine reads the uncached alias. The final generated file-0x1A copy begins this slice at ROM 0x01817150.",
+        "aliases": "KSEG0 0x801B0970; KSEG1 0xA01B0970"
+      },
+      {
         "id": "rdram.production.lifecycle_v06",
         "start": 1772128,
         "end": 1773556,
         "range": "[0x1B0A60, 0x1B0FF4)",
         "aliases": "KSEG0 [0x801B0A60,0x801B0FF4); KSEG1 [0xA01B0A60,0xA01B0FF4)",
         "class": "production",
-        "owner": "Lifecycle v06 helper blob",
+        "owner": "Lifecycle v07 transport helper blob",
         "scope": "Expansion-pool suballocation",
         "lifecycle": "Pause Quit / death / reconstruction / stage completion / constructor / Game Over",
-        "evidence": "Runtime-confirmed bounded v06; Implementation/CI-confirmed exact 0x594-byte blob",
+        "evidence": "Runtime-confirmed bounded v06; Implementation/CI-confirmed exact 0x594-byte blob; v07 transport Runtime-confirmed bounded",
         "production_safe": "yes",
         "reference": "run_lifecycle.py; Persistence-Inventory-and-Lifecycle.md",
-        "notes": "Starts after the materializer-candidate gap and ends 12 bytes before Toasty."
+        "notes": "Starts after the materializer-candidate gap and ends 12 bytes before Toasty. v07 uses t9/t8 and a stack spill for interrupt-safe transport. Bounds are unchanged."
       },
       {
         "id": "rdram.production.toasty_module",
@@ -1407,6 +1464,21 @@ window.MKMSZ_MEMORY_DATA = {
         "notes": "0x196-byte legend helper in relocated shared file 0x1A. Prior 0x0C alignment remains reserved; six stock panel tiles retained."
       },
       {
+        "id": "rdram.conditional.sektor_fixed_loader",
+        "start": 1782000,
+        "end": 1782640,
+        "range": "[0x001B30F0, 0x001B3370)",
+        "class": "fighter-conditional",
+        "owner": "Sektor fixed loader",
+        "scope": "Generated Sektor build",
+        "lifecycle": "File 0x87 load / gameplay",
+        "evidence": "Implementation/CI-confirmed; bounded composition runtime evidence",
+        "production_safe": "Sektor only",
+        "reference": "fighter_swap.py; Memory-and-Allocation-Map.md",
+        "notes": "0x280 bytes for relocation, load wrapper and throw trampolines. The parent reservation ends at 0x1B3420.",
+        "aliases": "KSEG0 0x801B30F0; KSEG1 0xA01B30F0"
+      },
+      {
         "id": "rdram.stock.pickup_context_pointer",
         "start": 3067424,
         "end": 3067428,
@@ -1424,5 +1496,6 @@ window.MKMSZ_MEMORY_DATA = {
     ]
   },
   "recordAuditBaseCommit": "52139f021212c94bb483cc6ec1a6cecda5c94fa1",
-  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature."
+  "refreshScope": "Targeted canonical refresh on 2026-10-10; unchanged older records retain their original audit base. Not an exhaustive re-audit of every interval or feature.",
+  "previousSnapshotCommit": "a8601aac6de0ad2f1db1a86c868242902cbab850"
 };

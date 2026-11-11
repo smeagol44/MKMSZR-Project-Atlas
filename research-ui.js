@@ -1,66 +1,98 @@
-// Read-only, source-linked Atlas rendering. Metadata is escaped through textContent.
-(function(){
-"use strict";
-const d=window.MKMSZ_GHIDRA_DATA;
-if(!d)return;
-const stats=document.getElementById("research-stats"),
- findings=document.getElementById("research-findings"),
- kind=document.getElementById("research-kind"),
- search=document.getElementById("research-query"),
- reset=document.getElementById("research-reset"),
- count=document.getElementById("research-count"),
- records=document.getElementById("research-records"),
- more=document.getElementById("research-more");
-const sources=(repo,path)=>"https://github.com/"+repo+"/blob/main/"+path;
-function elt(tag,cls,value){
- const v=document.createElement(tag);
- if(cls)v.className=cls;
- if(value!==undefined)v.textContent=value;
- return v;
-}
-const figures=[
- ["Local import audit",d.maintainerImport.exact+"/"+d.maintainerImport.checked,"0 mismatches, user-observed"],
- ["Named functions / globals",d.maintainerImport.functions+" / "+d.maintainerImport.globals,"Clean-ROM global scope"],
- ["Managed types / comments / bookmarks",d.maintainerImport.types+" / "+d.maintainerImport.comments+" / "+d.maintainerImport.bookmarks,"Detailed type descriptions audited"],
- ["Known Wiki findings routed",d.knowledgeScope.routedFindings+"/"+d.knowledgeScope.enumeratedFindings,"Not an all-code completion measure"]
-];
-for(const [label,value,note] of figures){
- const card=elt("div","mem-stat");
- card.append(elt("span","",label),elt("strong","",value),elt("small","",note));
- stats.append(card);
-}
-for(const item of d.findings){
- const card=elt("article","research-finding"),
- link=elt("a","","View owner source ↗");
- link.href=sources(item.sourceRepo,item.source);link.target="_blank";link.rel="noreferrer";
- card.append(elt("h3","",item.title),elt("div","research-meta",item.date+" · "+item.evidence),
-             elt("p","",item.detail),link);
- findings.append(card);
-}
-const types=[...new Set(d.records.map(x=>x.category))];
-for(const value of types){const option=elt("option","",value);option.value=value;kind.append(option)}
-let pageSize=60;
-function makeRecord(item){
- const card=elt("article","research-record");
- const link=elt("a","",item.source+" ↗");
- link.href=sources(d.sourceRepo,item.source);link.target="_blank";link.rel="noreferrer";
- card.append(elt("div","address",item.address+" · "+item.category),
-             elt("h3","",item.title),elt("div","research-meta",item.evidence),
-             elt("p","",item.detail),link);
- return card;
-}
-function render(){
- const term=search.value.trim().toLowerCase(),type=kind.value;
- const matching=d.records.filter(item=>(type==="all"||item.category===type)&&
-  (!term||[item.category,item.address,item.title,item.evidence,item.detail].join(" ").toLowerCase().includes(term)));
- records.replaceChildren(...matching.slice(0,pageSize).map(makeRecord));
- count.textContent="Showing "+Math.min(pageSize,matching.length)+" of "+matching.length+
-  " searchable metadata records · Ghidra "+d.sourceCommit.slice(0,12)+" · locally audited "+d.maintainerImport.date;
- more.hidden=matching.length<=pageSize;
-}
-kind.addEventListener("change",()=>{pageSize=60;render()});
-search.addEventListener("input",()=>{pageSize=60;render()});
-reset.addEventListener("click",()=>{kind.value="all";search.value="";pageSize=60;render()});
-more.addEventListener("click",()=>{pageSize+=60;render()});
-render();
+(function () {
+  "use strict";
+
+  const { element, link, wikiLink, options, disclosure, textWithCode } = window.AtlasUI;
+  const data = window.MKMSZ_GHIDRA_DATA;
+  const get = id => document.getElementById("research-" + id);
+  const kind = get("kind");
+  const scope = get("scope");
+  const search = get("query");
+  const records = get("records");
+  const count = get("count");
+  const more = get("more");
+  const repo = "https://github.com/" + data.sourceRepo;
+  const pinned = repo + "/blob/" + data.sourceCommit + "/";
+  const sources = get("sources");
+  sources.append(link("Manifests at " + data.sourceCommit.slice(0, 8),
+                      repo + "/tree/" + data.sourceCommit + "/analysis"),
+                 wikiLink("Function Registry", "Function-Registry.md"));
+
+  for (const item of data.findings) {
+    const row = element("article", "update-row");
+    const heading = element("div", "update-heading");
+    heading.append(element("h4", "", item.title), element("span", "evidence-label", item.evidence));
+    const refs = element("div", "source-links");
+    refs.append(link("PR #" + item.pr, repo + "/pull/" + item.pr));
+    if (item.source) refs.append(link("Manifest", pinned + item.source));
+    row.append(heading, element("p", "", item.detail), refs);
+    get("findings").append(row);
+  }
+
+  const audit = data.maintainerImport;
+  const knowledge = data.knowledgeScope;
+  const auditNode = get("audit");
+  auditNode.append(
+    element("p", "desc", "October 9 local Ghidra audit: " + audit.exact + "/" + audit.checked +
+      " exact checks with zero mismatches. The newer manifests await a fresh maintainer import and audit."),
+    element("p", "desc", "October Wiki audit: " + knowledge.routedFindings + "/" + knowledge.enumeratedFindings +
+      " enumerated findings routed to a source. This measures the reviewed Wiki sample."),
+    link("Local audit sign-off", pinned + "docs/local-migration-handoff.md")
+  );
+
+  const scopes = new Map(data.records.map(item => [item.scope || "global", item.location || "Global"]));
+  options(kind, Object.entries(data.navigationCounts).map(([type, total]) => [type, type + " (" + total + ")"]));
+  options(scope, [...scopes].sort(([a], [b]) => a.localeCompare(b)));
+
+  function renderRecord(item) {
+    const heading = [
+      element("span", "record-title", item.title),
+      element("code", "record-address", item.address),
+      element("span", "record-scope", item.location || "Global"),
+      element("span", "record-kind", item.category),
+    ];
+    const body = element("div", "index-body");
+    body.append(element("span", "evidence-label", item.evidence), textWithCode(item.detail),
+                link("Manifest source", pinned + item.source));
+    return disclosure(heading, body);
+  }
+
+  const pageSize = 25;
+  let shown = 0;
+  let matches = [];
+  function appendPage() {
+    const next = matches.slice(shown, shown + pageSize);
+    const entries = next.map(renderRecord);
+    records.append(...entries);
+    shown += next.length;
+    count.textContent = "Showing " + shown + " of " + matches.length +
+      (matches.length === data.records.length ? " records" : " matching records · " + data.records.length + " in catalog");
+    more.hidden = shown >= matches.length;
+    return entries[0];
+  }
+
+  function render() {
+    const terms = search.value.trim().toLowerCase().split(/\s+/);
+    matches = data.records.filter(item => {
+      const searchable = [...Object.values(item), item.location || "Global"].join(" ").toLowerCase();
+      return (kind.value === "all" || item.category === kind.value)
+        && (scope.value === "all" || (item.scope || "global") === scope.value)
+        && terms.every(term => searchable.includes(term));
+    });
+    records.replaceChildren();
+    shown = 0;
+    appendPage();
+    if (!matches.length) records.append(element("p", "empty-state", "No matching metadata."));
+  }
+
+  kind.addEventListener("change", render);
+  scope.addEventListener("change", render);
+  search.addEventListener("input", render);
+  get("reset").addEventListener("click", () => {
+    kind.value = scope.value = "all";
+    search.value = "";
+    render();
+    search.focus();
+  });
+  more.addEventListener("click", () => appendPage()?.querySelector("summary").focus());
+  render();
 })();

@@ -1,107 +1,110 @@
-// Dependency-free DOM smoke test for the responsive MKT compatibility explorer.
+// Dependency-free interaction checks for the Atlas research indexes.
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import vm from "node:vm";
 
 class StubNode {
-  constructor(tag="div"){
-    this.tagName=tag;this.children=[];this.dataset={};this.style={};
-    this.attributes={};this.events={};this.hidden=false;this.className="";
-    this.textContent="";this.value="all";this.title="";
-    this.classList={
-      toggle:(value,active)=>{
-        const tokens=new Set(this.className.split(/\s+/).filter(Boolean));
-        if(active)tokens.add(value);else tokens.delete(value);
-        this.className=[...tokens].join(" ");
-      }
-    };
+  constructor(tag = "div") {
+    this.tagName = tag;
+    this.children = [];
+    this.attributes = {};
+    this.events = {};
+    this.hidden = false;
+    this.className = "";
+    this.textContent = "";
+    this.value = "";
   }
-  append(...children){this.children.push(...children);return this}
-  replaceChildren(...children){this.children=[...children];return this}
-  setAttribute(name,value){this.attributes[name]=String(value)}
-  addEventListener(type,fn){this.events[type]=fn}
-  dispatch(type){assert.ok(this.events[type],"missing "+type+" on "+this.tagName);this.events[type]()}
-  querySelector(selector){
-    const target=selector.startsWith(".")?selector.slice(1):null;
-    const walk=node=>{
-      if(target&&node.className.split(/\s+/).includes(target))return node;
-      for(const child of node.children){const found=walk(child);if(found)return found}
-      return null;
-    };
-    return walk(this);
-  }
-  querySelectorAll(selector){
-    const all=[];
-    const visit=node=>{
-      if((selector==="button"&&node.tagName==="button")||
-         (selector==="button[data-key]"&&node.tagName==="button"&&node.dataset.key))all.push(node);
-      for(const child of node.children)visit(child);
-    };
-    visit(this);return all;
-  }
+
+  append(...children) { this.children.push(...children); }
+  replaceChildren(...children) { this.children = children; }
+  setAttribute(name, value) { this.attributes[name] = String(value); }
+  addEventListener(type, callback) { this.events[type] = callback; }
+  dispatch(type) { this.events[type](); }
+  focus() { this.focused = true; }
+  querySelector(tag) { return this.children.find(child => child.tagName === tag); }
 }
-const ids=[
-"compat-area","compat-status","compat-q","compat-reset",
-"compat-areas","compat-stats","compat-status-scale","compat-count",
-"compat-groups","compat-table","compat-mode-cards","compat-mode-table","compat-milestones"
-];
-const els=Object.fromEntries(ids.map(id=>[id,new StubNode(id==="compat-q"?"input":"div")]));
-for(const k of ["compat-area","compat-status"])els[k].value="all";
-els["compat-q"].value="";
-const root=new StubNode("section");
-root.querySelector=sel=>els[sel.slice(1)]||null;
-const document={
-  getElementById:id=>id==="view-compat"?root:null,
-  createElement:tag=>new StubNode(tag)
+
+const ids = new Set([...fs.readFileSync("index.html", "utf8").matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
+const nodes = new Map();
+const document = {
+  getElementById(id) {
+    assert.ok(ids.has(id), "Missing element #" + id);
+    if (!nodes.has(id)) nodes.set(id, new StubNode());
+    return nodes.get(id);
+  },
+  createElement(tag) { return new StubNode(tag); },
 };
-const sandbox={window:{},document,console};
-vm.createContext(sandbox);
-vm.runInContext(fs.readFileSync("project-data.js","utf8"),sandbox,{filename:"project-data.js"});
-vm.runInContext(fs.readFileSync("mkt-compat-ui.js","utf8"),sandbox,{filename:"mkt-compat-ui.js"});
-const data=sandbox.window.MKMSZ_PROJECT_DATA.compatibility;
-assert.equal(data.length,28);
-assert.equal(els["compat-count"].textContent.startsWith("28 of 28"),true);
-assert.equal(els["compat-stats"].children.length,4);
-assert.equal(els["compat-milestones"].children.length,4);
-assert.equal(els["compat-groups"].children.length,new Set(data.map(r=>r.area)).size);
-for (const group of els["compat-groups"].children) {
-  const list=group.children[1];
-  assert.equal(Number(list.dataset.count),list.children.length);
+const get = id => document.getElementById(id);
+const selects = ["compat-area", "compat-status", "research-kind", "research-scope"];
+selects.forEach(id => { get(id).value = "all"; });
+
+const sandbox = vm.createContext({ window: {}, document });
+for (const file of ["project-data.js", "ghidra-data.js", "atlas-ui.js", "mkt-compat-ui.js", "research-ui.js"]) {
+  vm.runInContext(fs.readFileSync(file, "utf8"), sandbox, { filename: file });
 }
-assert.equal(els["compat-groups"].children.find(g=>g.children[1].dataset.count==="5").children[1].children.length,5);
-assert.equal(els["compat-table"].hidden,true);
-assert.equal(els["compat-mode-cards"].attributes["aria-pressed"],"true");
-const filtered=els["compat-status"];
-filtered.value="runtime";filtered.dispatch("change");
-assert.equal(els["compat-count"].textContent.startsWith("7 of 28"),true);
-const search=els["compat-q"];search.value="first-visible";search.dispatch("input");
-assert.equal(els["compat-count"].textContent.startsWith("1 of 28"),true);
-search.value="";search.dispatch("input");
-els["compat-mode-table"].dispatch("click");
-assert.equal(els["compat-groups"].hidden,true);
-assert.equal(els["compat-table"].hidden,false);
-assert.equal(els["compat-mode-table"].attributes["aria-pressed"],"true");
-const table=els["compat-table"].children[0];
-assert.equal(table.tagName,"table");
-const body=table.children.find(x=>x.tagName==="tbody");
-assert.equal(body.children.length,14); // seven filtered capabilities, two rows per item
-const detailToggle=body.children[0].querySelector(".compat-table-expand");
-assert.ok(detailToggle);
-assert.equal(detailToggle.attributes["aria-expanded"],"false");
-detailToggle.dispatch("click");
-assert.equal(detailToggle.attributes["aria-expanded"],"true");
-assert.equal(body.children[1].hidden,false);
-els["compat-reset"].dispatch("click");
-assert.equal(els["compat-count"].textContent.startsWith("28 of 28"),true);
-els["compat-mode-cards"].dispatch("click");
-assert.equal(els["compat-groups"].hidden,false);
-const item=els["compat-groups"].children[0].children[1].children[0];
-const evidence=item.children.find(x=>x.className==="compat-insight");
-assert.ok(evidence && evidence.children.some(c=>c.tagName==="p"&&c.textContent.length>10));
-assert.ok(evidence && evidence.children.some(c=>c.tagName==="a"&&c.href.includes("github.com")));
-const areaChips=els["compat-areas"].querySelectorAll("button");
-assert.ok(areaChips.length>5);
-areaChips[1].dispatch("click");
-const firstArea=data[0].area;
-assert.equal(els["compat-count"].textContent.startsWith(data.filter(r=>r.area===firstArea).length+" of 28"),true);
-console.log("MKT compatibility DOM smoke: 28 records, bounded milestones, status/search/area filters, card/table toggles, accessible table expansion and source links PASS");
+
+const data = sandbox.window.MKMSZ_PROJECT_DATA.compatibility;
+const list = get("compat-groups");
+const table = get("compat-table");
+assert.equal(get("compat-count").textContent, "28 of 28 capabilities");
+assert.equal(get("compat-milestones").children.length, 4);
+assert.equal(list.children.length, new Set(data.map(row => row.area)).size);
+assert.equal(list.children.flatMap(group => group.children[1].children).length, 28);
+assert.equal(table.hidden, true);
+const entry = list.children[0].children[1].children[0];
+assert.equal(entry.tagName, "details");
+assert.equal(entry.querySelector("summary").children[0].textContent, data[0].capability);
+assert.ok(entry.children[1].querySelector("a").href.endsWith(data[0].source));
+
+const status = get("compat-status");
+status.value = "runtime";
+status.dispatch("change");
+assert.equal(get("compat-count").textContent, "9 of 28 capabilities");
+const search = get("compat-q");
+search.value = "first-visible";
+search.dispatch("input");
+assert.equal(get("compat-count").textContent, "1 of 28 capabilities");
+get("compat-mode-table").dispatch("click");
+assert.equal(list.hidden, true);
+assert.equal(table.hidden, false);
+assert.equal(get("compat-mode-table").attributes["aria-pressed"], "true");
+const body = table.children[0].querySelector("tbody");
+assert.equal(body.children.length, 1);
+assert.ok(body.children[0].children[3].querySelector("a").href);
+get("compat-reset").dispatch("click");
+assert.equal(get("compat-count").textContent, "28 of 28 capabilities");
+get("compat-mode-list").dispatch("click");
+assert.equal(list.hidden, false);
+
+const ghidra = sandbox.window.MKMSZ_GHIDRA_DATA;
+const records = get("research-records");
+const researchCount = get("research-count");
+const more = get("research-more");
+assert.equal(researchCount.textContent, "Showing 25 of 624 records");
+const firstRecord = records.children[0];
+more.dispatch("click");
+assert.equal(researchCount.textContent, "Showing 50 of 624 records");
+assert.equal(records.children[0], firstRecord);
+assert.equal(records.children[25].querySelector("summary").focused, true);
+
+get("research-scope").value = "overlay_water";
+get("research-scope").dispatch("change");
+assert.ok(records.children.every(row => row.querySelector("summary").children[2].textContent === "Water · file 0xA1"));
+get("research-kind").value = "Comment";
+get("research-kind").dispatch("change");
+get("research-query").value = "0x802f11a0";
+get("research-query").dispatch("input");
+assert.equal(records.children.length, 1);
+assert.equal(more.hidden, true);
+assert.ok(records.children[0].children[1].querySelector("a").href.includes(ghidra.sourceCommit + "/analysis/comments.tsv"));
+
+get("research-reset").dispatch("click");
+assert.equal(researchCount.textContent, "Showing 25 of 624 records");
+get("research-kind").value = "Global";
+get("research-kind").dispatch("change");
+assert.ok(researchCount.textContent.includes("65 matching records"));
+get("research-query").value = "missing-test-address";
+get("research-query").dispatch("input");
+assert.equal(records.children[0].textContent, "No matching metadata.");
+
+console.log("Atlas research UI smoke passed: filters, details, comparison, scope, pagination, and source links");
