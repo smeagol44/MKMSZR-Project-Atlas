@@ -4,7 +4,7 @@ import vm from "node:vm";
 
 const context = { window: {} };
 vm.createContext(context);
-for (const file of ["memory-data.js", "patch-data.js", "stage-data.js", "project-data.js", "ghidra-data.js"]) {
+for (const file of ["memory-data.js", "patch-data.js", "stage-data.js", "project-data.js", "ghidra-data.js", "readiness-data.js"]) {
   vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
 }
 
@@ -278,10 +278,51 @@ if (!html.includes("inventoryHudTail&&{record:inventoryHudTail") ||
     !html.includes("inventoryHud&&{record:inventoryHud")) {
   throw new Error("RDRAM capacity renderer is missing current progression/materializer/Inventory HUD slices");
 }
-if (!html.includes("Game Over inventory boundary") ||
-    !html.includes("Native Inventory HUD") ||
-    !html.includes("Inventory HUD generated assets")) {
-  throw new Error("Decomp Readiness is missing current lifecycle/HUD findings");
+const readiness = context.window.MKMSZ_READINESS_DATA;
+const readinessTotals = { g: 0, y: 0, b: 0 };
+const ratingChanges = { g: 0, y: 0, b: 0 };
+const namedFindings = new Set();
+if (readiness.rows.length !== 15 || readiness.wikiCommit !== project.sourceCommit ||
+    readiness.ghidraCommit !== ghidra.sourceCommit) {
+  throw new Error("Decomp Readiness snapshot provenance or subsystem count drifted");
+}
+for (const row of readiness.rows) {
+  const namedCounts = { g: 0, y: 0, b: 0 };
+  if (Object.values(row.counts).reduce((sum, n) => sum + n, 0) !== 40 || !row.owner) {
+    throw new Error("Invalid readiness row: " + row.name);
+  }
+  for (const [rating, title, address, detail, source, evidence, reviewed, previous] of row.findings) {
+    if (!Object.hasOwn(namedCounts, rating) || !title || !address || !detail || namedFindings.has(title)) {
+      throw new Error("Invalid or duplicate readiness finding: " + title);
+    }
+    namedFindings.add(title);
+    namedCounts[rating]++;
+    if (reviewed && (!source || !evidence || reviewed !== readiness.snapshot)) {
+      throw new Error("Reviewed readiness finding lacks source or evidence: " + title);
+    }
+    if (previous && previous !== rating) {
+      if (!Object.hasOwn(ratingChanges, previous) || !reviewed) throw new Error("Unproven rating change: " + title);
+      ratingChanges[previous]--;
+      ratingChanges[rating]++;
+    }
+  }
+  for (const rating of Object.keys(readinessTotals)) {
+    const count = row.counts[rating];
+    if (!Number.isInteger(count) || count < namedCounts[rating]) {
+      throw new Error("Named readiness findings exceed the row rating count: " + row.name);
+    }
+    readinessTotals[rating] += count;
+  }
+}
+for (const rating of Object.keys(readinessTotals)) {
+  if (readinessTotals[rating] !== readiness.previousTotals[rating] + ratingChanges[rating]) {
+    throw new Error("Readiness total changed without a documented regrade: " + rating);
+  }
+}
+if (ratingChanges.g !== 5 || ratingChanges.y !== -5 || ratingChanges.b !== 0 ||
+    !["Game Over inventory boundary", "Native Inventory HUD", "Inventory HUD generated assets"]
+      .every(title => namedFindings.has(title))) {
+  throw new Error("Expected readiness regrades or historical findings are missing");
 }
 const shuffledPower = project.featureBoard.find(feature => feature.name === "Shuffled Power Order");
 const hudFeature = project.featureBoard.find(feature => feature.name === "Randomizer HUD");

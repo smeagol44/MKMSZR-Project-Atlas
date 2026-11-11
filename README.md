@@ -21,7 +21,7 @@ The update is targeted. Existing stage, memory and readiness records outside the
 | Stages | The eight main stages, 84 ordinary pickups, overlay identities, progression, and bounded checkpoint or materialization evidence. |
 | MKT Fighter Import | Sektor and Reptile status, 28 translation capabilities, and historical proof milestones. Search or filter the compact list and use **Compare** for side-by-side donor and host details. |
 | Ghidra Research | 624 selected navigation records from the pinned manifests, including 182 global function entries, 65 global symbols, and eight separately identified overlay images. Filter by type or scope and expand a result for the evidence and manifest link. |
-| Decomp Readiness | A qualitative 40 × 15 heatmap of 600 research units. Green represents sufficient understanding for a plausible C analogue. Yellow marks partial knowledge. Black marks largely unmapped areas. |
+| Decomp Readiness | A 40 × 15 heatmap of 600 qualitative units, with 126 decomp-ready, 144 partial, and 330 largely unknown. Choose a subsystem or search its named findings and source links. |
 | ROM | Bounded stock and generated ownership, exact guarded patch sites, and the conditional Sektor carrier in 32 MiB output. The supported clean input is 16 MiB. |
 | RDRAM | Physical memory ownership and the 16 KiB MKMSZR reservation, including the separate TURN, ATTACK, SPECIALS, JUMP and RUN display slices and the conditional Sektor loader. |
 
@@ -33,6 +33,6 @@ ROM offsets, physical RDRAM and runtime VAs retain their own coordinates. KSEG0 
 
 1. Read Project Status, then the relevant Wiki owner and merged implementation or Ghidra manifests.
 2. Update the affected data records and source revisions. Preserve evidence limits and stage scope.
-3. Run `node validate-memory-data.mjs` from the repository root. It validates the maps and exercises the MKT and Ghidra filters, disclosures, comparison, and source navigation.
+3. Run `node validate-memory-data.mjs` from the repository root. It validates the maps and exercises MKT, Ghidra, and Decomp Readiness interactions.
 
 The site is static. The Pages workflow publishes pushes to `main` with no build step or runtime dependencies.
