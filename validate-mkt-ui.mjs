@@ -35,11 +35,11 @@ const document = {
   createElement(tag) { return new StubNode(tag); },
 };
 const get = id => document.getElementById(id);
-const selects = ["compat-area", "compat-status", "research-kind", "research-scope"];
+const selects = ["compat-area", "compat-status", "research-kind", "research-scope", "readiness-rating", "readiness-subsystem"];
 selects.forEach(id => { get(id).value = "all"; });
 
 const sandbox = vm.createContext({ window: {}, document });
-for (const file of ["project-data.js", "ghidra-data.js", "atlas-ui.js", "mkt-compat-ui.js", "research-ui.js"]) {
+for (const file of ["project-data.js", "ghidra-data.js", "readiness-data.js", "atlas-ui.js", "mkt-compat-ui.js", "research-ui.js", "readiness-ui.js"]) {
   vm.runInContext(fs.readFileSync(file, "utf8"), sandbox, { filename: file });
 }
 
@@ -107,4 +107,32 @@ get("research-query").value = "missing-test-address";
 get("research-query").dispatch("input");
 assert.equal(records.children[0].textContent, "No matching metadata.");
 
-console.log("Atlas research UI smoke passed: filters, details, comparison, scope, pagination, and source links");
+const readinessRows = get("readiness-grid").children;
+assert.equal(readinessRows.length, 15);
+assert.ok(readinessRows.every(row => row.children[1].children.length === 40));
+assert.ok(get("readiness-update").textContent.includes("121 → 126"));
+const audio = readinessRows.find(row => row.children[0].textContent === "Audio / music / SFX");
+audio.dispatch("click");
+assert.equal(get("readiness-subsystem").value, "Audio / music / SFX");
+assert.equal(audio.attributes["aria-pressed"], "true");
+assert.equal(get("readiness-findings-title").focused, true);
+get("readiness-rating").value = "g";
+get("readiness-rating").dispatch("change");
+get("readiness-query").value = "0x8007d4a8";
+get("readiness-query").dispatch("input");
+const readinessList = get("readiness-findings");
+assert.equal(readinessList.children.length, 1);
+const fifo = readinessList.children[0];
+assert.equal(fifo.querySelector("summary").children[0].textContent, "AI FIFO enqueue and PCM sizing");
+assert.ok(fifo.children[1].querySelector("a").href.includes("Sounds-and-Music.md#"));
+get("readiness-query").value = "no-such-readiness-finding";
+get("readiness-query").dispatch("input");
+assert.equal(get("readiness-count").textContent, "No matching findings");
+get("readiness-reset").dispatch("click");
+assert.equal(audio.attributes["aria-pressed"], "false");
+assert.equal(readinessList.children.length, 20);
+get("readiness-more").dispatch("click");
+assert.equal(readinessList.children.length, 40);
+assert.equal(readinessList.children[20].querySelector("summary").focused, true);
+
+console.log("Atlas UI smoke passed: MKT, Ghidra, and Decomp Readiness");

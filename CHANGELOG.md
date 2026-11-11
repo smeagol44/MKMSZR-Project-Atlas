@@ -1,3 +1,8 @@
+## 2026-11-11 — Decomp Readiness review
+
+- Promoted five scoped units from partial to decomp-ready: animation dispatch, ordinary floor matching, the Water checkpoint write, AI FIFO enqueue and sizing, and the interrupt register contract. The 600-unit model now has 126 decomp-ready, 144 partial, and 330 largely unknown units.
+- Updated the responsive subsystem heatmap and added searchable, source-linked findings with evidence limits and rating history.
+
 ## 2026-11-11 — November research update and Atlas layout
 
 - Refreshed the Feature Board, Water stage, MKT capabilities and selected readiness descriptions using Randomizer PRs #174–203. Sektor is a build option, the vanilla audio fix is default-on, and Reptile’s open input proof is labeled separately.
